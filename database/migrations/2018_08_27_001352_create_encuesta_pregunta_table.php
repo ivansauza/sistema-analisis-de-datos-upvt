@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEncuestaInformacionTable extends Migration
+class CreateEncuestaPreguntaTable extends Migration
 {
     /**
      * Run the migrations.
