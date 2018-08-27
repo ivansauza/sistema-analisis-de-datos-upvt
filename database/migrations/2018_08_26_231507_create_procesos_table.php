@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateProcesosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('procesos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('apellidos');
-
-            $table->string('email')->unique();
-            $table->string('password');
-            
-            $table->rememberToken();
+            $table->string('nombre')->unique();
+            $table->integer('posicion')->nullable();
+            $table->integer('programa_id')->unsigned();
+            $table->foreign('programa_id')->references('id')->on('programas');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('procesos');
     }
 }
