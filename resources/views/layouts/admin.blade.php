@@ -64,7 +64,8 @@
 						<div class="dropdown-divider"></div>
 
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link {{ ! Route::is('preguntas.*') ?: 'active' }}" href="{{ route('preguntas.index') }}">
+								<i class="far fa-question-circle"></i> 
 								Preguntas
 							</a>
 						</li>
