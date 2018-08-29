@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('content')
+@section('header')
 	<h1 class="h2">Inicio</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
