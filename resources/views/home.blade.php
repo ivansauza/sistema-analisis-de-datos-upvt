@@ -1,23 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<h1 class="h2">Inicio</h1>
+	<div class="btn-toolbar mb-2 mb-md-0">
+		<div class="btn-group mr-2">
+			<button class="btn btn-sm btn-outline-secondary">Share</button>
+			<button class="btn btn-sm btn-outline-secondary">Export</button>
+		</div>
+	</div>
 @endsection
