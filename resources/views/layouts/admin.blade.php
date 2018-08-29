@@ -60,6 +60,12 @@
 								Programas Educativos
 							</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link {{ ! Route::is('periodos.*') ?: 'active' }}" href="{{ route('periodos.index') }}">
+								<i class="fas fa-calendar-alt"></i> 
+								Periodos
+							</a>
+						</li>
 
 						<div class="dropdown-divider"></div>
 

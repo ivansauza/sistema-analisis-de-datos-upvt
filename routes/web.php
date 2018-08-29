@@ -19,5 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('programas', 'ProgramaController');
+Route::resource('periodos', 'PeriodoController');
 Route::resource('preguntas', 'PreguntaController');
 Route::resource('encuestas', 'EncuestaController');
