@@ -10,5 +10,13 @@
 @endsection
 
 @section('content')
-	@include('forms.programa')
+
+	{{ Form::model(null, ['route' => ['programas.update', 0]]) }}
+
+		@include('forms.programa')
+
+		{{ Form::submit('Actualizar', ['class' => 'btn btn-block btn-outline-warning mt-5']) }}
+
+	{{ Form::close() }}
+	
 @endsection

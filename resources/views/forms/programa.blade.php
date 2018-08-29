@@ -1,5 +1,9 @@
-@extends('layouts.admin')
+<div class="form-group">
+	{{ Form::label('clave') }}
+	{{ Form::text('clave', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa la clave del programa educativo']) }}
+</div>
 
-@section('content')
-
-@endsection
+<div class="form-group">
+	{{ Form::label('nombre') }}
+	{{ Form::text('nombre', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa el nombre del programa educativo']) }}
+</div>

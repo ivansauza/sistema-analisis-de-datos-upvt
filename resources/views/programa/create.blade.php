@@ -10,5 +10,13 @@
 @endsection
 
 @section('content')
-	@include('forms.programa')
+
+	{{ Form::open(['route' => 'programas.store']) }}
+
+		@include('forms.programa')
+
+		{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-outline-primary mt-5']) }}
+
+	{{ Form::close() }}
+	
 @endsection
