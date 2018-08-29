@@ -70,7 +70,8 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link {{ ! Route::is('encuestas.*') ?: 'active' }}" href="{{ route('encuestas.index') }}">
+								<i class="fas fa-align-left"></i> 
 								Encuestas
 							</a>
 						</li>
