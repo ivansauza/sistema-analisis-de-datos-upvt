@@ -36,7 +36,7 @@
 								<i class="fas fa-pencil-alt"></i>
 							</a>
 
-							<a href="{{ route('programas.destroy', 0) }}" class="btn btn-sm btn-outline-danger">
+							<a href="{{ route('programas.destroy', 0) }}" class="btn btn-sm btn-outline-danger" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''">
 								<i class="fas fa-trash-alt"></i>
 							</a>
 						</div>
