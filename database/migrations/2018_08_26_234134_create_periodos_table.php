@@ -16,11 +16,11 @@ class CreatePeriodosTable extends Migration
         Schema::create('periodos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('clave')->unique();
-            $table->integer('posicion')->nullable();
             $table->boolean('actual')->default(0);
             $table->boolean('estado')->default(0);
-            $table->integer('programa_id')->unsigned();
-            $table->foreign('programa_id')->references('id')->on('programas');
+            $table->integer('posicion')->nullable();
+            /*$table->integer('programa_id')->unsigned();
+            $table->foreign('programa_id')->references('id')->on('programas');*/
             $table->timestamps();
         });
     }
