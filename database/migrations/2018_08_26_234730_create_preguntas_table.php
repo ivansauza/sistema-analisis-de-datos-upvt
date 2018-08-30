@@ -16,6 +16,8 @@ class CreatePreguntasTable extends Migration
         Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre')->unique();
+            $table->boolean('desactivado')->default(0);
+            $table->integer('posicion')->nullable();
             /*$table->integer('programa_id')->unsigned();
             $table->foreign('programa_id')->references('id')->on('programas');*/
             /*$table->integer('role_id')->unsigned();
