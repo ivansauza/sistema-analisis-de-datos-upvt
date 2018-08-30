@@ -24,5 +24,5 @@ Route::resource('preguntas', 'PreguntaController');
 Route::resource('encuestas', 'EncuestaController');
 
 Route::resource('procesos', 'ProcesoController');
-Route::resource('inicadores', 'IndicadorController');
+Route::resource('indicadores', 'IndicadorController');
 Route::resource('subindicadores', 'SubindicadorController');
