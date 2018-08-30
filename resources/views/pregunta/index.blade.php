@@ -34,8 +34,8 @@
 								<i class="fas fa-pencil-alt"></i>
 							</a>
 
-							{{ Form::open(['route' => ['preguntas.destroy', 0], 'method' => 'DELETE', 'class' => 'd-md-inline']) }}
-								<button type="submit" class="btn btn-block btn-outline-danger btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''"><i class="fas fa-trash-alt"></i></button>
+							{{ Form::open(['route' => ['preguntas.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+								<button type="submit" class="btn btn-outline-danger btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''"><i class="fas fa-trash-alt"></i></button>
 							{{ Form::close() }}
 						</div>
 					</td>
