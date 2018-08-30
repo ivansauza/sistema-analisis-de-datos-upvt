@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('header')
-	<h1 class="h3">Encuestas</h1>
+	<h1 class="h3">Encuestas <small>Información requerida para el analisis de datos.</small></h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
 			<a href="{{ route('encuestas.create') }}" class="btn btn-outline-primary btn-sm">Nuevo</a>
@@ -15,15 +15,18 @@
 			<thead>
 				<tr>
 					<th scope="col">#</th>
-					<th scope="col">Nombre</th>
+					<th scope="col">Responsable</th>
+					<th scope="col">Periodo</th>
+					<th scope="col" class="text-center">Finalizado</th>
 					<th scope="col" class="text-right">Opciones</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<th scope="row">1</th>
-					<td></td>
-
+					<td>Adrian Gonzales</td>
+					<td>Enero-Abril 2018</td>
+					<td class="text-center">SI</td>
 					<td>
 						<div class="float-right">
 							<a href="{{ route('encuestas.show', 0) }}" class="btn btn-sm btn-outline-primary mt-1">
