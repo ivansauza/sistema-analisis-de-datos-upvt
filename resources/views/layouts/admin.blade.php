@@ -85,11 +85,12 @@
 						<div class="dropdown-divider"></div>
 
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link {{ ! Route::is('procesos.*') ?: 'active' }}" href="{{ route('procesos.index') }}">
+								<i class="fas fa-tasks"></i> 
 								Procesos
 							</a>
 						</li>
-						<li class="nav-item">
+						<!--<li class="nav-item">
 							<a class="nav-link" href="#">
 								Indicadores
 							</a>
@@ -98,8 +99,7 @@
 							<a class="nav-link" href="#">
 								Subindicadores
 							</a>
-						</li>
-
+						</li>-->
 					</ul>
 
 					<!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
