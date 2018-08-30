@@ -14,7 +14,7 @@ class ProcesoController extends Controller
      */
     public function index()
     {
-        //
+        return view('proceso.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class ProcesoController extends Controller
      */
     public function create()
     {
-        //
+        return view('proceso.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class ProcesoController extends Controller
      */
     public function show(Proceso $proceso)
     {
-        //
+        return view('proceso.show');
     }
 
     /**
@@ -57,7 +57,7 @@ class ProcesoController extends Controller
      */
     public function edit(Proceso $proceso)
     {
-        //
+        return view('proceso.edit');
     }
 
     /**
