@@ -4,6 +4,11 @@
 </div>
 
 <div class="form-group">
+	{{ Form::label('nota') }}
+	{{ Form::textarea('nota', null, ['class' => 'form-control']) }}
+</div>
+
+<div class="form-group">
 	{{ Form::label('rol_id', 'Rol') }}
 	{{ Form::select('rol_id', ['a' => 'Maestro', 'b' => 'Secretaria', 'c' => 'Director'], null, ['class' => 'form-control']) }}
 	<small class="form-text text-muted">Seleccione el Rol de Usuario que podra llenar la información a esta pregunta.</small>
