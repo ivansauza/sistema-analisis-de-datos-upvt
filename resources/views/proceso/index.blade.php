@@ -3,8 +3,15 @@
 @section('header')
 	<h1 class="h3">Procesos</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
-		<div class="btn-group mr-2">
-			<a href="{{ route('procesos.create') }}" class="btn btn-outline-primary btn-sm">Nuevo</a>
+		<div class="btn-group mr-2" role="group">
+			<button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Agregar item nuevo
+			</button>
+			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+				<a class="dropdown-item" href="{{ route('procesos.create') }}">Crear Proceso</a>
+				<a class="dropdown-item" href="{{ route('indicadores.create') }}">Crear Indicador</a>
+				<a class="dropdown-item" href="{{ route('subindicadores.create') }}">Crear Subindicador</a>
+			</div>
 		</div>
 	</div>
 @endsection
