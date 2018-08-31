@@ -4,7 +4,7 @@
 	<h1 class="h3">Subindicador <small>Editar</small></h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
-			<a href="{{ route('subindicadores.index') }}" class="btn btn-outline-secondary btn-sm">Regresar</a>
+			<a href="{{ route('procesos.index') }}" class="btn btn-outline-secondary btn-sm">Regresar</a>
 		</div>
 	</div>
 @endsection

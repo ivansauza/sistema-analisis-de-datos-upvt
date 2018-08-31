@@ -4,7 +4,7 @@
 	<h1 class="h3">Indicadores</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
-			<a href="{{ route('indicadores.create') }}" class="btn btn-outline-primary btn-sm">Nuevo</a>
+			<a href="{{ route('indicador.create') }}" class="btn btn-outline-primary btn-sm">Nuevo</a>
 		</div>
 	</div>
 @endsection
