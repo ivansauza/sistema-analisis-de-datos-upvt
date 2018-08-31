@@ -85,7 +85,7 @@
 						<div class="dropdown-divider"></div>
 
 						<li class="nav-item">
-							<a class="nav-link {{ ! Route::is('procesos.*') ?: 'active' }}" href="{{ route('procesos.index') }}">
+							<a class="nav-link {{ ! Route::is(['procesos.*', 'indicadores.*', 'subindicadores.*']) ?: 'active' }}" href="{{ route('procesos.index') }}">
 								<i class="fas fa-tasks"></i> 
 								Procesos
 							</a>
