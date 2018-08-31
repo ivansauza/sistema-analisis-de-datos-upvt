@@ -26,7 +26,9 @@
 				<th scope="row">1</th>
 				<td>Adrian Gonzales</td>
 				<td>Enero-Abril 2018</td>
-				<td class="text-center">SI</td>
+				<td class="text-center">
+					<span class="badge badge-pill badge-primary">SI</span>
+				</td>
 				<td>
 					<div class="float-right">
 						<a href="{{ route('encuestas.show', 0) }}" class="btn btn-sm btn-outline-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">

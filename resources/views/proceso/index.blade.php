@@ -84,6 +84,9 @@
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item">
 						Eficiencia de la validación de Estancias
+						<small class="text-muted">
+							100%
+						</small>
 
 						<div class="float-right p-0 m-0">
 							<a class="btn btn-xs">

@@ -7,7 +7,12 @@
 
 		<div class="form-group">
 			{{ Form::label('valor_meta', 'Valor meta') }}
-			{{ Form::text('valor_meta', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa el valor meta']) }}
+			<div class="input-group mb-3">
+				{{ Form::number('valor_meta', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa el valor meta', 'min' => '1', 'max' => '100']) }}
+				<div class="input-group-append">
+					<span class="input-group-text">%</span>
+				</div>
+			</div>
 		</div>
 
 		<div class="form-group">

@@ -19,6 +19,7 @@
 				<th scope="col">Nombre</th>
 				<th scope="col">Nota</th>
 				<th scope="col">Responsable</th>
+				<th scope="col">Activo</th>
 				<th scope="col" class="text-right">Opciones</th>
 			</tr>
 		</thead>
@@ -33,6 +34,9 @@
 				<td>Número de alumnos que fueron evaluados de Estancias y Estadía</td>
 				<td><small>Periodo establecido. (40 días como máximo)</small></td>
 				<td>PTC</td>
+				<td>
+					<span class="badge badge-pill badge-success">SI</span>
+				</td>
 				<td>
 					<div class="float-right">
 						<a href="{{ route('preguntas.show', 0) }}" class="btn btn-xs btn-outline-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">

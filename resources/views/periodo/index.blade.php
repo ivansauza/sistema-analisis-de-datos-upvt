@@ -31,9 +31,12 @@
 				</td>
 				<th scope="row">1</th>
 				<td>Enero-Abril 2018</td>
-				<td class="text-center">Cerrado</td>
-				<td class="text-center">NO</td>
-
+				<td class="text-center">
+					<span class="badge badge-pill badge-danger">Cerrado</span>
+				</td>
+				<td class="text-center">
+					<span class="badge badge-pill badge-primary">NO</span>
+				</td>
 				<td>
 					<div class="float-right">
 						<a href="{{ route('periodos.show', 0) }}" class="btn btn-sm btn-outline-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">
