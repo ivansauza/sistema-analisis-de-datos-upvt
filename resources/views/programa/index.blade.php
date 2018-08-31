@@ -28,16 +28,16 @@
 
 					<td>
 						<div class="float-right">
-							<a href="{{ route('programas.show', 0) }}" class="btn btn-sm btn-outline-primary mt-1">
+							<a href="{{ route('programas.show', 0) }}" class="btn btn-sm btn-outline-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">
 								<i class="fas fa-eye"></i>
 							</a>
 
-							<a href="{{ route('programas.edit', 0) }}" class="btn btn-sm btn-outline-warning mt-1">
+							<a href="{{ route('programas.edit', 0) }}" class="btn btn-sm btn-outline-warning mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
 								<i class="fas fa-pencil-alt"></i>
 							</a>
 
 							{{ Form::open(['route' => ['programas.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-								<button type="submit" class="btn btn-outline-danger btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''"><i class="fas fa-trash-alt"></i></button>
+								<button type="submit" class="btn btn-outline-danger btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
 							{{ Form::close() }}
 						</div>
 					</td>
