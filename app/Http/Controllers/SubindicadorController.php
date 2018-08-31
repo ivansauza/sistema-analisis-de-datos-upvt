@@ -14,7 +14,7 @@ class SubindicadorController extends Controller
      */
     public function index()
     {
-        //
+        return view('subindicador.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class SubindicadorController extends Controller
      */
     public function create()
     {
-        //
+        return view('subindicador.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class SubindicadorController extends Controller
      */
     public function show(Subindicador $subindicador)
     {
-        //
+        return view('subindicador.show');
     }
 
     /**
@@ -57,7 +57,7 @@ class SubindicadorController extends Controller
      */
     public function edit(Subindicador $subindicador)
     {
-        //
+        return view('subindicador.edit');
     }
 
     /**

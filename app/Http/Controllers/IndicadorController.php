@@ -14,7 +14,7 @@ class IndicadorController extends Controller
      */
     public function index()
     {
-        //
+        return view('indicador.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class IndicadorController extends Controller
      */
     public function create()
     {
-        //
+        return view('indicador.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class IndicadorController extends Controller
      */
     public function show(Indicador $indicador)
     {
-        //
+        return view('indicador.show');
     }
 
     /**
@@ -57,7 +57,7 @@ class IndicadorController extends Controller
      */
     public function edit(Indicador $indicador)
     {
-        //
+        return view('indicador.edit');
     }
 
     /**
