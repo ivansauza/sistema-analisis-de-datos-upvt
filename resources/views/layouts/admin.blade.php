@@ -123,12 +123,12 @@
 								Roles
 							</a>
 						</li>
-						<li class="nav-item">
+						<!--<li class="nav-item">
 							<a class="nav-link" href="#">
 								<i class="fas fa-key"></i> 
 								Permisos
 							</a>
-						</li>
+						</li>-->
 						<li class="nav-item">
 							<a class="nav-link" href="#">
 								<i class="fas fa-tasks"></i> 
