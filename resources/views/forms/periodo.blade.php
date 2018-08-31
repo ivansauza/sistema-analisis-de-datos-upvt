@@ -6,7 +6,7 @@
 
 	<div class="form-group col-6">
 		{{ Form::label('anio', 'Año') }}
-		{{ Form::number('anio', null, ['class' => 'form-control', 'min' => 1990, 'max' => date("Y")]) }}
+		{{ Form::number('anio', null, ['class' => 'form-control', 'min' => 2007, 'max' => date("Y")]) }}
 	</div>
 </div>
 
