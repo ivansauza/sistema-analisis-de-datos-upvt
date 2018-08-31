@@ -86,7 +86,7 @@
 
 						<li class="nav-item">
 							<a class="nav-link {{ ! Route::is(['procesos.*', 'indicadores.*', 'subindicadores.*']) ?: 'active' }}" href="{{ route('procesos.index') }}">
-								<i class="fas fa-tasks"></i> 
+								<i class="fas fa-arrows-alt-h"></i> 
 								Procesos
 							</a>
 						</li>
@@ -113,21 +113,25 @@
 					<ul class="nav flex-column mb-2">
 						<li class="nav-item">
 							<a class="nav-link" href="#">
+								<i class="fas fa-users"></i> 
 								Usuarios
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">
+								<i class="fas fa-id-card-alt"></i> 
 								Roles
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">
+								<i class="fas fa-key"></i> 
 								Permisos
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">
+								<i class="fas fa-tasks"></i> 
 								Actividades
 							</a>
 						</li>
