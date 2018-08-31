@@ -112,7 +112,7 @@
 
 					<ul class="nav flex-column mb-2">
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link {{ ! Route::is('users.*') ?: 'active' }}" href="{{ route('users.index') }}">
 								<i class="fas fa-users"></i> 
 								Usuarios
 							</a>
