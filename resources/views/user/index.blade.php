@@ -16,6 +16,8 @@
 			<tr>
 				<th scope="col">#</th>
 				<th scope="col">Nombre</th>
+				<th scope="col">Correo elestrónico</th>
+				<th scope="col">Actividades</th>
 				<th scope="col" class="text-right">Opciones</th>
 			</tr>
 		</thead>
@@ -23,6 +25,10 @@
 			<tr>
 				<th scope="row">1</th>
 				<td>Adrian Gonzales</td>
+				<td>adrian@upvt.com</td>
+				<td>
+					<a href="" class="text-secondary">Ver historial</a>
+				</td>
 				<td>
 					<div class="float-right">
 						<a href="{{ route('users.show', 0) }}" class="btn btn-sm btn-outline-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">
