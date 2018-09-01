@@ -35,7 +35,8 @@
 						Ivan Sauza
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="{{ route('settings.user') }}">Configuración</a>
+						<a class="dropdown-item" href="{{ route('settings.user') }}">Usuario</a>
+						<a class="dropdown-item" href="">Actividades</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">Cerrar Sesión</a>
 					</div>
