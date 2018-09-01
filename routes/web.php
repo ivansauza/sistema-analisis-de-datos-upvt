@@ -26,3 +26,10 @@ Route::resource('procesos', 'ProcesoController');
 Route::resource('indicadores', 'IndicadorController');
 Route::resource('subindicadores', 'SubindicadorController');
 Route::resource('users', 'UserController');
+
+Route::group(['prefix' => 'configuracion'], function(){
+	Route::get('user', 'SettingController@user')
+		->name('settings.user');
+	Route::post('user', 'SettingController@userUpdate')
+		->name('settings.user.update');
+});
