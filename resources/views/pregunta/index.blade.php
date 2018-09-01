@@ -18,8 +18,8 @@
 				<th scope="col">#</th>
 				<th scope="col">Nombre</th>
 				<th scope="col">Nota</th>
-				<th scope="col">Responsable</th>
-				<th scope="col">Activo</th>
+				<th scope="col" class="text-center">Responsable</th>
+				<th scope="col" class="text-center">Activo</th>
 				<th scope="col" class="text-right">Opciones</th>
 			</tr>
 		</thead>
@@ -33,23 +33,23 @@
 				<th scope="row">1</th>
 				<td>Número de alumnos que fueron evaluados de Estancias y Estadía</td>
 				<td><small>Periodo establecido. (40 días como máximo)</small></td>
-				<td>PTC</td>
-				<td>
+				<td class="text-center">PTC</td>
+				<td class="text-center">
 					<span class="badge badge-pill badge-success">SI</span>
 				</td>
 				<td>
 					<div class="float-right">
-						<a href="{{ route('preguntas.show', 0) }}" class="btn btn-xs btn-outline-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">
-							<i class="fas fa-eye"></i>
-						</a>
-
-						<a href="{{ route('preguntas.edit', 0) }}" class="btn btn-xs btn-outline-warning mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
-							<i class="fas fa-pencil-alt"></i>
-						</a>
-
-						{{ Form::open(['route' => ['preguntas.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-							<button type="submit" class="btn btn-outline-danger btn-xs mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="left" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
-						{{ Form::close() }}
+						<div class="btn-group mr-2" role="group">
+							<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							</button>
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+								<a class="dropdown-item" href="{{ route('preguntas.show', 0) }}">Ver completo</a>
+								<a class="dropdown-item" href="{{ route('preguntas.edit', 0) }}">Editar</a>
+								{{ Form::open(['route' => ['preguntas.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+									<button type="submit" class="dropdown-item" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''">Eliminar</button>
+								{{ Form::close() }}
+							</div>
+						</div>
 					</div>
 				</td>
 			</tr>

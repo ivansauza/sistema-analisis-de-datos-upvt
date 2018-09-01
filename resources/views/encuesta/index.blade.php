@@ -17,6 +17,7 @@
 				<th scope="col">#</th>
 				<th scope="col">Responsable</th>
 				<th scope="col">Periodo</th>
+				<th scope="col">Programa educativo</th>
 				<th scope="col" class="text-center">Finalizado</th>
 				<th scope="col" class="text-right">Opciones</th>
 			</tr>
@@ -26,6 +27,7 @@
 				<th scope="row">1</th>
 				<td>Adrian Gonzales</td>
 				<td>Enero-Abril 2018</td>
+				<td>Ingeniería en Informática</td>
 				<td class="text-center">
 					<span class="badge badge-pill badge-primary">SI</span>
 				</td>

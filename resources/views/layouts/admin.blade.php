@@ -17,7 +17,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm p-0">
 		<a class="navbar-brand col-sm-3 col-md-3 mr-0 d-xs-none" href="{{ route('home') }}">Universidad Politecnica del Valle de Toluca</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="far fa-user-circle"></i> 
-						Ivan Sauza
+						sauuza@gmail.com
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="{{ route('settings.user') }}">Usuario</a>
