@@ -34,7 +34,7 @@
 		</div>
 		<div class="form-group">
 			{{ Form::label('role_id', 'Roles') }}
-			{{ Form::select('role_id', ['a' => 'Secretaria', 'b' => 'Profesor', 'c' => 'Director'], null, ['class' => 'form-control', 'multiple' => true]) }}
+			{{ Form::select('role_id', ['a' => 'Secretaria', 'b' => 'Profesor', 'c' => 'Director'], null, ['class' => 'form-control', 'multiple' => false]) }}
 			<small class="form-text text-muted">Puede seleccionar varios items presionando la tecla "control" + "click".</small>
 		</div>
 	</div>
