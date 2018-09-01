@@ -55,6 +55,7 @@
 								Inicio <span class="sr-only">(current)</span>
 							</a>
 						</li>
+
 						<li class="nav-item">
 							<a class="nav-link {{ ! Route::is('programas.*') ?: 'active' }}" href="{{ route('programas.index') }}">
 								<i class="fas fa-user-graduate"></i> 
@@ -82,6 +83,18 @@
 								Encuestas
 							</a>
 						</li>
+						
+						<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-3 mb-3 mb-1 text-muted">
+							<span>
+								<i class="fas fa-align-left"></i> 
+								<a href="{{ route('analisis.index') }}" class="text-secondary">
+									Analisis
+								</a>
+							</span>
+							<a class="d-flex align-items-center text-muted" href="{{ route('analisis.create') }}">
+								<i class="fas fa-plus-circle"></i>
+							</a>
+						</h6>
 
 						<div class="dropdown-divider"></div>
 
@@ -103,12 +116,6 @@
 						</li>-->
 					</ul>
 
-					<!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-						<span>Usuarios</span>
-						<a class="d-flex align-items-center text-muted" href="#">
-							<span data-feather="plus-circle"></span>
-						</a>
-					</h6>-->
 					<div class="dropdown-divider"></div>
 
 					<ul class="nav flex-column mb-2">
