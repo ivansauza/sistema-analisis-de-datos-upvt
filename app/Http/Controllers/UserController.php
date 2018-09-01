@@ -81,4 +81,9 @@ class UserController extends Controller
     {
         //
     }
+
+    public function actividades($id)
+    {
+        return view('user.actividades');
+    }
 }

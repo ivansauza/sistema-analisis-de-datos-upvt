@@ -26,6 +26,8 @@ Route::resource('procesos', 'ProcesoController');
 Route::resource('indicadores', 'IndicadorController');
 Route::resource('subindicadores', 'SubindicadorController');
 Route::resource('users', 'UserController');
+Route::get('users/{id}/actividades', 'UserController@actividades')
+	->name('users.actividades');
 
 Route::group(['prefix' => 'configuracion'], function(){
 	Route::get('user', 'SettingController@user')
@@ -33,3 +35,6 @@ Route::group(['prefix' => 'configuracion'], function(){
 	Route::post('user', 'SettingController@userUpdate')
 		->name('settings.user.update');
 });
+
+Route::get('actividades', 'ShowActividades')
+	->name('actividades.show');

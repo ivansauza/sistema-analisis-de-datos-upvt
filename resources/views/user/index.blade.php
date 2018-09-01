@@ -27,7 +27,7 @@
 				<td>Adrian Gonzales</td>
 				<td>adrian@upvt.com</td>
 				<td>
-					<a href="" class="text-secondary">Ver historial</a>
+					<a href="{{ route('users.actividades', 0) }}" class="text-secondary">Ver historial</a>
 				</td>
 				<td>
 					<div class="float-right">
