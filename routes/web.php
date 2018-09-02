@@ -28,8 +28,10 @@ Route::resource('subindicadores', 'SubindicadorController');
 Route::resource('users', 'UserController');
 Route::get('users/{id}/actividades', 'UserController@actividades')
 	->name('users.actividades');
-	
-Route::resource('analisis', 'User\AnalisisController');
+
+Route::get('analisis/select', 'AnalisisController@select')
+	->name('analisis.select');
+Route::resource('analisis', 'AnalisisController');
 
 Route::group(['prefix' => 'configuracion'], function(){
 	Route::get('user', 'SettingController@user')
