@@ -18,7 +18,7 @@
 			<small class="form-text text-muted">Selecciona el Programa Educativo del cual quiere realizar el análisis de datos.</small>
 		</div>
 
-		{{ Form::submit('Siguiente', ['class' => 'btn btn-block btn-outline-primary mt-5']) }}
+		{{ Form::submit('Siguiente', ['class' => 'btn btn-block btn-primary mt-5']) }}
 
 	{{ Form::close() }}
 	

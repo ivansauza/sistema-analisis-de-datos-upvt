@@ -20,30 +20,30 @@
 
 {{-- Proceso --}}
 <div class="card card-default">
-	<div class="card-header">
+	<div class="card-header py-2">
 		<strong>
 			<i class="fas fa-tasks"></i> Enseñanza Aprendizaje
 		</strong>
 
 		<div class="float-right p-0 m-0">
-			<a class="btn btn-sm">
+			<a class="btn btn-sm btn-transparent">
 				<i class="fas fa-expand-arrows-alt"></i>
 			</a>
 
-			<a href="{{ route('indicadores.create', ['proceso_id' => 3]) }}" class="btn btn-sm btn-success mt-1" data-toggle="tooltip" data-placement="top" title="Agregar Indicador">
+			<a href="{{ route('indicadores.create', ['proceso_id' => 3]) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Agregar Indicador">
 				<i class="fas fa-plus"></i>
 			</a>
 
-			<a href="{{ route('procesos.show', 0) }}" class="btn btn-sm btn-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">
+			<a href="{{ route('procesos.show', 0) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
 				<i class="fas fa-eye"></i>
 			</a>
 
-			<a href="{{ route('procesos.edit', 0) }}" class="btn btn-sm btn-warning mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
+			<a href="{{ route('procesos.edit', 0) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
 				<i class="fas fa-pencil-alt"></i>
 			</a>
 
 			{{ Form::open(['route' => ['procesos.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-				<button type="submit" class="btn btn-danger btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+				<button type="submit" class="btn text-secondary btn-transparent btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
 			{{ Form::close() }}
 		</div>
 	</div>
@@ -52,28 +52,28 @@
 
 		{{-- Indicador --}}
 		<div class="card card-default border-left-0 border-right-0 rounded-0 mb-3">
-			<div class="card-header">
+			<div class="card-header py-1">
 				Realización y Evaluación de Estancia y/o Estadía
 
 				<div class="float-right p-0 m-0">
-					<a class="btn btn-sm">
+					<a class="btn btn-sm btn-transparent">
 						<i class="fas fa-expand-arrows-alt"></i>
 					</a>
 
-					<a href="{{ route('subindicadores.create', ['indicador_id' => 3]) }}" class="btn btn-sm btn-outline-success mt-1" data-toggle="tooltip" data-placement="top" title="Agregar Subindicador">
+					<a href="{{ route('subindicadores.create', ['indicador_id' => 3]) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Agregar Subindicador">
 						<i class="fas fa-plus"></i>
 					</a>
 
-					<a href="{{ route('indicadores.show', 0) }}" class="btn btn-sm btn-outline-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">
+					<a href="{{ route('indicadores.show', 0) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
 						<i class="fas fa-eye"></i>
 					</a>
 
-					<a href="{{ route('indicadores.edit', 0) }}" class="btn btn-sm btn-outline-warning mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
+					<a href="{{ route('indicadores.edit', 0) }}" class="btn btn-sm text-secondary btn-transparent mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
 						<i class="fas fa-pencil-alt"></i>
 					</a>
 
 					{{ Form::open(['route' => ['indicadores.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-						<button type="submit" class="btn btn-outline-danger btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+						<button type="submit" class="btn btn-sm btn-transparent text-secondary mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
 					{{ Form::close() }}
 				</div>
 			</div>
@@ -89,20 +89,20 @@
 						</small>
 
 						<div class="float-right p-0 m-0">
-							<a class="btn btn-xs">
+							<a class="btn btn-xs btn-transparent">
 								<i class="fas fa-expand-arrows-alt"></i>
 							</a>
 
-							<a href="{{ route('subindicadores.show', 0) }}" class="btn btn-xs btn-outline-primary mt-1">
+							<a href="{{ route('subindicadores.show', 0) }}" class="btn btn-xs text-secondary mt-1">
 								<i class="fas fa-eye"></i>
 							</a>
 
-							<a href="{{ route('subindicadores.edit', 0) }}" class="btn btn-xs btn-outline-warning mt-1">
+							<a href="{{ route('subindicadores.edit', 0) }}" class="btn btn-xs text-secondary mt-1">
 								<i class="fas fa-pencil-alt"></i>
 							</a>
 
 							{{ Form::open(['route' => ['subindicadores.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-								<button type="submit" class="btn btn-outline-danger btn-xs mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''"><i class="fas fa-trash-alt"></i></button>
+								<button type="submit" class="btn btn-xs text-secondary mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''"><i class="fas fa-trash-alt"></i></button>
 							{{ Form::close() }}
 						</div>
 					</li>

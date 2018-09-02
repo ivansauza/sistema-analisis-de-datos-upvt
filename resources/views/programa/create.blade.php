@@ -11,12 +11,16 @@
 
 @section('content')
 
-	{{ Form::open(['route' => 'programas.store']) }}
+	<div class="card">
+		<div class="card-body">
+			{{ Form::open(['route' => 'programas.store']) }}
 
-		@include('forms.programa')
+				@include('forms.programa')
 
-		{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-outline-primary mt-5']) }}
+				{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-primary mt-4']) }}
 
-	{{ Form::close() }}
+			{{ Form::close() }}
+		</div>	
+	</div>	
 	
 @endsection

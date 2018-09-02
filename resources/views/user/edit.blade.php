@@ -11,12 +11,16 @@
 
 @section('content')
 
-	{{ Form::model(null, ['route' => ['users.update', 0]]) }}
+	<div class="card">
+		<div class="card-body">
+			{{ Form::model(null, ['route' => ['users.update', 0]]) }}
 
-		@include('forms.user')
+				@include('forms.user')
 
-		{{ Form::submit('Actualizar', ['class' => 'btn btn-block btn-outline-warning mt-5']) }}
+				{{ Form::submit('Actualizar', ['class' => 'btn btn-block btn-outline-warning mt-5']) }}
 
-	{{ Form::close() }}
+			{{ Form::close() }}
+		</div>
+	</div>
 	
 @endsection

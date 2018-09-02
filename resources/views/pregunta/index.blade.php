@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="card card-default">
-	<table class="table table-striped table-hover">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th scope="col"></th>
@@ -40,10 +40,10 @@
 				<td>
 					<div class="float-right">
 						<div class="btn-group mr-2" role="group">
-							<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-sm text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							</button>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-								<a class="dropdown-item" href="{{ route('preguntas.show', 0) }}">Ver completo</a>
+								<a class="dropdown-item" href="{{ route('preguntas.show', 0) }}">Mostrar</a>
 								<a class="dropdown-item" href="{{ route('preguntas.edit', 0) }}">Editar</a>
 								{{ Form::open(['route' => ['preguntas.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
 									<button type="submit" class="dropdown-item" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''">Eliminar</button>

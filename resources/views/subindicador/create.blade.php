@@ -11,12 +11,16 @@
 
 @section('content')
 
-	{{ Form::open(['route' => 'subindicadores.store']) }}
+	<div class="card">
+		<div class="card-body">
+			{{ Form::open(['route' => 'subindicadores.store']) }}
 
-		@include('forms.subindicador')
+				@include('forms.subindicador')
 
-		{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-outline-primary mt-5']) }}
+				{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-primary mt-5']) }}
 
-	{{ Form::close() }}
+			{{ Form::close() }}
+		</div>
+	</div>
 	
 @endsection

@@ -33,16 +33,16 @@
 				</td>
 				<td>
 					<div class="float-right">
-						<a href="{{ route('encuestas.show', 0) }}" class="btn btn-sm btn-outline-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">
+						<a href="{{ route('encuestas.show', 0) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
 							<i class="fas fa-eye"></i>
 						</a>
 
-						<a href="{{ route('encuestas.edit', 0) }}" class="btn btn-sm btn-outline-warning mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
+						<a href="{{ route('encuestas.edit', 0) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
 							<i class="fas fa-pencil-alt"></i>
 						</a>
 
 						{{ Form::open(['route' => ['encuestas.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-							<button type="submit" class="btn btn-outline-danger btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+							<button type="submit" class="btn btn-sm btn-transparent  text-secondary mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
 						{{ Form::close() }}
 					</div>
 				</td>
@@ -59,16 +59,16 @@
 				</td>
 				<td>
 					<div class="float-right">
-						<a href="{{ route('encuestas.show', 0) }}" class="btn btn-sm btn-outline-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">
+						<a href="{{ route('encuestas.show', 0) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
 							<i class="fas fa-eye"></i>
 						</a>
 
-						<a href="{{ route('encuestas.edit', 0) }}" class="btn btn-sm btn-outline-warning mt-1 disabled" data-toggle="tooltip" data-placement="top" title="Editar">
+						<a href="{{ route('encuestas.edit', 0) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
 							<i class="fas fa-pencil-alt"></i>
 						</a>
 
 						{{ Form::open(['route' => ['encuestas.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-							<button type="submit" class="btn btn-outline-danger btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar" disabled><i class="fas fa-trash-alt"></i></button>
+							<button type="submit" class="btn btn-sm btn-transparent  text-secondary mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
 						{{ Form::close() }}
 					</div>
 				</td>

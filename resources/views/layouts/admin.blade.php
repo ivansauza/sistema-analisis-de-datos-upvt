@@ -17,7 +17,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm p-0">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm p-0" style="background: #fff;">
 		<a class="navbar-brand col-sm-3 col-md-3 mr-0 d-xs-none" href="{{ route('home') }}">Análisis de Datos</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -60,6 +60,7 @@
 							<a class="nav-link {{ ! Route::is('programas.*') ?: 'active' }}" href="{{ route('programas.index') }}">
 								<i class="fas fa-user-graduate"></i> 
 								Programas Educativos
+								<span class="badge badge-primary float-right">4</span>
 							</a>
 						</li>
 						<li class="nav-item">
