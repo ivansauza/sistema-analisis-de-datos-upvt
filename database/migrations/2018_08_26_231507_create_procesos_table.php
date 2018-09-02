@@ -16,6 +16,7 @@ class CreateProcesosTable extends Migration
         Schema::create('procesos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre')->unique();
+            $table->longText('nota')->nullable();
             $table->integer('posicion')->nullable();
             $table->integer('programa_id')->unsigned();
             $table->foreign('programa_id')->references('id')->on('programas');
