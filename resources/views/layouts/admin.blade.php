@@ -86,12 +86,12 @@
 						
 						<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-3 mb-3 mb-1 text-muted">
 							<span>
-								<i class="fas fa-align-left"></i> 
-								<a href="{{ route('analisis.index') }}" class="text-secondary">
-									Analisis
+								<i class="fas fa-archive"></i> 
+								<a href="{{ route('analisis.index') }}" class="nav-link d-inline p-0 {{ ! Route::is('analisis.*') ?: 'active' }}" href="{{ route('analisis.index') }}">
+									Análisis
 								</a>
 							</span>
-							<a class="d-flex align-items-center text-muted" href="{{ route('analisis.create') }}">
+							<a class="d-flex align-items-center text-muted" href="{{ route('analisis.select') }}">
 								<i class="fas fa-plus-circle"></i>
 							</a>
 						</h6>
@@ -102,6 +102,13 @@
 							<a class="nav-link {{ ! Route::is(['procesos.*', 'indicadores.*', 'subindicadores.*']) ?: 'active' }}" href="{{ route('procesos.index') }}">
 								<i class="fas fa-arrows-alt-h"></i> 
 								Procesos
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link">
+								<i class="fas fa-chart-area"></i>  
+								Estadísticas
 							</a>
 						</li>
 						<!--<li class="nav-item">
