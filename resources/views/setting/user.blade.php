@@ -6,12 +6,16 @@
 
 @section('content')
 
-	{{ Form::model(null, ['route' => ['settings.user.update']]) }}
+	<div class="card">
+		<div class="card-body">
+			{{ Form::model(null, ['route' => ['settings.user.update']]) }}
 
-		@include('forms.setting.user')
+				@include('forms.setting.user')
 
-		{{ Form::submit('Actualizar', ['class' => 'btn btn-block btn-outline-warning mt-5']) }}
+				{{ Form::submit('Actualizar', ['class' => 'btn btn-block btn-warning mt-5']) }}
 
-	{{ Form::close() }}
+			{{ Form::close() }}
+		</div>
+	</div>
 	
 @endsection
