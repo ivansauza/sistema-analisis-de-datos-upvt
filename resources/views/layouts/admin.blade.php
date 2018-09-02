@@ -88,7 +88,7 @@
 						<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-3 mb-3 mb-1 text-muted">
 							<span>
 								<i class="fas fa-archive"></i> 
-								<a href="{{ route('analisis.index') }}" class="nav-link d-inline p-0 {{ ! Route::is('analisis.*') ?: 'active' }}" href="{{ route('analisis.index') }}">
+								<a href="{{ route('analisis.index') }}" class="nav-link d-inline p-0 {{ ! Route::is('analisis.*') ?: 'active' }}">
 									Análisis
 								</a>
 							</span>
@@ -107,7 +107,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link">
+							<a href="{{ route('estadisticas.select') }}" class="nav-link {{ ! Route::is('estadisticas.*') ?: 'active' }}">
 								<i class="fas fa-chart-area"></i>  
 								Estadísticas
 							</a>

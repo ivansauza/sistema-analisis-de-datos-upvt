@@ -33,6 +33,11 @@ Route::get('analisis/select', 'AnalisisController@select')
 	->name('analisis.select');
 Route::resource('analisis', 'AnalisisController');
 
+Route::get('estadisticas/select', 'EstadisticaController@select')
+	->name('estadisticas.select');
+Route::get('estadisticas/show', 'EstadisticaController@show')
+	->name('estadisticas.show');
+
 Route::group(['prefix' => 'configuracion'], function(){
 	Route::get('user', 'SettingController@user')
 		->name('settings.user');
