@@ -15,7 +15,6 @@
 		<thead>
 			<tr>
 				<th scope="col"></th>
-				<th scope="col">#</th>
 				<th scope="col">Clave</th>
 				<th scope="col" class="text-center">Estado</th>
 				<th scope="col" class="text-center">Actual</th>
@@ -29,13 +28,70 @@
 						<i class="fas fa-expand-arrows-alt"></i>
 					</a>
 				</td>
-				<th scope="row">1</th>
+				<td>Septiembre-Diciembre 2018</td>
+				<td class="text-center">
+					<span class="badge badge-pill badge-success">Abierto</span>
+				</td>
+				<td class="text-center">
+					<span class="badge badge-pill badge-primary">SI</span>
+				</td>
+				<td>
+					<div class="float-right">
+						<a href="{{ route('periodos.show', 0) }}" class="btn btn-sm btn-outline-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">
+							<i class="fas fa-eye"></i>
+						</a>
+
+						<a href="{{ route('periodos.edit', 0) }}" class="btn btn-sm btn-outline-warning mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
+							<i class="fas fa-pencil-alt"></i>
+						</a>
+
+						{{ Form::open(['route' => ['periodos.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+							<button type="submit" class="btn btn-outline-danger btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+						{{ Form::close() }}
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 15px !important;">
+					<a class="btn btn-sm">
+						<i class="fas fa-expand-arrows-alt"></i>
+					</a>
+				</td>
+				<td>Mayo-Agosto 2018</td>
+				<td class="text-center">
+					<span class="badge badge-pill badge-danger">Cerrado</span>
+				</td>
+				<td class="text-center">
+					<span class="badge badge-pill badge-secondary">NO</span>
+				</td>
+				<td>
+					<div class="float-right">
+						<a href="{{ route('periodos.show', 0) }}" class="btn btn-sm btn-outline-primary mt-1" data-toggle="tooltip" data-placement="top" title="Ver completo">
+							<i class="fas fa-eye"></i>
+						</a>
+
+						<a href="{{ route('periodos.edit', 0) }}" class="btn btn-sm btn-outline-warning mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
+							<i class="fas fa-pencil-alt"></i>
+						</a>
+
+						{{ Form::open(['route' => ['periodos.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+							<button type="submit" class="btn btn-outline-danger btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+						{{ Form::close() }}
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 15px !important;">
+					<a class="btn btn-sm">
+						<i class="fas fa-expand-arrows-alt"></i>
+					</a>
+				</td>
 				<td>Enero-Abril 2018</td>
 				<td class="text-center">
 					<span class="badge badge-pill badge-danger">Cerrado</span>
 				</td>
 				<td class="text-center">
-					<span class="badge badge-pill badge-primary">NO</span>
+					<span class="badge badge-pill badge-secondary">NO</span>
 				</td>
 				<td>
 					<div class="float-right">
