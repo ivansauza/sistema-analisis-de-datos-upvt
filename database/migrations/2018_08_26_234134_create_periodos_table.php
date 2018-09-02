@@ -15,7 +15,8 @@ class CreatePeriodosTable extends Migration
     {
         Schema::create('periodos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('clave')->unique();
+            $table->enum('clave', ['enero-abril', 'mayo-agosto', 'septiembre-diciembre']);
+            $table->year('anio');
             $table->boolean('actual')->default(0);
             $table->boolean('estado')->default(0);
             $table->integer('posicion')->nullable();
