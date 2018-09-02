@@ -16,9 +16,10 @@ class CreateSubindicadoresTable extends Migration
         Schema::create('subindicadores', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre')->unique();
-            $table->integer('posicion')->nullable();
             $table->longText('procedimiento')->nullable();
-            $table->longText('observaciones')->nullable();
+            $table->integer('valor_meta');
+            $table->longText('nota')->nullable();
+            $table->integer('posicion')->nullable();
             $table->integer('indicador_id')->unsigned();
             $table->foreign('indicador_id')->references('id')->on('indicadores');
             $table->timestamps();
