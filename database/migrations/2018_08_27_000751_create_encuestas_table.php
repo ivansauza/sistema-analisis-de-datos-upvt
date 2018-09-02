@@ -16,7 +16,7 @@ class CreateEncuestasTable extends Migration
         Schema::create('encuestas', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('finalizado')->default(0);
-            $table->longString('nota')->nullable();
+            $table->longText('nota')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('periodo_id')->unsigned();

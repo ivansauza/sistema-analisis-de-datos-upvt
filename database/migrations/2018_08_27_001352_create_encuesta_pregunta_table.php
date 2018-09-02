@@ -19,8 +19,7 @@ class CreateEncuestaPreguntaTable extends Migration
             $table->foreign('encuesta_id')->references('id')->on('encuestas');
             $table->integer('pregunta_id')->unsigned();
             $table->foreign('pregunta_id')->references('id')->on('preguntas');
-            $table->integer('valor');
-            $table->longText('comentarios')->nullable();
+            $table->integer('valor')->nullable();
             $table->timestamps();
         });
     }
