@@ -25,7 +25,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-
+				<span class="badge badge-pill badge-primary">Septiembre Diciembre 2018</span>
 			</ul>
 
 			<ul class="navbar-nav px-3">
@@ -46,7 +46,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<nav class="col-md-3 d-none d-md-block bg-light sidebar">
+			<nav class="col-md-3 d-none d-md-block shadow-sm sidebar" style="background: #fff;">
 				<div class="sidebar-sticky">
 					<ul class="nav flex-column">
 						<li class="nav-item">
@@ -85,7 +85,7 @@
 							</a>
 						</li>
 						
-						<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-3 mb-3 mb-1 text-muted">
+						<li class="d-flex justify-content-between align-items-center px-3 mt-3 mb-3 mb-1 text-muted nav-item">
 							<span>
 								<i class="fas fa-archive"></i> 
 								<a href="{{ route('analisis.index') }}" class="nav-link d-inline p-0 {{ ! Route::is('analisis.*') ?: 'active' }}">
@@ -95,7 +95,7 @@
 							<a class="d-flex align-items-center text-muted" href="{{ route('analisis.select') }}">
 								<i class="fas fa-plus-circle"></i>
 							</a>
-						</h6>
+						</li>
 
 						<div class="dropdown-divider"></div>
 
