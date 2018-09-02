@@ -7,7 +7,7 @@
 
 		<div class="form-group">
 			{{ Form::label('apellidos') }}
-			{{ Form::text('apellidos', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa los apellidos']) }}
+			{{ Form::text('apellidos', null, ['class' => 'form-control', 'placeholder' => 'Ingresa los apellidos']) }}
 		</div>
 
 		<div class="form-group">
@@ -17,24 +17,24 @@
 
 		<div class="form-group">
 			{{ Form::label('password', 'Contraseña') }}
-			{{ Form::text('password', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa la contaseña']) }}
+			{{ Form::text('password', null, ['class' => 'form-control', 'placeholder' => 'Ingresa la contaseña']) }}
 		</div>
 
 		<div class="form-group">
 			{{ Form::label('password', 'Confirmar contraseña') }}
-			{{ Form::text('password', null, ['class' => 'form-control', 'required', 'placeholder' => 'Confirma la contraseña']) }}
+			{{ Form::text('password', null, ['class' => 'form-control', 'placeholder' => 'Confirma la contraseña']) }}
 		</div>
 
 	</div>
 	<div class="col">
 		<div class="form-group">
 			{{ Form::label('programa_id', 'Programas Educativos') }}
-			{{ Form::select('programa_id', ['a' => 'Ingenieria en Informatica', 'b' => 'Maestria en Administracion'], null, ['class' => 'form-control', 'multiple' => true]) }}
+			{{ Form::select('programa_id', ['a' => 'Ingenieria en Informatica', 'b' => 'Maestria en Administracion'], null, ['class' => 'form-control', 'multiple' => true, 'required']) }}
 			<small class="form-text text-muted">Puede seleccionar varios items presionando la tecla "control" + "click".</small>
 		</div>
 		<div class="form-group">
 			{{ Form::label('role_id', 'Rol') }}
-			{{ Form::select('role_id', ['a' => 'Secretaria', 'b' => 'Profesor', 'c' => 'Director'], null, ['class' => 'form-control', 'multiple' => false]) }}
+			{{ Form::select('role_id', ['a' => 'Secretaria', 'b' => 'Profesor', 'c' => 'Director'], null, ['class' => 'form-control', 'multiple' => false, 'required']) }}
 		</div>
 	</div>
 </div>

@@ -14,7 +14,7 @@
 	{{ Form::open(['route' => 'analisis.create', 'method' => 'GET']) }}
 		<div class="form-group">
 			{{ Form::label('programa_id', 'Programa Educativo') }}
-			{{ Form::select('programa_id', ['a' => 'Ingeniería en Informática', 'b' => 'Maestría en Administración'], null, ['class' => 'form-control', 'multiple' => false]) }}
+			{{ Form::select('programa_id', ['a' => 'Ingeniería en Informática', 'b' => 'Maestría en Administración'], null, ['class' => 'form-control', 'required']) }}
 			<small class="form-text text-muted">Selecciona el Programa Educativo del cual quiere realizar el análisis de datos.</small>
 		</div>
 

@@ -17,13 +17,13 @@
 
 		<div class="form-group">
 			{{ Form::label('indicador_id', 'Indicador') }}
-			{{ Form::select('indicador_id', ['a' => 'A', 'b' => 'B'], null, ['class' => 'form-control']) }}
+			{{ Form::select('indicador_id', ['a' => 'A', 'b' => 'B'], null, ['class' => 'form-control', 'required']) }}
 			<small class="form-text text-muted">Puede seleccionar varios items presionando la tecla "control" + "click".</small>
 		</div>
 
 		<div class="form-group">
 			{{ Form::label('programa_id', 'Programas Educativos') }}
-			{{ Form::select('programa_id', ['a' => 'Ingenieria en Informatica', 'b' => 'Maestria en Administracion'], null, ['class' => 'form-control', 'multiple' => true]) }}
+			{{ Form::select('programa_id', ['a' => 'Ingenieria en Informatica', 'b' => 'Maestria en Administracion'], null, ['class' => 'form-control', 'multiple' => true, 'required']) }}
 			<small class="form-text text-muted">Puede seleccionar varios items presionando la tecla "control" + "click".</small>
 		</div>
 	</div>

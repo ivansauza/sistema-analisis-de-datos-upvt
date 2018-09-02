@@ -1,12 +1,12 @@
 <div class="form-row">
 	<div class="form-group col">
 		{{ Form::label('periodo') }}
-		{{ Form::select('periodo', ['a' => 'Enero-Abril', 'b' => 'Mayo-Agosto', 'c' => 'Septiembre-Diciembre'],null, ['class' => 'form-control']) }}
+		{{ Form::select('periodo', ['ea' => 'Enero-Abril', 'ma' => 'Mayo-Agosto', 'sd' => 'Septiembre-Diciembre'],null, ['class' => 'form-control', 'required' => true]) }}
 	</div>
 
 	<div class="form-group col-6">
 		{{ Form::label('anio', 'Año') }}
-		{{ Form::number('anio', null, ['class' => 'form-control', 'min' => 2007, 'max' => date("Y")]) }}
+		{{ Form::number('anio', null, ['class' => 'form-control', 'min' => 2007, 'max' => date("Y"), 'required' => true]) }}
 	</div>
 </div>
 
