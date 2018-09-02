@@ -1,7 +1,7 @@
 <div class="form-row">
 	<div class="form-group col">
 		{{ Form::label('periodo') }}
-		{{ Form::select('periodo', ['ea' => 'Enero-Abril', 'ma' => 'Mayo-Agosto', 'sd' => 'Septiembre-Diciembre'],null, ['class' => 'form-control', 'required' => true]) }}
+		{{ Form::select('periodo', ['enero_abril' => 'Enero-Abril', 'mayo_agosto' => 'Mayo-Agosto', 'septiembre_diciembre' => 'Septiembre-Diciembre'],null, ['class' => 'form-control', 'required' => true]) }}
 	</div>
 
 	<div class="form-group col-6">
@@ -10,9 +10,18 @@
 	</div>
 </div>
 
+<div class="form-group mt-3">
+	<div class="custom-control custom-checkbox">
+	 	{{ Form::checkbox('estado', 'null', false, ['class' => 'custom-control-input', 'id' => 'estado']) }}
+	 	{{ Form::label('estado', 'Abrir/Cerrar periodo, el usuario podra interactuar con este periodo.', ['class' => 'custom-control-label']) }}
+	</div>
+</div>
+
 <hr />
 
-<div class="custom-control custom-checkbox">
- 	{{ Form::checkbox('estado', 'null', false, ['class' => 'custom-control-input', 'id' => 'estado']) }}
- 	{{ Form::label('estado', 'Activar el periodo, el usuario podra ver los datos a este periodo.', ['class' => 'custom-control-label']) }}
+<div class="form-group">
+	<div class="custom-control custom-checkbox">
+	 	{{ Form::checkbox('actual', 'null', false, ['class' => 'custom-control-input', 'id' => 'actual']) }}
+	 	{{ Form::label('actual', 'Marcar este periodo como actual (Si ya hay otro periodo como actual se reemplazara por este).', ['class' => 'custom-control-label']) }}
+	</div>
 </div>
