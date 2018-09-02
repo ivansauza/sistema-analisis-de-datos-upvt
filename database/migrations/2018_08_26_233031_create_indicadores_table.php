@@ -16,8 +16,8 @@ class CreateIndicadoresTable extends Migration
         Schema::create('indicadores', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre')->unique();
+            $table->longText('nota')->nullable();
             $table->integer('posicion')->nullable();
-            $table->integer('valor_meta');
             $table->integer('proceso_id')->unsigned();
             $table->foreign('proceso_id')->references('id')->on('procesos');
             $table->timestamps();
