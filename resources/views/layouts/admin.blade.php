@@ -13,8 +13,13 @@
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome-all.min.css') }}">
+	@yield('css')
 	<link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
+
+<style type="text/css">
+	@yield('style')
+</style>
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm p-0">
@@ -171,6 +176,11 @@
 	<script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+	@yield('javascript')
 	<script src="{{ asset('js/app.js') }}"></script>
+	
+	<script type="text/javascript">
+		@yield('script')
+	</script>
 </body>
 </html>

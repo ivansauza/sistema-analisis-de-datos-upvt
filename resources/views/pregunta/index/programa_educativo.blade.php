@@ -1,5 +1,19 @@
 @extends('layouts.admin')
 
+@section('css')
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
+@endsection
+
+@section('javascript')
+	<script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
+@endsection
+
+@section('script')
+	$(document).ready( function () {
+		$('table').DataTable();
+	} );
+@endsection
+
 @section('header')
 	<h1 class="h3">Preguntas</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
