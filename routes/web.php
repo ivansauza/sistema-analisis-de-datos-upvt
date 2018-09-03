@@ -24,6 +24,8 @@ Route::resource('preguntas', 'PreguntaController');
 Route::resource('encuestas', 'EncuestaController');
 Route::resource('procesos', 'ProcesoController');
 Route::resource('indicadores', 'IndicadorController');
+Route::get('subindicadores/select', 'SubindicadorController@select')
+	->name('subindicadores.select');
 Route::resource('subindicadores', 'SubindicadorController');
 Route::resource('users', 'UserController');
 Route::get('users/{id}/actividades', 'UserController@actividades')
@@ -37,6 +39,8 @@ Route::get('estadisticas/select', 'EstadisticaController@select')
 	->name('estadisticas.select');
 Route::get('estadisticas/show', 'EstadisticaController@show')
 	->name('estadisticas.show');
+Route::get('estadisticas/graph', 'EstadisticaController@graph')
+->name('estadisticas.graph');
 
 Route::group(['prefix' => 'configuracion'], function(){
 	Route::get('user', 'SettingController@user')
