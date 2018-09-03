@@ -15,7 +15,7 @@ class CreatePreguntasTable extends Migration
     {
         Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre')->unique();
+            $table->string('nombre');
             $table->longText('nota')->nullable();
             $table->boolean('desactivar')->default(0);
             $table->integer('posicion')->nullable();
