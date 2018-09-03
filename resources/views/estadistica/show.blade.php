@@ -12,13 +12,13 @@
 
 @section('content')
 
-
 	<table class="table table-bordered" style="background: #fff;">
 		<thead>
 			<tr>
 				<th scope="col">#</th>
 				<th scope="col">Subindicador</th>
 				<th scope="col" class="text-center">Valor Meta</th>
+				<th scope="col" class="text-center">*</th>
 				<th scope="col" class="text-center">EA 2018</th>
 				<th scope="col" class="text-center">MA 2018</th>
 				<th scope="col" class="text-center">SD 2018</th>
@@ -27,16 +27,52 @@
 		<tbody>
 			<tr>
 				<th scope="row">1</th>
-				<td>Eficiencia de la validación de Estancias</td>
+				<td>Porcentaje de aspirantes contratados</td>
 				<td class="text-center">
-					<span class="badge badge-pill badge-primary">100%</span>
+					<span class="badge badge-pill badge-primary">50%</span>
 				</td>
-				<td class="text-center">50%</td>
-				<td class="text-center">100%</td>
-				<td class="text-center">90%</td>
+				<td class="text-center">
+					<a href="{{ route('estadisticas.graph', ['programa_id' => 0, 'subindicador_id' => 3]) }}" target="_blank" onclick="window.open(this.href, this.target, 'width=600,height=600,toolbar=no, location=no, directories=no, status=no, menubar=no'); return false;">
+						<i class="fas fa-chart-pie"></i>
+					</a>
+				</td>
+				<td class="text-center">
+					<span class="badge badge-pill badge-warning">50%</span>
+				</td>
+				<td class="text-center">
+					<span class="badge badge-pill badge-success">90%</span>
+				</td>
+				<td class="text-center">
+					<small>
+						Periodo abierto
+					</small>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row">2</th>
+				<td>Porcentaje con evaluación satisfactoria de Docentes</td>
+				<td class="text-center">
+					<span class="badge badge-pill badge-primary">85%</span>
+				</td>
+				<td class="text-center">
+					<a href="{{ route('estadisticas.graph', ['programa_id' => 0, 'subindicador_id' => 3]) }}" target="_blank" onclick="window.open(this.href, this.target, 'width=600,height=600,toolbar=no, location=no, directories=no, status=no, menubar=no'); return false;">
+						<i class="fas fa-chart-pie"></i>
+					</a>
+				</td>
+				<td class="text-center">
+					<span class="badge badge-pill badge-success">100%</span>
+				</td>
+				<td class="text-center">
+					<span class="badge badge-pill badge-danger">50%</span>
+				</td>
+				<td class="text-center">
+					<small>
+						Periodo abierto
+					</small>
+				</td>
 			</tr>
 		</tbody>
 	</table>
-
 
 @endsection

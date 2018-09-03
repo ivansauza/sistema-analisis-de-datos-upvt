@@ -10,10 +10,16 @@
 @endsection
 
 @section('content')
-
 	@include('pregunta.fragments.view_menu')
 
-	<div class="card card-default">
+	<div class="card card-default mb-5">
+		<div class="card-header">
+			<h5 class="p-0 text-uppercase">
+				<small>
+					Ingeníeria en Informatica
+				</small>
+			</h5>
+		</div>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -58,13 +64,38 @@
 						</div>
 					</td>
 				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="card card-default mb-5">
+		<div class="card-header">
+			<h5 class="p-0 text-uppercase">
+				<small>
+					Maestria en Administración
+				</small>
+			</h5>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">#</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Nota</th>
+					<th scope="col" class="text-center">Responsable</th>
+					<th scope="col" class="text-center">Activo</th>
+					<th scope="col" class="text-right">Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
 				<tr>
 					<td style="width: 15px !important;">
 						<a class="btn btn-sm">
 							<i class="fas fa-expand-arrows-alt"></i>
 						</a>
 					</td>
-					<th scope="row">2</th>
+					<th scope="row">1</th>
 					<td>Número total de alumnos que cumplieron con el 100% de asesorías</td>
 					<td><small></small></td>
 					<td class="text-center">PTC</td>

@@ -17,7 +17,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm p-0" style="background: #fff;">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm p-0">
 		<a class="navbar-brand col-sm-3 col-md-3 mr-0 d-xs-none" href="{{ route('home') }}">Análisis de Datos</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -156,7 +156,7 @@
 			</nav>
 
 			<main role="main" class="col-md-9 ml-sm-auto px-4 mb-5">
-				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-5 border-bottom">
+				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
 
 					@yield('header')
 				</div>

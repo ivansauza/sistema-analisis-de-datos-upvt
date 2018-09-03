@@ -9,15 +9,19 @@
 
 @section('content')
 
-	{{ Form::open(['route' => 'estadisticas.show', 'method' => 'GET']) }}
-		<div class="form-group">
-			{{ Form::label('programa_id', 'Programa Educativo') }}
-			{{ Form::select('programa_id', ['a' => 'Ingeniería en Informática', 'b' => 'Maestría en Administración'], null, ['class' => 'form-control', 'required']) }}
-			<small class="form-text text-muted">Selecciona el Programa Educativo del cual quiere revisar las estadísticas.</small>
-		</div>
+	<div class="card">
+		<div class="card-body">
+			{{ Form::open(['route' => 'estadisticas.show', 'method' => 'GET']) }}
+				<div class="form-group">
+					{{ Form::label('programa_id', 'Programa Educativo') }}
+					{{ Form::select('programa_id', ['a' => 'Ingeniería en Informática', 'b' => 'Maestría en Administración'], null, ['class' => 'form-control', 'required']) }}
+					<small class="form-text text-muted">Selecciona el Programa Educativo del cual quiere revisar las estadísticas.</small>
+				</div>
 
-		{{ Form::submit('Siguiente', ['class' => 'btn btn-block btn-primary mt-5']) }}
+				{{ Form::submit('Siguiente', ['class' => 'btn btn-block btn-primary mt-5']) }}
 
-	{{ Form::close() }}
+			{{ Form::close() }}
+		</div>	
+	</div>
 	
 @endsection
