@@ -14,7 +14,15 @@ class PreguntaController extends Controller
      */
     public function index()
     {
-        return view('pregunta.index');
+        switch (request('vista')) {
+            case 'programa_educativo':
+                return view('pregunta.index.programa_educativo');
+                break;
+            
+            default:
+                return view('pregunta.index');
+                break;
+        }
     }
 
     /**
