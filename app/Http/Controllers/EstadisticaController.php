@@ -15,4 +15,9 @@ class EstadisticaController extends Controller
     {
         return view('estadistica.show');
     }
+
+    public function graph()
+    {
+    	return view('estadistica.graph');
+    }
 }
