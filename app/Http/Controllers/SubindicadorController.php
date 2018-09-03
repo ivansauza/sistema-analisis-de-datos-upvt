@@ -82,4 +82,9 @@ class SubindicadorController extends Controller
     {
         //
     }
+
+    public function select()
+    {
+        return view('subindicador.select');
+    }
 }
