@@ -14,9 +14,10 @@ class PreguntaController extends Controller
      */
     public function index()
     {
-        switch (request('vista')) {
-            case 'programa_educativo':
-                return view('pregunta.index.programa_educativo');
+        switch ( \Request::input('mostrar') ) 
+        {
+            case 'programa':
+                return view('pregunta.programa.index');
                 break;
             
             default:
@@ -89,5 +90,10 @@ class PreguntaController extends Controller
     public function destroy(Pregunta $pregunta)
     {
         //
+    }
+
+    public function programaSelect()
+    {
+        return view('pregunta.programa.select');
     }
 }
