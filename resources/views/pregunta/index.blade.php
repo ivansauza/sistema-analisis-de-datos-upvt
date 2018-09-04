@@ -19,13 +19,14 @@
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
 			<a href="{{ route('preguntas.create') }}" class="btn btn-outline-primary btn-sm">Nuevo</a>
+			@include('pregunta.fragments.view_menu')
 		</div>
 	</div>
 @endsection
 
 @section('content')
 
-	@include('pregunta.fragments.view_menu')
+	
 
 	<div class="card card-default">
 		<table class="table table-hover">
@@ -34,9 +35,9 @@
 					<th scope="col"></th>
 					<th scope="col">#</th>
 					<th scope="col">Nombre</th>
-					<th scope="col">Nota</th>
 					<th scope="col" class="text-center">Responsable</th>
 					<th scope="col" class="text-center">Activo</th>
+					<th scope="col" class="text-center">Programa Educativo</th>
 					<th scope="col" class="text-right">Opciones</th>
 				</tr>
 			</thead>
@@ -49,11 +50,11 @@
 					</td>
 					<th scope="row">1</th>
 					<td>Número de alumnos que fueron evaluados de Estancias y Estadía</td>
-					<td><small>Periodo establecido. (40 días como máximo)</small></td>
 					<td class="text-center">PTC</td>
 					<td class="text-center">
 						<span class="badge badge-pill badge-success">SI</span>
 					</td>
+					<td class="text-center">INI</td>
 					<td>
 						<div class="float-right">
 							<div class="btn-group mr-2" role="group">
@@ -80,11 +81,11 @@
 					</td>
 					<th scope="row">2</th>
 					<td>Número total de alumnos que cumplieron con el 100% de asesorías</td>
-					<td><small></small></td>
 					<td class="text-center">PTC</td>
 					<td class="text-center">
 						<span class="badge badge-pill badge-success">SI</span>
 					</td>
+					<td class="text-center">MAD</td>
 					<td>
 						<div class="float-right">
 							<div class="btn-group mr-2" role="group">

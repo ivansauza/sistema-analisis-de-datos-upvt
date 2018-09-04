@@ -4,7 +4,7 @@
 	<h1 class="h3">Pregunta <small>Crear</small></h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
-			<a href="{{ route('preguntas.index') }}" class="btn btn-outline-secondary btn-sm">Cancelar</a>
+			<a href="{{ URL::previous() }}" class="btn btn-outline-secondary btn-sm">Cancelar</a>
 		</div>
 	</div>
 @endsection
