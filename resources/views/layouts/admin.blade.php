@@ -37,13 +37,15 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="far fa-user-circle"></i> 
-						sauuza@gmail.com
+						{{ Auth::user()->email }}
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="{{ route('settings.user') }}">Usuario</a>
 						<a class="dropdown-item" href="{{ route('actividades.show') }}">Actividades</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Cerrar Sesión</a>
+						{{ Form::open(['route' => 'logout', 'class' => 'd-inline']) }}
+							<button type="submit" class="dropdown-item">Cerrar Sesión</i></button>
+						{{ Form::close() }}
 					</div>
 				</li>
 		</div>
@@ -65,7 +67,7 @@
 							<a class="nav-link {{ ! Route::is('programas.*') ?: 'active' }}" href="{{ route('programas.index') }}">
 								<i class="fas fa-user-graduate"></i> 
 								Programas Educativos
-								<span class="badge badge-primary float-right">4</span>
+								<span class="badge badge-primary float-right">{{ App\Programa::get()->count() }}</span>
 							</a>
 						</li>
 						<li class="nav-item">

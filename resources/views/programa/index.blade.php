@@ -18,7 +18,7 @@
 	<h1 class="h3">Programas Educativos</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
-			<a href="{{ route('programas.create') }}" class="btn btn-outline-primary btn-sm">Nuevo</a>
+			<a href="{{ route('programas.create') }}" class="btn btn-outline-primary btn-sm">Crear Programa Educativo</a>
 		</div>
 	</div>
 @endsection
@@ -29,9 +29,9 @@
 	
 	<div class="card card-default">
 		<table class="table table-hover">
-			<thead>
+			<thead class="thead-light">
 				<tr>
-					<th scope="col">ID</th>
+					<th scope="col" class="text-center">ID</th>
 					<th scope="col">Clave</th>
 					<th scope="col">Nombre</th>
 					<th scope="col" class="text-right">Opciones</th>
@@ -40,7 +40,7 @@
 			<tbody>
 				@foreach($programas as $programa)
 					<tr>
-						<th scope="row">{{ $programa->id }}</th>
+						<th scope="row" class="text-center">{{ $programa->id }}</th>
 						<td>{{ $programa->clave }}</td>
 						<td>{{ $programa->nombre }}</td>
 
@@ -55,7 +55,7 @@
 								</a>
 
 								{{ Form::open(['route' => ['programas.destroy', $programa->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-									<button type="submit" class="btn text-secondary btn-sm btn-transparent mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+									<button type="submit" class="btn text-danger btn-sm btn-transparent mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
 								{{ Form::close() }}
 							</div>
 						</td>
