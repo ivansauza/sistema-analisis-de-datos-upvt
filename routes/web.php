@@ -20,7 +20,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('programas', 'ProgramaController');
 Route::resource('periodos', 'PeriodoController');
+
+Route::get('preguntas/programa/select', 'PreguntaController@programaSelect')
+->name('preguntas.programa.select');
+
 Route::resource('preguntas', 'PreguntaController');
+
 Route::resource('encuestas', 'EncuestaController');
 Route::resource('procesos', 'ProcesoController');
 Route::resource('indicadores', 'IndicadorController');
