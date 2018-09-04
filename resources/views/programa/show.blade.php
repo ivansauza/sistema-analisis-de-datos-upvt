@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('header')
-	<h1 class="h3">Programas Educativos <small>Mostrar</small></h1>
+	<h1 class="h3">Programa Educativo <small>Mostrar</small></h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
 			<a href="{{ route('programas.index') }}" class="btn btn-outline-secondary btn-sm">Regresar</a>
@@ -15,23 +15,23 @@
 			<tbody>
 				<tr>
 					<th scope="row" class="text-right">ID</th>
-					<td>1</td>
+					<td>{{ $programa->id }}</td>
 				</tr>
 				<tr>
 					<th scope="row" class="text-right">Clave</th>
-					<td>INI</td>
+					<td>{{ $programa->clave }}</td>
 				</tr>
 				<tr>
 					<th scope="row" class="text-right">Nombre</th>
-					<td>Ingeniería en Informática</td>
+					<td>{{ $programa->nombre }}</td>
 				</tr>
 				<tr>
 					<th scope="row" class="text-right">Fecha de registro</th>
-					<td><small>10 de Agosto del 2018 00:00:00</small></td>
+					<td><small>{{ $programa->created_at }}</small></td>
 				</tr>
 				<tr>
 					<th scope="row" class="text-right">Fecha de edición</th>
-					<td><small>10 de Agosto del 2018 00:00:00</small></td>
+					<td><small>{{ $programa->updated_at }}</small></td>
 				</tr>
 			</tbody>
 		</table>

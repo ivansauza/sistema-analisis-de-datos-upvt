@@ -24,6 +24,9 @@
 @endsection
 
 @section('content')
+
+	@include('fragments.alert')
+	
 	<div class="card card-default">
 		<table class="table table-hover">
 			<thead>
@@ -35,48 +38,29 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th scope="row">1</th>
-					<td>INI</td>
-					<td>Ingeniería en Informática</td>
+				@foreach($programas as $programa)
+					<tr>
+						<th scope="row">{{ $programa->id }}</th>
+						<td>{{ $programa->clave }}</td>
+						<td>{{ $programa->nombre }}</td>
 
-					<td>
-						<div class="float-right">
-							<a href="{{ route('programas.show', 0) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
-								<i class="fas fa-eye"></i>
-							</a>
+						<td>
+							<div class="float-right">
+								<a href="{{ route('programas.show', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
+									<i class="fas fa-eye"></i>
+								</a>
 
-							<a href="{{ route('programas.edit', 0) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
-								<i class="fas fa-pencil-alt"></i>
-							</a>
+								<a href="{{ route('programas.edit', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
+									<i class="fas fa-pencil-alt"></i>
+								</a>
 
-							{{ Form::open(['route' => ['programas.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-								<button type="submit" class="btn text-secondary btn-sm btn-transparent mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
-							{{ Form::close() }}
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>MAD</td>
-					<td>Maestría en Administración</td>
-
-					<td>
-						<div class="float-right">
-							<a href="{{ route('programas.show', 0) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
-								<i class="fas fa-eye"></i>
-							</a>
-
-							<a href="{{ route('programas.edit', 0) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
-								<i class="fas fa-pencil-alt"></i>
-							</a>
-
-							{{ Form::open(['route' => ['programas.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-								<button type="submit" class="btn text-secondary btn-sm btn-transparent mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
-							{{ Form::close() }}
-						</div>
-					</td>
-				</tr>
+								{{ Form::open(['route' => ['programas.destroy', $programa->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+									<button type="submit" class="btn text-secondary btn-sm btn-transparent mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+								{{ Form::close() }}
+							</div>
+						</td>
+					</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>
