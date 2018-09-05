@@ -44,12 +44,14 @@ class ProgramaController extends Controller
         return view('programa/edit', compact('programa'));
     }
 
-    public function update(ProgramaRequest $request, Programa $programa)
+    public function update(ProgramaRequest $request, $id)
     {
+        $programa = Programa::findOrFail($id);
         $programa->update($request->all());
 
         return redirect()->back()
-            ->with('info', 'Programa actualizado con éxito');
+            //->with('info', 'Programa actualizado con éxito');
+            ->with('info', ['type' => 'success', 'message', => 'Programa actualizado con éxito']);
     }
 
     public function destroy(Programa $programa)

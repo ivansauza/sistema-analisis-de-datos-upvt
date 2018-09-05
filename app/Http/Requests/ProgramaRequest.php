@@ -24,8 +24,8 @@ class ProgramaRequest extends FormRequest
     public function rules()
     {
         return [
-            'clave' => 'required|string|max:16', 
-            'nombre' => 'required|string'
+            'clave' => 'required|string|max:16|unique:programas,clave,' . $this->programa, 
+            'nombre' => 'required|string|unique:programas,nombre,' . $this->programa
         ];
     }
 }
