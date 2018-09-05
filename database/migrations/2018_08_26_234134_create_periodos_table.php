@@ -17,8 +17,8 @@ class CreatePeriodosTable extends Migration
             $table->increments('id');
             $table->enum('clave', ['enero-abril', 'mayo-agosto', 'septiembre-diciembre']);
             $table->year('anio');
-            $table->boolean('actual')->default(0);
-            $table->boolean('estado')->default(0);
+            $table->boolean('actual')->nullable();
+            $table->boolean('estado')->nullable();
             $table->integer('posicion')->nullable();
             /*$table->integer('programa_id')->unsigned();
             $table->foreign('programa_id')->references('id')->on('programas');*/
