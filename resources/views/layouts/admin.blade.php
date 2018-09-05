@@ -74,6 +74,7 @@
 							<a class="nav-link {{ ! Route::is('periodos.*') ?: 'active' }}" href="{{ route('periodos.index') }}">
 								<i class="fas fa-calendar-alt"></i> 
 								Periodos
+								<span class="badge badge-primary float-right">{{ App\Periodo::get()->count() }}</span>
 							</a>
 						</li>
 

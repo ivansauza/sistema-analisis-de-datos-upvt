@@ -10,10 +10,12 @@
 @endsection
 
 @section('content')
+	
+	@include('fragments.alert')
 
 	<div class="card">
 		<div class="card-body">
-			{{ Form::model(null, ['route' => ['periodos.update', 0]]) }}
+			{{ Form::model($periodo, ['route' => ['periodos.update', $periodo->id], 'method' => 'PUT']) }}
 
 				@include('forms.periodo')
 
