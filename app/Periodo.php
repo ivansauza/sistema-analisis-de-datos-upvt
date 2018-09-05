@@ -10,6 +10,10 @@ class Periodo extends Model
 	protected $fillable = [
 		'clave', 'anio', 'estado', 'actual'
     ];
+    protected $casts = [ 
+    	'estado' => 'boolean', 
+    	'actual' => 'boolean' 
+    ];
 
     public function encuestas()
     {
