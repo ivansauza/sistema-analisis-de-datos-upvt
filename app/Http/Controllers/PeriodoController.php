@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Periodo;
 use Illuminate\Http\Request;
+use App\Http\Requests\PeriodoRequest;
 
 class PeriodoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,9 @@ class PeriodoController extends Controller
      */
     public function index()
     {
-        return view('periodo.index');
+        $periodos = Periodo::get();
+
+        return view('periodo/index', compact('periodos'));
     }
 
     /**
@@ -24,7 +32,7 @@ class PeriodoController extends Controller
      */
     public function create()
     {
-        return view('periodo.create');
+        return view('periodo/create');
     }
 
     /**
@@ -33,9 +41,12 @@ class PeriodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PeriodoRequest $request)
     {
-        //
+        $periodo = Periodo::create($request->all());
+
+        return redirect()->route('periodos.edit', $periodo->id)
+            ->with('info', ['type' => 'success', 'message' => 'Periodo guardado con éxito']);
     }
 
     /**
@@ -46,7 +57,7 @@ class PeriodoController extends Controller
      */
     public function show(Periodo $periodo)
     {
-        return view('periodo.show');
+        return view('periodo/show', compact('periodo'));
     }
 
     /**
@@ -57,7 +68,7 @@ class PeriodoController extends Controller
      */
     public function edit(Periodo $periodo)
     {
-        return view('periodo.edit');
+        return view('periodo/edit', compact('periodo'));
     }
 
     /**
@@ -67,9 +78,13 @@ class PeriodoController extends Controller
      * @param  \App\Periodo  $periodo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Periodo $periodo)
+    public function update(PeriodoRequest $request, $id)
     {
-        //
+        $periodo = Periodo::findOrFail($id);
+        $periodo->update($request->all());
+
+        return redirect()->back()
+            ->with('info', ['type' => 'success', 'message' => 'Periodo actualizado con éxito']);
     }
 
     /**
@@ -80,6 +95,9 @@ class PeriodoController extends Controller
      */
     public function destroy(Periodo $periodo)
     {
-        //
+        $periodo->delete();
+
+        return redirect()->route('periodos.index')
+            ->with('info', ['type' => 'success', 'message' => 'Periodo eliminado con éxito']);
     }
 }
