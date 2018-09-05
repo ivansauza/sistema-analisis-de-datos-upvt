@@ -51,7 +51,7 @@ class ProgramaController extends Controller
 
         return redirect()->back()
             //->with('info', 'Programa actualizado con éxito');
-            ->with('info', ['type' => 'success', 'message', => 'Programa actualizado con éxito']);
+            ->with('info', ['type' => 'success', 'message' => 'Programa actualizado con éxito']);
     }
 
     public function destroy(Programa $programa)
