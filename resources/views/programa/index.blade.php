@@ -28,40 +28,49 @@
 	@include('fragments.alert')
 	
 	<div class="card card-default">
-		<table class="table table-hover">
-			<thead class="thead-light">
-				<tr>
-					<th scope="col" class="text-center">ID</th>
-					<th scope="col">Clave</th>
-					<th scope="col">Nombre</th>
-					<th scope="col" class="text-right">Opciones</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($programas as $programa)
+		@if($programas->isEmpty())
+			<div class="card-body">
+				<h6 class="text-center text-muted">
+					No hay datos disponibles
+				</h6>
+			</div>
+		@else
+			<table class="table table-hover">
+				<thead class="thead-light">
 					<tr>
-						<th scope="row" class="text-center">{{ $programa->id }}</th>
-						<td>{{ $programa->clave }}</td>
-						<td>{{ $programa->nombre }}</td>
-
-						<td>
-							<div class="float-right">
-								<a href="{{ route('programas.show', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
-									<i class="fas fa-eye"></i>
-								</a>
-
-								<a href="{{ route('programas.edit', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
-									<i class="fas fa-pencil-alt"></i>
-								</a>
-
-								{{ Form::open(['route' => ['programas.destroy', $programa->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-									<button type="submit" class="btn text-danger btn-sm btn-transparent mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
-								{{ Form::close() }}
-							</div>
-						</td>
+						<th scope="col" class="text-center">ID</th>
+						<th scope="col">Clave</th>
+						<th scope="col">Nombre</th>
+						<th scope="col" class="text-right">Opciones</th>
 					</tr>
-				@endforeach
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					@foreach($programas as $programa)
+						<tr>
+							<th scope="row" class="text-center">{{ $programa->id }}</th>
+							<td>{{ $programa->clave }}</td>
+							<td>{{ $programa->nombre }}</td>
+
+							<td>
+								<div class="float-right">
+									<a href="{{ route('programas.show', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
+										<i class="fas fa-eye"></i>
+									</a>
+
+									<a href="{{ route('programas.edit', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
+										<i class="fas fa-pencil-alt"></i>
+									</a>
+
+									{{ Form::open(['route' => ['programas.destroy', $programa->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+										<button type="submit" class="btn text-danger btn-sm btn-transparent mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+									{{ Form::close() }}
+								</div>
+							</td>
+						</tr>
+					@endforeach
+				</tbody>
+			</table>
+		@endif
 	</div>
+
 @endsection
