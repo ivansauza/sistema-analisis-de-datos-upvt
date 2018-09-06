@@ -1,4 +1,12 @@
 <div class="form-row">
+	<div class="form-group col-12">
+		{{ Form::label('programa_id', 'Programa Educativo') }}
+		{{ Form::select('programa_id', $programas, null, ['class' => 'form-control', 'placeholder' => 'Seleccionar un programa educativo']) }}
+		@if ($errors->has('programa_id'))
+			<span class="badge badge-danger">{{ $errors->first('programa_id') }}</span>
+		@endif
+	</div>
+
 	<div class="form-group col">
 		{{ Form::label('clave') }}
 		{{ Form::select('clave', ['enero-abril' => 'Enero-Abril', 'mayo-agosto' => 'Mayo-Agosto', 'septiembre-diciembre' => 'Septiembre-Diciembre'],null, ['class' => 'form-control']) }}
