@@ -8,16 +8,18 @@ class PeriodoUnique implements Rule
 {
     protected $id;
     protected $clave;
+    protected $programa_id;
 
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct($clave, $id)
+    public function __construct($clave, $id, $programa_id)
     {
-        $this->clave = $clave;
-        $this->id    = $id;
+        $this->clave       = $clave;
+        $this->id          = $id;
+        $this->programa_id = $programa_id;
     }
 
     /**
@@ -33,6 +35,7 @@ class PeriodoUnique implements Rule
             ->where('id', '!=', $this->id)
             ->where('anio', '=', $value)
             ->where('clave', '=', $this->clave)
+            ->where('programa_id', '=', $this->programa_id)
             ->count();
 
          return $count === 0;
