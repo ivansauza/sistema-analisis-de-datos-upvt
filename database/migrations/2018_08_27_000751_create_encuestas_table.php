@@ -21,8 +21,6 @@ class CreateEncuestasTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('periodo_id')->unsigned();
             $table->foreign('periodo_id')->references('id')->on('periodos');
-            $table->integer('programa_id')->unsigned();
-            $table->foreign('programa_id')->references('id')->on('programas');
             $table->timestamps();
         });
     }
