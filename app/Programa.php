@@ -8,12 +8,13 @@ class Programa extends Model
 {
     protected $table    = 'programas';
     protected $fillable = [
-        'clave', 'nombre'
+        'clave', 'nombre', 'predeterminado'
     ];
 
     public function users()
     {
-    	return $this->belongsToMany('App\User');
+    	return $this->belongsToMany('App\User')
+            ->withPivot('predeterminado');
     }
 
     public function preguntas()
@@ -26,8 +27,8 @@ class Programa extends Model
     	return $this->hasMany('App\Subindicador');
     }
 
-    public function encuestas()
+    public function periodos()
     {
-    	return $this->hasMany('App\Encuesta');
+    	return $this->hasMany('App\Periodo');
     }
 }
