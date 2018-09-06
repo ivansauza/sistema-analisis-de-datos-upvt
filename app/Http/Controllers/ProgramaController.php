@@ -21,39 +21,15 @@ class ProgramaController extends Controller
      */
     public function index()
     {
-        $programas = Programa::get();
+        $programas = auth()->user()->programas;
 
         return view('programa/index', compact('programas'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('programa/create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(ProgramaRequest $request)
-    {
-        $programa = Programa::create($request->all());
-
-        return redirect()->route('programas.edit', $programa->id)
-            ->with('info', ['type' => 'success', 'message' => 'Programa guardado con éxito']);
-    }
-
-    /**
      * Display the specified resource.
      *
-     * @param  \App\Periodo  $periodo
+     * @param  \App\Programa $programa
      * @return \Illuminate\Http\Response
      */
     public function show(Programa $programa)
@@ -62,43 +38,25 @@ class ProgramaController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Seleccionar un programa por defecto.
      *
-     * @param  \App\Periodo  $periodo
+     * @param  \App\Programa $programa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Programa $programa)
+    public function predetermined(Programa $programa)
     {
-        return view('programa/edit', compact('programa'));
-    }
+        /* Comprobar que el usuario tiene permisos sobre el programa enviado */
+        auth()->user()->programas()->findOrFail($programa->id);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Periodo  $periodo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(ProgramaRequest $request, $id)
-    {
-        $programa = Programa::findOrFail($id);
-        $programa->update($request->all());
-
-        return redirect()->back()
-            ->with('info', ['type' => 'success', 'message' => 'Programa actualizado con éxito']);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Periodo  $periodo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Programa $programa)
-    {
-        $programa->delete();
+        foreach (auth()->user()->programas as $key => $value) 
+        {
+            $pivot = $value->pivot;
+            $pivot->predeterminado = $programa->id == $value->id ? 1 : 0;
+            
+            $pivot->save();
+        }
 
         return redirect()->route('programas.index')
-            ->with('info', ['type' => 'success', 'message' => 'Programa eliminado con éxito']);
+           ->with('info', ['type' => 'success', 'message' => 'Programa Educativo selecionado con éxito']);;
     }
 }
