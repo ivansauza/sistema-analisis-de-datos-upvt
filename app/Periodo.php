@@ -8,7 +8,7 @@ class Periodo extends Model
 {
 	protected $table    = 'periodos';
 	protected $fillable = [
-		'clave', 'anio', 'estado', 'actual'
+		'clave', 'anio', 'estado', 'actual', 'programa_id'
     ];
     protected $casts = [ 
     	'estado' => 'boolean', 
@@ -18,5 +18,10 @@ class Periodo extends Model
     public function encuestas()
     {
     	return $this->hasMany('App\Encuesta');
+    }
+
+    public function programa()
+    {
+        return $this->belongsTo('App\Programa');
     }
 }
