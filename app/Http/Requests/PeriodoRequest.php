@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\PeriodoUnique;
+use App\Rules\ProgramaUserExists;
 
 class PeriodoRequest extends FormRequest
 {
@@ -32,10 +33,16 @@ class PeriodoRequest extends FormRequest
                 'integer', 
                 'min:2007', 
                 'max:' . (date("Y") + 1), 
-                new PeriodoUnique($this->clave, $this->periodo)
+                new PeriodoUnique($this->clave, $this->periodo, $this->programa_id)
             ], 
             'actual' => 'nullable', 
-            'estado' => 'nullable'
+            'estado' => 'nullable', 
+            'programa_id' => [
+                'required', 
+                'integer', 
+                'exists:programas,id', 
+                new ProgramaUserExists
+            ], 
         ];
     }
 }
