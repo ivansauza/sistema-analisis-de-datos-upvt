@@ -9,3 +9,8 @@
 		</div>
 	</div>
 @endsection
+
+
+@section('content')
+	@include('fragments.alert')
+@endsection
