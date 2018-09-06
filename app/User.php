@@ -34,6 +34,7 @@ class User extends Authenticatable
 
     public function programas()
     {
-        return $this->belongsToMany('App\Programa');
+        return $this->belongsToMany('App\Programa')
+            ->withPivot('predeterminado');
     }
 }
