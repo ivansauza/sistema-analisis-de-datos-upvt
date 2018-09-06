@@ -20,8 +20,8 @@ class CreatePeriodosTable extends Migration
             $table->boolean('actual')->nullable();
             $table->boolean('estado')->nullable();
             $table->integer('posicion')->nullable();
-            /*$table->integer('programa_id')->unsigned();
-            $table->foreign('programa_id')->references('id')->on('programas');*/
+            $table->integer('programa_id')->unsigned();
+            $table->foreign('programa_id')->references('id')->on('programas');
             $table->timestamps();
         });
     }
