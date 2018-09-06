@@ -18,12 +18,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('programas/{programa}/predetermined', 'ProgramaController@predetermined')
+	->name('programas.predetermined');
 Route::resource('programas', 'ProgramaController');
+
+Route::get('periodos/programa/select', 'PeriodoController@programaSelect')
+->name('periodos.programa.select');
 Route::resource('periodos', 'PeriodoController');
 
 Route::get('preguntas/programa/select', 'PreguntaController@programaSelect')
 ->name('preguntas.programa.select');
-
 Route::resource('preguntas', 'PreguntaController');
 
 Route::resource('encuestas', 'EncuestaController');
