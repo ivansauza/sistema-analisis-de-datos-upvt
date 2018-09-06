@@ -19,6 +19,7 @@ class CreateProgramaUserTable extends Migration
             $table->foreign('programa_id')->references('id')->on('programas');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean('predeterminado')->default(0);
             $table->timestamps();
         });
     }
