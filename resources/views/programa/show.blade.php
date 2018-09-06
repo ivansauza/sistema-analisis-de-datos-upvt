@@ -12,23 +12,6 @@
 @section('content')
 
 	<div class="card card-default">
-		<div class="card-header">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="float-right">
-							<a href="{{ route('programas.edit', $programa->id) }}" class="btn text-secondary" data-toggle="tooltip" data-placement="top" title="Editar">
-								<i class="fas fa-pencil-alt"></i>
-							</a>
-
-							{{ Form::open(['route' => ['programas.destroy', $programa->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-								<button type="submit" class="btn text-danger btn-transparent" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
-							{{ Form::close() }}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<table class="table">
 			<tbody>
 				<tr>

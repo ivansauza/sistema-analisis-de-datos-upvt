@@ -1,25 +1,9 @@
 @extends('layouts.admin')
 
-@section('css')
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
-@endsection
-
-@section('javascript')
-	<script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
-@endsection
-
-@section('script')
-	$(document).ready( function () {
-		$('table').DataTable();
-	} );
-@endsection
-
 @section('header')
 	<h1 class="h3">Programas Educativos</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
-		<div class="btn-group mr-2">
-			<a href="{{ route('programas.create') }}" class="btn btn-outline-primary btn-sm">Crear Programa Educativo</a>
-		</div>
+
 	</div>
 @endsection
 
@@ -27,50 +11,48 @@
 
 	@include('fragments.alert')
 	
-	<div class="card card-default">
-		@if($programas->isEmpty())
-			<div class="card-body">
-				<h6 class="text-center text-muted">
-					No hay datos disponibles
-				</h6>
-			</div>
-		@else
-			<table class="table table-hover">
-				<thead class="thead-light">
+	@if($programas->isEmpty())
+		<h6 class="text-center text-muted">
+			No tiene Programas Educativos asignados.
+		</h6>
+	@else
+		<div class="card card-default">
+		<table class="table table-hover">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col" class="text-center">ID</th>
+					<th scope="col">Clave</th>
+					<th scope="col">Nombre</th>
+					<th scope="col" class="text-center">Prederminado</th>
+					<th scope="col" class="text-right">Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($programas as $programa)
 					<tr>
-						<th scope="col" class="text-center">ID</th>
-						<th scope="col">Clave</th>
-						<th scope="col">Nombre</th>
-						<th scope="col" class="text-right">Opciones</th>
+						<th scope="row" class="text-center">{{ $programa->id }}</th>
+						<td>{{ $programa->clave }}</td>
+						<td>{{ $programa->nombre }}</td>
+						<td class="text-center">
+							<span class="badge badge-pill badge-{{ $programa->pivot->predeterminado ? 'primary' : 'secondary' }}">
+								{{ $programa->pivot->predeterminado ? 'SI' : 'NO' }}
+							</span>
+						</td>
+						<td>
+							<div class="float-right">
+								<a href="{{ route('programas.predetermined', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Predeterminado">
+									<i class="far fa-check-circle"></i>
+								</a>
+								<a href="{{ route('programas.show', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
+									<i class="fas fa-eye"></i>
+								</a>
+							</div>
+						</td>
 					</tr>
-				</thead>
-				<tbody>
-					@foreach($programas as $programa)
-						<tr>
-							<th scope="row" class="text-center">{{ $programa->id }}</th>
-							<td>{{ $programa->clave }}</td>
-							<td>{{ $programa->nombre }}</td>
-
-							<td>
-								<div class="float-right">
-									<a href="{{ route('programas.show', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
-										<i class="fas fa-eye"></i>
-									</a>
-
-									<a href="{{ route('programas.edit', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
-										<i class="fas fa-pencil-alt"></i>
-									</a>
-
-									{{ Form::open(['route' => ['programas.destroy', $programa->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-										<button type="submit" class="btn text-danger btn-sm btn-transparent mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
-									{{ Form::close() }}
-								</div>
-							</td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
-		@endif
-	</div>
+				@endforeach
+			</tbody>
+		</table>
+		</div>
+	@endif
 
 @endsection
