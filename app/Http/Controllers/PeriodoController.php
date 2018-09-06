@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Periodo;
 use Illuminate\Http\Request;
+
+use App\Periodo;
 use App\Http\Requests\PeriodoRequest;
 
 class PeriodoController extends Controller
@@ -20,9 +21,21 @@ class PeriodoController extends Controller
      */
     public function index()
     {
-        $periodos = Periodo::get();
+        switch ( request()->input('mostrar') ) 
+        {
+            case 'programa':
+                $programa = auth()->user()->programas()
+                    ->findOrFail( request()->input('programa_id') );
 
-        return view('periodo/index', compact('periodos'));
+               return view('periodo/programa/index', compact('programa'));
+                break;
+            
+            default:
+                $programas = auth()->user()->programas();
+
+                return view('periodo/index', compact('programas'));
+                break;
+        }
     }
 
     /**
@@ -32,13 +45,15 @@ class PeriodoController extends Controller
      */
     public function create()
     {
-        return view('periodo/create');
+        $programas = auth()->user()->programas->pluck('nombre', 'id');
+
+        return view('periodo/create', compact('programas'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(PeriodoRequest $request)
@@ -52,7 +67,7 @@ class PeriodoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Periodo  $periodo
+     * @param  \App\Periodo $periodo
      * @return \Illuminate\Http\Response
      */
     public function show(Periodo $periodo)
@@ -63,18 +78,20 @@ class PeriodoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Periodo  $periodo
+     * @param  \App\Periodo $periodo
      * @return \Illuminate\Http\Response
      */
     public function edit(Periodo $periodo)
     {
-        return view('periodo/edit', compact('periodo'));
+        $programas = auth()->user()->programas->pluck('nombre', 'id');
+
+        return view('periodo/edit', compact('periodo', 'programas'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @param  \App\Periodo  $periodo
      * @return \Illuminate\Http\Response
      */
@@ -90,14 +107,24 @@ class PeriodoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Periodo  $periodo
+     * @param  \App\Periodo $periodo
      * @return \Illuminate\Http\Response
      */
     public function destroy(Periodo $periodo)
     {
+        /* Comprobar que el usuario tiene permisos sobre el programa enviado */
+        auth()->user()->programas()->findOrFail($periodo->programa->id);
+
         $periodo->delete();
 
         return redirect()->route('periodos.index')
             ->with('info', ['type' => 'success', 'message' => 'Periodo eliminado con éxito']);
+    }
+
+    public function programaSelect()
+    {
+        $programas = auth()->user()->programas->pluck('nombre', 'id');
+
+        return view('periodo.programa.select', compact('programas'));
     }
 }
