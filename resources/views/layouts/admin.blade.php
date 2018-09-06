@@ -30,7 +30,26 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<span class="badge badge-pill badge-primary">Septiembre Diciembre 2018</span>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-user-graduate"></i>
+						@if( auth()->user()->programas()->where('predeterminado', '=', 1)->first() )
+							{{ auth()->user()->programas()->where('predeterminado', '=', 1)->first()->nombre }}
+						@else
+							Seleccionar
+						@endif
+						
+					</a>
+					<div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+						@foreach( auth()->user()->programas as $programa )
+							@if( ! $programa->pivot->predeterminado )
+								<a class="dropdown-item" href="{{ route('programas.predetermined', $programa->id) }}" data-toggle="tooltip" data-placement="right" title="Seleccionar como predeterminado">
+									{{ $programa->nombre }}
+								</a>
+							@endif
+						@endforeach
+					</div>
+				</li>
 			</ul>
 
 			<ul class="navbar-nav px-3">
@@ -48,6 +67,7 @@
 						{{ Form::close() }}
 					</div>
 				</li>
+			</ul>
 		</div>
 	</nav>
 
@@ -67,14 +87,13 @@
 							<a class="nav-link {{ ! Route::is('programas.*') ?: 'active' }}" href="{{ route('programas.index') }}">
 								<i class="fas fa-user-graduate"></i> 
 								Programas Educativos
-								<span class="badge badge-primary float-right">{{ App\Programa::get()->count() }}</span>
+								<span class="badge badge-primary float-right">{{ auth()->user()->programas()->count() }}</span>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link {{ ! Route::is('periodos.*') ?: 'active' }}" href="{{ route('periodos.index') }}">
 								<i class="fas fa-calendar-alt"></i> 
 								Periodos
-								<span class="badge badge-primary float-right">{{ App\Periodo::get()->count() }}</span>
 							</a>
 						</li>
 
