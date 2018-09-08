@@ -24,8 +24,8 @@ Route::get('programas/{programa}/predetermined', 'ProgramaController@predetermin
 Route::resource('programas', 'ProgramaController');
 
 Route::get('periodos/programa/select', 'PeriodoController@programaSelect')
-->name('periodos.programa.select');
-Route::resource('periodos', 'PeriodoController');
+->name('periodos.programa.select')->middleware('auth');;
+Route::resource('periodos', 'PeriodoController')->middleware('auth');;
 
 Route::get('preguntas/programa/select', 'PreguntaController@programaSelect')
 ->name('preguntas.programa.select');
@@ -37,7 +37,7 @@ Route::resource('indicadores', 'IndicadorController');
 Route::get('subindicadores/select', 'SubindicadorController@select')
 	->name('subindicadores.select');
 Route::resource('subindicadores', 'SubindicadorController');
-Route::resource('users', 'UserController');
+Route::resource('users', 'UserController')->middleware('auth');
 Route::get('users/{id}/actividades', 'UserController@actividades')
 	->name('users.actividades');
 
