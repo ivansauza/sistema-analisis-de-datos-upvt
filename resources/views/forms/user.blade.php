@@ -1,40 +1,61 @@
 <div class="row">
 	<div class="col">
 		<div class="form-group">
-			{{ Form::label('nombre') }}
-			{{ Form::text('nombre', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa el nombre']) }}
+			{{ Form::label('name') }}
+			{{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el nombre']) }}
+			@if ($errors->has('name'))
+				<span class="badge badge-danger">{{ $errors->first('name') }}</span>
+			@endif
 		</div>
 
 		<div class="form-group">
 			{{ Form::label('apellidos') }}
 			{{ Form::text('apellidos', null, ['class' => 'form-control', 'placeholder' => 'Ingresa los apellidos']) }}
+			@if ($errors->has('apellidos'))
+				<span class="badge badge-danger">{{ $errors->first('apellidos') }}</span>
+			@endif
 		</div>
 
 		<div class="form-group">
 			{{ Form::label('email', 'Correo Electrónico') }}
-			{{ Form::text('email', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa el correo electrónico']) }}
+			{{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el correo electrónico']) }}
+			@if ($errors->has('email'))
+				<span class="badge badge-danger">{{ $errors->first('email') }}</span>
+			@endif
 		</div>
 
 		<div class="form-group">
 			{{ Form::label('password', 'Contraseña') }}
-			{{ Form::text('password', null, ['class' => 'form-control', 'placeholder' => 'Ingresa la contaseña']) }}
+			{{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Ingresa la contaseña']) }}
+			@if ($errors->has('password'))
+				<span class="badge badge-danger">{{ $errors->first('password') }}</span>
+			@endif
 		</div>
 
 		<div class="form-group">
-			{{ Form::label('password', 'Confirmar contraseña') }}
-			{{ Form::text('password', null, ['class' => 'form-control', 'placeholder' => 'Confirma la contraseña']) }}
+			{{ Form::label('password_confirmation', 'Confirmar contraseña') }}
+			{{ Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirma la contraseña']) }}
+			@if ($errors->has('password_confirmation'))
+				<span class="badge badge-danger">{{ $errors->first('password_confirmation') }}</span>
+			@endif
 		</div>
 
 	</div>
 	<div class="col">
 		<div class="form-group">
-			{{ Form::label('programa_id', 'Programas Educativos') }}
-			{{ Form::select('programa_id', ['a' => 'Ingenieria en Informatica', 'b' => 'Maestria en Administracion'], null, ['class' => 'form-control', 'multiple' => true, 'required']) }}
+			{{ Form::label('programas[]', 'Programas Educativos') }}
+			{{ Form::select('programas[]', $programas, null, ['class' => 'form-control', 'multiple', 'placeholder' => 'Seleccionar ...']) }}
 			<small class="form-text text-muted">Puede seleccionar varios items presionando la tecla "control" + "click".</small>
+			@if ($errors->has('programas'))
+				<span class="badge badge-danger">{{ $errors->first('programas') }}</span>
+			@endif
 		</div>
 		<div class="form-group">
-			{{ Form::label('role_id', 'Rol') }}
-			{{ Form::select('role_id', ['a' => 'Secretaria', 'b' => 'Profesor', 'c' => 'Director'], null, ['class' => 'form-control', 'multiple' => false, 'required']) }}
+			{{ Form::label('roles', 'Rol') }}
+			{{ Form::select('roles', $roles, null, ['class' => 'form-control', 'placeholder' => 'Seleccionar ...']) }}
+			@if ($errors->has('roles'))
+				<span class="badge badge-danger">{{ $errors->first('roles') }}</span>
+			@endif
 		</div>
 	</div>
 </div>

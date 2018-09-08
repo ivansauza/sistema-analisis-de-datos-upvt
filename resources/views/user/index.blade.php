@@ -34,7 +34,7 @@
 		<table class="table table-striped table-hover">
 			<thead class="thead-light">
 				<tr>
-					<th scope="col">#</th>
+					<th scope="col">ID</th>
 					<th scope="col">Nombre</th>
 					<th scope="col">Correo elestrónico</th>
 					<th scope="col">Actividades</th>
@@ -44,24 +44,24 @@
 			<tbody>
 				@foreach($users as $user)
 					<tr>
-						<th scope="row">1</th>
-						<td>Adrian Gonzales</td>
-						<td>adrian@upvt.com</td>
+						<th scope="row">{{ $user->id }}</th>
+						<td>{{ $user->name }} {{ $user->apellidos }}</td>
+						<td>{{ $user->email }}</td>
 						<td>
-							<a href="{{ route('users.actividades', 0) }}" class="text-secondary">Ver historial</a>
+							<a href="{{ route('users.actividades', $user->id) }}" class="text-secondary">Ver historial</a>
 						</td>
 						<td>
 							<div class="float-right">
-								<a href="{{ route('users.show', 0) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
+								<a href="{{ route('users.show', $user->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Detalles">
 									<i class="fas fa-eye"></i>
 								</a>
 
-								<a href="{{ route('users.edit', 0) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
+								<a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
 									<i class="fas fa-pencil-alt"></i>
 								</a>
 
-								{{ Form::open(['route' => ['users.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-									<button type="submit" class="btn btn-sm text-secondary btn-transparent mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+								{{ Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+									<button type="submit" class="btn btn-sm text-danger btn-transparent mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
 								{{ Form::close() }}
 							</div>
 						</td>

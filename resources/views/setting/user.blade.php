@@ -6,9 +6,11 @@
 
 @section('content')
 
+	@include('fragments.alert')
+
 	<div class="card">
 		<div class="card-body">
-			{{ Form::model(null, ['route' => ['settings.user.update']]) }}
+			{{ Form::model($user, ['route' => ['settings.user.update']]) }}
 
 				@include('forms.setting.user')
 
