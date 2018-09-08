@@ -53,9 +53,9 @@ Route::get('estadisticas/graph', 'EstadisticaController@graph')
 ->name('estadisticas.graph');
 
 Route::group(['prefix' => 'configuracion'], function(){
-	Route::get('user', 'SettingController@user')
+	Route::get('user', 'UserSettings')
 		->name('settings.user');
-	Route::post('user', 'SettingController@userUpdate')
+	Route::post('user', 'UserSettingsUpdate')
 		->name('settings.user.update');
 });
 
