@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Traits\ProgramasEmptyValidate;
 
 use App\Periodo;
+use App\Programa;
 use App\Http\Requests\PeriodoRequest;
 
 class PeriodoController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    use ProgramasEmptyValidate;
     
     /**
      * Display a listing of the resource.
@@ -31,9 +30,13 @@ class PeriodoController extends Controller
                 break;
             
             default:
-                $programas = auth()->user()->programas();
+                /**
+                 * Extraer los periodos que pertenecen al programa
+                 * actual predeterminado
+                */
+                $periodos = Programa::getPredeterminado()->periodos;
 
-                return view('periodo/index', compact('programas'));
+                return view('periodo/index', compact('periodos'));
                 break;
         }
     }
