@@ -48,7 +48,8 @@ class PeriodoController extends Controller
      */
     public function create()
     {
-        $programas = auth()->user()->programas->pluck('nombre', 'id');
+        $programas = auth()->user()->programas
+            ->pluck('nombre', 'id');
 
         return view('periodo/create', compact('programas'));
     }
