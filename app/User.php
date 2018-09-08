@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'apellidos', 'email', 'password', 
     ];
 
     /**
@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+     'password', 'remember_token', 
     ];
 
     public function actividades()
@@ -36,6 +36,19 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Programa')
             ->withPivot('predeterminado');
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany('Caffeinated\Shinobi\Models\Role');
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        if ($value) 
+        {
+            $this->attributes['password'] = bcrypt($value);
+        }
     }
 
     public static function getProgramas()
