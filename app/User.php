@@ -37,4 +37,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Programa')
             ->withPivot('predeterminado');
     }
+
+    public static function getProgramas()
+    {
+        return auth()->user()->programas()->get();
+    }
 }
