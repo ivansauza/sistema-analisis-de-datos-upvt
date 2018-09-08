@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Traits\ProgramasEmptyValidate;
 
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserupdateRequest;
+
 use App\Programa;
+use App\User;
+use Caffeinated\Shinobi\Models\Role;
 
 class UserController extends Controller
 {
@@ -35,7 +40,11 @@ class UserController extends Controller
 	 */
 	public function create()
 	{
-		return view('user.create');
+		$programas = auth()->user()->programas
+			->pluck('nombre', 'id');
+		$roles     = Role::get()->pluck('name', 'id');
+
+		return view('user.create', compact('programas', 'roles'));
 	}
 
 	/**
@@ -44,9 +53,16 @@ class UserController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(UserStoreRequest $request)
 	{
-		//
+		$user = User::create( $request->all() );
+		$user->programas()
+			->sync( $request->get('programas') );
+		$user->roles()
+			->sync( [$request->get('roles')[0]] );
+
+		return redirect()->route('users.index')
+			->with('info', ['type' => 'success', 'message' => 'Usuario agregado con éxito']);
 	}
 
 	/**
@@ -55,9 +71,9 @@ class UserController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function show(User $user)
 	{
-		return view('user.show');
+		return view('user.show', compact('user'));
 	}
 
 	/**
@@ -66,9 +82,13 @@ class UserController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($id)
+	public function edit(User $user)
 	{
-		return view('user.edit');
+		$programas = auth()->user()->programas
+			->pluck('nombre', 'id');
+		$roles     = Role::get()->pluck('name', 'id');
+
+		return view('user.edit', compact('user', 'programas', 'roles'));
 	}
 
 	/**
@@ -78,9 +98,18 @@ class UserController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(UserUpdateRequest $request, $id)
 	{
-		//
+		$user = User::findOrFail($id);
+		$user->fill( $request->all() );
+		$user->save();
+		$user->programas()
+			->sync( $request->get('programas') );
+		$user->roles()
+			->sync( [$request->get('roles')[0]] );
+
+		return redirect()->route('users.edit', $user->id)
+			->with('info', ['type' => 'success', 'message' => 'Usuario modificado con éxito']);
 	}
 
 	/**
@@ -92,10 +121,5 @@ class UserController extends Controller
 	public function destroy($id)
 	{
 		//
-	}
-
-	public function actividades($id)
-	{
-		return view('user.actividades');
 	}
 }
