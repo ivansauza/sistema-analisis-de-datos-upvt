@@ -11,9 +11,6 @@ class ProgramasTableSeeder extends Seeder
      */
     public function run()
     {
-
-
-
         DB::table('programas')->insert([
         	'clave' => 'LNI', 
         	'nombre' => 'Licenciatura en Negocios Internacionales'
