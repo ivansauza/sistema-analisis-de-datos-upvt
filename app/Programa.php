@@ -31,4 +31,16 @@ class Programa extends Model
     {
     	return $this->hasMany('App\Periodo');
     }
+
+    /**
+     * Retornar el programa predeterminado del usuario logeado 
+     *
+    */
+    public static function getPredeterminado()
+    {
+        return auth()->user()
+            ->programas()
+            ->where('predeterminado', '=', 1)
+            ->first();
+    }
 }
