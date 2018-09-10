@@ -30,8 +30,7 @@ class UserStoreRequest extends FormRequest
             'password'    => 'required|string|min:6|confirmed', 
             'programas'   => 'required|array', 
             'programas.*' => 'integer|exists:programas,id', 
-            'roles'       => 'required|array', 
-            'roles.*'     => 'integer|exists:roles,id'
+            'roles'       => 'required|integer|exists:roles,id'
         ];
     }
 }
