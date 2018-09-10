@@ -24,4 +24,12 @@ class Periodo extends Model
     {
         return $this->belongsTo('App\Programa');
     }
+
+    public function getFullClaveAttribute()
+    {
+        $clave = explode('-', $this->clave);
+        $res   = ucwords(implode(' ', $clave));
+        
+        return  str_replace(' ', '-', $res) . " {$this->anio}";
+    }
 }
