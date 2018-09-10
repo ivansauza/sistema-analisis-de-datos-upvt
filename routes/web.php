@@ -29,7 +29,7 @@ Route::resource('periodos', 'PeriodoController')->middleware('auth');;
 
 Route::get('preguntas/programa/select', 'PreguntaController@programaSelect')
 ->name('preguntas.programa.select');
-Route::resource('preguntas', 'PreguntaController');
+Route::resource('preguntas', 'PreguntaController')->middleware('auth');;
 
 Route::resource('encuestas', 'EncuestaController');
 Route::resource('procesos', 'ProcesoController');
