@@ -13,9 +13,9 @@
 
 	{{ Form::open(['route' => 'analisis.create', 'method' => 'GET']) }}
 		<div class="form-group">
-			{{ Form::label('programa_id', 'Programa Educativo') }}
-			{{ Form::select('programa_id', ['a' => 'Ingeniería en Informática', 'b' => 'Maestría en Administración'], null, ['class' => 'form-control', 'required']) }}
-			<small class="form-text text-muted">Selecciona el Programa Educativo del cual quiere realizar el análisis de datos.</small>
+			{{ Form::label('periodo_id', 'Periodo') }}
+			{{ Form::select('periodo_id', $periodos, null, ['class' => 'form-control', 'required', 'placeholder' => 'Selecciona le periodo ...']) }}
+			<small class="form-text text-muted">Selecciona el Perido del cual quiere realizar el análisis de datos.</small>
 		</div>
 
 		{{ Form::submit('Siguiente', ['class' => 'btn btn-block btn-primary mt-5']) }}

@@ -5,7 +5,7 @@
 </div>-->
 
 <div class="card-header">
-	Análisis de datos para el periodo <i>{{ $periodo->full_clave }}</i>
+	Análisis de datos para el periodo <i>{{ $analisis->periodo->full_clave }}</i>
 </div>
 
 <table class="table">
@@ -18,7 +18,7 @@
 	</thead>
 
 	<tbody>
-		{{ Form::hidden('periodo_id', $periodo->id) }}
+		{{ Form::hidden('periodo_id', $analisis->periodo->id) }}
 		@foreach($preguntas as $pregunta)
 			<tr>
 				<th>{{ $loop->index + 1 }}</th>
@@ -31,7 +31,7 @@
 				</td>
 				<td style="width: 30%;">
 					{{ Form::hidden('preguntas_id[]', $pregunta->id) }}
-					{{ Form::number('preguntas_value[]', null, ['class' => 'form-control']) }}
+					{{ Form::number('preguntas_value[]', $pregunta->pivot->valor, ['class' => 'form-control']) }}
 					<small class="form-text text-muted">
 						{{ $pregunta->nota }}
 					</small>

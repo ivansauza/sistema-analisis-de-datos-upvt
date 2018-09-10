@@ -51,7 +51,7 @@
 						</td>
 						<td class="text-center">{{ $periodo->id }}</td>
 						<td>
-							{{ $periodo->clave }} {{ $periodo->anio }}
+							{{ $periodo->full_clave }}
 						</td>
 						<td class="text-center">
 							<span class="badge badge-pill badge-{{ $periodo->estado ? 'success' : 'danger' }}">
