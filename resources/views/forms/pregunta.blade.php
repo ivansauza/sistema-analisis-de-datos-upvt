@@ -38,9 +38,12 @@
 
 <hr class="mt-4" />
 
-<div class="custom-control custom-checkbox">
- 	{{ Form::checkbox('desactivar', 'null', false, ['class' => 'custom-control-input', 'id' => 'desactivar']) }}
- 	{{ Form::label('desactivar', 'Desactivar la pregunta, los usuarios ya no podrán ver esta pregunta.', ['class' => 'custom-control-label']) }}
+<div class="form-group">
+	<div class="custom-control custom-checkbox">
+	 	{{ Form::hidden('desactivar', 0) }}
+	 	{{ Form::checkbox('desactivar', 1, null, ['class' => 'custom-control-input', 'id' => 'desactivar']) }}
+	 	{{ Form::label('desactivar', 'Desactivar la pregunta, los usuarios ya no podrán ver esta pregunta.', ['class' => 'custom-control-label']) }}
+	</div>
 	@if ($errors->has('desactivar'))
 		<span class="badge badge-danger">{{ $errors->first('desactivar') }}</span>
 	@endif
