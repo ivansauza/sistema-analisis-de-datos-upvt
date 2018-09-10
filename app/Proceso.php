@@ -8,8 +8,13 @@ class Proceso extends Model
 {
 	protected $table    = 'procesos';
 	protected $fillable = [
-		'nombre', 'nota'
+		'nombre', 'nota', 'programa_id'
     ];
+
+    public function programa()
+    {
+    	return $this->belongsTo('App\Programa');
+    }
 
     public function indicadores()
     {
