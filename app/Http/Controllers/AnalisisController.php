@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Traits\ProgramasEmptyValidate;
+use App\Http\Requests\AnalisisRequest;
+
+use App\Analisis;
+use App\Programa;
+use App\Periodo;
+use App\Encuesta;
+
 
 class AnalisisController extends Controller
 {
+    use ProgramasEmptyValidate;
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,9 @@ class AnalisisController extends Controller
      */
     public function index()
     {
-        return view('analisis.index');
+        $analisis = auth()->user()->encuestas;
+
+        return view('analisis.index', compact('analisis'));
     }
 
     /**
@@ -23,7 +35,16 @@ class AnalisisController extends Controller
      */
     public function create()
     {
-        return view('analisis.create');
+        $periodo = Periodo::where('estado', '=', 1)
+            ->findOrFail(request()->input('periodo_id'));
+        
+        $preguntas = Programa::getPredeterminado()
+            ->preguntas()
+            ->get()
+            ->where('desactivar', '=', 0)
+            ->where('role_id', '=', auth()->user()->roles()->first()->id);
+
+        return view('analisis.create', compact('preguntas', 'periodo'));
     }
 
     /**
@@ -32,9 +53,21 @@ class AnalisisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnalisisRequest $request)
     {
-        //
+        $encuesta = new Encuesta($request->all());
+        $encuesta->user_id = auth()->id();
+        $encuesta->save();
+
+        foreach ($request->get('preguntas_id') as $key => $pregunta_id) 
+        {
+            $encuesta->preguntas()->attach($pregunta_id, [
+                'valor' => $request->get('preguntas_value')[$key]
+            ]);
+        }
+
+        return redirect()->route('analisis.index')
+            ->with('info', ['type' => 'success', 'message' => 'Análisis guardado con éxito']);
     }
 
     /**
@@ -56,7 +89,11 @@ class AnalisisController extends Controller
      */
     public function edit($id)
     {
-        return view('analisis.index');
+        $analisis  = Encuesta::where('user_id', '=', auth()->id())
+            ->findOrFail($id);
+        $preguntas = $analisis->preguntas;
+
+        return view('analisis.edit', compact('analisis', 'preguntas'));
     }
 
     /**
@@ -79,11 +116,20 @@ class AnalisisController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $analisis  = Encuesta::findOrFail($id);
+        $analisis->preguntas()->sync([]);
+        $analisis->delete();
+
+        return redirect()->route('analisis.index')
+            ->with('info', ['type' => 'success', 'message' => 'Análisis eliminado con éxito']);
     }
 
     public function select()
     {
-        return view('analisis.select');
+        $periodos = Periodo::get()->where('estado', '=', 1)
+            ->where('programa_id', '=', Programa::getPredeterminado()->id)
+            ->pluck('full_clave', 'id');
+
+        return view('analisis.select', compact('periodos'));
     }
 }
