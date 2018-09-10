@@ -42,9 +42,19 @@ class User extends Authenticatable
             ->withPivot('predeterminado');
     }
 
+    public function encuestas()
+    {
+        return $this->hasMany('App\Encuesta');
+    }
+
     public function roles()
     {
         return $this->belongsToMany('Caffeinated\Shinobi\Models\Role');
+    }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->name} {$this->apellidos}";
     }
 
     public function setPasswordAttribute($value)
