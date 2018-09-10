@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Indicador;
 use Illuminate\Http\Request;
 
+Use App\Proceso;
+Use App\Programa;
+
 class IndicadorController extends Controller
 {
     /**
@@ -24,7 +27,11 @@ class IndicadorController extends Controller
      */
     public function create()
     {
-        return view('indicador.create');
+        $procesos = Programa::getPredeterminado()
+            ->procesos
+            ->pluck('nombre', 'id');
+
+        return view('indicador.create', compact('procesos'));
     }
 
     /**
