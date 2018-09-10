@@ -33,7 +33,7 @@ class PreguntaController extends Controller
                  * Extraer las preguntas que pertenecen al programa
                  * actual predeterminado
                 */
-                $preguntas = Programa::getPredeterminado()->preguntas();
+                $preguntas = Programa::getPredeterminado()->preguntas;
 
                 return view('pregunta.index', compact('preguntas'));
 
@@ -77,7 +77,7 @@ class PreguntaController extends Controller
      */
     public function show(Pregunta $pregunta)
     {
-        return view('pregunta.show');
+        return view('pregunta.show', compact('pregunta'));
     }
 
     /**
@@ -88,7 +88,11 @@ class PreguntaController extends Controller
      */
     public function edit(Pregunta $pregunta)
     {
-        return view('pregunta.edit');
+        $programas = auth()->user()->programas
+            ->pluck('nombre', 'id');
+        $roles     = Role::get()->pluck('name', 'id');
+
+        return view('pregunta.edit', compact('pregunta', 'programas', 'roles'));
     }
 
     /**
@@ -98,9 +102,12 @@ class PreguntaController extends Controller
      * @param  \App\Pregunta  $pregunta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pregunta $pregunta)
+    public function update(PreguntaRequest $request, Pregunta $pregunta)
     {
-        //
+        $pregunta->update($request->all());
+
+        return redirect()->back()
+            ->with('info', ['type' => 'success', 'message' => 'Pregunta actualizada con éxito']);
     }
 
     /**
@@ -111,7 +118,14 @@ class PreguntaController extends Controller
      */
     public function destroy(Pregunta $pregunta)
     {
-        //
+        /* Comprobar que el usuario tiene permisos sobre la  enviada */
+        Programa::getPredeterminado()->preguntas()
+            ->findOrFail($pregunta->id);
+
+        $pregunta->delete();
+
+        return redirect()->route('preguntas.index')
+            ->with('info', ['type' => 'success', 'message' => 'Pregunta eliminada con éxito']);
     }
 
     public function programaSelect()
