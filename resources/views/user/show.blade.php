@@ -37,7 +37,7 @@
 				</tr>
 				<tr>
 					<td scope="row" class="text-muted">Nombre</td>
-					<td>{{ $user->nombre }}</td>
+					<td>{{ $user->name }}</td>
 				</tr>
 				<tr>
 					<td scope="row" class="text-muted">Apellidos</td>

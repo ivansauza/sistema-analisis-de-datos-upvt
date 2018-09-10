@@ -37,7 +37,7 @@
 					<th scope="col">ID</th>
 					<th scope="col">Nombre</th>
 					<th scope="col">Correo elestrónico</th>
-					<th scope="col">Actividades</th>
+					<th scope="col" class="text-center">Activo</th>
 					<th scope="col" class="text-right">Opciones</th>
 				</tr>
 			</thead>
@@ -47,11 +47,17 @@
 						<th scope="row">{{ $user->id }}</th>
 						<td>{{ $user->name }} {{ $user->apellidos }}</td>
 						<td>{{ $user->email }}</td>
-						<td>
-							<a href="{{ route('users.actividades', $user->id) }}" class="text-secondary">Ver historial</a>
+						<td class="text-center">
+							<span class="badge badge-pill badge-{{ $user->disabled ? 'secondary' : 'primary' }}">
+								{{ $user->disabled ? 'NO' : 'SI' }}
+							</span>
 						</td>
 						<td>
 							<div class="float-right">
+								<a href="{{ route('users.actividades', $user->id) }}" class="btn btn-sm text-secondary mt-1"  data-toggle="tooltip" data-placement="top" title="Actividades">
+									<i class="fas fa-history"></i>
+								</a>
+
 								<a href="{{ route('users.show', $user->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Detalles">
 									<i class="fas fa-eye"></i>
 								</a>

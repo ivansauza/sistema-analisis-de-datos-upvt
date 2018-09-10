@@ -57,5 +57,18 @@
 				<span class="badge badge-danger">{{ $errors->first('roles') }}</span>
 			@endif
 		</div>
+
+		<hr />
+
+		<div class="form-group mt-4">
+			<div class="custom-control custom-checkbox">
+				{{ Form::hidden('disabled', 0) }}
+			 	{{ Form::checkbox('disabled', 1, null, ['class' => 'custom-control-input', 'id' => 'disabled']) }}
+			 	{{ Form::label('disabled', 'Desactivar usuario, ya no podrá iniciar sesión en el sistama.', ['class' => 'custom-control-label']) }}
+				@if ($errors->has('disabled'))
+					<span class="badge badge-danger">{{ $errors->first('disabled') }}</span>
+				@endif
+			</div>
+		</div>
 	</div>
 </div>
