@@ -13,15 +13,15 @@
 @section('content')
 
 	<div class="card">
-		<div class="card-body">
-			{{ Form::open(['route' => 'encuestas.store']) }}
+		{{ Form::open(['route' => 'analisis.store']) }}
 
-				@include('forms.analisis')
+			@include('forms.analisis.create')
 
-				{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-primary mt-5']) }}
-
-			{{ Form::close() }}
+		<div class="card-footer">
+			{{ Form::submit('Guardar temporalmente', ['class' => 'btn btn-block btn-primary']) }}
 		</div>
+
+		{{ Form::close() }}
 	</div>
 	
 @endsection
