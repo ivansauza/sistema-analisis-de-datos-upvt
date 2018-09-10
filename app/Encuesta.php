@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Encuesta extends Model
 {
     protected $table    = 'encuestas';
+
     protected $fillable = [
-        'finalizado', 'nota', 'usuario_id', 'periodo_id'
+        'finalizado', 'nota', 'user_id', 'periodo_id'
+    ];
+
+    protected $casts = [
+        'finalizado' => 'boolean'
     ];
 
     public function user()
@@ -23,7 +28,8 @@ class Encuesta extends Model
 
     public function preguntas()
     {
-    	return $this->belongsToMany('App\Pregunta');
+    	return $this->belongsToMany('App\Pregunta')
+            ->withPivot('valor');
     }
 
 }
