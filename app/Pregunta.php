@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Pregunta extends Model
 {
     protected $table    = 'preguntas';
+
     protected $fillable = [
         'nombre', 'nota', 'desactivar', 'role_id', 'programa_id'
+    ];
+
+    protected $casts = [ 
+        'desactivar' => 'boolean'
     ];
 
     public function encuestas()
@@ -21,10 +26,8 @@ class Pregunta extends Model
     	return $this->belongsTo('App\Programa');
     }
 
-    /*
     public function role()
     {
-    	return $this->belongsTo('App\Programa');
+        return $this->belongsTo('Caffeinated\Shinobi\Models\Role');
     }
-    */
 }
