@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Encuesta;
 use Illuminate\Http\Request;
+use App\Traits\ProgramasEmptyValidate;
 
 class EncuestaController extends Controller
 {
+    use ProgramasEmptyValidate;
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,9 @@ class EncuestaController extends Controller
      */
     public function index()
     {
-        return view('encuesta.index');
+        $encuestas = Encuesta::get();
+
+        return view('encuesta.index', compact('encuestas'));
     }
 
     /**
