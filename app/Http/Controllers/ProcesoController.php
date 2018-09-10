@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Proceso;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProcesoRequest;
+
+Use App\Programa;
 
 class ProcesoController extends Controller
 {
@@ -14,7 +17,9 @@ class ProcesoController extends Controller
      */
     public function index()
     {
-        return view('proceso.index');
+        $procesos = Programa::getPredeterminado()->procesos;
+
+        return view('proceso.index', compact('procesos'));
     }
 
     /**
@@ -24,7 +29,10 @@ class ProcesoController extends Controller
      */
     public function create()
     {
-        return view('proceso.create');
+        $programas = auth()->user()->programas
+            ->pluck('nombre', 'id');
+
+        return view('proceso.create', compact('programas'));
     }
 
     /**
@@ -33,9 +41,12 @@ class ProcesoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProcesoRequest $request)
     {
-        //
+        $proceso = Proceso::create($request->all());
+
+        return redirect()->route('procesos.edit', $proceso->id)
+            ->with('info', ['type' => 'success', 'message' => 'Proceso guardado con éxito']);
     }
 
     /**
@@ -57,7 +68,10 @@ class ProcesoController extends Controller
      */
     public function edit(Proceso $proceso)
     {
-        return view('proceso.edit');
+        $programas = auth()->user()->programas
+            ->pluck('nombre', 'id');
+
+        return view('proceso.edit', compact('proceso', 'programas'));
     }
 
     /**
