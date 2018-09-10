@@ -56,7 +56,7 @@ class ProgramaController extends Controller
             $pivot->save();
         }
 
-        return redirect()->route('programas.index')
+        return redirect()->back()
            ->with('info', ['type' => 'success', 'message' => 'Programa Educativo selecionado con éxito']);;
     }
 }
