@@ -22,9 +22,9 @@ class Programa extends Model
     	return $this->hasMany('App\Pregunta');
     }
 
-    public function subindicadores()
+    public function procesos()
     {
-    	return $this->hasMany('App\Subindicador');
+    	return $this->hasMany('App\Proceso');
     }
 
     public function periodos()
