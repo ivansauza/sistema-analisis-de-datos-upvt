@@ -7,7 +7,7 @@
 
 		<div class="form-group">
 			{{ Form::label('proceso_id', 'Proceso') }}
-			{{ Form::select('proceso_id', ['a' => 'Enseñanza Aprendizaje', 'b' => 'Procedimientos de Control'], null, ['class' => 'form-control', 'required']) }}
+			{{ Form::select('proceso_id', $procesos, request()->input('proceso_id'), ['class' => 'form-control', 'placeholder' => 'Seleccionar ...']) }}
 			<small class="form-text text-muted">Puede seleccionar varios items presionando la tecla "control" + "click".</small>
 		</div>
 	</div>

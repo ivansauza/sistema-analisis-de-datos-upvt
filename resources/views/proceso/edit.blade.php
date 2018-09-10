@@ -13,7 +13,7 @@
 
 	<div class="card">
 		<div class="card-body">
-			{{ Form::model(null, ['route' => ['procesos.update', 0]]) }}
+			{{ Form::model($proceso, ['route' => ['procesos.update', $proceso], 'method' => 'PUT']) }}
 
 				@include('forms.proceso')
 
