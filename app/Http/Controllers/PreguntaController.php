@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Pregunta;
 use Illuminate\Http\Request;
+use App\Traits\ProgramasEmptyValidate;
+use App\Http\Requests\PreguntaRequest;
+
+use App\Programa;
+use Caffeinated\Shinobi\Models\Role;
 
 class PreguntaController extends Controller
 {
+    use ProgramasEmptyValidate;
+
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +25,18 @@ class PreguntaController extends Controller
         {
             case 'programa':
                 return view('pregunta.programa.index');
+
                 break;
             
             default:
-                return view('pregunta.index');
+                /**
+                 * Extraer las preguntas que pertenecen al programa
+                 * actual predeterminado
+                */
+                $preguntas = Programa::getPredeterminado()->preguntas();
+
+                return view('pregunta.index', compact('preguntas'));
+
                 break;
         }
     }
@@ -33,7 +48,11 @@ class PreguntaController extends Controller
      */
     public function create()
     {
-        return view('pregunta.create');
+        $programas = auth()->user()->programas
+            ->pluck('nombre', 'id');
+        $roles     = Role::get()->pluck('name', 'id');
+
+        return view('pregunta.create', compact('programas', 'roles'));
     }
 
     /**
@@ -42,9 +61,12 @@ class PreguntaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PreguntaRequest $request)
     {
-        //
+        $pregunta = Pregunta::create($request->all());
+
+        return redirect()->route('preguntas.edit', $pregunta->id)
+            ->with('info', ['type' => 'success', 'message' => 'Pregunta agregada con éxito']);
     }
 
     /**
