@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'apellidos', 'email', 'password', 
+        'name', 'apellidos', 'email', 'password', 'disabled'
     ];
 
     /**
@@ -25,6 +25,10 @@ class User extends Authenticatable
      */
     protected $hidden = [
      'password', 'remember_token', 
+    ];
+
+    protected $casts = [ 
+        'disabled' => 'boolean'
     ];
 
     public function actividades()
