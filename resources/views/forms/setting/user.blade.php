@@ -6,7 +6,9 @@
 		<h2 class="font-weight-light">
 			{{ $user->name }} {{ $user->apellidos }} 
 			<small>
-				{{ $user->roles()->first()->name }}
+				@if(!$user->roles()->get()->isEmpty())
+					{{ $user->roles()->first()->name }}
+				@endif
 			</small>
 		</h2>
 		<p class="text-muted">
