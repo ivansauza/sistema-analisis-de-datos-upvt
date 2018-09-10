@@ -14,7 +14,7 @@ class RolesTableSeeder extends Seeder
         DB::table('roles')->insert([
         	'name' => 'Director', 
         	'slug' => 'director', 
-        	'description' => 'Directo principal de la carrera', 
+        	'description' => 'Director principal de la carrera', 
         	'special' => 'all-access'
         ]);
 
