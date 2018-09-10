@@ -11,9 +11,11 @@
 
 @section('content')
 
+	@include('fragments.alert')
+
 	<div class="card">
 		<div class="card-body">
-			{{ Form::model(null, ['route' => ['preguntas.update', 0]]) }}
+			{{ Form::model($pregunta, ['route' => ['preguntas.update', $pregunta], 'method' => 'PUT']) }}
 
 				@include('forms.pregunta')
 
