@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Subindicador;
 use Illuminate\Http\Request;
+use App\Http\Requests\SubindicadorRequest;
+
+use App\Indicador;
 
 class SubindicadorController extends Controller
 {
@@ -24,7 +27,9 @@ class SubindicadorController extends Controller
      */
     public function create()
     {
-        return view('subindicador.create');
+        $indicadores = Indicador::get()->pluck('nombre', 'id');
+
+        return view('subindicador.create', compact('indicadores'));
     }
 
     /**
@@ -33,9 +38,12 @@ class SubindicadorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubindicadorRequest $request)
     {
-        //
+        $subindicador = Subindicador::create($request->all());
+
+        return redirect()->route('subindicadores.edit', $subindicador->id)
+            ->with('info', ['type' => 'success', 'message' => 'Subindicador guardado con éxito']);
     }
 
     /**
@@ -57,7 +65,9 @@ class SubindicadorController extends Controller
      */
     public function edit(Subindicador $subindicador)
     {
-        return view('subindicador.edit');
+        $indicadores = Indicador::get()->pluck('nombre', 'id');
+        
+        return view('subindicador.edit', compact('subindicador', 'indicadores'));
     }
 
     /**
@@ -67,9 +77,12 @@ class SubindicadorController extends Controller
      * @param  \App\Subindicador  $subindicador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subindicador $subindicador)
+    public function update(SubindicadorRequest $request, Subindicador $subindicador)
     {
-        //
+        $subindicador->update($request->all());
+
+        return redirect()->route('subindicadores.edit', $subindicador->id)
+            ->with('info', ['type' => 'success', 'message' => 'Subindicador editado con éxito']);
     }
 
     /**
@@ -80,7 +93,10 @@ class SubindicadorController extends Controller
      */
     public function destroy(Subindicador $subindicador)
     {
-        //
+        $subindicador->delete();
+
+        return redirect()->route('procesos.index')
+            ->with('info', ['type' => 'success', 'message' => 'Subindicador eliminado con éxito']);
     }
 
     public function select()
