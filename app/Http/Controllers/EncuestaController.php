@@ -6,6 +6,8 @@ use App\Encuesta;
 use Illuminate\Http\Request;
 use App\Traits\ProgramasEmptyValidate;
 
+Use App\Programa;
+
 class EncuestaController extends Controller
 {
     use ProgramasEmptyValidate;
@@ -17,9 +19,9 @@ class EncuestaController extends Controller
      */
     public function index()
     {
-        $encuestas = Encuesta::get();
+        $periodos = Programa::getPredeterminado()->periodos;
 
-        return view('encuesta.index', compact('encuestas'));
+        return view('encuesta.index', compact('periodos'));
     }
 
     /**
