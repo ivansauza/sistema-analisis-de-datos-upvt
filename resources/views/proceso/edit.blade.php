@@ -11,6 +11,8 @@
 
 @section('content')
 
+	@include('fragments.alert')
+
 	<div class="card">
 		<div class="card-body">
 			{{ Form::model($proceso, ['route' => ['procesos.update', $proceso], 'method' => 'PUT']) }}
