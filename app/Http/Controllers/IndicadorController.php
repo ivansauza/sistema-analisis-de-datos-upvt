@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Indicador;
 use Illuminate\Http\Request;
+use App\Http\Requests\IndicadorRequest;
 
 Use App\Proceso;
 Use App\Programa;
@@ -40,9 +41,12 @@ class IndicadorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IndicadorRequest $request)
     {
-        //
+        $indicador = Indicador::create($request->all());
+
+        return redirect()->route('indicadores.edit', $indicador->id)
+            ->with('info', ['type' => 'success', 'message' => 'Indicador guardado con éxito']);
     }
 
     /**
@@ -64,7 +68,11 @@ class IndicadorController extends Controller
      */
     public function edit(Indicador $indicador)
     {
-        return view('indicador.edit');
+        $procesos = Programa::getPredeterminado()
+            ->procesos
+            ->pluck('nombre', 'id');
+
+        return view('indicador.edit', compact('indicador', 'procesos'));
     }
 
     /**
@@ -74,9 +82,12 @@ class IndicadorController extends Controller
      * @param  \App\Indicador  $indicador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Indicador $indicador)
+    public function update(IndicadorRequest $request, Indicador $indicador)
     {
-        //
+        $indicador->update($request->all());
+
+        return redirect()->route('indicadores.edit', $indicador->id)
+            ->with('info', ['type' => 'success', 'message' => 'Indicador editado con éxito']);
     }
 
     /**
@@ -87,6 +98,9 @@ class IndicadorController extends Controller
      */
     public function destroy(Indicador $indicador)
     {
-        //
+        $indicador->delete();
+
+        return redirect()->route('procesos.index')
+            ->with('info', ['type' => 'success', 'message' => 'Indicador eliminado con éxito']);
     }
 }
