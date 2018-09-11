@@ -40,12 +40,13 @@ Route::resource('encuestas', 'EncuestaController');
 
 Route::resource('procesos', 'ProcesoController');
 
-Route::resource('indicadores', 'IndicadorController');
+Route::resource('indicadores', 'IndicadorController', ['parameters' => [
+	'indicadores' => 'indicador'
+]]);
 
-Route::get('subindicadores/select', 'SubindicadorController@select')
-	->name('subindicadores.select');
-
-Route::resource('subindicadores', 'SubindicadorController');
+Route::resource('subindicadores', 'SubindicadorController', ['parameters' => [
+	'subindicadores' => 'subindicador'
+]]);
 
 Route::resource('users', 'UserController')
 	->middleware('auth');
