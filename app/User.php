@@ -64,9 +64,36 @@ class User extends Authenticatable
             $this->attributes['password'] = bcrypt($value);
         }
     }
-
+    
+    /**
+     * Retorna una coleccion de programas del usuario
+     * actualmente logeado.
+     * 
+     * @return App\Programa
+     */
     public static function getProgramas()
     {
         return auth()->user()->programas()->get();
+    }
+
+    /**
+     * Retorna un arreglo el cual contiene una colección de id's de
+     * los periodos de los cuales ya se ha creado la encuesta correspondiente.
+     * 
+     * @return Array
+     */
+    public function getEncuestasExistsPeriodos()
+    {
+        $array_periodos_exists = collect();
+
+        $this->encuestas()->each(function($encuesta, $key) use($array_periodos_exists)
+        {
+            if ($encuesta->periodo->programa_id == Programa::getPredeterminado()->id) 
+            {
+                $array_periodos_exists->push($encuesta->periodo->id);
+            }
+        });
+
+        return $array_periodos_exists->all();
     }
 }
