@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\SubindicadorRequest;
 
 use App\Indicador;
+use App\Programa;
 
 class SubindicadorController extends Controller
 {
@@ -28,8 +29,10 @@ class SubindicadorController extends Controller
     public function create()
     {
         $indicadores = Indicador::get()->pluck('nombre', 'id');
+        $preguntas   = Programa::getPredeterminado()->preguntas
+            ->pluck('nombre', 'id');
 
-        return view('subindicador.create', compact('indicadores'));
+        return view('subindicador.create', compact('indicadores', 'preguntas'));
     }
 
     /**
@@ -66,8 +69,10 @@ class SubindicadorController extends Controller
     public function edit(Subindicador $subindicador)
     {
         $indicadores = Indicador::get()->pluck('nombre', 'id');
+        $preguntas   = Programa::getPredeterminado()->preguntas
+            ->pluck('nombre', 'id');
         
-        return view('subindicador.edit', compact('subindicador', 'indicadores'));
+        return view('subindicador.edit', compact('subindicador', 'indicadores', 'preguntas'));
     }
 
     /**
