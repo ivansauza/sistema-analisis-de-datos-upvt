@@ -35,39 +35,41 @@
 		</thead>
 		<tbody>
 			@foreach($analisis as $encuesta)
-				<tr>
-					<th scope="row">{{ $encuesta->id }}</th>
-					<td>{{ $encuesta->periodo->full_clave }}</td>
-					<td class="text-center">
-						<span class="badge badge-pill badge-{{ $encuesta->finalizado ? 'primary' : 'secondary' }}">
-							{{ $encuesta->finalizado ? 'SI' : 'NO' }}
-						</span>
-					</td>
-					<td class="text-center">
-						<span class="badge badge-pill badge-{{ $encuesta->periodo->estado ? 'success' : 'danger' }}">
-							{{ $encuesta->periodo->estado ? 'Abierto' : 'Cerrado' }}
-						</span>
-					</td>
-					<td>
-						<div class="float-right">
-							<a href="{{ route('analisis.show', $encuesta->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
-								<i class="fas fa-eye"></i>
-							</a>
+				@if($encuesta->periodo->programa_id == App\Programa::getPredeterminado()->id)
+					<tr>
+						<th scope="row">{{ $encuesta->id }}</th>
+						<td>{{ $encuesta->periodo->full_clave }}</td>
+						<td class="text-center">
+							<span class="badge badge-pill badge-{{ $encuesta->finalizado ? 'primary' : 'secondary' }}">
+								{{ $encuesta->finalizado ? 'SI' : 'NO' }}
+							</span>
+						</td>
+						<td class="text-center">
+							<span class="badge badge-pill badge-{{ $encuesta->periodo->estado ? 'success' : 'danger' }}">
+								{{ $encuesta->periodo->estado ? 'Abierto' : 'Cerrado' }}
+							</span>
+						</td>
+						<td>
+							<div class="float-right">
+								<a href="{{ route('analisis.show', $encuesta->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
+									<i class="fas fa-eye"></i>
+								</a>
 
-							@if($encuesta->periodo->estado)
-								@if(!$encuesta->finalizado)
-									<a href="{{ route('analisis.edit', $encuesta->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
-										<i class="fas fa-pencil-alt"></i>
-									</a>
+								@if($encuesta->periodo->estado)
+									@if(!$encuesta->finalizado)
+										<a href="{{ route('analisis.edit', $encuesta->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
+											<i class="fas fa-pencil-alt"></i>
+										</a>
 
-									{{ Form::open(['route' => ['analisis.destroy', $encuesta->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-										<button type="submit" class="btn btn-sm btn-transparent  text-secondary mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
-									{{ Form::close() }}
+										{{ Form::open(['route' => ['analisis.destroy', $encuesta->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+											<button type="submit" class="btn btn-sm btn-transparent  text-secondary mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+										{{ Form::close() }}
+									@endif
 								@endif
-							@endif
-						</div>
-					</td>
-				</tr>
+							</div>
+						</td>
+					</tr>
+				@endif
 			@endforeach
 		</tbody>
 	</table>
