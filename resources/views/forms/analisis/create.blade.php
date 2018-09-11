@@ -8,8 +8,8 @@
 	Análisis de datos para el periodo <i>{{ $periodo->full_clave }}</i>
 </div>
 
-<table class="table">
-	<thead>
+<table class="table table-hover">
+	<thead class="thead-light">
 		<tr>
 			<th>#</th>
 			<th>Pregunta</th>
@@ -47,7 +47,7 @@
 		<div class="custom-control custom-checkbox">
 		 	{{ Form::hidden('finalizado', 0) }}
 		 	{{ Form::checkbox('finalizado', 1, null, ['class' => 'custom-control-input', 'id' => 'finalizado']) }}
-		 	{{ Form::label('finalizado', 'Finalizar análisis de datos (Ya no podra modificar los datos).', ['class' => 'custom-control-label']) }}
+		 	{{ Form::label('finalizado', 'Finalizar análisis de datos (Ya no podrá modificar los datos).', ['class' => 'custom-control-label']) }}
 			@if ($errors->has('finalizado'))
 				<span class="badge badge-danger">{{ $errors->first('finalizado') }}</span>
 			@endif

@@ -12,13 +12,15 @@
 
 @section('content')
 
+	@include('fragments.errors')
+
 	<div class="card">
 		{{ Form::open(['route' => 'analisis.store']) }}
 
 			@include('forms.analisis.create')
 
 		<div class="card-footer">
-			{{ Form::submit('Guardar temporalmente', ['class' => 'btn btn-block btn-primary']) }}
+			{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-primary']) }}
 		</div>
 
 		{{ Form::close() }}

@@ -14,7 +14,7 @@
 	{{ Form::open(['route' => 'analisis.create', 'method' => 'GET']) }}
 		<div class="form-group">
 			{{ Form::label('periodo_id', 'Periodo') }}
-			{{ Form::select('periodo_id', $periodos, null, ['class' => 'form-control', 'required', 'placeholder' => 'Selecciona le periodo ...']) }}
+			{{ Form::select('periodo_id', $periodos, null, ['class' => 'form-control', 'required', 'placeholder' => 'Seleccionar ...']) }}
 			<small class="form-text text-muted">Selecciona el Perido del cual quiere realizar el análisis de datos.</small>
 		</div>
 

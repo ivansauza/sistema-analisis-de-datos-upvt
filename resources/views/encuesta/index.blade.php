@@ -18,7 +18,7 @@
 	<h1 class="h3">Encuestas</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
-			<a href="{{ route('encuestas.create') }}" class="btn btn-outline-primary btn-sm">Nuevo</a>
+			<a href="{{ route('encuestas.create') }}" class="btn btn-outline-primary btn-sm">Crear Encuesta</a>
 		</div>
 	</div>
 @endsection
@@ -26,7 +26,7 @@
 @section('content')
 <div class="card card-default">
 	<table class="table table-hover">
-		<thead>
+		<thead class="thead-light">
 			<tr>
 				<th scope="col">ID</th>
 				<th scope="col">Responsable</th>

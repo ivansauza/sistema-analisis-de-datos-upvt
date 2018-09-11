@@ -1,4 +1,4 @@
-@if(session('info'))
+@if (session('info'))
 	<div class="alert alert-{{ session('info')['type'] }} alert-dismissible fade show" role="alert">
 		{{ session('info')['message'] }}
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">

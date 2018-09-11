@@ -37,7 +37,7 @@
 				</tr>
 				<tr>
 					<td scope="row" class="text-muted">Clave</td>
-					<td>{{ $periodo->clave }} {{ $periodo->anio }}</td>
+					<td>{{ $periodo->full_clave }}</td>
 				</tr>
 				<tr>
 					<td scope="row" class="text-muted">Actual</td>

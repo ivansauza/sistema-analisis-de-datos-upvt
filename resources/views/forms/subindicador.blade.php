@@ -23,7 +23,7 @@
 
 		<div class="form-group">
 			{{ Form::label('indicador_id', 'Indicador') }}
-			{{ Form::select('indicador_id', $indicadores, request()->input('indicador_id'), ['class' => 'form-control']) }}
+			{{ Form::select('indicador_id', $indicadores, request()->input('indicador_id'), ['class' => 'form-control', 'placeholder' => 'Seleccionar ...']) }}
 			@if ($errors->has('indicador_id'))
 				<span class="badge badge-danger">{{ $errors->first('indicador_id') }}</span>
 			@endif

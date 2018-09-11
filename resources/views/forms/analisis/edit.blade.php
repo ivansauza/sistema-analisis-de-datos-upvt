@@ -1,15 +1,9 @@
-<!--<div class="form-group">
-	{{ Form::label('pregunta[]', 'Número de alumnos que fueron evaluados en el de Estancias y Estadía') }}
-	{{ Form::text('pregunta[]', null, ['class' => 'form-control']) }}
-	<small class="form-text text-muted">Periodo establecido. (40 días como máximo)</small>
-</div>-->
-
 <div class="card-header">
 	Análisis de datos para el periodo <i>{{ $analisis->periodo->full_clave }}</i>
 </div>
 
-<table class="table">
-	<thead>
+<table class="table table-hover">
+	<thead class="thead-light">
 		<tr>
 			<th>#</th>
 			<th>Pregunta</th>
@@ -18,8 +12,7 @@
 	</thead>
 
 	<tbody>
-		{{ Form::hidden('periodo_id', $analisis->periodo->id) }}
-		@foreach($preguntas as $pregunta)
+		@foreach($analisis->preguntas as $pregunta)
 			<tr>
 				<th>{{ $loop->index + 1 }}</th>
 				<td>
@@ -47,7 +40,7 @@
 		<div class="custom-control custom-checkbox">
 		 	{{ Form::hidden('finalizado', 0) }}
 		 	{{ Form::checkbox('finalizado', 1, null, ['class' => 'custom-control-input', 'id' => 'finalizado']) }}
-		 	{{ Form::label('finalizado', 'Finalizar análisis de datos (Ya no podra modificar los datos).', ['class' => 'custom-control-label']) }}
+		 	{{ Form::label('finalizado', 'Finalizar análisis de datos (Ya no podrá modificar los datos).', ['class' => 'custom-control-label']) }}
 			@if ($errors->has('finalizado'))
 				<span class="badge badge-danger">{{ $errors->first('finalizado') }}</span>
 			@endif

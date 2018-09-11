@@ -54,7 +54,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td scope="row" class="text-muted">Programa Educaivo</td>
+					<td scope="row" class="text-muted">Programa Educativo</td>
 					<td>{{ $pregunta->programa->nombre }}</td>
 				</tr>
 				<tr>
