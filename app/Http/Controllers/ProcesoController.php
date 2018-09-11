@@ -81,9 +81,12 @@ class ProcesoController extends Controller
      * @param  \App\Proceso  $proceso
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proceso $proceso)
+    public function update(ProcesoRequest $request, Proceso $proceso)
     {
-        //
+        $proceso->update($request->all());
+
+        return redirect()->route('procesos.edit', $proceso->id)
+            ->with('info', ['type' => 'success', 'message' => 'Proceso editado con éxito']);
     }
 
     /**
@@ -94,6 +97,9 @@ class ProcesoController extends Controller
      */
     public function destroy(Proceso $proceso)
     {
-        //
+        $proceso->delete();
+
+        return redirect()->route('procesos.index')
+            ->with('info', ['type' => 'success', 'message' => 'Proceso eliminado con éxito']);
     }
 }
