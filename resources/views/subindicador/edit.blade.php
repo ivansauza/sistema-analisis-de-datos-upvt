@@ -11,9 +11,11 @@
 
 @section('content')
 
+	@include('fragments.alert')
+
 	<div class="card">
 		<div class="card-body">
-			{{ Form::model(null, ['route' => ['subindicadores.update', 0]]) }}
+			{{ Form::model($subindicador, ['route' => ['subindicadores.update', $subindicador->id], 'method' => 'PUT']) }}
 
 				@include('forms.subindicador')
 
