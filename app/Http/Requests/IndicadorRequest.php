@@ -24,7 +24,9 @@ class IndicadorRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            'nombre'     => 'required|string|max:255', 
+            'proceso_id' => 'required|integer|exists:procesos,id', 
+            'nota'       => 'string|nullable'
         ];
     }
 }
