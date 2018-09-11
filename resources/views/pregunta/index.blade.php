@@ -4,7 +4,7 @@
 	<h1 class="h3">Preguntas</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
-			<a href="{{ route('preguntas.create') }}" class="btn btn-outline-primary btn-sm">Crear Pregunta</a>
+			<a href="{{ route('preguntas.create', ['programa_id' => App\Programa::getPredeterminado()->id]) }}" class="btn btn-outline-primary btn-sm">Crear Pregunta</a>
 			@include('pregunta.fragments.view_menu')
 		</div>
 	</div>
