@@ -47,33 +47,42 @@
 		<div class="col mb-5 mt-4">
 			<div class="btn-toolbar float-right">
 				<div class="btn-group mr-2">
-					<a href="" class="btn btn-outline-secondary btn-sm">Agregar Pregunta</a>
-					<a href="" class="btn btn-outline-secondary btn-sm">Agregar Número</a>
-					<a href="" class="btn btn-outline-secondary btn-sm">Agregar Operacion</a>
+					<a href="#" class="btn btn-outline-secondary btn-sm add-pregunta">Agregar Pregunta</a>
+					<a href="#" class="btn btn-outline-secondary btn-sm add-operacion">Agregar Operacion</a>
+					<a href="#" class="btn btn-outline-secondary btn-sm add-numero">Agregar Número</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="form-row">
-	<div class="form-group col">
-		{{ Form::select('pregunta_id[]', ['a' => 'Número de alumnos que fueron evaluados de Estancias y Estadía', 'b' => 'Número total de alumnos que cumplieron con el 100% de asesorías'], null, ['class' => 'form-control']) }}
-	</div>
+<div class="form-row" id="proceso">
 
-	<div class="form-group col">
-		{{ Form::select('operacion[]', ['division' => '/', 'multiplicacion' => '*', 'suma' => '+', 'resta' => '-', 'raiz' => '√'], null, ['class' => 'form-control']) }}
-	</div>
-
-	<div class="form-group col">
-		{{ Form::select('pregunta_id[]', ['a' => 'Número de alumnos que fueron evaluados de Estancias y Estadía', 'b' => 'Número total de alumnos que cumplieron con el 100% de asesorías'], null, ['class' => 'form-control']) }}
-	</div> 
-
-	<div class="form-group col">
-		{{ Form::select('operacion[]', ['division' => '/', 'multiplicacion' => '*', 'suma' => '+', 'resta' => '-', 'raiz' => '√'], null, ['class' => 'form-control']) }}
-	</div>
-
-	<div class="form-group col">
-		{{ Form::text('numero[]', null, ['class' => 'form-control']) }}
-	</div>	
 </div>
+
+@section('script')
+	$(document).ready(function(){
+		$('.add-pregunta').click(function(event){
+			event.preventDefault()
+			$('#proceso').append('<div class="form-group col"><div class="input-group mb-3">{{ Form::select("pregunta_id[]", $preguntas, null, ["class" => "form-control"]) }}<div class="input-group-append"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></div></div></div>')
+		})
+
+		$('.add-operacion').click(function(event){
+			event.preventDefault()
+			$('#proceso').append('<div class="form-group col"><div class="input-group mb-3">{{ Form::select("operacion[]", ["division" => "/", "multiplicacion" => "*", "suma" => "+", "resta" => "-", "raiz" => "√"], null, ["class" => "form-control"]) }}<div class="input-group-append"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></div></div></div>')
+		})
+
+		$('.add-numero').click(function(event){
+			event.preventDefault()
+			$('#proceso').append('<div class="form-group col"><div class="input-group mb-3">{{ Form::text("numero[]", null, ["class" => "form-control"]) }}<div class="input-group-append"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></div></div></div>')
+		})
+	})
+@endsection
+
+<!--
+	<div class="form-group col">{{ Form::select('pregunta_id[]', $preguntas, null, ['class' => 'form-control']) }}</div>
+
+	<div class="form-group col">{{ Form::select("operacion[]", ["division" => "/", "multiplicacion" => "*", "suma" => "+", "resta" => "-", "raiz" => "√"], null, ["class" => "form-control"]) }}</div>
+
+	<div class="form-group col">{{ Form::text("numero[]", null, ["class" => "form-control"]) }}</div>
+-->
