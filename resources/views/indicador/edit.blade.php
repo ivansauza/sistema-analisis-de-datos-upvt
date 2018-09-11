@@ -11,13 +11,15 @@
 
 @section('content')
 
+	@include('fragments.alert')
+
 	<div class="card">
 		<div class="card-body">
-			{{ Form::model(null, ['route' => ['indicadores.update', 0]]) }}
+			{{ Form::model($indicador, ['route' => ['indicadores.update', $indicador->id], 'method' => 'PUT']) }}
 
 				@include('forms.indicador')
 
-				{{ Form::submit('Actualizar', ['class' => 'btn btn-block btn-outline-warning mt-5']) }}
+				{{ Form::submit('Actualizar', ['class' => 'btn btn-block btn-warning mt-5']) }}
 
 			{{ Form::close() }}
 		</div>
