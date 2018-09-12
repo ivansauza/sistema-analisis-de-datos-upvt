@@ -36,17 +36,21 @@ Route::get('preguntas/programa/select', 'PreguntaController@programaSelect')
 Route::resource('preguntas', 'PreguntaController')
 	->middleware('auth');
 
-Route::resource('encuestas', 'EncuestaController');
+Route::resource('encuestas', 'EncuestaController')
+	->middleware('auth');
 
-Route::resource('procesos', 'ProcesoController');
+Route::resource('procesos', 'ProcesoController')
+	->middleware('auth');
 
 Route::resource('indicadores', 'IndicadorController', ['parameters' => [
 	'indicadores' => 'indicador'
-]]);
+]])
+	->middleware('auth');
 
 Route::resource('subindicadores', 'SubindicadorController', ['parameters' => [
 	'subindicadores' => 'subindicador'
-]]);
+]])
+	->middleware('auth');
 
 Route::resource('users', 'UserController')
 	->middleware('auth');
