@@ -12,7 +12,7 @@ class PreguntasTableSeeder extends Seeder
     public function run()
     {
         DB::table('preguntas')->insert([
-        	'nombre'      => 'Número de alumnos que fueron evaluados en el de Estancias y Estadía', 
+        	'nombre'      => 'Número de alumnos que fueron evaluados en el de Estancias/Estadía', 
         	'nota'        => 'Periodo establecido. (40 días como máximo)', 
         	'desactivar'  => 0, 
         	'posicion'    => null, 
@@ -39,7 +39,7 @@ class PreguntasTableSeeder extends Seeder
         ]);
 
         DB::table('preguntas')->insert([
-        	'nombre'      => 'Número de alumnos en proceso de estancia /estadía', 
+        	'nombre'      => 'Número de alumnos en proceso de Estancia/Estadía', 
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => null, 
@@ -48,7 +48,7 @@ class PreguntasTableSeeder extends Seeder
         ]);
 
         DB::table('preguntas')->insert([
-        	'nombre'      => 'Núm. total de alumnos que cumplieron con el 100 % de asesorías y que acreditaron todas sus asignaturas', 
+        	'nombre'      => 'Numero total de alumnos que cumplieron con el 100 % de asesorías y que acreditaron todas sus asignaturas', 
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => null, 
@@ -57,7 +57,7 @@ class PreguntasTableSeeder extends Seeder
         ]);
 
         DB::table('preguntas')->insert([
-        	'nombre'      => 'Núm. total de alumnos tutorados', 
+        	'nombre'      => 'Número total de alumnos tutorados', 
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => null, 
@@ -66,7 +66,7 @@ class PreguntasTableSeeder extends Seeder
         ]);
 
         DB::table('preguntas')->insert([
-        	'nombre'      => 'Núm. total de alumnos que cumplieron con el 100% de asesorías', 
+        	'nombre'      => 'Número total de alumnos que cumplieron con el 100% de asesorías', 
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => null, 
@@ -75,7 +75,7 @@ class PreguntasTableSeeder extends Seeder
         ]);
 
         DB::table('preguntas')->insert([
-        	'nombre'      => 'Núm. total de alumnos que acreditaron todas sus asignaturas', 
+        	'nombre'      => 'Número total de alumnos que acreditaron todas sus asignaturas', 
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => null, 
@@ -210,7 +210,7 @@ class PreguntasTableSeeder extends Seeder
         ]);
 
         DB::table('preguntas')->insert([
-        	'nombre'      => 'No. total de alumnos asesorados con control de Tutoría', 
+        	'nombre'      => 'Número total de alumnos asesorados con control de Tutoría', 
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => null, 
@@ -219,7 +219,7 @@ class PreguntasTableSeeder extends Seeder
         ]);
 
         DB::table('preguntas')->insert([
-        	'nombre'      => 'No. total de alumnos asesorados sin Control de Tutoría', 
+        	'nombre'      => 'Número total de alumnos asesorados sin Control de Tutoría', 
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => null, 
@@ -228,7 +228,7 @@ class PreguntasTableSeeder extends Seeder
         ]);
 
         DB::table('preguntas')->insert([
-        	'nombre'      => 'No. total de alumnos asesorados', 
+        	'nombre'      => 'Número total de alumnos asesorados', 
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => null, 
@@ -237,7 +237,7 @@ class PreguntasTableSeeder extends Seeder
         ]);
 
         DB::table('preguntas')->insert([
-        	'nombre'      => 'Numero Total de Asesorias', 
+        	'nombre'      => 'Número Total de Asesorías', 
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => null, 
