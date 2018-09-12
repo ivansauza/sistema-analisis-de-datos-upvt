@@ -27,7 +27,7 @@ class SubindicadorRequest extends FormRequest
             'nombre'       => 'required|string|max:255', 
             'valor_meta'   => 'required|integer|min:0|max:100', 
             'indicador_id' => 'required|integer|exists:indicadores,id', 
-            'nota'         => 'string|nullable'
+            'nota'         => 'string|nullable',
         ];
     }
 }
