@@ -47,7 +47,7 @@ class SubindicadorController extends Controller
     public function store(SubindicadorRequest $request)
     {
         $subindicador = new Subindicador($request->all());
-        $subindicador->procedimiento = generateProcedimientoJSON();
+        $subindicador->procedimiento = $this->generateProcedimientoJSON($request);
         $subindicador->save();
 
         return redirect()->route('subindicadores.edit', $subindicador->id)
@@ -76,8 +76,14 @@ class SubindicadorController extends Controller
         $indicadores = Indicador::get()->pluck('nombre', 'id');
         $preguntas   = Programa::getPredeterminado()->preguntas
             ->pluck('nombre', 'id');
+        $procedimiento = json_decode($subindicador->procedimiento, true);
         
-        return view('subindicador.edit', compact('subindicador', 'indicadores', 'preguntas'));
+        return view('subindicador.edit', compact(
+            'subindicador', 
+            'indicadores', 
+            'preguntas', 
+            'procedimiento'
+        ));
     }
 
     /**
@@ -89,7 +95,9 @@ class SubindicadorController extends Controller
      */
     public function update(SubindicadorRequest $request, Subindicador $subindicador)
     {
-        $subindicador->update($request->all());
+        $subindicador->fill($request->all());
+        $subindicador->procedimiento = $this->generateProcedimientoJSON($request);
+        $subindicador->save();
 
         return redirect()->route('subindicadores.edit', $subindicador->id)
             ->with('info', ['type' => 'success', 'message' => 'Subindicador editado con éxito']);
@@ -114,15 +122,17 @@ class SubindicadorController extends Controller
         return view('subindicador.select');
     }
 
-    public function generateProcedimientoJSON($array_types, $array_values)
+    public function generateProcedimientoJSON($request)
     {
         $json = collect();
 
-        foreach ($array_types as $key => $type) {
-            $json->push([
-                'type'  => $type, 
-                'value' => $array_values[$key]
-            ]);
+        if ($request->get('procedimiento_types')) {
+            foreach ($request->get('procedimiento_types') as $key => $type) {
+                $json->push([
+                    'type'  => $type, 
+                    'value' => $request->get('procedimiento_values')[$key]
+                ]);
+            }
         }
 
         return $json->toJson();
