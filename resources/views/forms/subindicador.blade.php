@@ -56,27 +56,23 @@
 	</div>
 </div>
 
-<div class="form-row" id="proceso">
-
-</div>
-
 @section('script')
 	var contador = 0
 
 	$(document).ready(function(){
 		$('.add-pregunta').click(function(event){
 			event.preventDefault()
-			$('#proceso').append('<div class="form-group col">{{ Form::hidden("proceso_types[]", "pregunta") }}<div class="input-group mb-3">{{ Form::select("proceso_values[]", $preguntas, null, ["class" => "form-control"]) }}<div class="input-group-append"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></div></div></div>')
+			$('#procedimiento').append('<div class="form-group col">{{ Form::hidden("procedimiento_types[]", "pregunta") }}<div class="input-group mb-3">{{ Form::select("procedimiento_values[]", $preguntas, null, ["class" => "form-control", "placeholder" => "Seleccionar ...", "required"]) }}<div class="input-group-append"><a href="#" class="btn btn-outline-danger" onclick="removeItem(this)"><i class="fas fa-trash"></i></a></div></div></div>')
 		})
 
 		$('.add-operacion').click(function(event){
 			event.preventDefault()
-			$('#proceso').append('<div class="form-group col">{{ Form::hidden("proceso_types[]", "operacion") }}<div class="input-group mb-3">{{ Form::select("proceso_values[]", ["/" => "División", "*" => "Multiplicación", "+" => "Suma", "-" => "Resta"], null, ["class" => "form-control"]) }}<div class="input-group-append"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></div></div></div>')
+			$('#procedimiento').append('<div class="form-group col">{{ Form::hidden("procedimiento_types[]", "operacion") }}<div class="input-group mb-3">{{ Form::select("procedimiento_values[]", ["/" => "División", "*" => "Multiplicación", "+" => "Suma", "-" => "Resta"], null, ["class" => "form-control", "placeholder" => "Seleccionar ...", "required"]) }}<div class="input-group-append"><a href="#" class="btn btn-outline-danger" onclick="removeItem(this)"><i class="fas fa-trash"></i></a></div></div></div>')
 		})
 
 		$('.add-numero').click(function(event){
 			event.preventDefault()
-			$('#proceso').append('<div class="form-group col">{{ Form::hidden("proceso_types[]", "numero") }}<div class="input-group mb-3">{{ Form::text("proceso_values[]", null, ["class" => "form-control"]) }}<div class="input-group-append"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></div></div></div>')
+			$('#procedimiento').append('<div class="form-group col">{{ Form::hidden("procedimiento_types[]", "numero") }}<div class="input-group mb-3">{{ Form::number("procedimiento_values[]", null, ["class" => "form-control", "required", "min" => 1]) }}<div class="input-group-append"><a href="#" class="btn btn-outline-danger" onclick="removeItem(this)"><i class="fas fa-trash"></i></a></div></div></div>')
 		})
 	})
 @endsection

@@ -17,6 +17,8 @@
 
 				@include('forms.subindicador')
 
+				<div class="form-row" id="procedimiento"></div>
+
 				{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-primary mt-5']) }}
 
 			{{ Form::close() }}
