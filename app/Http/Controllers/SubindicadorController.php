@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Subindicador;
 use Illuminate\Http\Request;
+use App\Traits\ProgramasEmptyValidate;
 use App\Http\Requests\SubindicadorRequest;
 
 use App\Indicador;
@@ -11,6 +12,8 @@ use App\Programa;
 
 class SubindicadorController extends Controller
 {
+    use ProgramasEmptyValidate;
+
     /**
      * Display a listing of the resource.
      *
@@ -38,12 +41,14 @@ class SubindicadorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Request\SubindicadorRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(SubindicadorRequest $request)
     {
-        $subindicador = Subindicador::create($request->all());
+        $subindicador = new Subindicador($request->all());
+        $subindicador->procedimiento = generateProcedimientoJSON();
+        $subindicador->save();
 
         return redirect()->route('subindicadores.edit', $subindicador->id)
             ->with('info', ['type' => 'success', 'message' => 'Subindicador guardado con éxito']);
@@ -107,5 +112,19 @@ class SubindicadorController extends Controller
     public function select()
     {
         return view('subindicador.select');
+    }
+
+    public function generateProcedimientoJSON($array_types, $array_values)
+    {
+        $json = collect();
+
+        foreach ($array_types as $key => $type) {
+            $json->push([
+                'type'  => $type, 
+                'value' => $array_values[$key]
+            ]);
+        }
+
+        return $json->toJson();
     }
 }
