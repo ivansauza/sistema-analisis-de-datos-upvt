@@ -32,4 +32,11 @@ class Periodo extends Model
         
         return  str_replace(' ', '-', $res) . " {$this->anio}";
     }
+
+    public function getTinyClaveAttribute()
+    {
+        $clave = explode('-', $this->clave);
+        
+        return strtoupper($clave[0][0]) . strtoupper($clave[1][0]) . " {$this->anio}";
+    }
 }
