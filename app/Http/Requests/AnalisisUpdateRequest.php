@@ -17,7 +17,7 @@ class AnalisisUpdateRequest extends FormRequest
          * Comprobar que el periodo del análisis aun esta abierto
          */
 
-        return $this->analisis->periodo->estado ? true : false;
+        return $this->analisis->periodo->estado ? false : true;
     }
 
     /**
