@@ -20,7 +20,7 @@ class AnalisisCreateRequest extends FormRequest
          * pertenece al programa predeterminado con respecto al usuario 
          * actualmente logeado, si ya tiene una encuesta creada.
          */
-        Periodo::where('estado', '=', 1)
+        Periodo::where('estado', '=', 0)
             ->where('programa_id', '=', Programa::getPredeterminado()->id)
             ->whereNotIn('id', auth()->user()->getEncuestasExistsPeriodos())
             ->findOrFail(request()->input('periodo_id'));
