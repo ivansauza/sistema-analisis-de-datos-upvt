@@ -6,6 +6,7 @@
 
 @section('javascript')
 	<script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/jquery-ui.min.js') }}"></script>
 @endsection
 
 @section('script')
@@ -13,12 +14,30 @@
 	{
 		$( 'table' ).DataTable( {
             "paging": false,
-            "info": false,
+			"info": false,
+			"order": false, 
 			"columnDefs": [
 				{ "orderable": false, "targets": [-1, -2, 1] }
         	]	
-		} );
-	} );
+		} )
+	} )
+
+	function upSortable( event )
+	{
+		$( '#sortable' ).sortable( {
+			update: function()
+			{
+				posicionUpdate(
+					"{{ route('preguntas.posicion.update') }}", 
+					$( this ).sortable( 'toArray' , { attribute: 'data-id' } )
+				)
+			}, 
+			stop: function()
+			{
+				$( this ).sortable( "destroy" )
+			}, 
+		} )
+	}
 @endsection
 
 @section('header')
@@ -47,12 +66,14 @@
 					<th scope="col"></th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="sortable">
 				@foreach($preguntas as $pregunta)
-					<tr>
+					<tr data-id="{{ $pregunta->id }}">
 						<th scope="row">{{ $pregunta->id }}</th>
 						<td class="p-1">
-							<a href="#" class="btn btn-xs mt-2" alt="Mover">
+							<a href="#" class="btn btn-xs mt-2" alt="Mover" 
+								onmousedown="downSortable(event)"
+								onmouseup="upSortable(event)">
 								<i class="fas fa-expand-arrows-alt text-secondary"></i>
 							</a>
 						</td>

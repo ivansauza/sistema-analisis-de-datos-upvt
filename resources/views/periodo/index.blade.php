@@ -6,6 +6,7 @@
 
 @section('javascript')
 	<script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/jquery-ui.min.js') }}"></script>
 @endsection
 
 @section('script')
@@ -13,12 +14,45 @@
 	{
 		$( 'table' ).DataTable( {
             "paging": false,
-            "info": false,
+			"info": false,
+			"order": false, 
 			"columnDefs": [
-				{ "orderable": false, "targets": [-1, 1] }
+				{ 
+					"orderable": false, 
+					"targets": [-1, 1], 
+				}
         	]	
-		} );
-	} );
+		} )
+
+		$( 'nothing' ).sortable( {
+			helper: fixWidthHelper, 
+			update: function()
+			{
+				var items = $( this ).sortable( 'toArray' , { attribute: 'data-id' } )
+				posicionUpdate(
+					"{{ route('periodos.posicion.update') }}", 
+					items
+				)
+			}
+		} ).disableSelection()
+	} )
+
+	function upSortable( event )
+	{
+		$( '#sortable' ).sortable( {
+			update: function()
+			{
+				posicionUpdate(
+					"{{ route('periodos.posicion.update') }}", 
+					$( this ).sortable( 'toArray' , { attribute: 'data-id' } )
+				)
+			}, 
+			stop: function()
+			{
+				$( this ).sortable( "destroy" )
+			}, 
+		} )
+	}
 @endsection
 
 @section('header')
@@ -48,12 +82,14 @@
 					<th scope="col" class="text-right">Opciones</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="sortable">
 				@foreach($periodos as $periodo)
-					<tr>
+					<tr data-id="{{ $periodo->id }}">
 						<td class="text-center">{{ $periodo->id }}</td>
 						<td class="p-1">
-							<a href="#" class="btn btn-xs mt-2" alt="Mover">
+							<a href="#" class="btn btn-xs mt-2" alt="Mover" 
+								onmousedown="downSortable(event)"
+								onmouseup="upSortable(event)">
 								<i class="fas fa-expand-arrows-alt text-secondary"></i>
 							</a>
 						</td>
