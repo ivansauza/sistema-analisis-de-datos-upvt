@@ -176,7 +176,7 @@ class AnalisisController extends Controller
          * encuestas del programa predeterminado con respecto
          * al usuario actualmente logeado.
         */
-        $periodos = Periodo::get()->where('estado', '=', 1)
+        $periodos = Periodo::get()->where('estado', '=', 0)
             ->where('programa_id', '=', Programa::getPredeterminado()->id)
             ->whereNotIn('id', auth()->user()->getEncuestasExistsPeriodos())
             ->pluck('full_clave', 'id');
