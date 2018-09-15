@@ -76,13 +76,11 @@ class SubindicadorController extends Controller
         $indicadores = Indicador::get()->pluck('nombre', 'id');
         $preguntas   = Programa::getPredeterminado()->preguntas
             ->pluck('nombre', 'id');
-        $procedimiento = json_decode($subindicador->procedimiento, true);
         
         return view('subindicador.edit', compact(
             'subindicador', 
             'indicadores', 
-            'preguntas', 
-            'procedimiento'
+            'preguntas'
         ));
     }
 
@@ -124,17 +122,17 @@ class SubindicadorController extends Controller
 
     public function generateProcedimientoJSON($request)
     {
-        $json = collect();
+        $array = collect();
 
         if ($request->get('procedimiento_types')) {
             foreach ($request->get('procedimiento_types') as $key => $type) {
-                $json->push([
+                $array->push([
                     'type'  => $type, 
                     'value' => $request->get('procedimiento_values')[$key]
                 ]);
             }
         }
 
-        return $json->toJson();
+        return $array;
     }
 }
