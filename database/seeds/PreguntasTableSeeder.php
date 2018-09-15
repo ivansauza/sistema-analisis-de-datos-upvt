@@ -102,15 +102,6 @@ class PreguntasTableSeeder extends Seeder
         ]);
 
         DB::table('preguntas')->insert([
-        	'nombre'      => 'Número de asignaturas que atendieron el 100% del programa de la asignatura', 
-        	'nota'        => '', 
-        	'desactivar'  => 0, 
-        	'posicion'    => null, 
-        	'programa_id' => 2, 
-        	'role_id'     => 2, 
-        ]);
-
-        DB::table('preguntas')->insert([
         	'nombre'      => 'Número de Cargas Horarias Docentes autorizadas', 
         	'nota'        => '', 
         	'desactivar'  => 0, 
@@ -180,8 +171,8 @@ class PreguntasTableSeeder extends Seeder
         	'posicion'    => null, 
         	'programa_id' => 2, 
         	'role_id'     => 3, 
-        ]);
-
+		]);
+		
         DB::table('preguntas')->insert([
         	'nombre'      => 'Número de asignaturas que atendieron el 100% del programa de la asignatura', 
         	'nota'        => '', 
