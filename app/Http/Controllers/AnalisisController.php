@@ -179,6 +179,7 @@ class AnalisisController extends Controller
         $periodos = Periodo::get()->where('estado', '=', 0)
             ->where('programa_id', '=', Programa::getPredeterminado()->id)
             ->whereNotIn('id', auth()->user()->getEncuestasExistsPeriodos())
+            ->sortBy('posicion')
             ->pluck('full_clave', 'id');
 
         return view('analisis.select', compact('periodos'));
