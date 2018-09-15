@@ -33,7 +33,9 @@ class PreguntaController extends Controller
                  * Extraer las preguntas que pertenecen al programa
                  * actual predeterminado
                 */
-                $preguntas = Programa::getPredeterminado()->preguntas;
+                $preguntas = Programa::getPredeterminado()
+                    ->preguntas
+                    ->sortBy('posicion');
 
                 return view('pregunta.index', compact('preguntas'));
 
@@ -131,5 +133,22 @@ class PreguntaController extends Controller
     public function programaSelect()
     {
         return view('pregunta.programa.select');
+    }
+
+    public function posicionUpdate(Request $request)
+    {
+        $data = $request->validate([
+            'items'   => 'array|distinct', 
+            'items.*' => 'integer|exists:preguntas,id'
+        ]);
+        
+        foreach ($data['items'] as $key => $item) 
+        {
+            $pregunta = Pregunta::findOrFail($item);
+            $pregunta->posicion = $key;
+            $pregunta->save();
+        }
+
+        return ['status' => true];
     }
 }
