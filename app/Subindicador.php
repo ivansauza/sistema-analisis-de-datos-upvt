@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Subindicador extends Model
 {
 	protected $table    = 'subindicadores';
+
 	protected $fillable = [
 		'nombre', 'procedimiento', 'valor_meta', 'nota', 'indicador_id', 'programa_id'
-    ];
+	];
+	
+	public $casts = [
+		'procedimiento' => 'array'
+	];
 
 	public function indicador()
 	{
@@ -19,5 +24,63 @@ class Subindicador extends Model
     public function programa()
     {
     	return $this->hasMany('App\Programa');
-    }
+	}
+	
+	public function calculateProcedimiento($periodo_id)
+	{
+		$operation = [];
+
+		/* Comprobar si el periodo tiene encuestas */
+		if(Encuesta::where('periodo_id', '=', $periodo_id)->get()->isEmpty())
+		{
+			return 'Vacio';
+		}
+
+		if($this->procedimiento)
+		{
+			foreach($this->procedimiento as $procedimiento)
+			{
+				switch ($procedimiento['type']) 
+				{
+					case 'pregunta':
+						$encuestas = Encuesta::where('periodo_id', '=', $periodo_id)
+							->get();
+
+						$tolerance = 0;
+
+						foreach ($encuestas as $key => $encuesta) 
+						{
+							$pregunta = $encuesta->preguntas
+								->find($procedimiento['value']);
+
+							if($pregunta)
+							{
+								$tolerance ++;
+								$operation[] = $pregunta->pivot->valor;
+							}else {
+								$operation[] = null;
+							}
+						}
+
+						if($tolerance == 0)
+						{
+							return 'Faltan datos';
+						}
+						break;
+					case 'numero':
+						$operation[] = $procedimiento['value'];
+						break;
+					case 'operacion':
+						$operation[] = $procedimiento['value'];
+						break;
+					
+					default:
+						return 'Error';
+						break;
+				}
+			}
+		}
+
+		return eval('return '.implode('', $operation).';');
+	}
 }
