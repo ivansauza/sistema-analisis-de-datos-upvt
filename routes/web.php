@@ -67,14 +67,12 @@ Route::resource('analisis', 'AnalisisController', ['parameters' => [
 ]])
 	->middleware('auth');
 
-Route::get('estadisticas/select', 'EstadisticaController@select')
-	->name('estadisticas.select');
+Route::get('estadisticas/details', 'EstadisticaController@details')
+	->name('estadisticas.details')
+	->middleware('auth');
 
-Route::get('estadisticas/show', 'EstadisticaController@show')
-	->name('estadisticas.show');
-
-Route::get('estadisticas/graph', 'EstadisticaController@graph')
-	->name('estadisticas.graph');
+Route::resource('estadisticas', 'EstadisticaController')
+	->middleware('auth');
 
 Route::group(['prefix' => 'configuracion'], function(){
 
