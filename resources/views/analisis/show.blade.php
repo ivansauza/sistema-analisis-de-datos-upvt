@@ -79,7 +79,7 @@
 			<tbody>
 				<tr>
 					<td scope="row" class="text-muted">Estado</td>
-					<td>{{ $analisis->periodo->estado ? 'Abierto' : 'Cerrado' }}</td>
+					<td>{{ $analisis->periodo->estado ? 'Cerrado' : 'Abierto' }}</td>
 				</tr>
 				<tr>
 					<td scope="row" class="text-muted">Actual</td>

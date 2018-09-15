@@ -12,8 +12,9 @@
 	$( document ).ready( function () 
 	{
 		$( 'table' ).DataTable( {
-            "paging": false,
-            "info": false,
+            "paging": false, 
+			"info": false, 
+			"order": false, 
 			"columnDefs": [
 				{ "orderable": false, "targets": [-1] }
         	]	

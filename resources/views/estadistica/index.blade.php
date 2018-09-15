@@ -13,9 +13,10 @@
 	{
 		$( 'table' ).DataTable( {
             "paging": false,
-            "info": false,
+			"info": false, 
+			"order": false, 
 			"columnDefs": [
-				{ "orderable": false, "targets": [3] }
+				{ "orderable": false, "targets": [2] }
         	]	
 		} );
 	} );
