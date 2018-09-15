@@ -23,10 +23,11 @@ class PeriodoController extends Controller
         switch ( request()->input('mostrar') ) 
         {
             case 'programa':
-                $programa = auth()->user()->programas()
+                $programa = auth()->user()
+                    ->programas()
                     ->findOrFail( request()->input('programa_id') );
 
-               return view('periodo/programa/index', compact('programa'));
+                return view('periodo/programa/index', compact('programa'));
                 break;
             
             default:
@@ -34,7 +35,9 @@ class PeriodoController extends Controller
                  * Extraer los periodos que pertenecen al programa
                  * actual predeterminado
                 */
-                $periodos = Programa::getPredeterminado()->periodos;
+                $periodos = Programa::getPredeterminado()
+                    ->periodos
+                    ->sortBy('posicion');
 
                 return view('periodo/index', compact('periodos'));
                 break;
@@ -130,5 +133,22 @@ class PeriodoController extends Controller
         $programas = auth()->user()->programas->pluck('nombre', 'id');
 
         return view('periodo.programa.select', compact('programas'));
+    }
+
+    public function posicionUpdate(Request $request)
+    {
+        $data = $request->validate([
+            'items'   => 'array|distinct', 
+            'items.*' => 'integer|exists:periodos,id'
+        ]);
+        
+        foreach ($data['items'] as $key => $item) 
+        {
+            $periodo = Periodo::findOrFail($item);
+            $periodo->posicion = $key;
+            $periodo->save();
+        }
+
+        return ['status' => true];
     }
 }
