@@ -31,7 +31,7 @@ class PeriodoThisUserRule implements Rule
     public function passes($attribute, $value)
     {
         $count = Periodo::where('id', '=', $value)
-        ->where('estado', '=', 1)
+        ->where('estado', '=', 0)
         ->where('programa_id', '=', Programa::getPredeterminado()->id)
         ->whereNotIn('id', auth()->user()->getEncuestasExistsPeriodos())
         ->count();
