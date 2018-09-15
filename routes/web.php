@@ -25,13 +25,22 @@ Route::get('programas/{programa}/predetermined', 'ProgramaController@predetermin
 Route::resource('programas', 'ProgramaController');
 
 Route::get('periodos/programa/select', 'PeriodoController@programaSelect')
-	->name('periodos.programa.select')->middleware('auth');
+	->name('periodos.programa.select')
+	->middleware('auth');
+
+Route::post('periodos/posicion/update', 'PeriodoController@posicionUpdate')
+	->name('periodos.posicion.update')
+	->middleware('auth');
 
 Route::resource('periodos', 'PeriodoController')
 	->middleware('auth');
 
 Route::get('preguntas/programa/select', 'PreguntaController@programaSelect')
 	->name('preguntas.programa.select');
+
+Route::post('preguntas/posicion/update', 'PreguntaController@posicionUpdate')
+	->name('preguntas.posicion.update')
+	->middleware('auth');
 
 Route::resource('preguntas', 'PreguntaController')
 	->middleware('auth');
