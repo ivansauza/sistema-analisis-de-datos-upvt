@@ -13,7 +13,8 @@ class EstadisticaController extends Controller
 {
     public function index()
     {
-        $periodos = Programa::getPredeterminado()->periodos;
+        $periodos = Programa::getPredeterminado()->periodos
+            ->sortBy('posicion');
         $procesos = Programa::getPredeterminado()->procesos;
 
         return view('estadistica.index', compact('periodos', 'procesos'));
