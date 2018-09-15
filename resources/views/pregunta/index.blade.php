@@ -1,5 +1,26 @@
 @extends('layouts.admin')
 
+@section('css')
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
+@endsection
+
+@section('javascript')
+	<script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
+@endsection
+
+@section('script')
+	$( document ).ready( function () 
+	{
+		$( 'table' ).DataTable( {
+            "paging": false,
+            "info": false,
+			"columnDefs": [
+				{ "orderable": false, "targets": [-1, -2, 1] }
+        	]	
+		} );
+	} );
+@endsection
+
 @section('header')
 	<h1 class="h3">Preguntas</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
@@ -18,8 +39,8 @@
 		<table class="table table-hover">
 			<thead class="thead-light">
 				<tr>
-					<th scope="col"></th>
 					<th scope="col">ID</th>
+					<th scope="col"></th>
 					<th scope="col">Nombre</th>
 					<th scope="col" class="text-center">Responsable</th>
 					<th scope="col">Nota</th>
@@ -29,12 +50,12 @@
 			<tbody>
 				@foreach($preguntas as $pregunta)
 					<tr>
+						<th scope="row">{{ $pregunta->id }}</th>
 						<td class="p-1">
 							<a href="#" class="btn btn-xs mt-2" alt="Mover">
 								<i class="fas fa-expand-arrows-alt text-secondary"></i>
 							</a>
 						</td>
-						<th scope="row">{{ $pregunta->id }}</th>
 						<td>
 							{{ $pregunta->nombre }}
 							<!--

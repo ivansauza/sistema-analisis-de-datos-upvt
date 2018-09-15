@@ -134,7 +134,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a href="{{ route('estadisticas.select') }}" class="nav-link {{ ! Route::is('estadisticas.*') ?: 'active' }}">
+							<a href="{{ route('estadisticas.index') }}" class="nav-link {{ ! Route::is('estadisticas.*') ?: 'active' }}">
 								<i class="fas fa-chart-area"></i>  
 								Estadísticas
 							</a>

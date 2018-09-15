@@ -36,7 +36,8 @@
 				<tr>
 					<th scope="col">ID</th>
 					<th scope="col">Nombre</th>
-					<th scope="col">Correo elestrónico</th>
+					<th scope="col">Correo electrónico</th>
+					<th scope="col">Rol</th>
 					<th scope="col" class="text-center">Activo</th>
 					<th scope="col" class="text-right">Opciones</th>
 				</tr>
@@ -47,6 +48,7 @@
 						<th scope="row">{{ $user->id }}</th>
 						<td>{{ $user->name }} {{ $user->apellidos }}</td>
 						<td>{{ $user->email }}</td>
+						<td class="text-center">{{ $user->roles->first()->name }}</td>
 						<td class="text-center">
 							<span class="badge badge-pill badge-{{ $user->disabled ? 'secondary' : 'primary' }}">
 								{{ $user->disabled ? 'NO' : 'SI' }}

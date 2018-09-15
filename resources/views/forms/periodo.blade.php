@@ -28,7 +28,7 @@
 	<div class="custom-control custom-checkbox">
 		{{ Form::hidden('estado', 0) }}
 	 	{{ Form::checkbox('estado', 1, null, ['class' => 'custom-control-input', 'id' => 'estado']) }}
-	 	{{ Form::label('estado', 'Abrir periodo, el usuario podra interactuar con este periodo.', ['class' => 'custom-control-label']) }}
+	 	{{ Form::label('estado', 'Cerrar periodo, el usuario ya no podra interactuar con este periodo.', ['class' => 'custom-control-label']) }}
 		@if ($errors->has('estado'))
 			<span class="badge badge-danger">{{ $errors->first('estado') }}</span>
 		@endif

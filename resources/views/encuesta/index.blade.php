@@ -9,8 +9,15 @@
 @endsection
 
 @section('script')
-	$(document).ready( function () {
-		$('table').DataTable();
+	$( document ).ready( function () 
+	{
+		$( 'table' ).DataTable( {
+            "paging": false,
+            "info": false,
+			"columnDefs": [
+				{ "orderable": false, "targets": [-1] }
+        	]	
+		} );
 	} );
 @endsection
 
@@ -29,10 +36,12 @@
 		<thead class="thead-light">
 			<tr>
 				<th scope="col">ID</th>
-				<th scope="col">Responsable</th>
 				<th scope="col">Periodo</th>
+				<th scope="col">Usuario</th>
+				<th scope="col">Rol</th>
+				<th scope="col">Actualizado</th>
 				<th scope="col" class="text-center">Finalizado</th>
-				<th scope="col" class="text-right"></th>
+				<th scope="col"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -40,8 +49,10 @@
 				@foreach($periodo->encuestas as $encuesta)
 					<tr>
 						<th scope="row">{{ $encuesta->id }}</th>
+						<td>{{ $encuesta->periodo->tiny_clave }}</td>
 						<td>{{ $encuesta->user->full_name }}</td>
-						<td>{{ $encuesta->periodo->full_clave }}</td>
+						<td>{{ $encuesta->user->roles->first()->name }}</td>
+						<td class="text-center"><small>{{ $encuesta->updated_at }}</small></td>
 						<td class="text-center">
 							<span class="badge badge-pill badge-{{ $encuesta->finalizado ? 'primary' : 'secondary' }}">
 								{{ $encuesta->finalizado ? 'SI' : 'NO' }}
@@ -49,17 +60,17 @@
 						</td>
 						<td>
 							<div class="float-right">
-								<a href="{{ route('encuestas.show', 0) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
-									<i class="fas fa-eye"></i>
-								</a>
-
-								<a href="{{ route('encuestas.edit', 0) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
-									<i class="fas fa-pencil-alt"></i>
-								</a>
-
-								{{ Form::open(['route' => ['encuestas.destroy', 0], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-									<button type="submit" class="btn btn-sm text-secondary btn-transparent mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
-								{{ Form::close() }}
+								<div class="btn-group mr-2" role="group">
+									<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-sm text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									</button>
+									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+										<a class="dropdown-item" href="{{ route('encuestas.show', $encuesta->id) }}">Detalles</a>
+										<a class="dropdown-item" href="{{ route('encuestas.edit', $encuesta->id) }}">Editar</a>
+										{{ Form::open(['route' => ['encuestas.destroy', $encuesta->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+											<button type="submit" class="dropdown-item" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''">Eliminar</button>
+										{{ Form::close() }}
+									</div>
+								</div>
 							</div>
 						</td>
 					</tr>

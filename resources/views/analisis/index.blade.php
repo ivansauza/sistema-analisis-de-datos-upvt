@@ -9,8 +9,15 @@
 @endsection
 
 @section('script')
-	$(document).ready( function () {
-		$('table').DataTable();
+	$( document ).ready( function () 
+	{
+		$( 'table' ).DataTable( {
+            "paging": false,
+            "info": false,
+			"columnDefs": [
+				{ "orderable": false, "targets": [-1] }
+        	]	
+		} );
 	} );
 @endsection
 
@@ -49,8 +56,8 @@
 								</span>
 							</td>
 							<td class="text-center">
-								<span class="badge badge-pill badge-{{ $encuesta->periodo->estado ? 'success' : 'danger' }}">
-									{{ $encuesta->periodo->estado ? 'Abierto' : 'Cerrado' }}
+								<span class="badge badge-pill badge-{{ $encuesta->periodo->estado ? 'danger' : 'success' }}">
+									{{ $encuesta->periodo->estado ? 'Cerrado' : 'Abierto' }}
 								</span>
 							</td>
 							<td>
@@ -58,7 +65,7 @@
 									<a href="{{ route('analisis.show', $encuesta->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Detalles">
 										<i class="fas fa-eye"></i>
 									</a>
-									@if($encuesta->periodo->estado)
+									@if(!$encuesta->periodo->estado)
 										@if(!$encuesta->finalizado)
 											<a href="{{ route('analisis.edit', $encuesta->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
 												<i class="fas fa-pencil-alt"></i>

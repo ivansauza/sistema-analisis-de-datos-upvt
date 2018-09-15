@@ -9,8 +9,15 @@
 @endsection
 
 @section('script')
-	$(document).ready( function () {
-		$('table').DataTable();
+	$( document ).ready( function () 
+	{
+		$( 'table' ).DataTable( {
+            "paging": false,
+            "info": false,
+			"columnDefs": [
+				{ "orderable": false, "targets": [-1, 1] }
+        	]	
+		} );
 	} );
 @endsection
 
@@ -33,34 +40,28 @@
 		<table class="table table-hover">
 			<thead class="thead-light">
 				<tr>
-					<th scope="col"></th>
 					<th scope="col" class="text-center">ID</th>
+					<th scope="col"></th>
 					<th scope="col">Clave</th>
+					<th scope="col">Año</th>
 					<th scope="col" class="text-center">Estado</th>
-					<th scope="col" class="text-center">Actual</th>
 					<th scope="col" class="text-right">Opciones</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($periodos as $periodo)
 					<tr>
-						<td style="width: 15px !important;">
-							<a class="btn btn-sm">
-								<i class="fas fa-expand-arrows-alt"></i>
+						<td class="text-center">{{ $periodo->id }}</td>
+						<td class="p-1">
+							<a href="#" class="btn btn-xs mt-2" alt="Mover">
+								<i class="fas fa-expand-arrows-alt text-secondary"></i>
 							</a>
 						</td>
-						<td class="text-center">{{ $periodo->id }}</td>
-						<td>
-							{{ $periodo->full_clave }}
-						</td>
+						<td>{{ $periodo->clave }}</td>
+						<td>{{ $periodo->anio }}</td>
 						<td class="text-center">
-							<span class="badge badge-pill badge-{{ $periodo->estado ? 'success' : 'danger' }}">
-								{{ $periodo->estado ? 'Abierto' : 'Cerrado' }}
-							</span>
-						</td>
-						<td class="text-center">
-							<span class="badge badge-pill badge-{{ $periodo->actual ? 'primary' : 'secondary' }}">
-								{{ $periodo->actual ? 'SI' : 'NO' }}
+							<span class="badge badge-pill badge-{{ $periodo->estado ? 'danger' : 'success' }}">
+								{{ $periodo->estado ? 'Cerrado' : 'Abierto' }}
 							</span>
 						</td>
 						<td>
