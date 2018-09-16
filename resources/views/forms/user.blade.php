@@ -26,7 +26,7 @@
 
 		<div class="form-group">
 			{{ Form::label('password', 'Contraseña') }}
-			{{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Ingresa la contaseña']) }}
+			{{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Ingresa la contraseña']) }}
 			@if ($errors->has('password'))
 				<span class="badge badge-danger">{{ $errors->first('password') }}</span>
 			@endif
@@ -64,7 +64,7 @@
 			<div class="custom-control custom-checkbox">
 				{{ Form::hidden('disabled', 0) }}
 			 	{{ Form::checkbox('disabled', 1, null, ['class' => 'custom-control-input', 'id' => 'disabled']) }}
-			 	{{ Form::label('disabled', 'Desactivar usuario, ya no podrá iniciar sesión en el sistama.', ['class' => 'custom-control-label']) }}
+			 	{{ Form::label('disabled', 'Desactivar usuario, ya no podrá iniciar sesión en el sistema.', ['class' => 'custom-control-label']) }}
 				@if ($errors->has('disabled'))
 					<span class="badge badge-danger">{{ $errors->first('disabled') }}</span>
 				@endif
