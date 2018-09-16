@@ -21,26 +21,11 @@ class PreguntaController extends Controller
      */
     public function index()
     {
-        switch ( \Request::input('mostrar') ) 
-        {
-            case 'programa':
-                return view('pregunta.programa.index');
+        $preguntas = Programa::getPredeterminado()
+            ->preguntas
+            ->sortBy('posicion');
 
-                break;
-            
-            default:
-                /**
-                 * Extraer las preguntas que pertenecen al programa
-                 * actual predeterminado
-                */
-                $preguntas = Programa::getPredeterminado()
-                    ->preguntas
-                    ->sortBy('posicion');
-
-                return view('pregunta.index', compact('preguntas'));
-
-                break;
-        }
+        return view('pregunta.index', compact('preguntas'));
     }
 
     /**
@@ -50,11 +35,9 @@ class PreguntaController extends Controller
      */
     public function create()
     {
-        $programas = auth()->user()->programas
-            ->pluck('nombre', 'id');
-        $roles     = Role::get()->pluck('name', 'id');
+        $roles = Role::get()->pluck('name', 'id');
 
-        return view('pregunta.create', compact('programas', 'roles'));
+        return view('pregunta.create', compact('roles'));
     }
 
     /**
