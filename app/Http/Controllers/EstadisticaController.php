@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Traits\ProgramasEmptyValidate;
 
 use App\Programa;
 use App\Periodo;
@@ -11,6 +12,8 @@ use Caffeinated\Shinobi\Models\Role;
 
 class EstadisticaController extends Controller
 {
+    use ProgramasEmptyValidate;
+    
     public function index()
     {
         $periodos = Programa::getPredeterminado()->periodos
