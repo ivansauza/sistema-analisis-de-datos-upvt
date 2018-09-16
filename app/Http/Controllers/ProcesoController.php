@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Proceso;
 use Illuminate\Http\Request;
+use App\Traits\ProgramasEmptyValidate;
 use App\Http\Requests\ProcesoRequest;
 
 Use App\Programa;
 
 class ProcesoController extends Controller
 {
+    use ProgramasEmptyValidate;
+    
     /**
      * Display a listing of the resource.
      *
