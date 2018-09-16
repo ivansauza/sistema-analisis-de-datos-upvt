@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Traits\ProgramasEmptyValidate;
 
-use App\Periodo;
-use App\Programa;
 use App\Http\Requests\PeriodoRequest;
+
+use App\Programa;
+use App\Periodo;
 
 class PeriodoController extends Controller
 {
@@ -16,32 +17,15 @@ class PeriodoController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function index()
     {
-        switch ( request()->input('mostrar') ) 
-        {
-            case 'programa':
-                $programa = auth()->user()
-                    ->programas()
-                    ->findOrFail( request()->input('programa_id') );
+        $periodos = Programa::getPredeterminado()
+            ->periodos
+            ->sortBy('posicion');
 
-                return view('periodo/programa/index', compact('programa'));
-                break;
-            
-            default:
-                /**
-                 * Extraer los periodos que pertenecen al programa
-                 * actual predeterminado
-                */
-                $periodos = Programa::getPredeterminado()
-                    ->periodos
-                    ->sortBy('posicion');
-
-                return view('periodo/index', compact('periodos'));
-                break;
-        }
+        return view('periodo/index', compact('periodos'));
     }
 
     /**
@@ -51,21 +35,20 @@ class PeriodoController extends Controller
      */
     public function create()
     {
-        $programas = auth()->user()->programas
-            ->pluck('nombre', 'id');
-
-        return view('periodo/create', compact('programas'));
+        return view('periodo/create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param  \App\Http\Request\PeriodoRequest  $request
+     * @return mixed
      */
     public function store(PeriodoRequest $request)
     {
-        $periodo = Periodo::create($request->all());
+        $periodo = new Periodo($request->all());
+        $periodo->programa_id = Programa::getPredeterminado()->id;
+        $periodo->save();
 
         return redirect()->route('periodos.edit', $periodo->id)
             ->with('info', ['type' => 'success', 'message' => 'Periodo guardado con éxito']);
@@ -74,37 +57,40 @@ class PeriodoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Periodo $periodo
-     * @return \Illuminate\Http\Response
+     * @param  \App\Periodo  $periodo
+     * @return mixed
      */
     public function show(Periodo $periodo)
     {
+        $this->authorize('access', $periodo);
+
         return view('periodo/show', compact('periodo'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Periodo $periodo
-     * @return \Illuminate\Http\Response
+     * @param  \App\Periodo  $periodo
+     * @return mixed
      */
     public function edit(Periodo $periodo)
     {
-        $programas = auth()->user()->programas->pluck('nombre', 'id');
-
-        return view('periodo/edit', compact('periodo', 'programas'));
+        $this->authorize('access', $periodo);
+        
+        return view('periodo/edit', compact('periodo'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Periodo  $periodo
-     * @return \Illuminate\Http\Response
+     * @param  \App\Http\Requests\PeriodoRequest  $request
+     * @param  integer  $id
+     * @return mixed
      */
     public function update(PeriodoRequest $request, $id)
     {
         $periodo = Periodo::findOrFail($id);
+        $this->authorize('access', $periodo);
         $periodo->update($request->all());
 
         return redirect()->back()
@@ -114,27 +100,24 @@ class PeriodoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Periodo $periodo
-     * @return \Illuminate\Http\Response
+     * @param  \App\Periodo  $periodo
+     * @return mixed
      */
     public function destroy(Periodo $periodo)
     {
-        /* Comprobar que el usuario tiene permisos sobre el programa enviado */
-        auth()->user()->programas()->findOrFail($periodo->programa->id);
-
+        $this->authorize('access', $periodo);
         $periodo->delete();
 
         return redirect()->route('periodos.index')
             ->with('info', ['type' => 'success', 'message' => 'Periodo eliminado con éxito']);
     }
 
-    public function programaSelect()
-    {
-        $programas = auth()->user()->programas->pluck('nombre', 'id');
-
-        return view('periodo.programa.select', compact('programas'));
-    }
-
+    /**
+     * Actualizar la posición de todos los elementos del recurso
+     *
+     * @param  Request  $request
+     * @return array
+     */
     public function posicionUpdate(Request $request)
     {
         $data = $request->validate([
@@ -144,7 +127,8 @@ class PeriodoController extends Controller
         
         foreach ($data['items'] as $key => $item) 
         {
-            $periodo = Periodo::findOrFail($item);
+            $periodo = Periodo::findOrFail($id);
+            $this->authorize('access', $periodo);
             $periodo->posicion = $key;
             $periodo->save();
         }
