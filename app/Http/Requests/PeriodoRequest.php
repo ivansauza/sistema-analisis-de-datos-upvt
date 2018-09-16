@@ -33,16 +33,10 @@ class PeriodoRequest extends FormRequest
                 'integer', 
                 'min:2007', 
                 'max:' . (date("Y") + 1), 
-                new PeriodoUnique($this->clave, $this->periodo, $this->programa_id)
+                new PeriodoUnique($this->clave, $this->periodo)
             ], 
-            'actual' => 'nullable', 
-            'estado' => 'nullable', 
-            'programa_id' => [
-                'required', 
-                'integer', 
-                'exists:programas,id', 
-                new ProgramaUserExists
-            ], 
+            'actual' => 'boolean|nullable', 
+            'estado' => 'boolean|nullable', 
         ];
     }
 }
