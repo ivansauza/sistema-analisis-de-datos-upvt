@@ -15,7 +15,7 @@
 @endsection
 
 @section('header')
-	<h1 class="h3">Usuarios</h1>
+	<h1 class="h3"><i class="fas fa-users"></i> Usuarios</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
 				<a href="{{ route('users.create') }}" class="btn btn-outline-primary btn-sm">

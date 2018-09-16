@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('header')
-	<h1 class="h3">Usuario <small>Editar</small></h1>
+	<h1 class="h3"><i class="fas fa-users"></i> Usuario <small>Editar</small></h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
 			<a href="{{ route('users.index') }}" class="btn btn-outline-secondary btn-sm">Regresar</a>
