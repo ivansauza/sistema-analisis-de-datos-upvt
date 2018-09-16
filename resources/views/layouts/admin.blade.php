@@ -17,10 +17,6 @@
 	<link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
 
-<style type="text/css">
-	@yield('style')
-</style>
-
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm p-0">
 		<a class="navbar-brand col-sm-3 col-md-3 mr-0 d-xs-none" href="{{ route('home') }}">Análisis de Datos</a>
@@ -139,16 +135,6 @@
 								Estadísticas
 							</a>
 						</li>
-						<!--<li class="nav-item">
-							<a class="nav-link" href="#">
-								Indicadores
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								Subindicadores
-							</a>
-						</li>-->
 					</ul>
 
 					<div class="dropdown-divider"></div>
@@ -160,24 +146,6 @@
 								Usuarios
 							</a>
 						</li>
-						<!--<li class="nav-item">
-							<a class="nav-link" href="#">
-								<i class="fas fa-id-card-alt"></i> 
-								Roles
-							</a>
-						</li>-->
-						<!--<li class="nav-item">
-							<a class="nav-link" href="#">
-								<i class="fas fa-key"></i> 
-								Permisos
-							</a>
-						</li>-->
-						<!--<li class="nav-item">
-							<a class="nav-link" href="#">
-								<i class="fas fa-tasks"></i> 
-								Actividades
-							</a>
-						</li>-->
 					</ul>
 				</div>
 			</nav>
