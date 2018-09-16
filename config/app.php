@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,7 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
-        Caffeinated\Shinobi\ShinobiServiceProvider::class,
+        Caffeinated\Shinobi\ShinobiServiceProvider::class, 
+        Laraveles\Spanish\SpanishServiceProvider::class,
     ],
 
     /*
