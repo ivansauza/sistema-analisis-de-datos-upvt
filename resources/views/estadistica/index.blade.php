@@ -33,7 +33,7 @@
 
 @section('content')
 
-	<table class="table table-bordered table-responsive" style="background: #fff;">
+	<table class="table table-bordered" style="background: #fff;">
 		<thead class="thead-light">
 			<tr>
 				<th scope="col">Subindicador</th>

@@ -13,53 +13,49 @@
 @section('content')
 	
 	@foreach($roles as $role)
-
-
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>Pregunta</th>
-							@foreach($role->users as $user)
-								<th>{{ $user->full_name }}</th>
-							@endforeach
-							<th>Total</th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach($periodo->programa->preguntas->where('role_id', '=', $role->id) as $pregunta)
-							<tr>
-								<td scope="row">
-									{{ $pregunta->nombre }}
-								</td>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Pregunta</th>
+					@foreach($role->users as $user)
+						<th>{{ $user->full_name }}</th>
+					@endforeach
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($periodo->programa->preguntas->where('role_id', '=', $role->id) as $pregunta)
+					<tr>
+						<td scope="row">
+							{{ $pregunta->nombre }}
+						</td>
+						@php
+							$sum = 0;
+						@endphp
+						@foreach($role->users as $user)
+							<td scope="row" class="text-center">
 								@php
-									$sum = 0;
+									$encuesta = $periodo->encuestas
+										->where('user_id', '=', $user->id)
+										->first();
 								@endphp
-								@foreach($role->users as $user)
-									<td scope="row" class="text-center">
-										@php
-											$encuesta = $periodo->encuestas
-												->where('user_id', '=', $user->id)
-												->first();
-										@endphp
 
-										@if($encuesta)
-											@php
-												$pregunta = $encuesta->preguntas->find($pregunta->id);
-												$sum += $pregunta->pivot->valor;
-											@endphp
+								@if($encuesta)
+									@php
+										$pregunta = $encuesta->preguntas->find($pregunta->id);
+										$sum += $pregunta->pivot->valor;
+									@endphp
 
-											<small>{{ $pregunta->pivot->valor }}</small>
-										@else
-											N/D
-										@endif
-									</td>
-								@endforeach
-								<td class="text-center">{{ $sum }}</td>
-							</tr>
+									<small>{{ $pregunta->pivot->valor }}</small>
+								@else
+									N/D
+								@endif
+							</td>
 						@endforeach
-					</tbody>
-				</table>
-
-
+						<td class="text-center">{{ $sum }}</td>
+					</tr>
+				@endforeach
+			</tbody>
+		</table>
 	@endforeach
 @endsection

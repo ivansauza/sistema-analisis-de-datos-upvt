@@ -23,18 +23,6 @@
 				}
         	]	
 		} )
-
-		$( 'nothing' ).sortable( {
-			helper: fixWidthHelper, 
-			update: function()
-			{
-				var items = $( this ).sortable( 'toArray' , { attribute: 'data-id' } )
-				posicionUpdate(
-					"{{ route('periodos.posicion.update') }}", 
-					items
-				)
-			}
-		} ).disableSelection()
 	} )
 
 	function upSortable( event )
@@ -102,7 +90,7 @@
 						</td>
 						<td>
 							<div class="float-right">
-								<a href="{{ route('periodos.show', $periodo->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
+								<a href="{{ route('periodos.show', $periodo->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Detalles">
 									<i class="fas fa-eye"></i>
 								</a>
 
