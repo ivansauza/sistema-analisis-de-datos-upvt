@@ -27,8 +27,7 @@ class PreguntaRequest extends FormRequest
             'nombre' => 'required|string|max:255', 
             'nota' => 'string|nullable', 
             'desactivar' => 'boolean|nullable', 
-            'role_id' => 'required|integer|exists:roles,id', 
-            'programa_id' => 'required|integer|exists:programas,id'
+            'role_id' => 'required|integer|exists:roles,id'
         ];
     }
 }
