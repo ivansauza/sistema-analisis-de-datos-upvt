@@ -16,14 +16,6 @@
 				<span class="badge badge-danger">{{ $errors->first('role_id') }}</span>
 			@endif
 		</div>
-
-		<div class="form-group">
-			{{ Form::label('programa_id', 'Programa Educativo') }}
-			{{ Form::select('programa_id', $programas, null, ['class' => 'form-control']) }}
-			@if ($errors->has('programa_id'))
-				<span class="badge badge-danger">{{ $errors->first('programa_id') }}</span>
-			@endif
-		</div>
 	</div>
 	<div class="col">
 		<div class="form-group">
