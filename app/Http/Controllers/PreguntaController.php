@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Pregunta;
 use Illuminate\Http\Request;
 use App\Traits\ProgramasEmptyValidate;
+
 use App\Http\Requests\PreguntaRequest;
 
+use App\Pregunta;
 use App\Programa;
 use Caffeinated\Shinobi\Models\Role;
 
@@ -17,7 +18,7 @@ class PreguntaController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function index()
     {
@@ -31,7 +32,7 @@ class PreguntaController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function create()
     {
@@ -43,12 +44,14 @@ class PreguntaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \App\Http\Requests\PreguntaRequest  $request
+     * @return mixed
      */
     public function store(PreguntaRequest $request)
     {
-        $pregunta = Pregunta::create($request->all());
+        $pregunta = new Pregunta($request->all());
+        $pregunta->programa_id = Programa::getPredeterminado()->id;
+        $pregunta->save();
 
         return redirect()->route('preguntas.edit', $pregunta->id)
             ->with('info', ['type' => 'success', 'message' => 'Pregunta agregada con éxito']);
@@ -58,10 +61,12 @@ class PreguntaController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Pregunta  $pregunta
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function show(Pregunta $pregunta)
     {
+        $this->authorize('access', $pregunta);
+
         return view('pregunta.show', compact('pregunta'));
     }
 
@@ -69,26 +74,26 @@ class PreguntaController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Pregunta  $pregunta
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function edit(Pregunta $pregunta)
     {
-        $programas = auth()->user()->programas
-            ->pluck('nombre', 'id');
-        $roles     = Role::get()->pluck('name', 'id');
+        $this->authorize('access', $pregunta);
+        $roles = Role::get()->pluck('name', 'id');
 
-        return view('pregunta.edit', compact('pregunta', 'programas', 'roles'));
+        return view('pregunta.edit', compact('pregunta', 'roles'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\PreguntaRequest  $request
      * @param  \App\Pregunta  $pregunta
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function update(PreguntaRequest $request, Pregunta $pregunta)
     {
+        $this->authorize('access', $pregunta);
         $pregunta->update($request->all());
 
         return redirect()->back()
@@ -99,25 +104,23 @@ class PreguntaController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Pregunta  $pregunta
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function destroy(Pregunta $pregunta)
     {
-        /* Comprobar que el usuario tiene permisos sobre la  enviada */
-        Programa::getPredeterminado()->preguntas()
-            ->findOrFail($pregunta->id);
-
+        $this->authorize('access', $pregunta);
         $pregunta->delete();
 
         return redirect()->route('preguntas.index')
             ->with('info', ['type' => 'success', 'message' => 'Pregunta eliminada con éxito']);
     }
 
-    public function programaSelect()
-    {
-        return view('pregunta.programa.select');
-    }
-
+    /**
+     * Actualizar la posición de todos los elementos del recurso
+     *
+     * @param  Request  $request
+     * @return array
+     */
     public function posicionUpdate(Request $request)
     {
         $data = $request->validate([
@@ -127,7 +130,8 @@ class PreguntaController extends Controller
         
         foreach ($data['items'] as $key => $item) 
         {
-            $pregunta = Pregunta::findOrFail($item);
+            $pregunta = Pregunta::find($item);
+            $this->authorize('access', $pregunta);
             $pregunta->posicion = $key;
             $pregunta->save();
         }
