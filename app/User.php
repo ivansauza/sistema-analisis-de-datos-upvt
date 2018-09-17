@@ -28,7 +28,8 @@ class User extends Authenticatable
     ];
 
     protected $casts = [ 
-        'disabled' => 'boolean'
+        'disabled' => 'boolean', 
+        'admin'    => 'boolean'
     ];
 
     public function actividades()
