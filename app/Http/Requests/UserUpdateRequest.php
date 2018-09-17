@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use App\Rules\ProgramaUserExists;
+
 class UserUpdateRequest extends FormRequest
 {
     /**
@@ -29,9 +31,11 @@ class UserUpdateRequest extends FormRequest
             'email'       => 'required|string|email|max:255|unique:users,email,' . $this->user,
             'password'    => 'string|min:6|confirmed|nullable', 
             'programas'   => 'required|array', 
-            'programas.*' => 'integer|exists:programas,id', 
+            'programas.*' => [
+                'integer', 
+                new ProgramaUserExists
+            ], 
             'roles'       => 'required|integer|exists:roles,id'
-            /*'roles.*'     => 'integer|exists:roles,id'*/
         ];
     }
 }
