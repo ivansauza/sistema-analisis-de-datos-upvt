@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder
         	'name' => 'Jael', 
         	'apellidos' => 'Rojas', 
         	'email' => 'jael@upvt.com', 
-        	'password' => bcrypt('secret')
+            'password' => bcrypt('secret'), 
+            'admin' => true
         ]);
 
         DB::table('role_user')->insert([
@@ -38,7 +39,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'Arlet', 
             'apellidos' => '', 
             'email' => 'arlet@upvt.com', 
-            'password' => bcrypt('secret')
+            'password' => bcrypt('secret'), 
+            'admin' => true
         ]);
     }
 }
