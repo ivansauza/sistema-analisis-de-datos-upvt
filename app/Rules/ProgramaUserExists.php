@@ -25,9 +25,7 @@ class ProgramaUserExists implements Rule
      */
     public function passes($attribute, $value)
     {
-        auth()->user()->programas()->findOrFail($value);
-
-        return true;
+        return auth()->user()->programas()->find($value) ? true : false;
     }
 
     /**
