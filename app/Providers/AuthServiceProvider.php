@@ -5,6 +5,9 @@ namespace App\Providers;
 use App\Periodo;
 use App\Policies\PeriodoPolicy;
 
+use App\Pregunta;
+use App\Policies\PreguntaPolicy;
+
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -19,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Model' => 'App\Policies\ModelPolicy',
         
         Periodo::class => PeriodoPolicy::class,
+        Pregunta::class => PreguntaPolicy::class,
     ];
 
     /**
@@ -29,9 +33,6 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        /*Gate::define('access-periodo', function ($user, $periodo) {
-            return $user->programas()->where('predeterminado', '=', 1)->first()->id == $periodo->programa_id;
-        });*/
+        
     }
 }
