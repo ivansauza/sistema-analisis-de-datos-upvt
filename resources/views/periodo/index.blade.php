@@ -47,9 +47,7 @@
 	<h1 class="h3">Periodos</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
-			<a href="{{ route('periodos.create', ['programa_id' => auth()->user()->programas()->where('predeterminado', '=', 1)->first()->id]) }}" class="btn btn-outline-primary btn-sm">Crear Periodo</a>
-			
-			@include('periodo.fragments.view_menu')
+			<a href="{{ route('periodos.create') }}" class="btn btn-outline-primary btn-sm">Crear Periodo</a>
 		</div>
 	</div>
 @endsection
