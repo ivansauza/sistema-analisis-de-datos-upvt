@@ -19,29 +19,29 @@ class UserController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return mixed
 	 */
 	public function index()
 	{
 		/**
 		 * Extraer los usuarios que pertenecen al programa
-		 * actual predeterminado excepto el administrador
+		 * predeterminado excepto los administradores
 		*/
-		$users = Programa::getPredeterminado()->users()
-			->where('users.id', '!=', auth()->user()->id )
-			->get();
+		$users = Programa::getPredeterminado()
+			->users
+			->where('admin', '==', 0);
+
 		return view('user.index', compact('users'));
 	}
 
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return mixed
 	 */
 	public function create()
 	{
-		$programas = auth()->user()->programas
-			->pluck('nombre', 'id');
+		$programas = auth()->user()->programas->pluck('nombre', 'id');
 		$roles     = Role::get()->pluck('name', 'id');
 
 		return view('user.create', compact('programas', 'roles'));
@@ -50,16 +50,14 @@ class UserController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
+	 * @param  \App\Http\Requests\UserStoreRequest  $request
+	 * @return mixed
 	 */
 	public function store(UserStoreRequest $request)
 	{
-		$user = User::create( $request->all() );
-		$user->programas()
-			->sync( $request->get('programas') );
-		$user->roles()
-			->sync( [$request->get('roles')[0]] );
+		$user = User::create($request->all());
+		$user->programas()->sync($request->get('programas'));
+		$user->roles()->sync( [$request->get('roles')[0]] );
 
 		return redirect()->route('users.index')
 			->with('info', ['type' => 'success', 'message' => 'Usuario agregado con éxito']);
@@ -68,24 +66,26 @@ class UserController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @param  \App\User  $user
+	 * @return mixed
 	 */
 	public function show(User $user)
 	{
+		$this->authorize('access', $user);
+
 		return view('user.show', compact('user'));
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @param  \App\User  $user
+	 * @return mixed
 	 */
 	public function edit(User $user)
 	{
-		$programas = auth()->user()->programas
-			->pluck('nombre', 'id');
+		$this->authorize('access', $user);
+		$programas = auth()->user()->programas->pluck('nombre', 'id');
 		$roles     = Role::get()->pluck('name', 'id');
 
 		return view('user.edit', compact('user', 'programas', 'roles'));
@@ -94,19 +94,18 @@ class UserController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \App\Http\Requests\UserUpdateRequest  $request
 	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
+	 * @return mixed
 	 */
 	public function update(UserUpdateRequest $request, $id)
 	{
 		$user = User::findOrFail($id);
+		$this->authorize('access', $user);
 		$user->fill( $request->all() );
 		$user->save();
-		$user->programas()
-			->sync( $request->get('programas') );
-		$user->roles()
-			->sync( [$request->get('roles')[0]] );
+		$user->programas()->sync( $request->get('programas') );
+		$user->roles()->sync( [$request->get('roles')[0]] );
 
 		return redirect()->route('users.edit', $user->id)
 			->with('info', ['type' => 'success', 'message' => 'Usuario modificado con éxito']);
@@ -118,8 +117,14 @@ class UserController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroy(User $user)
 	{
-		//
+		$this->authorize('access', $user);
+		$user->programas()->sync( [] );
+		$user->roles()->sync( [] );
+        $user->delete();
+
+        return redirect()->route('users.index')
+            ->with('info', ['type' => 'success', 'message' => 'Usuario eliminado con éxito']);
 	}
 }
