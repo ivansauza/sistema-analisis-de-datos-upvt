@@ -24,10 +24,10 @@ class PreguntaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|string|max:255', 
-            'nota' => 'string|nullable', 
+            'nombre'     => 'required|string|max:255', 
+            'nota'       => 'string|nullable', 
             'desactivar' => 'boolean|nullable', 
-            'role_id' => 'required|integer|exists:roles,id'
+            'role_id'    => 'required|integer|exists:roles,id'
         ];
     }
 }
