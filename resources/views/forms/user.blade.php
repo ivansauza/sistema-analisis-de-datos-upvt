@@ -44,7 +44,7 @@
 	<div class="col">
 		<div class="form-group">
 			{{ Form::label('programas[]', 'Programas Educativos') }}
-			{{ Form::select('programas[]', $programas, null, ['class' => 'form-control', 'multiple', 'placeholder' => 'Seleccionar ...']) }}
+			{{ Form::select('programas[]', $programas, null, ['class' => 'form-control', 'multiple']) }}
 			<small class="form-text text-muted">Puede seleccionar varios items presionando la tecla "control" + "click".</small>
 			@if ($errors->has('programas'))
 				<span class="badge badge-danger">{{ $errors->first('programas') }}</span>
