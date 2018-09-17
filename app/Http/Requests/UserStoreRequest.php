@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use App\Rules\ProgramaUserExists;
+
 class UserStoreRequest extends FormRequest
 {
     /**
@@ -28,8 +30,11 @@ class UserStoreRequest extends FormRequest
             'apellidos'   => 'string|nullable', 
             'email'       => 'required|string|email|max:255|unique:users',
             'password'    => 'required|string|min:6|confirmed', 
-            'programas'   => 'required|array', 
-            'programas.*' => 'integer|exists:programas,id', 
+            'programas'   => 'required|array|min:1|distinct', 
+            'programas.*' => [
+                'integer', 
+                new ProgramaUserExists
+            ], 
             'roles'       => 'required|integer|exists:roles,id'
         ];
     }
