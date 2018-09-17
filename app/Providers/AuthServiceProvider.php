@@ -8,6 +8,9 @@ use App\Policies\PeriodoPolicy;
 use App\Pregunta;
 use App\Policies\PreguntaPolicy;
 
+use App\User;
+use App\Policies\UserPolicy;
+
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -21,8 +24,9 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
         
-        Periodo::class => PeriodoPolicy::class,
+        Periodo::class  => PeriodoPolicy::class,
         Pregunta::class => PreguntaPolicy::class,
+        User::class     => UserPolicy::class,
     ];
 
     /**
