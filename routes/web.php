@@ -38,6 +38,14 @@ Route::post('preguntas/posicion/update', 'PreguntaController@posicionUpdate')
 Route::resource('preguntas', 'PreguntaController')
 	->middleware('auth');
 
+Route::get('encuestas/select/user', 'EncuestaSelectUser')
+	->name('encuestas.select.user')
+	->middleware('auth');
+
+Route::get('encuestas/select/periodo', 'EncuestaSelectPeriodo')
+	->name('encuestas.select.periodo')
+	->middleware('auth');
+
 Route::resource('encuestas', 'EncuestaController')
 	->middleware('auth');
 
