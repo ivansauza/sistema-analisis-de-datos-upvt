@@ -47,6 +47,7 @@ class Subindicador extends Model
 							->get();
 
 						$tolerance = 0;
+						$total     = 0;
 
 						foreach ($encuestas as $key => $encuesta) 
 						{
@@ -56,11 +57,13 @@ class Subindicador extends Model
 							if($pregunta)
 							{
 								$tolerance ++;
-								$operation[] = $pregunta->pivot->valor;
+								$total += $pregunta->pivot->valor;
 							}else {
-								$operation[] = null;
+								//$operation[] = null;
 							}
 						}
+
+						$operation[] = $total;
 
 						if($tolerance == 0)
 						{
@@ -80,7 +83,7 @@ class Subindicador extends Model
 				}
 			}
 		}
-
+		
 		return eval('return '.implode('', $operation).';');
 	}
 }
