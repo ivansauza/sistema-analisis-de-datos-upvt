@@ -43,7 +43,7 @@ class AnalisisController extends Controller
         $periodo   = Periodo::find($request->get('periodo_id'));
         /**
          * Obtener todas las preguntas del programa predeterminado que
-         * se encuentren en estado 0 "Activo", que pertenescan al rol
+         * se encuentren en estado 0 "Activo", que pertenezcan al rol
          * de usuario actualmente logeado.
          */
         $preguntas = Programa::getPredeterminado()
@@ -103,9 +103,12 @@ class AnalisisController extends Controller
      */
     public function edit($id)
     {
-        $analisis = Encuesta::where('user_id', '=', auth()->id())
-            ->where('finalizado', '=', 0)
-            ->findOrFail($id);
+        $analisis = Encuesta::whereHas('periodo', function ($query) {
+            $query->where('estado', '=', 0);
+        })
+        ->where('user_id', '=', auth()->id())
+        ->where('finalizado', '=', 0)
+        ->findOrFail($id);
         
         return view('analisis.edit', compact('analisis'));
     }
@@ -135,12 +138,6 @@ class AnalisisController extends Controller
                 $pivot->save();
             }
         }
-
-        if ($request->get('finalizado'))
-        {
-            return redirect()->route('analisis.index')
-            ->with('info', ['type' => 'success', 'message' => 'El Análisis se ha enviado con éxito.']);
-        }
         
         return redirect()->route('analisis.edit', $analisis->id)
             ->with('info', ['type' => 'success', 'message' => 'Análisis actualizado con éxito']);
@@ -154,34 +151,17 @@ class AnalisisController extends Controller
      */
     public function destroy($id)
     {
-        $analisis = Encuesta::where('user_id', '=', auth()->id())
-            ->where('finalizado', '=', 0)
-            ->findOrFail($id);
+        $analisis = Encuesta::whereHas('periodo', function ($query) {
+            $query->where('estado', '=', 0);
+        })
+        ->where('user_id', '=', auth()->id())
+        ->where('finalizado', '=', 0)
+        ->findOrFail($id);
+
         $analisis->preguntas()->sync([]);
         $analisis->delete();
 
         return redirect()->route('analisis.index')
             ->with('info', ['type' => 'success', 'message' => 'Análisis eliminado con éxito']);
-    }
-
-    /**
-     * Mostrar todos los periodos disponibles para crear una encuesta..
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function select()
-    {
-        /** 
-         * Obtener todos los periodos abiertos que no tengan
-         * encuestas del programa predeterminado con respecto
-         * al usuario actualmente logeado.
-        */
-        $periodos = Periodo::get()->where('estado', '=', 0)
-            ->where('programa_id', '=', Programa::getPredeterminado()->id)
-            ->whereNotIn('id', auth()->user()->getEncuestasExistsPeriodos())
-            ->sortBy('posicion')
-            ->pluck('full_clave', 'id');
-
-        return view('analisis.select', compact('periodos'));
     }
 }
