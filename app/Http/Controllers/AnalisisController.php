@@ -139,7 +139,7 @@ class AnalisisController extends Controller
             }
         }
         
-        return redirect()->route('analisis.edit', $analisis->id)
+        return redirect()->route('analisis.index')
             ->with('info', ['type' => 'success', 'message' => 'Análisis actualizado con éxito']);
     }
 
