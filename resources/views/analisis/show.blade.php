@@ -16,7 +16,7 @@
 				<div class="row">
 					<div class="col">
 						Análisis
-						@if($analisis->periodo->estado AND $analisis->finalizado == 0)
+						@if($analisis->periodo->estado == 0 AND $analisis->finalizado == 0)
 							<div class="float-right">
 								<a href="{{ route('analisis.edit', $analisis->id) }}" class="btn text-secondary" data-toggle="tooltip" data-placement="top" title="Editar">
 									<i class="fas fa-pencil-alt"></i>
