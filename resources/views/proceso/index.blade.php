@@ -3,16 +3,18 @@
 @section('header')
 	<h1 class="h3">Procesos</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
-		<div class="btn-group mr-2" role="group">
-			<button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Agregar item nuevo
-			</button>
-			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-				<a class="dropdown-item" href="{{ route('procesos.create', ['programa_id' =>  App\Programa::getPredeterminado()->id]) }}">Crear Proceso</a>
-				<a class="dropdown-item" href="{{ route('indicadores.create') }}">Crear Indicador</a>
-				<a class="dropdown-item" href="{{ route('subindicadores.create') }}">Crear Subindicador</a>
+		@if($procesos->isNotEmpty())
+			<div class="btn-group mr-2" role="group">
+				<button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Agregar item nuevo
+				</button>
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+					<a class="dropdown-item" href="{{ route('procesos.create', ['programa_id' =>  App\Programa::getPredeterminado()->id]) }}">Crear Proceso</a>
+					<a class="dropdown-item" href="{{ route('indicadores.create') }}">Crear Indicador</a>
+					<a class="dropdown-item" href="{{ route('subindicadores.create') }}">Crear Subindicador</a>
+				</div>
 			</div>
-		</div>
+		@endif
 	</div>
 @endsection
 
@@ -22,11 +24,10 @@
 
 	{{-- Proceso --}}
 	@forelse($procesos as $proceso)
+
 		<div class="card card-default mb-4">
 			<div class="card-header py-2">
-				<strong>
-					Proceso: <small>{{ $proceso->nombre }}</small>
-				</strong>
+				{{ $proceso->nombre }}
 
 				<div class="float-right p-0 m-0">
 					<a class="btn btn-sm btn-transparent">
@@ -115,10 +116,17 @@
 
 			</div>
 		</div>
+
 	@empty
-		<h6 class="text-center text-muted">
-			No hay Procesos en el Programa Educativo.
-		</h6>
+
+		<div class="card">
+			<div class="card-body">
+				<h6 class="text-center text-muted">
+					No hay procesos agregados, <a href="{{ route('procesos.create') }}">crear proceso</a>.
+				</h6>
+			</div>
+		</div>
+
 	@endforelse
 
 @endsection
