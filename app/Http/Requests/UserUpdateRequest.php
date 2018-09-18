@@ -28,7 +28,8 @@ class UserUpdateRequest extends FormRequest
         return [
             'name'        => 'required|string|max:255',
             'apellidos'   => 'string|nullable', 
-            'email'       => 'required|string|email|max:255|unique:users,email,' . $this->user,
+            'email'       => 'string|email|max:255|nullable',
+            'username'    => 'required|alpha_dash|max:25|unique:users,username,' . $this->user,
             'password'    => 'string|min:6|confirmed|nullable', 
             'programas'   => 'required|array', 
             'programas.*' => [
