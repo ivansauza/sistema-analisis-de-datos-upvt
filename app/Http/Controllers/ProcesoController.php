@@ -32,10 +32,7 @@ class ProcesoController extends Controller
      */
     public function create()
     {
-        $programas = auth()->user()->programas
-            ->pluck('nombre', 'id');
-
-        return view('proceso.create', compact('programas'));
+        return view('proceso.create');
     }
 
     /**
@@ -46,7 +43,9 @@ class ProcesoController extends Controller
      */
     public function store(ProcesoRequest $request)
     {
-        $proceso = Proceso::create($request->all());
+        $proceso = new Proceso($request->all());
+        $proceso->programa_id = Programa::getPredeterminado()->id;
+        $proceso->save();
 
         return redirect()->route('procesos.edit', $proceso->id)
             ->with('info', ['type' => 'success', 'message' => 'Proceso guardado con éxito']);
@@ -71,10 +70,7 @@ class ProcesoController extends Controller
      */
     public function edit(Proceso $proceso)
     {
-        $programas = auth()->user()->programas
-            ->pluck('nombre', 'id');
-
-        return view('proceso.edit', compact('proceso', 'programas'));
+        return view('proceso.edit', compact('proceso'));
     }
 
     /**
