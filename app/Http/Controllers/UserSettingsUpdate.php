@@ -37,7 +37,7 @@ class UserSettingsUpdate extends Controller
             ], 
             'name'             => 'required|string|max:255',
             'apellidos'        => 'string|nullable', 
-            'email'            => 'required|string|email|max:255|unique:users,email,' . auth()->user()->id,
+            'email'            => 'email|max:255|nullable',
             'password'         => 'string|min:6|confirmed|nullable'
     	];
 
