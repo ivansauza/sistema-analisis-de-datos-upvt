@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Encuesta;
 use Illuminate\Http\Request;
 use App\Traits\ProgramasEmptyValidate;
+use App\Http\Requests\EncuestaCreateRequest;
+use App\Http\Requests\EncuestaStoreRequest;
+use App\Http\Requests\EncuestaUpdateRequest;
 
 Use App\Programa;
+use App\User;
+use App\Periodo;
 
 class EncuestaController extends Controller
 {
@@ -29,9 +34,16 @@ class EncuestaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(EncuestaCreateRequest $request)
     {
-        return view('encuesta.create');
+        $user      = User::find($request->get('user_id'));
+        $periodo   = Periodo::find($request->get('periodo_id'));
+        $preguntas = Programa::getPredeterminado()
+            ->preguntas
+            ->where('desactivar', '=', 0)
+            ->where('role_id', '=', $user->roles()->first()->id);
+
+        return view('encuesta.create', compact('user', 'periodo', 'preguntas'));
     }
 
     /**
@@ -40,9 +52,26 @@ class EncuestaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EncuestaStoreRequest $request)
     {
-        //
+        $encuesta = new Encuesta($request->all());
+        $encuesta->user_id    = $request->get('user_id');
+        $encuesta->periodo_id = $request->get('periodo_id');
+        $encuesta->save();
+
+        /**
+         * Insertar todas las preguntas y sus valores en la tabla
+         * encuesta_pregunta
+         */
+        foreach ($request->get('preguntas_id') as $key => $pregunta_id) 
+        {
+            $encuesta->preguntas()->attach($pregunta_id, [
+                'valor' => $request->get('preguntas_value')[$key]
+            ]);
+        }
+
+        return redirect()->route('encuestas.index')
+            ->with('info', ['type' => 'success', 'message' => 'Encuesta guardado con éxito']);
     }
 
     /**
@@ -51,9 +80,14 @@ class EncuestaController extends Controller
      * @param  \App\Encuesta  $encuesta
      * @return \Illuminate\Http\Response
      */
-    public function show(Encuesta $encuesta)
+    public function show($id)
     {
-        return view('encuesta.show');
+        $encuesta = Encuesta::whereHas('periodo', function ($query) {
+            $query->where('programa_id', '=', Programa::getPredeterminado()->id);
+        })
+        ->findOrFail($id);
+
+        return view('encuesta.show', compact('encuesta'));
     }
 
     /**
@@ -62,9 +96,14 @@ class EncuestaController extends Controller
      * @param  \App\Encuesta  $encuesta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Encuesta $encuesta)
+    public function edit($id)
     {
-        return view('encuesta.edit');
+        $encuesta = Encuesta::whereHas('periodo', function ($query) {
+            $query->where('programa_id', '=', Programa::getPredeterminado()->id);
+        })
+        ->findOrFail($id);
+        
+        return view('encuesta.edit', compact('encuesta'));
     }
 
     /**
@@ -74,9 +113,27 @@ class EncuestaController extends Controller
      * @param  \App\Encuesta  $encuesta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Encuesta $encuesta)
+    public function update(EncuestaUpdateRequest $request, Encuesta $encuesta)
     {
-        //
+        $encuesta->update($request->all());
+
+        /**
+         * Actualizar todas las preguntas y sus valores en la tabla
+         * encuesta_pregunta
+         */
+        foreach ($encuesta->preguntas as $key => $pregunta) 
+        {
+            $pivot = $pregunta->pivot;
+
+            if($pivot->pregunta_id == $request->get('preguntas_id')[$key])
+            {
+                $pivot->valor = $request->get('preguntas_value')[$key];
+                $pivot->save();
+            }
+        }
+        
+        return redirect()->route('encuestas.edit', $encuesta->id)
+            ->with('info', ['type' => 'success', 'message' => 'Encuesta actualizado con éxito']);
     }
 
     /**
@@ -85,8 +142,17 @@ class EncuestaController extends Controller
      * @param  \App\Encuesta  $encuesta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Encuesta $encuesta)
+    public function destroy($id)
     {
-        //
+        $encuesta = Encuesta::whereHas('periodo', function ($query) {
+            $query->where('programa_id', '=', Programa::getPredeterminado()->id);
+        })
+        ->findOrFail($id);
+
+        $encuesta->preguntas()->sync([]);
+        $encuesta->delete();
+
+        return redirect()->route('encuestas.index')
+            ->with('info', ['type' => 'success', 'message' => 'Encuesta eliminada con éxito']);
     }
 }
