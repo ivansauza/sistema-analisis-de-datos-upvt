@@ -9,10 +9,10 @@
             <form method="POST" action="{{ route('login') }}" class="mt-5">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <input type="email" name="email" id="email"  value="{{ old('email') }}" class="form-control" placeholder="Correo electrónico">
-                    @if ($errors->has('email'))
+                    <input type="text" name="username" id="username"  value="{{ old('username') }}" class="form-control" placeholder="Usuario">
+                    @if ($errors->has('username'))
                         <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
+                            <strong>{{ $errors->first('username') }}</strong>
                         </span>
                     @endif
                 </div>
