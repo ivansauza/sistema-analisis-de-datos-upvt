@@ -1,5 +1,6 @@
 <div class="card-header">
-	Análisis de datos para el periodo <i>{{ $analisis->periodo->full_clave }}</i>
+	<p>Análisis de datos para el periodo <i>{{ $analisis->periodo->full_clave }}</i></p>
+	<p class="text-right"><b>Nota:</b> <small>Si la pregunta no aplica a su rol dejar en blanco.</small></p>
 </div>
 
 <table class="table table-hover">

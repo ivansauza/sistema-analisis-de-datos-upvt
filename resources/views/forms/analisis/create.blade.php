@@ -1,11 +1,6 @@
-<!--<div class="form-group">
-	{{ Form::label('pregunta[]', 'Número de alumnos que fueron evaluados en el de Estancias y Estadía') }}
-	{{ Form::text('pregunta[]', null, ['class' => 'form-control']) }}
-	<small class="form-text text-muted">Periodo establecido. (40 días como máximo)</small>
-</div>-->
-
 <div class="card-header">
-	Análisis de datos para el periodo <i>{{ $periodo->full_clave }}</i>
+	<p>Análisis de datos para el periodo <i>{{ $periodo->full_clave }}</i></p>
+	<p class="text-right"><b>Nota:</b> <small>Si la pregunta no aplica a su rol dejar en blanco.</small></p>
 </div>
 
 <table class="table table-hover">
@@ -31,7 +26,7 @@
 				</td>
 				<td style="width: 30%;">
 					{{ Form::hidden('preguntas_id[]', $pregunta->id) }}
-					{{ Form::number('preguntas_value[]', null, ['class' => 'form-control']) }}
+					{{ Form::number('preguntas_value[]', null, ['class' => 'form-control', 'min' => 0]) }}
 					<small class="form-text text-muted">
 						{{ $pregunta->nota }}
 					</small>

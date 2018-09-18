@@ -32,7 +32,7 @@
 			{
 				posicionUpdate(
 					"{{ route('periodos.posicion.update') }}", 
-					$( this ).sortable( 'toArray' , { attribute: 'data-id' } )
+					$( this ).sortable( 'toArray' )
 				)
 			}, 
 			stop: function()
@@ -70,7 +70,7 @@
 			</thead>
 			<tbody id="sortable">
 				@foreach($periodos as $periodo)
-					<tr data-id="{{ $periodo->id }}">
+					<tr id="{{ $periodo->id }}">
 						<td class="text-center">{{ $periodo->id }}</td>
 						<td class="p-1">
 							<a href="#" class="btn btn-xs mt-2" alt="Mover" 
