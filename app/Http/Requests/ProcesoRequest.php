@@ -24,8 +24,7 @@ class ProcesoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'     => 'required|string|max:255', 
-            'programa_id' => 'required|integer|exists:programas,id', 
+            'nombre'     => 'required|string|max:255',
             'nota'       => 'string|nullable'
         ];
     }
