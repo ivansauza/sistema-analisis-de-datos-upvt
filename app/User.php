@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'apellidos', 'email', 'password', 'disabled'
+        'prefijo', 'name', 'apellidos', 'email', 'username', 'password', 'disabled'
     ];
 
     /**
@@ -56,6 +56,11 @@ class User extends Authenticatable
     public function getFullNameAttribute()
     {
         return "{$this->name} {$this->apellidos}";
+    }
+
+    public function getFullNameAndRoleAttribute()
+    {
+        return "{$this->roles->first()->name} - {$this->name} {$this->apellidos}";
     }
 
     public function setPasswordAttribute($value)
