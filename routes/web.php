@@ -60,9 +60,9 @@ Route::resource('users', 'UserController')
 Route::get('users/{id}/actividades', 'UserController@actividades')
 	->name('users.actividades');
 
-Route::get('analisis/select', 'AnalisisController@select')
+Route::get('analisis/select', 'AnalisisSelectPeriodo')
 	->name('analisis.select')
-	->middleware('auth');;
+	->middleware('auth');
 
 Route::resource('analisis', 'AnalisisController', ['parameters' => [
 	'analisis' => 'analisis'

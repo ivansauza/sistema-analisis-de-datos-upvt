@@ -11,15 +11,43 @@
 
 @section('content')
 
-	{{ Form::open(['route' => 'analisis.create', 'method' => 'GET']) }}
-		<div class="form-group">
-			{{ Form::label('periodo_id', 'Periodo') }}
-			{{ Form::select('periodo_id', $periodos, null, ['class' => 'form-control', 'required', 'placeholder' => 'Seleccionar ...']) }}
-			<small class="form-text text-muted">Selecciona el Perido del cual quiere realizar el análisis de datos.</small>
+	<div class="card">
+		<div class="card-body">
+			<p>A continuación se muestran los periodos de los cuales no ha realizo su análisis de datos.</p>
 		</div>
 
-		{{ Form::submit('Siguiente', ['class' => 'btn btn-block btn-primary mt-5']) }}
-
-	{{ Form::close() }}
+		<div class="card-body p-0">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Clave</th>
+						<th scope="col">Año</th>
+						<th scope="col" class="text-center">Estado</th>
+						<th scope="col" class="text-right">Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach($periodos as $periodo)
+						<tr>
+							<td>{{ $loop->iteration }}</td>
+							<td>{{ $periodo->clave }}</td>
+							<td>{{ $periodo->anio }}</td>
+							<td class="text-center">
+								<span class="badge badge-pill badge-{{ $periodo->estado ? 'danger' : 'success' }}">
+									{{ $periodo->estado ? 'Cerrado' : 'Abierto' }}
+								</span>
+							</td>
+							<td class="text-right">
+								<a href="{{ route('analisis.create', ['periodo_id' => $periodo->id]) }}" class="btn btn-sm {{ $periodo->estado ? 'disabled' : null }}">
+									Realizar
+								</a>
+							<td>
+						</tr>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
+	</div>
 	
 @endsection
