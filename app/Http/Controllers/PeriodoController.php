@@ -121,13 +121,13 @@ class PeriodoController extends Controller
     public function posicionUpdate(Request $request)
     {
         $data = $request->validate([
-            'items'   => 'array|distinct', 
-            'items.*' => 'integer|exists:periodos,id'
+            'items'   => 'array', 
+            'items.*' => 'integer|exists:periodos,id|distinct'
         ]);
         
         foreach ($data['items'] as $key => $item) 
         {
-            $periodo = Periodo::findOrFail($id);
+            $periodo = Periodo::findOrFail($item);
             $this->authorize('access', $periodo);
             $periodo->posicion = $key;
             $periodo->save();
