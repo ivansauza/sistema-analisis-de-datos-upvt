@@ -25,7 +25,7 @@ class EstadisticaController extends Controller
 
     public function details()
     {
-        $periodo      = Periodo::findOrFail(request()->input('subindicador'));
+        $periodo      = Periodo::findOrFail(request()->input('periodo'));
         $subindicador = Subindicador::findOrFail(request()->input('subindicador'));
         $roles        = Role::get();
 
