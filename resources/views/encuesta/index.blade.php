@@ -26,7 +26,7 @@
 	<h1 class="h3">Encuestas</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
-			<a href="{{ route('encuestas.create') }}" class="btn btn-outline-primary btn-sm">Crear Encuesta</a>
+			<a href="{{ route('encuestas.select.user') }}" class="btn btn-outline-primary btn-sm">Crear Encuesta</a>
 		</div>
 	</div>
 @endsection

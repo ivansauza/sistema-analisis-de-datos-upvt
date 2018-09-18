@@ -10,17 +10,23 @@
 @endsection
 
 @section('content')
+	
+	@include('fragments.alert')
 
 	<div class="card">
-		<div class="card-body">
-			{{ Form::model(null, ['route' => ['encuestas.update', 0]]) }}
-
-				@include('forms.encuesta')
-
-				{{ Form::submit('Actualizar', ['class' => 'btn btn-block btn-warning mt-5']) }}
-
-			{{ Form::close() }}
+		<div class="card-header">
+			Editando análisis de datos del usuario <b>{{ $encuesta->user->full_name_and_role }}</b> del periodo <i>{{ $encuesta->periodo->full_clave }}</i>
 		</div>
+
+		{{ Form::model($encuesta, ['route' => ['encuestas.update', $encuesta->id], 'method' => 'PUT']) }}
+
+			@include('forms.encuesta.edit')
+
+			<div class="card-footer">
+				{{ Form::submit('Actualizar', ['class' => 'btn btn-block btn-warning']) }}
+			</div>
+
+		{{ Form::close() }}
 	</div>
 	
 @endsection

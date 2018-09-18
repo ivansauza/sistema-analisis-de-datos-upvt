@@ -12,15 +12,20 @@
 @section('content')
 
 	<div class="card">
-		<div class="card-body">
-			{{ Form::open(['route' => 'encuestas.store']) }}
-
-				@include('forms.encuesta')
-
-				{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-primary mt-5']) }}
-
-			{{ Form::close() }}
+		<div class="card-header">
+			Creando análisis de datos del usuario <b>{{ $user->full_name_and_role }}</b> del periodo <i>{{ $periodo->full_clave }}</i>
 		</div>
+
+		{{ Form::open(['route' => 'encuestas.store']) }}
+
+			@include('forms.encuesta.create')
+
+			<div class="card-footer">
+				{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-primary']) }}
+			</div>
+
+		{{ Form::close() }}
+
 	</div>
 
 @endsection
