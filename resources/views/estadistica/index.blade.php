@@ -12,9 +12,9 @@
 @section('content')
 
 	<table class="table table-bordered table-hover table-responsive-sm" style="background: #fff;">
-		<thead class="thead-dark">
+		<thead>
 			<tr>
-				<th scope="col">Subindicador</th>
+				<th scope="col"></th>
 				<th scope="col" class="text-center">Valor Meta</th>
 				<th scope="col" class="text-center"></th>
 				@foreach($periodos as $periodo)
@@ -72,8 +72,8 @@
 							@endforeach
 						</tr>
 					@endforeach
-				@endforeach
-			@endforeach <!-- endProcesos -->
+				@endforeach {{-- endIndicadores --}}
+			@endforeach {{-- -endProcesos --}}
 		</tbody>
 	</table>
 
