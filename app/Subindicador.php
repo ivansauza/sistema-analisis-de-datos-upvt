@@ -30,60 +30,69 @@ class Subindicador extends Model
 	{
 		$operation = [];
 
-		/* Comprobar si el periodo tiene encuestas */
-		if(Encuesta::where('periodo_id', '=', $periodo_id)->get()->isEmpty())
-		{
-			return 'Vacio';
+		if (!Periodo::find($periodo_id)->estado) {
+			return 'Periodo abierto';
 		}
 
-		if($this->procedimiento)
+		/* Comprobar si el periodo tiene encuestas */
+		if (Encuesta::where('periodo_id', '=', $periodo_id)->get()->isEmpty()) {
+			return 'Vació';
+		}
+
+		if (!$this->procedimiento) {
+			return 'Sin procedimiento';
+		}
+
+		foreach($this->procedimiento as $procedimiento)
 		{
-			foreach($this->procedimiento as $procedimiento)
+			switch ($procedimiento['type']) 
 			{
-				switch ($procedimiento['type']) 
-				{
-					case 'pregunta':
-						$encuestas = Encuesta::where('periodo_id', '=', $periodo_id)
-							->get();
+				case 'pregunta':
+					$encuestas = Encuesta::where('periodo_id', '=', $periodo_id)
+						->get();
 
-						$tolerance = 0;
-						$total     = 0;
+					$tolerance = 0;
+					$total     = 0;
 
-						foreach ($encuestas as $key => $encuesta) 
-						{
-							$pregunta = $encuesta->preguntas
-								->find($procedimiento['value']);
+					foreach ($encuestas as $key => $encuesta) {
+						$pregunta = $encuesta->preguntas
+							->find($procedimiento['value']);
 
-							if($pregunta)
-							{
-								$tolerance ++;
-								$total += $pregunta->pivot->valor;
-							}else {
-								//$operation[] = null;
-							}
+						if ($pregunta) {
+							$tolerance ++;
+							$total += $pregunta->pivot->valor;
 						}
+					}
 
-						$operation[] = $total;
+					$operation[] = $total;
 
-						if($tolerance == 0)
-						{
-							return 'Faltan datos';
-						}
-						break;
-					case 'numero':
-						$operation[] = $procedimiento['value'];
-						break;
-					case 'operacion':
-						$operation[] = $procedimiento['value'];
-						break;
-					
-					default:
-						return 'Error';
-						break;
-				}
+					if ($tolerance == 0) {
+						return 'Faltan datos';
+					}
+					break;
+				
+				case 'numero':
+					$operation[] = $procedimiento['value'];
+					break;
+				
+				case 'operacion':
+					$operation[] = $procedimiento['value'];
+					break;
+				
+				default:
+					return 'Error';
+					break;
 			}
 		}
 		
-		return eval('return '.implode('', $operation).';');
+		$result = 0;
+
+		try {
+			$result = eval('return '.implode('', $operation).';');
+		} catch (\Exception $exception){
+			return $exception->getCode();
+		}
+
+		return $result;
 	}
 }
