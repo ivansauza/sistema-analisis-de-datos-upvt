@@ -58,7 +58,7 @@
 				@foreach($proceso->indicadores as $indicador)
 					<div class="card card-default border-left-0 border-right-0 rounded-0 mb-3">
 						<div class="card-header py-1 rounded-0" style="background: #f1f8ff !important;">
-							<b>Indicador</b>: <small>{{ $indicador->nombre }}</small>
+							<small>{{ $indicador->nombre }}</small>
 
 							<div class="float-right p-0 m-0">
 								<a class="btn btn-sm btn-transparent">

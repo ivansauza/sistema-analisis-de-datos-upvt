@@ -1,27 +1,5 @@
 @extends('layouts.admin')
 
-@section('css')
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
-@endsection
-
-@section('javascript')
-	<script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
-@endsection
-
-@section('script')
-	$( document ).ready( function () 
-	{
-		$( 'table' ).DataTable( {
-            "paging": false,
-			"info": false, 
-			"order": false, 
-			"columnDefs": [
-				{ "orderable": false, "targets": [2] }
-        	]	
-		} );
-	} );
-@endsection
-
 @section('header')
 	<h1 class="h3">Estadísticas</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
@@ -33,12 +11,12 @@
 
 @section('content')
 
-	<table class="table table-bordered" style="background: #fff;">
-		<thead class="thead-light">
+	<table class="table table-bordered table-hover table-responsive-sm" style="background: #fff;">
+		<thead class="thead-dark">
 			<tr>
 				<th scope="col">Subindicador</th>
 				<th scope="col" class="text-center">Valor Meta</th>
-				<th scope="col" class="text-center">*</th>
+				<th scope="col" class="text-center"></th>
 				@foreach($periodos as $periodo)
 					<th scope="col" class="text-center">
 						{{ $periodo->tiny_clave }}
@@ -49,9 +27,16 @@
 		<tbody>
 			@foreach($procesos as $proceso)
 				@foreach($proceso->indicadores as $indicador)
+					<tr>
+						<td colspan="{{ ($periodos->count() + 3) }}" class="table-active" style="background: #f1f4f6;">
+							<small><b>{{ $indicador->nombre }}</b></small>
+						</td>
+					</tr>
 					@foreach($indicador->subindicadores as $subindicador)
 						<tr>
-							<td>{{ $subindicador->nombre }}</td>
+							<td>
+								<small>{{ $subindicador->nombre }}</small>
+							</td>
 							<td class="text-center">
 								<span class="badge badge-pill badge-primary">
 									{{ $subindicador->valor_meta }}%
@@ -64,35 +49,31 @@
 							</td>
 							@foreach($periodos as $periodo)
 								<td class="text-center">
-									@if($periodo->estado)
-										@if($subindicador->procedimiento)
-											@php($result = $subindicador->calculateProcedimiento($periodo->id))
+									@php($result = $subindicador->calculateProcedimiento($periodo->id))
 
-											@if(is_numeric($result))
-												<a href="{{ route('estadisticas.details', ['subindicador' => $subindicador->id, 'periodo' => $periodo->id]) }}">
-													<span class="badge badge-success">
-														{{ number_format((float)($result * 100), 2, '.', '') }}%
-													</span>
-												</a>
+									@if(is_numeric($result))
+										<a href="{{ route('estadisticas.details', ['subindicador' => $subindicador->id, 'periodo' => $periodo->id]) }}">
+											@if(($result * 100) < $subindicador->valor_meta)
+												<span class="badge badge-danger">
+													{{ number_format((float)($result * 100), 2, '.', '') }}%
+												</span>
 											@else
-												<small>
-													{{ $result }}
-												</small>
+												<span class="badge badge-success">
+													{{ number_format((float)($result * 100), 2, '.', '') }}%
+												</span>
 											@endif
-										@else
-											<small>
-												Sin procedimiento
-											</small>
-										@endif
+										</a>
 									@else
-										<small>Periodo abierto</small>
+										<small>
+											{{ $result }}
+										</small>
 									@endif
 								</td>
 							@endforeach
 						</tr>
 					@endforeach
 				@endforeach
-			@endforeach
+			@endforeach <!-- endProcesos -->
 		</tbody>
 	</table>
 
