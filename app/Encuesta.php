@@ -32,4 +32,12 @@ class Encuesta extends Model
             ->withPivot('valor');
     }
 
+    public function getValuePregunta($pregunta_id)
+    {
+        return $this->preguntas
+            ->where('id', '=', $pregunta_id)
+            ->first()
+            ->pivot
+            ->valor;
+    }
 }
