@@ -3,7 +3,7 @@ namespace App\Traits;
 
 trait ProgramasEmptyValidate
 {
-	public function __construct()
+	public function checkIssetDefaultPrograma()
 	{
 		$this->middleware(function ($request, $next) 
 		{
