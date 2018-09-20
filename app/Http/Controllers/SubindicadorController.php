@@ -2,17 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Subindicador;
 use Illuminate\Http\Request;
 use App\Traits\ProgramasEmptyValidate;
+
 use App\Http\Requests\SubindicadorRequest;
 
+use App\Subindicador;
 use App\Indicador;
 use App\Programa;
 
 class SubindicadorController extends Controller
 {
     use ProgramasEmptyValidate;
+    
+    public function __construct()
+    {
+        /**
+         * Revisar si el usuario actual tiene un programa
+         * predeterminado, si no, redireccionar a programas.index
+         */
+        $this->checkIssetDefaultPrograma();
+    }
 
     /**
      * Display a listing of the resource.

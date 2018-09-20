@@ -2,15 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Indicador;
 use Illuminate\Http\Request;
+use App\Traits\ProgramasEmptyValidate;
+
 use App\Http\Requests\IndicadorRequest;
 
+use App\Indicador;
 Use App\Proceso;
 Use App\Programa;
 
 class IndicadorController extends Controller
 {
+    use ProgramasEmptyValidate;
+    
+    public function __construct()
+    {
+        /**
+         * Revisar si el usuario actual tiene un programa
+         * predeterminado, si no, redireccionar a programas.index
+         */
+        $this->checkIssetDefaultPrograma();
+    }
+
     /**
      * Display a listing of the resource.
      *

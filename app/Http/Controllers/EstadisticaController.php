@@ -13,6 +13,15 @@ use Caffeinated\Shinobi\Models\Role;
 class EstadisticaController extends Controller
 {
     use ProgramasEmptyValidate;
+
+    public function __construct()
+    {
+        /**
+         * Revisar si el usuario actual tiene un programa
+         * predeterminado, si no, redireccionar a programas.index
+         */
+        $this->checkIssetDefaultPrograma();
+    }
     
     public function index()
     {

@@ -11,6 +11,15 @@ class EncuestaSelectUser extends Controller
 {
     use ProgramasEmptyValidate;
 
+    public function __construct()
+    {
+        /**
+         * Revisar si el usuario actual tiene un programa
+         * predeterminado, si no, redireccionar a programas.index
+         */
+        $this->checkIssetDefaultPrograma();
+    }
+
     public function __invoke()
     {
 		$users = Programa::getPredeterminado()
