@@ -12,35 +12,26 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        /** Agregar Director de Carrera */
         DB::table('users')->insert([
-        	'name' => 'Jael', 
-        	'apellidos' => 'Rojas', 
-        	'email' => 'jael@upvt.com', 
-            'password' => bcrypt('secret'), 
-            'admin' => true
+            'prefijo'   => 'M. en C.E.', 
+        	'name'      => 'Leticia Jael', 
+        	'apellidos' => 'Rojas Ortiz', 
+            'email'     => 'jael@upvt.com',
+            'username'  => '1', 
+            'password'  => bcrypt('secret'), 
+            'admin'     => true
         ]);
-
+        
+        /** Agregar el Rol de Director */
         DB::table('role_user')->insert([
-            'role_id' => 1, 
-            'user_id' => 1
+            'role_id' => 1, 'user_id' => 1 // Rol de Director
         ]);
-
+        
+        /** Agregar Programas Educativos */
         DB::table('programa_user')->insert([
-            'programa_id' => 2, 
-            'user_id' => 1
-        ]);
-
-        DB::table('programa_user')->insert([
-            'programa_id' => 8, 
-            'user_id' => 1
-        ]);
-
-        DB::table('users')->insert([
-            'name' => 'Arlet', 
-            'apellidos' => '', 
-            'email' => 'arlet@upvt.com', 
-            'password' => bcrypt('secret'), 
-            'admin' => true
+            ['programa_id' => 2, 'user_id' => 1], // Ingeniería en Informática
+            ['programa_id' => 8, 'user_id' => 1] // Maestría en Administración
         ]);
     }
 }
