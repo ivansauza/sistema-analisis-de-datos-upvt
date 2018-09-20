@@ -87,11 +87,46 @@
 </div>
 
 <div class="card">
-	<div class="card-header">Permisos</div>
-		<div class="card-body">
-				<div class="form-group">
-					{{ Form::label('', 'Permisos especiales') }}
-				</div>
-		</div>
+	<div class="card-header">
+		Permisos Especiales
 	</div>
+	<table class="table table-striped table-hover">
+		<thead class="thead-light">
+			<tr class="text-center">
+				<th scope="col"></th>
+				<th scope="col" class="text-left">Modulo</th>
+				<th scope="col">Navegar</th>
+				<th scope="col">Crear</th>
+				<th scope="col">Editar</th>
+				<th scope="col">Detalles</th>
+				<th scope="col">Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row"><i class="fas fa-calendar-alt"></i></th>
+				<td>Periodos</td>
+				<td class="text-center">
+					{{ Form::hidden('test', 0) }}
+					{{ Form::checkbox('test', 1, null) }}
+				</td>
+				<td class="text-center">
+					{{ Form::hidden('test', 0) }}
+					{{ Form::checkbox('test', 1, null) }}
+				</td>
+				<td class="text-center">
+					{{ Form::hidden('test', 0) }}
+					{{ Form::checkbox('test', 1, null) }}
+				</td>
+				<td class="text-center">
+					{{ Form::hidden('test', 0) }}
+					{{ Form::checkbox('test', 1, null) }}
+				</td>
+				<td class="text-center">
+					{{ Form::hidden('test', 0) }}
+					{{ Form::checkbox('test', 1, null) }}
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
