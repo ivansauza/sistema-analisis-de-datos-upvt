@@ -4,7 +4,7 @@
 	</div>
 	<div class="col-md-9 mt-3 mt-lg-0 text-center text-lg-left">
 		<h2 class="font-weight-light">
-			{{ $user->name }} {{ $user->apellidos }} 
+			{{ $user->prefijo }} {{ $user->name }} {{ $user->apellidos }} 
 			<small>
 				@if(!$user->roles()->get()->isEmpty())
 					{{ $user->roles()->first()->name }}
@@ -72,7 +72,7 @@
 
 		<div class="form-group">
 			{{ Form::label('current_password', 'Contraseña actual') }}
-			{{ Form::password('current_password', ['class' => 'form-control', 'placeholder' => 'Ingresa la contraseña actual']) }}
+			{{ Form::password('current_password', ['class' => 'form-control', 'placeholder' => 'Ingresa la contraseña actual', 'required']) }}
 			@if ($errors->has('current_password'))
 				<span class="badge badge-danger">{{ $errors->first('current_password') }}</span>
 			@endif
