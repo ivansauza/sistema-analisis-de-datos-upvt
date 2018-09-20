@@ -9,11 +9,6 @@ use App\User;
 
 class UserSettingsUpdate extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function __invoke(Request $request)
     {
     	$data = $this->validator($request);
