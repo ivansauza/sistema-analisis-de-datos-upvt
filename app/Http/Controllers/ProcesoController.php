@@ -2,16 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Proceso;
 use Illuminate\Http\Request;
 use App\Traits\ProgramasEmptyValidate;
+
 use App\Http\Requests\ProcesoRequest;
 
+use App\Proceso;
 Use App\Programa;
 
 class ProcesoController extends Controller
 {
     use ProgramasEmptyValidate;
+
+    public function __construct()
+    {
+        /**
+         * Revisar si el usuario actual tiene un programa
+         * predeterminado, si no, redireccionar a programas.index
+         */
+        $this->checkIssetDefaultPrograma();
+
+        /**
+         * Asignando permisos a los métodos
+         */
+        $this->middleware('permission:procesos.index')
+            ->only('index');
+
+        $this->middleware('permission:procesos.create')
+            ->only(['create', 'store']);
+
+        $this->middleware('permission:procesos.show')
+            ->only('show');
+
+        $this->middleware('permission:procesos.edit')
+            ->only(['edit', 'update']);
+
+        $this->middleware('permission:procesos.destroy')
+            ->only('destroy');
+    }
     
     /**
      * Display a listing of the resource.

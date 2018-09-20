@@ -15,6 +15,33 @@ class PreguntaController extends Controller
 {
     use ProgramasEmptyValidate;
 
+    public function __construct()
+    {
+        /**
+         * Revisar si el usuario actual tiene un programa
+         * predeterminado, si no, redireccionar a programas.index
+         */
+        $this->checkIssetDefaultPrograma();
+
+        /**
+         * Asignando permisos a los métodos
+         */
+        $this->middleware('permission:preguntas.index')
+            ->only(['index', 'posicionUpdate']);
+
+        $this->middleware('permission:preguntas.create')
+            ->only(['create', 'store']);
+
+        $this->middleware('permission:preguntas.show')
+            ->only('show');
+
+        $this->middleware('permission:preguntas.edit')
+            ->only(['edit', 'update']);
+
+        $this->middleware('permission:preguntas.destroy')
+            ->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *

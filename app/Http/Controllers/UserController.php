@@ -14,7 +14,34 @@ use Caffeinated\Shinobi\Models\Role;
 
 class UserController extends Controller
 {
-	use ProgramasEmptyValidate;
+    use ProgramasEmptyValidate;
+
+    public function __construct()
+    {
+        /**
+         * Revisar si el usuario actual tiene un programa
+         * predeterminado, si no, redireccionar a programas.index
+         */
+        $this->checkIssetDefaultPrograma();
+
+        /**
+         * Asignando permisos a los métodos
+         */
+        $this->middleware('permission:users.index')
+            ->only(['index']);
+
+        $this->middleware('permission:users.create')
+            ->only(['create', 'store']);
+
+        $this->middleware('permission:users.show')
+            ->only('show');
+
+        $this->middleware('permission:users.edit')
+            ->only(['edit', 'update']);
+
+        $this->middleware('permission:users.destroy')
+            ->only('destroy');
+    }
 
 	/**
 	 * Display a listing of the resource.
