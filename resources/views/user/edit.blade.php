@@ -13,16 +13,14 @@
 
 	@include('fragments.alert')
 
-	<div class="card">
-		<div class="card-body">
-			{{ Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT']) }}
 
-				@include('forms.user')
+	{{ Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT']) }}
 
-				{{ Form::submit('Actualizar', ['class' => 'btn btn-block btn-warning mt-5']) }}
+		@include('forms.user')
 
-			{{ Form::close() }}
-		</div>
-	</div>
+		{{ Form::submit('Actualizar', ['class' => 'btn btn-block btn-warning mt-5']) }}
+
+	{{ Form::close() }}
+
 	
 @endsection

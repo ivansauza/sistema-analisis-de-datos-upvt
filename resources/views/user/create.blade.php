@@ -11,16 +11,12 @@
 
 @section('content')
 
-	<div class="card">
-		<div class="card-body">
-			{{ Form::open(['route' => 'users.store']) }}
+	{{ Form::open(['route' => 'users.store']) }}
 
-				@include('forms.user')
+		@include('forms.user')
 
-				{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-primary mt-5']) }}
+		{{ Form::submit('Almacenar', ['class' => 'btn btn-block btn-primary mt-5']) }}
 
-			{{ Form::close() }}
-		</div>
-	</div>
+	{{ Form::close() }}
 	
 @endsection
