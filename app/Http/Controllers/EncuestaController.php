@@ -16,6 +16,33 @@ use App\Periodo;
 class EncuestaController extends Controller
 {
     use ProgramasEmptyValidate;
+
+    public function __construct()
+    {
+        /**
+         * Revisar si el usuario actual tiene un programa
+         * predeterminado, si no, redireccionar a programas.index
+         */
+        $this->checkIssetDefaultPrograma();
+
+        /**
+         * Asignando permisos a los métodos
+         */
+        $this->middleware('permission:encuestas.index')
+            ->only('index');
+
+        $this->middleware('permission:encuestas.create')
+            ->only(['create', 'store']);
+
+        $this->middleware('permission:encuestas.show')
+            ->only('show');
+
+        $this->middleware('permission:encuestas.edit')
+            ->only(['edit', 'update']);
+
+        $this->middleware('permission:encuestas.destroy')
+            ->only('destroy');
+    }
     
     /**
      * Display a listing of the resource.
