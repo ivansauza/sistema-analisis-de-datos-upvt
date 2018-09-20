@@ -12,7 +12,7 @@
 @section('content')
 	<div class="card">
 		<div class="card-body">
-			<p>A continuación se muestran los periodos de los cuales el usuario <b>{{ $user->full_name_and_role }}</b> no ha realizo sus análisis de datos.</p>
+			<p>A continuación se muestran los periodos de los cuales el usuario <b>{{ $user->full_name_and_role }}</b> no ha realizo el análisis de datos.</p>
 		</div>
 
 		<div class="card-body p-0">
