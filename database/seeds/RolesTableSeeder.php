@@ -22,14 +22,14 @@ class RolesTableSeeder extends Seeder
         	'name' => 'PTC', 
         	'slug' => 'ptc', 
         	'description' => 'Profesor de tiempo completo', 
-        	'special' => 'no-access'
+        	'special' => null
         ]);
 
         DB::table('roles')->insert([
         	'name' => 'Secretaria', 
         	'slug' => 'secretaria', 
         	'description' => '', 
-        	'special' => 'no-access'
+        	'special' => null
         ]);
     }
 }
