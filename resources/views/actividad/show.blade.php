@@ -20,7 +20,7 @@
 
 @section('content')
 	<div class="card card-default">
-		<table class="table table-striped table-hover">
+		<table class="table table-striped table-hover table-responsive-sm">
 			<thead>
 				<tr>
 					<th scope="col">Acción</th>

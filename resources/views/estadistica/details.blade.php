@@ -90,7 +90,7 @@
 				})->get();
 			@endphp
 			<div class="card card-default mb-4">
-				<table class="table table-bordered">
+				<table class="table table-bordered table-responsive-sm">
 					<thead class="thead-light">
 						<tr>
 							<th scope="col">Pregunta</th>

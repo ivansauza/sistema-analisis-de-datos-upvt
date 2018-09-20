@@ -17,7 +17,7 @@
 		</h6>
 	@else
 		<div class="card card-default">
-		<table class="table table-hover">
+		<table class="table table-hover table-responsive-sm">
 			<thead class="thead-light">
 				<tr>
 					<th scope="col" class="text-center">ID</th>
