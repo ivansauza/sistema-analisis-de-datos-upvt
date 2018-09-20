@@ -28,7 +28,7 @@
 		<div class="card-header">
 			Registro de actividades de: <small>Adrian Gomez</small>
 		</div>	
-		<table class="table table-striped table-hover">
+		<table class="table table-striped table-hover table-responsive">
 			<thead>
 				<tr>
 					<th scope="col">Acción</th>
