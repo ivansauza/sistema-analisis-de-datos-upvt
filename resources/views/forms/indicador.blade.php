@@ -1,8 +1,8 @@
 <div class="row">
-	<div class="col">
+	<div class="col-md col-xs-12">
 		<div class="form-group">
 			{{ Form::label('nombre') }}
-			{{ Form::text('nombre', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa el nombre']) }}
+			{{ Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el nombre']) }}
 			@if ($errors->has('nombre'))
 				<span class="badge badge-danger">{{ $errors->first('nombre') }}</span>
 			@endif
@@ -16,7 +16,7 @@
 			@endif
 		</div>
 	</div>
-	<div class="col">
+	<div class="col-md col-xs-12">
 		<div class="form-group">
 			{{ Form::label('nota') }}
 			{{ Form::textarea('nota', null, ['class' => 'form-control']) }}

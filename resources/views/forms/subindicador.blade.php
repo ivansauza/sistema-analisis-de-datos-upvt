@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col">
+	<div class="col-md col-xs-12">
 		<div class="form-group">
 			{{ Form::label('nombre') }}
 			{{ Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el nombre']) }}
@@ -29,7 +29,7 @@
 			@endif
 		</div>
 	</div>
-	<div class="col">
+	<div class="col-md col-xs-12">
 		<div class="form-group">
 			{{ Form::label('nota') }}
 			{{ Form::textarea('nota', null, ['class' => 'form-control']) }}
@@ -46,10 +46,11 @@
 	<div class="row">
 		<div class="col mb-5 mt-4">
 			<div class="btn-toolbar float-right">
-				<div class="btn-group mr-2">
-					<a href="#" class="btn btn-outline-secondary btn-sm add-pregunta">Agregar Pregunta</a>
-					<a href="#" class="btn btn-outline-secondary btn-sm add-operacion">Agregar Operacion</a>
-					<a href="#" class="btn btn-outline-secondary btn-sm add-numero">Agregar Número</a>
+				Agregar: 
+				<div class="btn-group mr-2 mt-3">
+					<a href="#" class="btn btn-outline-secondary btn-sm add-pregunta">Pregunta</a>
+					<a href="#" class="btn btn-outline-secondary btn-sm add-operacion">Operación</a>
+					<a href="#" class="btn btn-outline-secondary btn-sm add-numero">Número</a>
 				</div>
 			</div>
 		</div>

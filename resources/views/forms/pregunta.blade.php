@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-	<div class="col-7">
+	<div class="col-md-7 col-xs-12">
 		<div class="form-group">
 			{{ Form::label('role_id', 'Rol') }}
 			{{ Form::select('role_id', $roles, null, ['class' => 'form-control']) }}
@@ -17,7 +17,7 @@
 			@endif
 		</div>
 	</div>
-	<div class="col">
+	<div class="col-md col-xs-12">
 		<div class="form-group">
 			{{ Form::label('nota') }}
 			{{ Form::textarea('nota', null, ['class' => 'form-control']) }}
