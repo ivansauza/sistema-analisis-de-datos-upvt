@@ -107,24 +107,24 @@
 				<th scope="row"><i class="fas fa-calendar-alt"></i></th>
 				<td>Periodos</td>
 				<td class="text-center">
-					{{ Form::hidden('test', 0) }}
-					{{ Form::checkbox('test', 1, null) }}
+					{{ Form::hidden('permissions[periodos][index]', 0) }}
+					{{ Form::checkbox('permissions[periodos][index]', 1, null) }}
 				</td>
 				<td class="text-center">
-					{{ Form::hidden('test', 0) }}
-					{{ Form::checkbox('test', 1, null) }}
+					{{ Form::hidden('permissions[periodos][crear]', 0) }}
+					{{ Form::checkbox('permissions[periodos][crear]', 1, null) }}
 				</td>
 				<td class="text-center">
-					{{ Form::hidden('test', 0) }}
-					{{ Form::checkbox('test', 1, null) }}
+					{{ Form::hidden('permissions[periodos][edit]', 0) }}
+					{{ Form::checkbox('permissions[periodos][edit]', 1, null) }}
 				</td>
 				<td class="text-center">
-					{{ Form::hidden('test', 0) }}
-					{{ Form::checkbox('test', 1, null) }}
+					{{ Form::hidden('permissions[periodos][view]', 0) }}
+					{{ Form::checkbox('permissions[periodos][view]', 1, null) }}
 				</td>
 				<td class="text-center">
-					{{ Form::hidden('test', 0) }}
-					{{ Form::checkbox('test', 1, null) }}
+					{{ Form::hidden('permissions[periodos][destroy]', 0) }}
+					{{ Form::checkbox('permissions[periodos][destroy]', 1, null) }}
 				</td>
 			</tr>
 		</tbody>

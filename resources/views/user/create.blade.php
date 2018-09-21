@@ -11,6 +11,8 @@
 
 @section('content')
 
+	@include('fragments.errors')
+
 	{{ Form::open(['route' => 'users.store']) }}
 
 		@include('forms.user')

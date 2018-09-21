@@ -11,6 +11,7 @@ use App\Http\Requests\UserupdateRequest;
 use App\Programa;
 use App\User;
 use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Permission;
 
 class UserController extends Controller
 {
@@ -68,10 +69,12 @@ class UserController extends Controller
 	 */
 	public function create()
 	{
-		$programas = auth()->user()->programas->pluck('nombre', 'id');
-		$roles     = Role::get()->pluck('name', 'id');
+		$programas   = auth()->user()->programas->pluck('nombre', 'id');
+		$roles       = Role::get()->pluck('name', 'id');
+		$permissions = Permission::get();
+		dd($permissions);
 
-		return view('user.create', compact('programas', 'roles'));
+		return view('user.create', compact('programas', 'roles', 'permissions'));
 	}
 
 	/**
@@ -82,6 +85,7 @@ class UserController extends Controller
 	 */
 	public function store(UserStoreRequest $request)
 	{
+		dd($request->all());
 		$user = User::create($request->all());
 		$user->programas()->sync($request->get('programas'));
 		$user->roles()->sync( [$request->get('roles')[0]] );

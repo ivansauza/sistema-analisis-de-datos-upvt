@@ -36,7 +36,10 @@ class UserStoreRequest extends FormRequest
                 'integer', 
                 new ProgramaUserExists
             ], 
-            'roles'       => 'required|integer|exists:roles,id'
+            'roles'           => 'required|integer|exists:roles,id', 
+            /*'permissions'     => 'required|array|min:1|max:1',
+            'permissions.*'   => 'required|array|min:5|max:5', 
+            'permissions.*.*' => 'boolean', */
         ];
     }
 }
