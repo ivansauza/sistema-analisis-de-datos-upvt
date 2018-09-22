@@ -111,57 +111,6 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Eliminar cualquier encuesta del sistema.'
         ]);
 
-        Permission::create([
-            'name'        => 'Seleccionar usuario', 
-            'slug'        => 'encuestas.select.user', 
-            'description' => 'Seleccionar un usuario para crear una encuesta.'
-        ]);
-
-        Permission::create([
-            'name'        => 'Seleccionar periodo', 
-            'slug'        => 'encuestas.select.periodo', 
-            'description' => 'Seleccionar un periodo para crear una encuesta.'
-        ]);
-
-        /**
-         * Modulo Análisis
-         */
-        /*Permission::create([
-            'name'        => 'Navegar análisis', 
-            'slug'        => 'analisis.index', 
-            'description' => 'Lista y navegar todos los análisis del sistema.'
-        ]);
-
-        Permission::create([
-            'name'        => 'Ver detalle del análisis', 
-            'slug'        => 'analisis.show', 
-            'description' => 'Ver en detalle cada análisis del sistema.'
-        ]);
-
-        Permission::create([
-            'name'        => 'Creación de análisis', 
-            'slug'        => 'analisis.create', 
-            'description' => 'Crear análisis en el sistema.'
-        ]);
-
-        Permission::create([
-            'name'        => 'Edición de análisis', 
-            'slug'        => 'analisis.edit', 
-            'description' => 'Editar cualquier dato de un análisis del sistema.'
-        ]);
-
-        Permission::create([
-            'name'        => 'Eliminar análisis', 
-            'slug'        => 'analisis.destroy', 
-            'description' => 'Eliminar cualquier análisis del sistema.'
-        ]);
-
-        Permission::create([
-            'name'        => 'Seleccionar periodo', 
-            'slug'        => 'analisis.select', 
-            'description' => 'Seleccionar un periodo para crear un análisis.'
-        ]);*/
-
         /**
          * Modulo Procesos
          */
