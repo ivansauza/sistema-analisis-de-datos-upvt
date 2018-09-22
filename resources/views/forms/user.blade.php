@@ -105,29 +105,31 @@
 	</div>
 </div>
 
-<div class="card card-default">
-	<div class="card-header">
-		Permisos Especiales
-	</div>
-	<table class="table table-striped table-hover">
-		<thead>
-			<tr>
-				<th></th>
-				<th>Descripción</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($permissions as $permission)
+@if (auth()->user()->admin)
+	<div class="card card-default">
+		<div class="card-header">
+			Permisos Especiales
+		</div>
+		<table class="table table-striped table-hover">
+			<thead>
 				<tr>
-					<td>
-						<label>
-							{{ Form::checkbox('permissions[]', $permission->id, null) }}
-							{{ $permission->name }}
-						</label>
-					</td>
-					<td><em>{{ $permission->description }}</em></td>
+					<th></th>
+					<th>Descripción</th>
 				</tr>
-			@endforeach
-		</tbody>
-	</table>
-</div>
+			</thead>
+			<tbody>
+				@foreach($permissions as $permission)
+					<tr>
+						<td>
+							<label>
+								{{ Form::checkbox('permissions[]', $permission->id, null) }}
+								{{ $permission->name }}
+							</label>
+						</td>
+						<td><em>{{ $permission->description }}</em></td>
+					</tr>
+				@endforeach
+			</tbody>
+		</table>
+	</div>
+@endif
