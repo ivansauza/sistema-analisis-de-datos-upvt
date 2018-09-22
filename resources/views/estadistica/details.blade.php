@@ -33,7 +33,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Proceso</td>
+					<td>Procedimiento</td>
 					<td>
 						@foreach($subindicador->procedimiento as $item)
 							@switch($item['type'])

@@ -1,3 +1,22 @@
+@section('css')
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}">
+@endsection
+
+@section('javascript')
+	<script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
+@endsection
+
+@section('script')
+	$( document ).ready( function () 
+	{
+		$( 'table' ).DataTable( {
+            "paging": false, 
+			"info": true, 
+			"order": false, 
+		} );
+	} );
+@endsection
+
 <div class="card mb-4">
 	<div class="card-body">
 		<div class="row">
@@ -86,47 +105,29 @@
 	</div>
 </div>
 
-<div class="card">
+<div class="card card-default">
 	<div class="card-header">
 		Permisos Especiales
 	</div>
 	<table class="table table-striped table-hover">
-		<thead class="thead-light">
-			<tr class="text-center">
-				<th scope="col"></th>
-				<th scope="col" class="text-left">Modulo</th>
-				<th scope="col">Navegar</th>
-				<th scope="col">Crear</th>
-				<th scope="col">Editar</th>
-				<th scope="col">Detalles</th>
-				<th scope="col">Eliminar</th>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Descripción</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<th scope="row"><i class="fas fa-calendar-alt"></i></th>
-				<td>Periodos</td>
-				<td class="text-center">
-					{{ Form::hidden('permissions[periodos][index]', 0) }}
-					{{ Form::checkbox('permissions[periodos][index]', 1, null) }}
-				</td>
-				<td class="text-center">
-					{{ Form::hidden('permissions[periodos][crear]', 0) }}
-					{{ Form::checkbox('permissions[periodos][crear]', 1, null) }}
-				</td>
-				<td class="text-center">
-					{{ Form::hidden('permissions[periodos][edit]', 0) }}
-					{{ Form::checkbox('permissions[periodos][edit]', 1, null) }}
-				</td>
-				<td class="text-center">
-					{{ Form::hidden('permissions[periodos][view]', 0) }}
-					{{ Form::checkbox('permissions[periodos][view]', 1, null) }}
-				</td>
-				<td class="text-center">
-					{{ Form::hidden('permissions[periodos][destroy]', 0) }}
-					{{ Form::checkbox('permissions[periodos][destroy]', 1, null) }}
-				</td>
-			</tr>
+			@foreach($permissions as $permission)
+				<tr>
+					<td>
+						<label>
+							{{ Form::checkbox('permissions[]', $permission->id, null) }}
+							{{ $permission->name }}
+						</label>
+					</td>
+					<td><em>{{ $permission->description }}</em></td>
+				</tr>
+			@endforeach
 		</tbody>
 	</table>
 </div>

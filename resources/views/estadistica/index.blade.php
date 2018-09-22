@@ -50,9 +50,8 @@
 							@foreach($periodos as $periodo)
 								<td class="text-center">
 									@php($result = $subindicador->calculateProcedimiento($periodo->id))
-
-									@if(is_numeric($result))
-										<a href="{{ route('estadisticas.details', ['subindicador' => $subindicador->id, 'periodo' => $periodo->id]) }}">
+									<a href="{{ route('estadisticas.details', ['subindicador' => $subindicador->id, 'periodo' => $periodo->id]) }}">
+										@if(is_numeric($result))
 											@if(($result * 100) < $subindicador->valor_meta)
 												<span class="badge badge-danger">
 													{{ number_format((float)($result * 100), 2, '.', '') }}%
@@ -62,18 +61,18 @@
 													{{ number_format((float)($result * 100), 2, '.', '') }}%
 												</span>
 											@endif
-										</a>
-									@else
-										<small>
-											{{ $result }}
-										</small>
-									@endif
+										@else
+											<small>
+												{{ $result }}
+											</small>
+										@endif
+									</a>
 								</td>
 							@endforeach
 						</tr>
-					@endforeach
-				@endforeach {{-- endIndicadores --}}
-			@endforeach {{-- -endProcesos --}}
+					@endforeach {{-- EndSubindicadores --}}
+				@endforeach {{-- EndIndicadores --}}
+			@endforeach {{-- EndProcesos --}}
 		</tbody>
 	</table>
 

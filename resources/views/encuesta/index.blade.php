@@ -40,7 +40,7 @@
 				<th scope="col">Periodo</th>
 				<th scope="col">Usuario</th>
 				<th scope="col">Rol</th>
-				<th scope="col">Actualizado</th>
+				<th scope="col">Actualizado en</th>
 				<th scope="col" class="text-center">Finalizado</th>
 				<th scope="col"></th>
 			</tr>

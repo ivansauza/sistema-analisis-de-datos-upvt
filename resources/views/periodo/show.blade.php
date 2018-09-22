@@ -48,6 +48,13 @@
 					<td>{{ $periodo->estado ? 'Abierto' : 'Cerrado' }}</td>
 				</tr>
 				<tr>
+					<td scope="row" class="text-muted">Programa Educativo</td>
+						<td>
+							{{ $periodo->programa->nombre }} 
+							<a href="{{ route('programas.show', $periodo->programa->id) }}">(+)</a>
+						</td>
+					</tr>
+				<tr>
 					<td scope="row" class="text-muted">Fecha de registro</td>
 					<td><small>{{ $periodo->created_at }}</small></td>
 				</tr>

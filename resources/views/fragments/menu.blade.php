@@ -13,7 +13,7 @@
         </a>
     </li>
 
-@can('periodos.index')
+@can(['periodos.index', 'periodos.show'])
     <li class="nav-item">
         <a class="nav-link {{ ! Route::is('periodos.*') ?: 'active' }}" href="{{ route('periodos.index') }}">
             <i class="fas fa-calendar-alt"></i> 

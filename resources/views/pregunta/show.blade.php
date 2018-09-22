@@ -55,7 +55,10 @@
 				</tr>
 				<tr>
 					<td scope="row" class="text-muted">Programa Educativo</td>
-					<td>{{ $pregunta->programa->nombre }}</td>
+					<td>
+						{{ $pregunta->programa->nombre }} 
+						<a href="{{ route('programas.show', $pregunta->programa->id) }}">(+)</a>
+					</td>
 				</tr>
 				<tr>
 					<td scope="row" class="text-muted">Rol | Responsable</td>
