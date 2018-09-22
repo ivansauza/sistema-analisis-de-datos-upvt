@@ -23,7 +23,9 @@ class UserPolicy
      */
     public function access(User $user, User $current_user)
     {
-        if($current_user->admin) return false;
+        if ($current_user->admin) return false;
+        
+        if ($current_user->id == $user->id) return false;
 
         $actualUserProgramaDefaultId = $user
             ->programas()
