@@ -73,8 +73,20 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<nav class="col-md-3 d-none d-md-block shadow-sm sidebar" style="background: #fff;">
+			<nav class="col-md-3 d-none d-md-block shadow-sm sidebar">
 				<div class="sidebar-sticky">
+					<div class="card border-right-0 border-left-0 rounded-0">
+						<div class="card-body">
+							<h5>
+								{{ auth()->user()->name }}
+								<small>
+									@if (auth()->user()->roles()->first())
+										{{ auth()->user()->roles()->first()->name }}
+									@endif
+								</small>
+							</h5>
+						</div>
+					</div>
 					<ul class="nav flex-column">
 						@include('fragments.menu')
 					</ul>
