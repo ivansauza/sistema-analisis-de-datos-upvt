@@ -33,12 +33,21 @@
 
 <div class="row">
 	<div class="col-xs-12 col-md">
-		<div class="form-group">
-			{{ Form::label('name') }}
-			{{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el nombre']) }}
-			@if ($errors->has('name'))
-				<span class="badge badge-danger">{{ $errors->first('name') }}</span>
-			@endif
+		<div class="form-row">
+			<div class="form-group col-4">
+				{{ Form::label('prefijo') }}
+				{{ Form::text('prefijo', null, ['class' => 'form-control', 'placeholder' => 'Prefijo']) }}
+				@if ($errors->has('prefijo'))
+					<span class="badge badge-danger">{{ $errors->first('prefijo') }}</span>
+				@endif
+			</div>
+			<div class="form-group col-8">
+				{{ Form::label('name', 'Nombre') }}
+				{{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el nombre']) }}
+				@if ($errors->has('name'))
+					<span class="badge badge-danger">{{ $errors->first('name') }}</span>
+				@endif
+			</div>
 		</div>
 		<div class="form-group">
 			{{ Form::label('apellidos') }}
