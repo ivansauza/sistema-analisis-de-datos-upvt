@@ -45,7 +45,7 @@
 				</tr>
 				<tr>
 					<td scope="row" class="text-muted">Estado</td>
-					<td>{{ $periodo->estado ? 'Abierto' : 'Cerrado' }}</td>
+					<td>{{ $periodo->estado ? 'Cerrado' : 'Abierto' }}</td>
 				</tr>
 				<tr>
 					<td scope="row" class="text-muted">Programa Educativo</td>
