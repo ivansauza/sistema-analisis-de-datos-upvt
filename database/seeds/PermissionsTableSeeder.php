@@ -157,40 +157,6 @@ class PermissionsTableSeeder extends Seeder
             'name'        => 'Ver detalle de la estadística', 
             'slug'        => 'estadisticas.details', 
             'description' => 'Ver en detalle cada estadística del sistema.'
-        ]);
-
-        /**
-         * Modulo Usuarios
-         */
-        Permission::create([
-            'name'        => 'Navegar users', 
-            'slug'        => 'users.index', 
-            'description' => 'Lista y navegar todos los users del sistema.'
-        ]);
-
-        Permission::create([
-            'name'        => 'Ver detalle del user', 
-            'slug'        => 'users.show', 
-            'description' => 'Ver en detalle cada user del sistema.'
-        ]);
-
-        Permission::create([
-            'name'        => 'Creación de users', 
-            'slug'        => 'users.create', 
-            'description' => 'Crear users en el sistema.'
-        ]);
-
-        Permission::create([
-            'name'        => 'Edición de users', 
-            'slug'        => 'users.edit', 
-            'description' => 'Editar cualquier dato de un user del sistema.'
-        ]);
-
-        Permission::create([
-            'name'        => 'Eliminar users', 
-            'slug'        => 'users.destroy', 
-            'description' => 'Eliminar cualquier user del sistema.'
-        ]);
-        
+        ]);     
     }
 }
