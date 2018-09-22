@@ -53,11 +53,13 @@ class UserController extends Controller
 	{
 		/**
 		 * Extraer los usuarios que pertenecen al programa
-		 * predeterminado excepto los administradores
+		 * predeterminado excepto los administradores y el
+		 * mismo usuario actualmente logeado
 		*/
 		$users = Programa::getPredeterminado()
 			->users
-			->where('admin', '==', 0);
+			->where('admin', '==', 0)
+			->where('id', '!=', auth()->id());
 
 		return view('user.index', compact('users'));
 	}
@@ -72,7 +74,6 @@ class UserController extends Controller
 		$programas   = auth()->user()->programas->pluck('nombre', 'id');
 		$roles       = Role::get()->pluck('name', 'id');
 		$permissions = Permission::get();
-		dd($permissions);
 
 		return view('user.create', compact('programas', 'roles', 'permissions'));
 	}
@@ -85,10 +86,10 @@ class UserController extends Controller
 	 */
 	public function store(UserStoreRequest $request)
 	{
-		dd($request->all());
-		$user = User::create($request->all());
-		$user->programas()->sync($request->get('programas'));
+		$user = User::create( $request->all() );
+		$user->programas()->sync( $request->get('programas') );
 		$user->roles()->sync( [$request->get('roles')[0]] );
+		$user->permissions()->sync( $request->get('permissions') );
 
 		return redirect()->route('users.index')
 			->with('info', ['type' => 'success', 'message' => 'Usuario agregado con éxito']);
@@ -118,8 +119,9 @@ class UserController extends Controller
 		$this->authorize('access', $user);
 		$programas = auth()->user()->programas->pluck('nombre', 'id');
 		$roles     = Role::get()->pluck('name', 'id');
+		$permissions = Permission::get();
 
-		return view('user.edit', compact('user', 'programas', 'roles'));
+		return view('user.edit', compact('user', 'programas', 'roles', 'permissions'));
 	}
 
 	/**
@@ -137,6 +139,7 @@ class UserController extends Controller
 		$user->save();
 		$user->programas()->sync( $request->get('programas') );
 		$user->roles()->sync( [$request->get('roles')[0]] );
+		$user->permissions()->sync( $request->get('permissions') );
 
 		return redirect()->route('users.edit', $user->id)
 			->with('info', ['type' => 'success', 'message' => 'Usuario modificado con éxito']);
