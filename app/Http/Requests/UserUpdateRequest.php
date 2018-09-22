@@ -36,7 +36,8 @@ class UserUpdateRequest extends FormRequest
                 'integer', 
                 new ProgramaUserExists
             ], 
-            'roles'       => 'required|integer|exists:roles,id'
+            'roles'       => 'required|integer|exists:roles,id', 
+            'permissions'  => 'array|nullable', 
         ];
     }
 }
