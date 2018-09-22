@@ -15,7 +15,7 @@
 
 	<div class="card">
 		<div class="card-header">
-			Editando análisis de datos del usuario <b>{{ $encuesta->user->full_name_and_role }}</b> del periodo <i>{{ $encuesta->periodo->full_clave }}</i>
+			Editando encuesta del usuario <b>{{ $encuesta->user->full_name_and_role }}</b> del periodo <i>{{ $encuesta->periodo->full_clave }}</i>
 		</div>
 
 		{{ Form::model($encuesta, ['route' => ['encuestas.update', $encuesta->id], 'method' => 'PUT']) }}

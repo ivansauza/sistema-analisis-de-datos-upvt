@@ -13,7 +13,7 @@
 
 	<div class="card">
 		<div class="card-header">
-			Creando análisis de datos del usuario <b>{{ $user->full_name_and_role }}</b> del periodo <i>{{ $periodo->full_clave }}</i>
+			Creando encuesta del usuario <b>{{ $user->full_name_and_role }}</b> del periodo <i>{{ $periodo->full_clave }}</i>
 		</div>
 
 		{{ Form::open(['route' => 'encuestas.store']) }}
