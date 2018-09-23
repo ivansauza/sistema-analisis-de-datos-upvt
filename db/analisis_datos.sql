@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2018 a las 06:41:33
+-- Tiempo de generación: 23-09-2018 a las 08:05:39
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -74,14 +74,15 @@ CREATE TABLE `encuestas` (
 --
 
 INSERT INTO `encuestas` (`id`, `finalizado`, `nota`, `user_id`, `periodo_id`, `created_at`, `updated_at`) VALUES
-(21, 0, NULL, 6, 4, '2018-09-18 13:01:50', '2018-09-18 13:03:01'),
-(23, 0, NULL, 8, 4, '2018-09-18 21:15:53', '2018-09-18 21:15:53'),
-(24, 0, NULL, 7, 4, '2018-09-18 21:20:11', '2018-09-18 21:20:11'),
-(25, 0, NULL, 5, 4, '2018-09-18 21:20:59', '2018-09-18 21:20:59'),
-(26, 0, NULL, 4, 4, '2018-09-18 21:21:48', '2018-09-18 21:21:48'),
-(27, 0, NULL, 1, 4, '2018-09-18 21:25:13', '2018-09-18 21:25:13'),
-(28, 0, NULL, 10, 4, '2018-09-19 05:50:20', '2018-09-19 05:50:20'),
-(29, 0, NULL, 11, 4, '2018-09-19 05:51:17', '2018-09-19 05:51:17');
+(1, 1, NULL, 2, 1, '2018-09-23 04:47:42', '2018-09-23 04:49:16'),
+(2, 1, NULL, 3, 1, '2018-09-23 04:50:20', '2018-09-23 04:50:20'),
+(3, 1, NULL, 5, 1, '2018-09-23 04:51:17', '2018-09-23 04:51:17'),
+(4, 1, NULL, 4, 1, '2018-09-23 04:52:15', '2018-09-23 04:52:15'),
+(5, 1, NULL, 7, 1, '2018-09-23 04:53:36', '2018-09-23 04:53:36'),
+(6, 1, NULL, 8, 1, '2018-09-23 04:54:23', '2018-09-23 04:54:23'),
+(7, 0, NULL, 10, 1, '2018-09-23 04:58:52', '2018-09-23 04:58:52'),
+(8, 1, NULL, 11, 1, '2018-09-23 05:00:19', '2018-09-23 05:00:19'),
+(9, 0, NULL, 12, 4, '2018-09-23 05:56:52', '2018-09-23 05:56:52');
 
 -- --------------------------------------------------------
 
@@ -103,101 +104,105 @@ CREATE TABLE `encuesta_pregunta` (
 --
 
 INSERT INTO `encuesta_pregunta` (`id`, `encuesta_id`, `pregunta_id`, `valor`, `created_at`, `updated_at`) VALUES
-(197, 21, 1, 7, NULL, NULL),
-(198, 21, 2, 7, NULL, NULL),
-(199, 21, 3, 20, NULL, NULL),
-(200, 21, 4, 20, NULL, NULL),
-(201, 21, 5, 18, NULL, NULL),
-(202, 21, 6, 18, NULL, NULL),
-(203, 21, 7, 18, NULL, NULL),
-(204, 21, 8, 18, NULL, NULL),
-(205, 21, 9, 14, NULL, NULL),
-(206, 21, 19, 14, NULL, NULL),
-(207, 21, 22, 27, NULL, NULL),
-(208, 21, 23, 2, NULL, NULL),
-(209, 21, 24, 29, NULL, NULL),
-(210, 21, 25, 224, NULL, NULL),
-(218, 23, 15, 28, NULL, NULL),
-(219, 23, 16, 29, NULL, NULL),
-(220, 23, 17, 4, NULL, NULL),
-(221, 23, 18, 4, NULL, NULL),
-(222, 24, 1, 5, NULL, NULL),
-(223, 24, 2, 5, NULL, NULL),
-(224, 24, 3, 12, NULL, NULL),
-(225, 24, 4, 12, NULL, NULL),
-(226, 24, 5, 16, NULL, NULL),
-(227, 24, 6, 16, NULL, NULL),
-(228, 24, 7, 16, NULL, NULL),
-(229, 24, 8, 16, NULL, NULL),
-(230, 24, 9, 10, NULL, NULL),
-(231, 24, 19, 10, NULL, NULL),
-(232, 24, 22, 26, NULL, NULL),
-(233, 24, 23, 0, NULL, NULL),
-(234, 24, 24, 26, NULL, NULL),
-(235, 24, 25, 26, NULL, NULL),
-(236, 25, 1, 9, NULL, NULL),
-(237, 25, 2, 26, NULL, NULL),
-(238, 25, 3, 24, NULL, NULL),
-(239, 25, 4, 25, NULL, NULL),
-(240, 25, 5, 13, NULL, NULL),
-(241, 25, 6, 16, NULL, NULL),
-(242, 25, 7, 13, NULL, NULL),
-(243, 25, 8, 13, NULL, NULL),
-(244, 25, 9, 12, NULL, NULL),
-(245, 25, 19, 12, NULL, NULL),
-(246, 25, 22, 21, NULL, NULL),
-(247, 25, 23, 56, NULL, NULL),
-(248, 25, 24, 77, NULL, NULL),
-(249, 25, 25, 361, NULL, NULL),
-(250, 26, 1, 9, NULL, NULL),
-(251, 26, 2, 9, NULL, NULL),
-(252, 26, 3, 21, NULL, NULL),
-(253, 26, 4, 21, NULL, NULL),
-(254, 26, 5, 15, NULL, NULL),
-(255, 26, 6, 17, NULL, NULL),
-(256, 26, 7, 15, NULL, NULL),
-(257, 26, 8, 15, NULL, NULL),
-(258, 26, 9, 6, NULL, NULL),
-(259, 26, 19, 6, NULL, NULL),
-(260, 26, 22, 24, NULL, NULL),
-(261, 26, 23, 0, NULL, NULL),
-(262, 26, 24, 24, NULL, NULL),
-(263, 26, 25, 158, NULL, NULL),
-(264, 27, 10, 60, NULL, NULL),
-(265, 27, 11, 29, NULL, NULL),
-(266, 27, 12, 29, NULL, NULL),
-(267, 27, 13, 0, NULL, NULL),
-(268, 27, 14, 0, NULL, NULL),
-(269, 27, 20, 509, NULL, NULL),
-(270, 27, 21, NULL, NULL, NULL),
-(271, 28, 1, 14, NULL, NULL),
-(272, 28, 2, 14, NULL, NULL),
-(273, 28, 3, 20, NULL, NULL),
-(274, 28, 4, 20, NULL, NULL),
-(275, 28, 5, 12, NULL, NULL),
-(276, 28, 6, 14, NULL, NULL),
-(277, 28, 7, 12, NULL, NULL),
-(278, 28, 8, 12, NULL, NULL),
-(279, 28, 9, 9, NULL, NULL),
-(280, 28, 19, 9, NULL, NULL),
-(281, 28, 22, 23, NULL, NULL),
-(282, 28, 23, 14, NULL, NULL),
-(283, 28, 24, 37, NULL, NULL),
-(284, 28, 25, 204, NULL, NULL),
-(285, 29, 1, NULL, NULL, NULL),
-(286, 29, 2, NULL, NULL, NULL),
-(287, 29, 3, NULL, NULL, NULL),
-(288, 29, 4, NULL, NULL, NULL),
-(289, 29, 5, 7, NULL, NULL),
-(290, 29, 6, 8, NULL, NULL),
-(291, 29, 7, 7, NULL, NULL),
-(292, 29, 8, 7, NULL, NULL),
-(293, 29, 9, 9, NULL, NULL),
-(294, 29, 19, 9, NULL, NULL),
-(295, 29, 22, 2, NULL, NULL),
-(296, 29, 23, 20, NULL, NULL),
-(297, 29, 24, 22, NULL, NULL),
-(298, 29, 25, 37, NULL, NULL);
+(1, 1, 1, 7, NULL, NULL),
+(2, 1, 2, 7, NULL, NULL),
+(3, 1, 3, 20, NULL, NULL),
+(4, 1, 4, 20, NULL, NULL),
+(5, 1, 5, 18, NULL, NULL),
+(6, 1, 6, 18, NULL, NULL),
+(7, 1, 7, 18, NULL, NULL),
+(8, 1, 8, 18, NULL, NULL),
+(9, 1, 9, 14, NULL, NULL),
+(10, 1, 19, 14, NULL, NULL),
+(11, 1, 22, 27, NULL, NULL),
+(12, 1, 23, 2, NULL, NULL),
+(13, 1, 24, 29, NULL, NULL),
+(14, 1, 25, 224, NULL, NULL),
+(15, 2, 1, 9, NULL, NULL),
+(16, 2, 2, 26, NULL, NULL),
+(17, 2, 3, 24, NULL, NULL),
+(18, 2, 4, 25, NULL, NULL),
+(19, 2, 5, 13, NULL, NULL),
+(20, 2, 6, 16, NULL, NULL),
+(21, 2, 7, 13, NULL, NULL),
+(22, 2, 8, 13, NULL, NULL),
+(23, 2, 9, 12, NULL, NULL),
+(24, 2, 19, 12, NULL, NULL),
+(25, 2, 22, 21, NULL, NULL),
+(26, 2, 23, 56, NULL, NULL),
+(27, 2, 24, 77, NULL, NULL),
+(28, 2, 25, 361, NULL, NULL),
+(29, 3, 1, 5, NULL, NULL),
+(30, 3, 2, 5, NULL, NULL),
+(31, 3, 3, 12, NULL, NULL),
+(32, 3, 4, 12, NULL, NULL),
+(33, 3, 5, 16, NULL, NULL),
+(34, 3, 6, 16, NULL, NULL),
+(35, 3, 7, 16, NULL, NULL),
+(36, 3, 8, 16, NULL, NULL),
+(37, 3, 9, 10, NULL, NULL),
+(38, 3, 19, 10, NULL, NULL),
+(39, 3, 22, 26, NULL, NULL),
+(40, 3, 23, 0, NULL, NULL),
+(41, 3, 24, 26, NULL, NULL),
+(42, 3, 25, 26, NULL, NULL),
+(43, 4, 1, 9, NULL, NULL),
+(44, 4, 2, 9, NULL, NULL),
+(45, 4, 3, 21, NULL, NULL),
+(46, 4, 4, 21, NULL, NULL),
+(47, 4, 5, 15, NULL, NULL),
+(48, 4, 6, 17, NULL, NULL),
+(49, 4, 7, 15, NULL, NULL),
+(50, 4, 8, 15, NULL, NULL),
+(51, 4, 9, 6, NULL, NULL),
+(52, 4, 19, 6, NULL, NULL),
+(53, 4, 22, 24, NULL, NULL),
+(54, 4, 23, 0, NULL, NULL),
+(55, 4, 24, 24, NULL, NULL),
+(56, 4, 25, 158, NULL, NULL),
+(57, 5, 1, 14, NULL, NULL),
+(58, 5, 2, 14, NULL, NULL),
+(59, 5, 3, 20, NULL, NULL),
+(60, 5, 4, 20, NULL, NULL),
+(61, 5, 5, 12, NULL, NULL),
+(62, 5, 6, 14, NULL, NULL),
+(63, 5, 7, 12, NULL, NULL),
+(64, 5, 8, 12, NULL, NULL),
+(65, 5, 9, 9, NULL, NULL),
+(66, 5, 19, 9, NULL, NULL),
+(67, 5, 22, 23, NULL, NULL),
+(68, 5, 23, 14, NULL, NULL),
+(69, 5, 24, 37, NULL, NULL),
+(70, 5, 25, 204, NULL, NULL),
+(71, 6, 1, NULL, NULL, NULL),
+(72, 6, 2, NULL, NULL, NULL),
+(73, 6, 3, NULL, NULL, NULL),
+(74, 6, 4, NULL, NULL, NULL),
+(75, 6, 5, 7, NULL, NULL),
+(76, 6, 6, 8, NULL, NULL),
+(77, 6, 7, 7, NULL, NULL),
+(78, 6, 8, 7, NULL, NULL),
+(79, 6, 9, 9, NULL, NULL),
+(80, 6, 19, 9, NULL, NULL),
+(81, 6, 22, 2, NULL, NULL),
+(82, 6, 23, 20, NULL, NULL),
+(83, 6, 24, 22, NULL, NULL),
+(84, 6, 25, 37, NULL, NULL),
+(85, 7, 10, 60, NULL, NULL),
+(86, 7, 11, 29, NULL, NULL),
+(87, 7, 12, 29, NULL, NULL),
+(88, 7, 13, 0, NULL, NULL),
+(89, 7, 14, 0, NULL, NULL),
+(90, 7, 20, 509, NULL, NULL),
+(91, 7, 21, NULL, NULL, NULL),
+(92, 8, 15, 5, NULL, NULL),
+(93, 8, 16, 5, NULL, NULL),
+(94, 8, 17, 4, NULL, NULL),
+(95, 8, 18, 4, NULL, NULL),
+(96, 9, 15, 5, NULL, NULL),
+(97, 9, 16, 6, NULL, NULL),
+(98, 9, 17, 2, NULL, NULL),
+(99, 9, 18, 7, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -220,17 +225,7 @@ CREATE TABLE `indicadores` (
 --
 
 INSERT INTO `indicadores` (`id`, `nombre`, `nota`, `posicion`, `proceso_id`, `created_at`, `updated_at`) VALUES
-(1, 'Selección de personal Docente', NULL, NULL, 1, '2018-09-18 09:26:18', '2018-09-18 09:26:18'),
-(2, 'Evaluación Docente', NULL, NULL, 1, '2018-09-18 21:40:38', '2018-09-18 21:40:38'),
-(3, 'Autorización de Planes de Cursos Académicos', NULL, NULL, 1, '2018-09-18 21:43:39', '2018-09-18 21:43:39'),
-(4, 'Seguimiento y Evaluación de Cursos Académicos', NULL, NULL, 1, '2018-09-18 21:48:30', '2018-09-18 21:48:30'),
-(6, 'Realización y Evaluación de Estancia y/o Estadía', NULL, NULL, 1, '2018-09-19 04:37:43', '2018-09-19 04:37:43'),
-(7, 'Autorización de Cargas Horarias Docentes', NULL, NULL, 1, '2018-09-19 04:43:04', '2018-09-19 04:43:04'),
-(8, 'Autorización de Cambio de Carrera dentro de la UPVT', NULL, NULL, 1, '2018-09-19 04:52:08', '2018-09-19 04:52:08'),
-(9, 'Control del servicio o producto no conforme', NULL, NULL, 2, '2018-09-19 04:56:08', '2018-09-19 04:56:08'),
-(10, 'Asesoría Académica', NULL, NULL, 3, '2018-09-19 04:58:36', '2018-09-19 04:58:36'),
-(11, 'Tutoría Académica', NULL, NULL, 3, '2018-09-19 05:04:29', '2018-09-19 05:04:29'),
-(12, 'Evaluación  Docente de Estancias o Estadías', NULL, NULL, 1, '2018-09-19 05:08:39', '2018-09-19 05:08:39');
+(1, 'Selección de personal Docente', NULL, NULL, 1, '2018-09-23 05:02:32', '2018-09-23 05:02:32');
 
 -- --------------------------------------------------------
 
@@ -306,10 +301,9 @@ CREATE TABLE `periodos` (
 --
 
 INSERT INTO `periodos` (`id`, `clave`, `anio`, `actual`, `estado`, `posicion`, `programa_id`, `created_at`, `updated_at`) VALUES
-(4, 'septiembre-diciembre', 2017, 0, 1, 2, 2, '2018-09-18 04:26:00', '2018-09-19 03:24:35'),
-(5, 'septiembre-diciembre', 2017, 0, 0, NULL, 4, '2018-09-18 04:59:59', '2018-09-18 04:59:59'),
-(10, 'mayo-agosto', 2017, 0, 0, NULL, 2, '2018-09-19 06:06:45', '2018-09-19 06:28:03'),
-(11, 'enero-abril', 2017, 0, 1, NULL, 2, '2018-09-19 06:28:12', '2018-09-19 06:29:40');
+(1, 'septiembre-diciembre', 2017, 0, 1, 1, 2, '2018-09-23 02:49:59', '2018-09-23 05:50:03'),
+(4, 'septiembre-diciembre', 2018, 0, 1, 3, 2, '2018-09-23 05:49:41', '2018-09-23 05:58:22'),
+(5, 'mayo-agosto', 2018, 0, 0, 2, 2, '2018-09-23 05:58:11', '2018-09-23 05:58:22');
 
 -- --------------------------------------------------------
 
@@ -325,6 +319,34 @@ CREATE TABLE `permissions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Navegar periodos', 'periodos.index', 'Lista y navegar todos los periodos del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(2, 'Ver detalle del periodo', 'periodos.show', 'Ver en detalle cada periodo del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(3, 'Creación de periodos', 'periodos.create', 'Crear periodos en el sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(4, 'Edición de periodos', 'periodos.edit', 'Editar cualquier dato de un periodo del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(5, 'Eliminar periodos', 'periodos.destroy', 'Eliminar cualquier periodo del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(6, 'Navegar preguntas', 'preguntas.index', 'Lista y navegar todas las preguntas del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(7, 'Ver detalle de la pregunta', 'preguntas.show', 'Ver en detalle cada pregunta del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(8, 'Creación de preguntas', 'preguntas.create', 'Crear preguntas en el sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(9, 'Edición de preguntas', 'preguntas.edit', 'Editar cualquier dato de un pregunta del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(10, 'Eliminar preguntas', 'preguntas.destroy', 'Eliminar cualquier pregunta del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(11, 'Navegar encuestas', 'encuestas.index', 'Lista y navegar todas las encuestas del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(12, 'Ver detalle de la encuesta', 'encuestas.show', 'Ver en detalle cada encuesta del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(13, 'Creación de encuestas', 'encuestas.create', 'Crear encuestas en el sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(14, 'Edición de encuestas', 'encuestas.edit', 'Editar cualquier dato de una encuesta del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(15, 'Eliminar encuestas', 'encuestas.destroy', 'Eliminar cualquier encuesta del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(16, 'Navegar procesos', 'procesos.index', 'Lista y navegar todos los procesos del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(17, 'Ver detalle del proceso', 'procesos.show', 'Ver en detalle cada proceso del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(18, 'Creación de procesos', 'procesos.create', 'Crear procesos en el sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(19, 'Edición de procesos', 'procesos.edit', 'Editar cualquier dato de un proceso del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(20, 'Eliminar procesos', 'procesos.destroy', 'Eliminar cualquier proceso del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(21, 'Navegar estadísticas', 'estadisticas.index', 'Lista y navegar todos los estadísticas del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48'),
+(22, 'Ver detalle de la estadística', 'estadisticas.details', 'Ver en detalle cada estadística del sistema.', '2018-09-23 00:50:48', '2018-09-23 00:50:48');
 
 -- --------------------------------------------------------
 
@@ -377,31 +399,31 @@ CREATE TABLE `preguntas` (
 --
 
 INSERT INTO `preguntas` (`id`, `nombre`, `nota`, `desactivar`, `posicion`, `programa_id`, `role_id`, `created_at`, `updated_at`) VALUES
-(1, 'Número de alumnos que fueron evaluados en el de Estancias/Estadía', 'Periodo establecido. (40 días como máximo)', 0, NULL, 2, 2, NULL, NULL),
-(2, 'Total de alumnos con carta de terminación de Estancia/Estadía', '', 0, NULL, 2, 2, NULL, NULL),
-(3, 'Alumnos que entregan informe quincenal', '', 0, NULL, 2, 2, NULL, NULL),
-(4, 'Número de alumnos en proceso de Estancia/Estadía', '', 0, NULL, 2, 2, NULL, NULL),
-(5, 'Numero total de alumnos que cumplieron con el 100 % de asesorías y que acreditaron todas sus asignaturas', '', 0, NULL, 2, 2, NULL, NULL),
-(6, 'Número total de alumnos tutorados', '', 0, NULL, 2, 2, NULL, NULL),
-(7, 'Número total de alumnos que cumplieron con el 100% de asesorías', '', 0, NULL, 2, 2, NULL, NULL),
-(8, 'Número total de alumnos que acreditaron todas sus asignaturas', '', 0, NULL, 2, 2, NULL, NULL),
-(9, 'Planes de Cursos Académicos autorizados en los primeros 15 días del cuatrimestre', '', 0, NULL, 2, 2, NULL, NULL),
-(10, 'Total de asignaturas de la oferta educativa del cuatrimestre', '', 0, NULL, 2, 1, NULL, NULL),
-(11, 'Número de Cargas Horarias Docentes autorizadas', '', 0, NULL, 2, 1, NULL, NULL),
-(12, 'Total de Docentes para el cuatrimestre Autorizadas', '', 0, NULL, 2, 1, NULL, NULL),
-(13, 'Número de alumnos con Dictamen de Cambio de Carrera en los 10 días hábiles', '', 0, NULL, 2, 1, NULL, NULL),
-(14, 'Total de alumnos que solicitaron cambio de Cambio de Carrera', '', 0, NULL, 2, 1, NULL, NULL),
-(15, 'Número de Docentes con más del 50% del total de sus cursos con Evaluación Docente satisfactoria', '', 0, NULL, 2, 3, NULL, NULL),
-(16, 'Total de Docentes evaluados', '', 0, NULL, 2, 3, NULL, NULL),
-(17, 'Número de Docentes Contratados', '', 0, NULL, 2, 3, NULL, NULL),
-(18, 'Número de Aspirantes Evaluados', '', 0, NULL, 2, 3, NULL, NULL),
-(19, 'Número de asignaturas que atendieron el 100% del programa de la asignatura', '', 0, NULL, 2, 2, NULL, NULL),
-(20, 'Total de alumnos inscritos en el Programa Educativo', '', 0, NULL, 2, 1, NULL, NULL),
-(21, 'Expedición de Dictamen oficial de equivalencia de estudios', 'Días Transcurridos entre la solicitud y la entrega del dictamen', 0, NULL, 2, 1, NULL, NULL),
-(22, 'Número total de alumnos asesorados con control de Tutoría', '', 0, NULL, 2, 2, NULL, NULL),
-(23, 'Número total de alumnos asesorados sin Control de Tutoría', '', 0, NULL, 2, 2, NULL, NULL),
-(24, 'Número total de alumnos asesorados', '', 0, NULL, 2, 2, NULL, NULL),
-(25, 'Número Total de Asesorías', '', 0, NULL, 2, 2, NULL, NULL);
+(1, 'Número de alumnos que fueron evaluados en el de Estancias/Estadía', 'Periodo establecido. (40 días como máximo)', 0, 1, 2, 2, NULL, '2018-09-23 03:40:30'),
+(2, 'Total de alumnos con carta de terminación de Estancia/Estadía', '', 0, 2, 2, 2, NULL, '2018-09-23 03:40:30'),
+(3, 'Alumnos que entregan informe quincenal', '', 0, 3, 2, 2, NULL, '2018-09-23 03:40:17'),
+(4, 'Número de alumnos en proceso de Estancia/Estadía', '', 0, 4, 2, 2, NULL, '2018-09-23 03:40:18'),
+(5, 'Numero total de alumnos que cumplieron con el 100 % de asesorías y que acreditaron todas sus asignaturas', '', 0, 5, 2, 2, NULL, '2018-09-23 03:40:18'),
+(6, 'Número total de alumnos tutorados', '', 0, 6, 2, 2, NULL, '2018-09-23 03:40:18'),
+(7, 'Número total de alumnos que cumplieron con el 100% de asesorías', '', 0, 7, 2, 2, NULL, '2018-09-23 03:40:18'),
+(8, 'Número total de alumnos que acreditaron todas sus asignaturas', '', 0, 8, 2, 2, NULL, '2018-09-23 03:40:18'),
+(9, 'Planes de Cursos Académicos autorizados en los primeros 15 días del cuatrimestre', '', 0, 9, 2, 2, NULL, '2018-09-23 03:40:18'),
+(10, 'Total de asignaturas de la oferta educativa del cuatrimestre', '', 0, 10, 2, 1, NULL, '2018-09-23 03:40:18'),
+(11, 'Número de Cargas Horarias Docentes autorizadas', '', 0, 11, 2, 1, NULL, '2018-09-23 03:40:18'),
+(12, 'Total de Docentes para el cuatrimestre Autorizadas', '', 0, 12, 2, 1, NULL, '2018-09-23 03:40:18'),
+(13, 'Número de alumnos con Dictamen de Cambio de Carrera en los 10 días hábiles', '', 0, 13, 2, 1, NULL, '2018-09-23 03:40:18'),
+(14, 'Total de alumnos que solicitaron cambio de Cambio de Carrera', '', 0, 14, 2, 1, NULL, '2018-09-23 03:40:18'),
+(15, 'Número de Docentes con más del 50% del total de sus cursos con Evaluación Docente satisfactoria', '', 0, 15, 2, 3, NULL, '2018-09-23 03:40:18'),
+(16, 'Total de Docentes evaluados', '', 0, 16, 2, 3, NULL, '2018-09-23 03:40:18'),
+(17, 'Número de Docentes Contratados', '', 0, 17, 2, 3, NULL, '2018-09-23 03:40:18'),
+(18, 'Número de Aspirantes Evaluados', '', 0, 18, 2, 3, NULL, '2018-09-23 03:40:18'),
+(19, 'Número de asignaturas que atendieron el 100% del programa de la asignatura', '', 0, 19, 2, 2, NULL, '2018-09-23 03:40:18'),
+(20, 'Total de alumnos inscritos en el Programa Educativo', '', 0, 20, 2, 1, NULL, '2018-09-23 03:40:18'),
+(21, 'Expedición de Dictamen oficial de equivalencia de estudios', 'Días Transcurridos entre la solicitud y la entrega del dictamen', 0, 21, 2, 1, NULL, '2018-09-23 03:40:18'),
+(22, 'Número total de alumnos asesorados con control de Tutoría', '', 0, 22, 2, 2, NULL, '2018-09-23 03:40:18'),
+(23, 'Número total de alumnos asesorados sin Control de Tutoría', '', 0, 23, 2, 2, NULL, '2018-09-23 03:40:18'),
+(24, 'Número total de alumnos asesorados', '', 0, 24, 2, 2, NULL, '2018-09-23 03:40:18'),
+(25, 'Número Total de Asesorías', '', 0, 25, 2, 2, NULL, '2018-09-23 03:40:18');
 
 -- --------------------------------------------------------
 
@@ -438,10 +460,7 @@ CREATE TABLE `procesos` (
 --
 
 INSERT INTO `procesos` (`id`, `nombre`, `nota`, `posicion`, `programa_id`, `created_at`, `updated_at`) VALUES
-(1, 'Enseñanza Aprendizaje', NULL, NULL, 2, '2018-09-18 09:23:50', '2018-09-18 09:24:59'),
-(2, 'Procedimientos de Control', NULL, NULL, 2, '2018-09-19 04:55:35', '2018-09-19 04:55:35'),
-(3, 'Procedimientos de Fortalecimiento Académico', NULL, NULL, 2, '2018-09-19 04:58:01', '2018-09-19 04:58:01'),
-(4, 'Autorización y Control de Cambios de calificaciones a las y los alumnos', NULL, NULL, 2, '2018-09-19 05:11:46', '2018-09-19 05:11:46');
+(1, 'Enseñanza Aprendizaje', NULL, NULL, 2, '2018-09-23 05:02:13', '2018-09-23 05:02:13');
 
 -- --------------------------------------------------------
 
@@ -507,15 +526,18 @@ CREATE TABLE `programa_user` (
 INSERT INTO `programa_user` (`id`, `programa_id`, `user_id`, `predeterminado`, `created_at`, `updated_at`) VALUES
 (1, 2, 1, 1, NULL, NULL),
 (2, 8, 1, 0, NULL, NULL),
-(7, 2, 4, 1, NULL, NULL),
-(8, 4, 2, 1, NULL, NULL),
-(9, 2, 5, 0, NULL, NULL),
-(10, 2, 6, 1, NULL, NULL),
-(11, 2, 7, 0, NULL, NULL),
-(12, 2, 8, 0, NULL, NULL),
-(13, 4, 9, 0, NULL, NULL),
-(14, 2, 10, 0, NULL, NULL),
-(15, 2, 11, 0, NULL, NULL);
+(3, 2, 2, 1, NULL, NULL),
+(4, 2, 3, 0, NULL, NULL),
+(5, 2, 4, 0, NULL, NULL),
+(6, 2, 5, 0, NULL, NULL),
+(7, 2, 6, 0, NULL, NULL),
+(8, 2, 7, 0, NULL, NULL),
+(9, 2, 8, 0, NULL, NULL),
+(10, 2, 9, 0, NULL, NULL),
+(11, 2, 10, 0, NULL, NULL),
+(12, 8, 10, 1, NULL, NULL),
+(13, 2, 11, 0, NULL, NULL),
+(14, 2, 12, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -539,8 +561,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`, `special`) VALUES
 (1, 'Director', 'director', 'Director principal de la carrera', NULL, NULL, 'all-access'),
-(2, 'PTC', 'ptc', 'Profesor de tiempo completo', NULL, NULL, 'no-access'),
-(3, 'Secretaria', 'secretaria', '', NULL, NULL, 'no-access');
+(2, 'PTC', 'ptc', 'Profesor de tiempo completo', NULL, NULL, NULL),
+(3, 'Secretaria', 'secretaria', '', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -562,15 +584,17 @@ CREATE TABLE `role_user` (
 
 INSERT INTO `role_user` (`id`, `role_id`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, NULL, NULL),
-(3, 2, 4, NULL, NULL),
-(4, 1, 2, NULL, NULL),
+(2, 2, 2, NULL, NULL),
+(3, 2, 3, NULL, NULL),
+(4, 2, 4, NULL, NULL),
 (5, 2, 5, NULL, NULL),
 (6, 2, 6, NULL, NULL),
 (7, 2, 7, NULL, NULL),
-(8, 3, 8, NULL, NULL),
+(8, 2, 8, NULL, NULL),
 (9, 2, 9, NULL, NULL),
-(10, 2, 10, NULL, NULL),
-(11, 2, 11, NULL, NULL);
+(10, 1, 10, NULL, NULL),
+(11, 3, 11, NULL, NULL),
+(12, 3, 12, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -595,21 +619,7 @@ CREATE TABLE `subindicadores` (
 --
 
 INSERT INTO `subindicadores` (`id`, `nombre`, `procedimiento`, `valor_meta`, `nota`, `posicion`, `indicador_id`, `created_at`, `updated_at`) VALUES
-(1, 'Porcentaje de aspirantes contratados', '[{\"type\":\"pregunta\",\"value\":\"17\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"18\"}]', 50, 'No. De docentes contratados / No. De aspirantes evaluados', NULL, 1, '2018-09-18 09:27:39', '2018-09-18 21:26:15'),
-(2, 'Porcentaje con evaluación satisfactoria de Docentes', '[{\"type\":\"pregunta\",\"value\":\"15\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"16\"}]', 85, 'Número de Docentes con más del 50% del total de \r\nsus cursos con Evaluación Docente satisfactoria / Total de Docentes evaluados', NULL, 2, '2018-09-18 21:42:16', '2018-09-18 21:42:16'),
-(3, 'Porcentaje de planeación de los cursos', '[{\"type\":\"pregunta\",\"value\":\"9\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"10\"}]', 90, '(Planes de Cursos Académicos autorizados \r\nen los primeros 15 días del cuatrimestre / \r\nTotal de asignaturas de la oferta educativa del cuatrimestre) * 100', NULL, 3, '2018-09-18 21:45:20', '2018-09-18 21:45:20'),
-(4, 'Eficiencia de la docencia', '[{\"type\":\"pregunta\",\"value\":\"19\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"10\"}]', 100, '(Número de asignaturas que atendieron el 100% del programa de la asignatura / \r\nTotal de asignaturas ofertadas en el cuatrimestre)  * 100', NULL, 4, '2018-09-18 21:50:09', '2018-09-19 04:37:07'),
-(7, 'Eficiencia de la validación de Estancias', '[{\"type\":\"pregunta\",\"value\":\"1\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"2\"}]', 50, 'Número de alumnos que fueron evaluados en el periodo establecido. (40 días como máximo ) / Total de alumnos con carta de terminación de \r\nEstancia/Estadía', NULL, 6, '2018-09-19 04:39:52', '2018-09-19 04:39:52'),
-(8, 'Eficiencia del seguimiento', '[{\"type\":\"pregunta\",\"value\":\"3\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"4\"}]', 70, 'Alumnos que entregan informe quincenal / \r\n Número de alumnos en proceso de Estancia/Estadía', NULL, 6, '2018-09-19 04:42:08', '2018-09-19 04:42:08'),
-(9, '% de Cargas  Horarias Docente Autorizadas', '[{\"type\":\"pregunta\",\"value\":\"11\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"12\"}]', 85, 'Número de Cargas Horarias Docentes autorizadas  /\r\nTotal de Docentes para el cuatrimestre actual', NULL, 7, '2018-09-19 04:44:54', '2018-09-19 04:44:54'),
-(10, 'Porcentaje de Autorizaciones de Cambio de Carrera', '[{\"type\":\"pregunta\",\"value\":\"13\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"14\"}]', 100, 'Número de alumnos con Dictamen de \r\nCambio de Carrera en los 10 días hábiles / Total de alumnos que solicitaron cambio de Carrera.', NULL, 8, '2018-09-19 04:53:13', '2018-09-19 06:46:28'),
-(11, '%  de  cursos no conformes', '[]', 20, 'No. De cursos no conformes/Total de cursos en el cuatrimestre', NULL, 9, '2018-09-19 04:57:09', '2018-09-19 04:57:09'),
-(12, '% de participación en la Asesoría con control de tutoría', '[{\"type\":\"pregunta\",\"value\":\"22\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"24\"}]', 10, 'No. total de alumnos asesorados con control de Tutoría / No. total de alumnos asesorados', NULL, 10, '2018-09-19 04:59:27', '2018-09-19 05:01:47'),
-(14, '% de participación en la Asesoría sin control de tutoría', '[{\"type\":\"pregunta\",\"value\":\"23\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"24\"}]', 10, 'No. total de alumnos asesorados sin Control de Tutoría / No. total de alumnos asesorados', NULL, 10, '2018-09-19 05:02:32', '2018-09-19 05:02:32'),
-(15, '% de participación en la Asesoría general', '[{\"type\":\"pregunta\",\"value\":\"24\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"20\"}]', 10, NULL, NULL, 10, '2018-09-19 05:03:39', '2018-09-19 05:03:39'),
-(16, '% de efectividad de la tutoría', '[{\"type\":\"pregunta\",\"value\":\"5\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"6\"}]', 80, 'Núm. total de alumnos que cumplieron con el 100 % de asesorías y que acreditaron todas sus asignaturas. / Núm. total de alumnos tutorados', NULL, 11, '2018-09-19 05:05:34', '2018-09-19 05:05:34'),
-(17, '% de eficiencia de la tutoría Núm', '[{\"type\":\"pregunta\",\"value\":\"5\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"7\"}]', 80, 'Núm. total de alumnos que cumplieron con el 100 % de asesorías y que acreditaron todas sus asignaturas. / Núm. total de alumnos que cumplieron con el 100% de asesorías', NULL, 11, '2018-09-19 05:06:50', '2018-09-19 05:06:50'),
-(18, '% de aprobación', '[{\"type\":\"pregunta\",\"value\":\"8\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"6\"}]', 80, 'Núm. total de alumnos que acreditaron todas sus asignaturas / Número total de alumnos tutorados', NULL, 11, '2018-09-19 05:07:33', '2018-09-19 05:17:13');
+(1, 'Porcentaje de aspirantes contratados', '[{\"type\":\"pregunta\",\"value\":\"17\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"18\"}]', 50, '(No. De docentes contratados/No. De aspirantes evaluados)', NULL, 1, '2018-09-23 05:03:27', '2018-09-23 05:05:39');
 
 -- --------------------------------------------------------
 
@@ -637,16 +647,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `prefijo`, `name`, `apellidos`, `email`, `username`, `admin`, `password`, `disabled`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'M. en C.E. ', 'Leticia Jael', 'Rojas Ortiz', 'jael@upvt.com', '1', 1, '$2y$10$NlRBOTbAnoql2oHPx/iIp.0Od24fXCFIHZDy38gsdaIZzdJiOwI0a', 0, 'Kyt4Oh2bpaEW0hs8u7ZQbudTvJzW50tTVHJDWKrCwXhgrBEDxVKRRoVFQ7Hf', NULL, NULL),
-(2, NULL, 'Arlet', '', 'arlet@upvt.com', '2', 1, '$2y$10$m2oBD8EGLp8MG4ItGRE5uOvEkrmLy/QYqZsnmA7DCSfD27j3moxoa', 0, 'jc3SX6SlkYExXLy2wELyAlOIYKsDydRWhktFhQxLnu1BzxoG5tTgQ9fAHBjf', NULL, NULL),
-(4, 'M. en TI. ', 'Martha', 'Montes de Oca Herrera', 'martha@upvt.com', '4', 0, '$2y$10$YKjE9Sv2NmqgmV6AbLClzeqbbzLbGdm/ensN3NaCC47Z1x9MJ3LXS', 0, 'p0d79oA0V5V85cweVZsA8SpvJM62Z8ypmBCz1k18SnP8SRyzFnji0iQPQa8C', '2018-09-17 09:09:27', '2018-09-18 09:35:44'),
-(5, 'M. en C. ', 'Juana Guadalupe', 'Bringas Gonález', 'adrian@upvt.com', '5', 0, '$2y$10$9sr4dcTkHxsUPJZY5GDK1.dqh/I7iFu7mtdYnezi7XL4aGJwytaw6', 0, NULL, '2018-09-18 09:36:37', '2018-09-18 22:53:28'),
-(6, 'M. en CC.', 'Adrían', 'González Gómez', NULL, '6', 0, '$2y$10$thmOj4YeQXafMniStF3DbulQ.OoosUlwhaehCUn8JawW0Mlh180Qa', 0, NULL, '2018-09-18 09:37:25', '2018-09-18 23:04:45'),
-(7, 'M. en A. ', 'José Luis', 'Ledezma Sánchez', 'ledezma@upvt.com', '7', 0, '$2y$10$a4.ID3ug3Be3BQGdSiO35OKsNfH0rdqUlUmfAZP5StH08JpG6L6EK', 0, NULL, '2018-09-18 09:38:13', '2018-09-18 09:38:13'),
-(8, NULL, 'Belem', NULL, 'belem@upvt.com', '20', 0, '$2y$10$MHry21hdsMQvVsCnG.yux.whTufY7sfCRjn9E/jXGjoaXdyuq3mOG', 0, NULL, '2018-09-18 09:39:01', '2018-09-18 23:00:36'),
-(9, NULL, 'Ejemplo', NULL, 'ejemplo@upvt.com', '9', 0, '$2y$10$KteHvCKjgSXvdZNrEFMuOegkM.0uJmtfi.K3mkDLXCMWmUmECwfWu', 0, NULL, '2018-09-18 11:02:27', '2018-09-18 11:02:27'),
-(10, NULL, 'Leticia Jael', 'Rojas Ortiz', NULL, '24', 0, '$2y$10$PvfFMHUWm/blxdF1frDrHOeXixDPdmH1O70sy.BbAkgoOias29KAq', 0, NULL, '2018-09-19 05:22:42', '2018-09-19 05:22:42'),
-(11, NULL, 'Alejandra', NULL, NULL, '15', 0, '$2y$10$/4tcOnnds6BD2CRgSVn5L.UxCQzDg/LrsyeSTviSTrj.MH5rugrZa', 0, NULL, '2018-09-19 05:47:12', '2018-09-19 05:47:12');
+(1, 'M. en C.E.', 'Leticia Jael', 'Rojas Ortiz', 'jael@upvt.com', '1', 1, '$2y$10$kKCnjS1cTNv2IHenDW58ceIKHEOcQfRmHBgKL5IyOwRWLcyXRyU5i', 0, NULL, NULL, NULL),
+(2, 'M. en CC.', 'Adrían', 'González Gómez', 'adriangonzalezblue@gmail.com', '2', 0, '$2y$10$25I6lqMbYK5lLy33NfjNUuwLRP4vTx03Qr2fNwk7fvR2TcGrOHIay', 0, 'daIppvxZvJUWOQpikCVFeAtl88gP0eZlsZncpQpDEWKH43egNC71Au2PtEPj', '2018-09-23 04:26:00', '2018-09-23 04:31:40'),
+(3, 'M. en C.', 'Juana Guadalupe', 'Bringas González', NULL, '3', 0, '$2y$10$OBQU3uhAL3mAwF4578nUy.HG0u6MXYDN9wxauEQcTNb6qe4EMs5/a', 0, NULL, '2018-09-23 04:35:50', '2018-09-23 04:35:50'),
+(4, 'M. en TI.', 'Martha Maria', 'Montes de Oca Herrera', NULL, '4', 0, '$2y$10$tMQyL.asNEvSlo18o4mUNe7.7i6.im2hG1xLpdceWvPrI61shGi/6', 0, NULL, '2018-09-23 04:36:51', '2018-09-23 04:36:51'),
+(5, 'M. en A.', 'José Luis', 'Ledezma Sánchez', NULL, '5', 0, '$2y$10$z25CMgyQiTh5nb2YuhGGVOHJTF211nXc6SjLvlj6epGT6OzJZ5BFy', 0, NULL, '2018-09-23 04:37:32', '2018-09-23 04:37:32'),
+(6, 'MTRO.', 'Pedro', 'Valencia Pérez', NULL, '6', 0, '$2y$10$1f6by/8G1t.vIs8Fr7hcleORAExz2BY8oAf2sbkSOzX.8PeK7Hpyq', 0, NULL, '2018-09-23 04:38:29', '2018-09-23 04:38:29'),
+(7, NULL, 'Leticia Jael', 'Rojas Ortiz', NULL, '7', 0, '$2y$10$y7r9leqBmRKnmD3gFqYgQu/3s1TfBlYZsoXursdPdzKb/pI7dKt1K', 0, NULL, '2018-09-23 04:39:31', '2018-09-23 04:39:31'),
+(8, NULL, 'Alejandra', NULL, NULL, '8', 0, '$2y$10$kw8v1LiHsFJHZM7lFFmCUuOiMGMfueQaSllxV3oGjikAFMUBuzOXy', 0, NULL, '2018-09-23 04:40:48', '2018-09-23 04:40:48'),
+(9, 'M. en D.', 'Juan Gabriel', 'Velázquez Gómez', NULL, '9', 0, '$2y$10$RGdkfr0ajYxF5HXZsTgAJOVAzqZObt4fFRmtugE43Na9S8qIpwqaG', 0, NULL, '2018-09-23 04:43:49', '2018-09-23 04:43:49'),
+(10, 'MTRO.', 'David', NULL, NULL, '10', 0, '$2y$10$24j7mk/oApGOaE3qN0UzwOwUyzeUPlEVXHlrGGVsg8gnHinZqlzbS', 0, NULL, '2018-09-23 04:55:02', '2018-09-23 04:55:02'),
+(11, NULL, 'Belem', NULL, NULL, '11', 0, '$2y$10$n6pv8AaMAPggga8u/xzsuOpNsxUcnr7cLJy0dPX93zOQ9uSs8pN8G', 0, NULL, '2018-09-23 04:55:49', '2018-09-23 04:55:49'),
+(12, NULL, 'Paola', NULL, NULL, '12', 0, '$2y$10$626K1O5SmqMCtGlaY/1cjOLQNjs1UuAIO.9/J3iZOoMqFpgO2un..', 0, NULL, '2018-09-23 04:56:08', '2018-09-23 04:56:08');
 
 --
 -- Índices para tablas volcadas
@@ -808,7 +820,8 @@ ALTER TABLE `subindicadores`
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_username_unique` (`username`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -830,19 +843,19 @@ ALTER TABLE `actividad_user`
 -- AUTO_INCREMENT de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `encuesta_pregunta`
 --
 ALTER TABLE `encuesta_pregunta`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=299;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT de la tabla `indicadores`
 --
 ALTER TABLE `indicadores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -854,13 +867,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `periodos`
 --
 ALTER TABLE `periodos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `permission_role`
@@ -878,7 +891,7 @@ ALTER TABLE `permission_user`
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `pregunta_programa`
@@ -890,7 +903,7 @@ ALTER TABLE `pregunta_programa`
 -- AUTO_INCREMENT de la tabla `procesos`
 --
 ALTER TABLE `procesos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `programas`
@@ -908,7 +921,7 @@ ALTER TABLE `programa_subindicador`
 -- AUTO_INCREMENT de la tabla `programa_user`
 --
 ALTER TABLE `programa_user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -920,19 +933,19 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `role_user`
 --
 ALTER TABLE `role_user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `subindicadores`
 --
 ALTER TABLE `subindicadores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
