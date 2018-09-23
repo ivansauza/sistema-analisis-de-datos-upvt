@@ -10,6 +10,8 @@
 @endsection
 
 @section('content')
+	
+	@include('fragments.errors')
 
 	<div class="card">
 		<div class="card-body">
