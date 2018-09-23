@@ -11,10 +11,10 @@
                 @endforeach
             ],
 			datasets: [{
-				label: 'Dataset 1',
-				backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-				borderColor: window.chartColors.red,
-				borderWidth: 1,
+				label: '{{ $subindicador->nombre }}',
+				backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
+				borderColor: window.chartColors.green,
+				borderWidth: 0,
 				data: [
                     @foreach ($periodos as $periodo)
                         @php($result = $subindicador->calculateProcedimiento($periodo->id))
@@ -42,13 +42,11 @@
 					},
 					title: {
 						display: true,
-						text: '{{ $subindicador->nombre }}'
+						text: '{{ $subindicador->indicador->nombre }}'
 					}
 				}
 			});
 
 		};
-
-		var colorNames = Object.keys(window.chartColors);
 	</script>
 @endsection
