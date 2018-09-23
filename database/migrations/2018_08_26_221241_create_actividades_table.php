@@ -17,7 +17,14 @@ class CreateActividadesTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->longText('descripcion')->nullable();
+            $table->longText('route')->nullable();
+            $table->longText('url')->nullable();
+            $table->ipAddress('ip')->nullable();
+            $table->text('agente')->nullable();
+            $table->string('metodo')->nullable();
+            $table->integer('user_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
