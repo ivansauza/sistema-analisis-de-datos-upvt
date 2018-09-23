@@ -13,8 +13,9 @@
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome-all.min.css') }}">
-	@yield('css')
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}">
 	<link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+	@yield('css')
 </head>
 
 <body>
@@ -78,7 +79,7 @@
 					<div class="card border-right-0 border-left-0 rounded-0">
 						<div class="card-body">
 							<h5>
-								{{ auth()->user()->name }}
+								{{ auth()->user()->prefijo }} {{ auth()->user()->name }}
 								<small>
 									@if (auth()->user()->roles()->first())
 										{{ auth()->user()->roles()->first()->name }}
