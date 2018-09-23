@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'activity'])->group(function () {
 	Route::get('programas/{programa}/predetermined', 'ProgramaController@predetermined')
 	->name('programas.predetermined');
 
@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
 	->name('home');
 });
 
-Route::middleware(['auth', 'programDefault'])->group(function () {
+Route::middleware(['auth', 'programDefault', 'activity'])->group(function () {
 	Route::post('periodos/posicion/update', 'PeriodoController@posicionUpdate')
 		->name('periodos.posicion.update');
 	
@@ -91,9 +91,8 @@ Route::middleware(['auth', 'programDefault'])->group(function () {
 	
 		Route::post('user', 'UserSettingsUpdate')
 			->name('settings.user.update');
-		
 	});
-	
-	Route::get('actividades', 'ShowActividades')
-		->name('actividades.show');
 });
+
+Route::get('actividades', 'ShowActividades')
+	->name('actividades.show');
