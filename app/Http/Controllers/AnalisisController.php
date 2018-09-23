@@ -58,7 +58,8 @@ class AnalisisController extends Controller
         $preguntas = Programa::getPredeterminado()
             ->preguntas
             ->where('desactivar', '=', 0)
-            ->where('role_id', '=', auth()->user()->roles()->first()->id);
+            ->where('role_id', '=', auth()->user()->roles()->first()->id)
+            ->sortBy('posicion');
 
         return view('analisis.create', compact('periodo', 'preguntas'));
     }
