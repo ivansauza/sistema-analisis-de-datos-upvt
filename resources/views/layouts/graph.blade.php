@@ -12,17 +12,17 @@
 
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome-all.min.css') }}">
-	<link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
 
 <body>
-	@yield('content')
+	<canvas id="canvas"></canvas>
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/Chart.min.js') }}"></script>
 	<script src="{{ asset('js/app.js') }}"></script>
+	@yield('scripts')
 </body>
 </html>

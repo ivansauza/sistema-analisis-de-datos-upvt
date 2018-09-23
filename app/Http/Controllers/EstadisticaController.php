@@ -43,6 +43,10 @@ class EstadisticaController extends Controller
 
     public function graph()
     {
-    	return view('estadistica.graph');
+        $periodos = Programa::getPredeterminado()->periodos
+            ->sortBy('posicion');
+        $subindicador = Subindicador::findOrFail(request()->input('subindicador'));
+        
+    	return view('estadistica.graph', compact('subindicador', 'periodos'));
     }
 }

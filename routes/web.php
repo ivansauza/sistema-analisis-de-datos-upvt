@@ -70,8 +70,12 @@ Route::middleware(['auth'])->group(function () {
 		->name('estadisticas.index')
 		->middleware('permission:estadisticas.index');
 	
-	Route::get('estadisticas/details', 'EstadisticaController@details')
+	Route::get('estadisticas/detalles', 'EstadisticaController@details')
 		->name('estadisticas.details')
+		->middleware('permission:estadisticas.details');
+
+	Route::get('estadisticas/grafica', 'EstadisticaController@graph')
+		->name('estadisticas.graph')
 		->middleware('permission:estadisticas.details');
 
 	Route::get('users/{id}/actividades', 'UserController@actividades')

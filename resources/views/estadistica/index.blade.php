@@ -43,7 +43,7 @@
 								</span>
 							</td>
 							<td class="text-center">
-								<a href="" target="_blank" onclick="window.open(this.href, this.target, 'width=600,height=600,toolbar=no, location=no, directories=no, status=no, menubar=no'); return false;">
+								<a href="{{ route('estadisticas.graph', ['subindicador' => $subindicador->id, 'periodo' => $periodo->id]) }}" target="_blank" onclick="window.open(this.href, this.target, 'width=600,height=400,toolbar=no, location=no, directories=no, status=no, menubar=no'); return false;">
 									<i class="fas fa-chart-pie"></i>
 								</a>
 							</td>
