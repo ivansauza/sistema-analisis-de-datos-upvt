@@ -13,7 +13,7 @@
 
 	<div class="card">
 		<div class="card-body">
-			<p>A continuación se muestran los periodos de los cuales no ha realizo su análisis de datos.</p>
+			<p>A continuación se muestran los periodos de los cuales no ha realizo el análisis de datos.</p>
 		</div>
 
 		<div class="card-body p-0">
