@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Encuesta;
 use Illuminate\Http\Request;
-use App\Traits\ProgramasEmptyValidate;
+
 use App\Http\Requests\EncuestaCreateRequest;
 use App\Http\Requests\EncuestaStoreRequest;
 use App\Http\Requests\EncuestaUpdateRequest;
@@ -15,16 +15,8 @@ use App\Periodo;
 
 class EncuestaController extends Controller
 {
-    use ProgramasEmptyValidate;
-
     public function __construct()
     {
-        /**
-         * Revisar si el usuario actual tiene un programa
-         * predeterminado, si no, redireccionar a programas.index
-         */
-        $this->checkIssetDefaultPrograma();
-
         /**
          * Asignando permisos a los métodos
          */

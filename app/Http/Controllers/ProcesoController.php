@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Traits\ProgramasEmptyValidate;
 
 use App\Http\Requests\ProcesoRequest;
 
@@ -12,16 +11,8 @@ Use App\Programa;
 
 class ProcesoController extends Controller
 {
-    use ProgramasEmptyValidate;
-
     public function __construct()
     {
-        /**
-         * Revisar si el usuario actual tiene un programa
-         * predeterminado, si no, redireccionar a programas.index
-         */
-        $this->checkIssetDefaultPrograma();
-
         /**
          * Asignando permisos a los métodos
          */

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Traits\ProgramasEmptyValidate;
 
 use App\Programa;
 use App\Periodo;
@@ -12,17 +11,6 @@ use Caffeinated\Shinobi\Models\Role;
 
 class EstadisticaController extends Controller
 {
-    use ProgramasEmptyValidate;
-
-    public function __construct()
-    {
-        /**
-         * Revisar si el usuario actual tiene un programa
-         * predeterminado, si no, redireccionar a programas.index
-         */
-        $this->checkIssetDefaultPrograma();
-    }
-    
     public function index()
     {
         $periodos = Programa::getPredeterminado()->periodos

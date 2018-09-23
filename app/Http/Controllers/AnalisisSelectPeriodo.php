@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Traits\ProgramasEmptyValidate;
 
 use App\Periodo;
 use App\Programa;
 
 class AnalisisSelectPeriodo extends Controller
 {
-    use ProgramasEmptyValidate;
-
     /**
      * Mostrar todos los periodos disponibles para crear una encuesta.
      *
