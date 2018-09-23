@@ -15,7 +15,7 @@ class CreateSubindicadoresTable extends Migration
     {
         Schema::create('subindicadores', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre')->unique();
+            $table->string('nombre');
             $table->longText('procedimiento')->nullable();
             $table->integer('valor_meta');
             $table->longText('nota')->nullable();
