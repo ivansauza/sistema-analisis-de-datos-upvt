@@ -30,6 +30,7 @@ class UserSettingsUpdate extends Controller
                 'min:6', 
                 new UserCurrentPassword
             ], 
+            'prefijo'          => 'string|nullable', 
             'name'             => 'required|string|max:255',
             'apellidos'        => 'string|nullable', 
             'email'            => 'email|max:255|nullable',
