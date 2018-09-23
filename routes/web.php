@@ -18,15 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-
 	Route::get('programas/{programa}/predetermined', 'ProgramaController@predetermined')
-		->name('programas.predetermined');
-	
+	->name('programas.predetermined');
+
 	Route::resource('programas', 'ProgramaController');
 
 	Route::get('/home', 'HomeController@index')
-		->name('home');
+	->name('home');
+});
 
+Route::middleware(['auth', 'programDefault'])->group(function () {
 	Route::post('periodos/posicion/update', 'PeriodoController@posicionUpdate')
 		->name('periodos.posicion.update');
 	
