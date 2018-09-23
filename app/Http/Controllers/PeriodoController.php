@@ -156,7 +156,7 @@ class PeriodoController extends Controller
         {
             $periodo = Periodo::findOrFail($item);
             $this->authorize('access', $periodo);
-            $periodo->posicion = $key;
+            $periodo->posicion = $key + 1;
             $periodo->save();
         }
 

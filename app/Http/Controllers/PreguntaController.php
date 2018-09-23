@@ -159,7 +159,7 @@ class PreguntaController extends Controller
         {
             $pregunta = Pregunta::find($item);
             $this->authorize('access', $pregunta);
-            $pregunta->posicion = $key;
+            $pregunta->posicion = $key + 1;
             $pregunta->save();
         }
 
