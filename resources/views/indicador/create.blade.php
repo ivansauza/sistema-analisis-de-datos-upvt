@@ -11,6 +11,8 @@
 
 @section('content')
 
+	@include('fragments.errors')
+	
 	<div class="card">
 		<div class="card-body">
 			{{ Form::open(['route' => 'indicadores.store']) }}

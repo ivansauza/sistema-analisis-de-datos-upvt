@@ -12,6 +12,7 @@
 @section('content')
 
 	@include('fragments.alert')
+	@include('fragments.errors')
 
 	<div class="card">
 		<div class="card-body">

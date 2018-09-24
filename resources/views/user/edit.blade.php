@@ -12,7 +12,7 @@
 @section('content')
 
 	@include('fragments.alert')
-
+	@include('fragments.errors')
 
 	{{ Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT']) }}
 
