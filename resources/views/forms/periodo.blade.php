@@ -26,16 +26,3 @@
 		@endif
 	</div>
 </div>
-
-<hr />
-
-<div class="form-group">
-	<div class="custom-control custom-checkbox">
-	 	{{ Form::hidden('actual', 0) }}
-	 	{{ Form::checkbox('actual', 1, null, ['class' => 'custom-control-input', 'id' => 'actual']) }}
-	 	{{ Form::label('actual', 'Marcar este periodo como actual (Si ya hay otro periodo como actual se reemplazara por este).', ['class' => 'custom-control-label']) }}
-		@if ($errors->has('actual'))
-			<span class="badge badge-danger">{{ $errors->first('actual') }}</span>
-		@endif
-	</div>
-</div>
