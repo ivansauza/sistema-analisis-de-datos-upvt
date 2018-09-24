@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2018 a las 08:05:39
+-- Tiempo de generación: 24-09-2018 a las 03:39:35
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -30,28 +30,232 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `actividades` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nombre` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` longtext COLLATE utf8mb4_unicode_ci,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `actividad_user`
---
-
-CREATE TABLE `actividad_user` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `actividad_id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL,
+  `ruta` longtext COLLATE utf8mb4_unicode_ci,
   `url` longtext COLLATE utf8mb4_unicode_ci,
-  `ip` longtext COLLATE utf8mb4_unicode_ci,
-  `ubicacion` longtext COLLATE utf8mb4_unicode_ci,
+  `ip` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `agente` text COLLATE utf8mb4_unicode_ci,
+  `metodo` varchar(120) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lugar` longtext COLLATE utf8mb4_unicode_ci,
+  `user_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `actividades`
+--
+
+INSERT INTO `actividades` (`id`, `ruta`, `url`, `ip`, `agente`, `metodo`, `lugar`, `user_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(32, 'analisis.index', 'http://localhost:8000/analisis', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:18:18', '2018-09-23 20:18:18', NULL),
+(33, 'settings.user', 'http://localhost:8000/configuracion/user', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:20:07', '2018-09-23 20:20:07', NULL),
+(34, 'settings.user.update', 'http://localhost:8000/configuracion/user', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'POST', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:20:14', '2018-09-23 20:20:14', NULL),
+(35, 'settings.user', 'http://localhost:8000/configuracion/user', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:20:15', '2018-09-23 20:20:15', NULL),
+(36, 'programas.index', 'http://localhost:8000/programas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:25:02', '2018-09-23 20:25:02', NULL),
+(37, 'programas.predetermined', 'http://localhost:8000/programas/2/predetermined', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:25:05', '2018-09-23 20:25:05', NULL),
+(38, 'programas.index', 'http://localhost:8000/programas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:25:05', '2018-09-23 20:25:05', NULL),
+(39, 'procesos.index', 'http://localhost:8000/procesos', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:25:08', '2018-09-23 20:25:08', NULL),
+(40, 'analisis.index', 'http://localhost:8000/analisis', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:25:11', '2018-09-23 20:25:11', NULL),
+(41, 'periodos.index', 'http://localhost:8000/periodos', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:25:15', '2018-09-23 20:25:15', NULL),
+(42, 'analisis.index', 'http://localhost:8000/analisis', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:25:19', '2018-09-23 20:25:19', NULL),
+(43, 'analisis.select', 'http://localhost:8000/analisis/select', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:25:22', '2018-09-23 20:25:22', NULL),
+(44, 'analisis.create', 'http://localhost:8000/analisis/crear?periodo_id=6', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:25:25', '2018-09-23 20:25:25', NULL),
+(45, 'home', 'http://localhost:8000/home', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 4, '2018-09-23 20:35:54', '2018-09-23 20:35:54', NULL),
+(46, 'home', 'http://localhost:8000/home', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:35:58', '2018-09-23 20:35:58', NULL),
+(47, 'analisis.index', 'http://localhost:8000/analisis', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 4, '2018-09-23 20:36:11', '2018-09-23 20:36:11', NULL),
+(48, 'analisis.show', 'http://localhost:8000/analisis/4', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 4, '2018-09-23 20:36:16', '2018-09-23 20:36:16', NULL),
+(49, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-23 20:36:43', '2018-09-23 20:36:43', NULL),
+(50, 'home', 'http://192.168.0.2/home', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 20:59:10', '2018-09-23 20:59:10', NULL),
+(51, 'home', 'http://192.168.0.2/home', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 20:59:15', '2018-09-23 20:59:15', NULL),
+(52, 'estadisticas.index', 'http://192.168.0.2/estadisticas', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 20:59:29', '2018-09-23 20:59:29', NULL),
+(53, 'preguntas.index', 'http://192.168.0.2/preguntas', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:01:15', '2018-09-23 21:01:15', NULL),
+(54, 'preguntas.create', 'http://192.168.0.2/preguntas/crear', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:02:30', '2018-09-23 21:02:30', NULL),
+(55, 'preguntas.store', 'http://192.168.0.2/preguntas', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'POST', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:02:35', '2018-09-23 21:02:35', NULL),
+(56, 'preguntas.create', 'http://192.168.0.2/preguntas/crear', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:02:35', '2018-09-23 21:02:35', NULL),
+(57, 'home', 'http://192.168.0.2/home', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:02:57', '2018-09-23 21:02:57', NULL),
+(58, 'settings.user', 'http://192.168.0.2/configuracion/user', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:03:03', '2018-09-23 21:03:03', NULL),
+(59, 'encuestas.index', 'http://192.168.0.2/encuestas', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:03:15', '2018-09-23 21:03:15', NULL),
+(60, 'encuestas.show', 'http://192.168.0.2/encuestas/1', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:03:26', '2018-09-23 21:03:26', NULL),
+(61, 'users.show', 'http://192.168.0.2/users/2', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:03:32', '2018-09-23 21:03:32', NULL),
+(62, 'users.edit', 'http://192.168.0.2/users/2/editar', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:03:36', '2018-09-23 21:03:36', NULL),
+(63, 'users.index', 'http://192.168.0.2/users', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:03:52', '2018-09-23 21:03:52', NULL),
+(64, 'users.index', 'http://192.168.0.2/users', '192.168.0.6', 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4) Build/NPJS25.93-14-4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:03:57', '2018-09-23 21:03:57', NULL),
+(65, 'home', 'http://192.168.0.2/home', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 2, '2018-09-23 21:29:04', '2018-09-23 21:29:04', NULL),
+(66, 'programas.index', 'http://192.168.0.2/programas', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 2, '2018-09-23 21:29:15', '2018-09-23 21:29:15', NULL),
+(67, 'analisis.index', 'http://192.168.0.2/analisis', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 2, '2018-09-23 21:33:49', '2018-09-23 21:33:49', NULL),
+(68, 'analisis.show', 'http://192.168.0.2/analisis/1', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 2, '2018-09-23 21:34:00', '2018-09-23 21:34:00', NULL),
+(69, 'settings.user', 'http://192.168.0.2/configuracion/user', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 2, '2018-09-23 21:36:27', '2018-09-23 21:36:27', NULL),
+(70, 'analisis.index', 'http://192.168.0.2/analisis', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 2, '2018-09-23 21:36:37', '2018-09-23 21:36:37', NULL),
+(71, 'home', 'http://192.168.0.2/home', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 2, '2018-09-23 21:38:55', '2018-09-23 21:38:55', NULL),
+(72, 'home', 'http://192.168.0.2/home', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:39:59', '2018-09-23 21:39:59', NULL),
+(73, 'settings.user', 'http://192.168.0.2/configuracion/user', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:40:23', '2018-09-23 21:40:23', NULL),
+(74, 'programas.index', 'http://192.168.0.2/programas', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:41:52', '2018-09-23 21:41:52', NULL),
+(75, 'periodos.index', 'http://192.168.0.2/periodos', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:41:55', '2018-09-23 21:41:55', NULL),
+(76, 'periodos.create', 'http://192.168.0.2/periodos/crear', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:41:58', '2018-09-23 21:41:58', NULL),
+(77, 'periodos.create', 'http://192.168.0.2/periodos/crear', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:43:36', '2018-09-23 21:43:36', NULL),
+(78, 'periodos.store', 'http://192.168.0.2/periodos', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'POST', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:43:47', '2018-09-23 21:43:47', NULL),
+(79, 'periodos.create', 'http://192.168.0.2/periodos/crear', '192.168.0.9', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'GET', 'es-ES,es;q=0.9,en;q=0.8,la;q=0.7', 1, '2018-09-23 21:43:47', '2018-09-23 21:43:47', NULL),
+(80, 'home', 'http://localhost:8000/home', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:11:29', '2018-09-24 00:11:29', NULL),
+(81, 'programas.index', 'http://localhost:8000/programas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:12:49', '2018-09-24 00:12:49', NULL),
+(82, 'periodos.index', 'http://localhost:8000/periodos', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:12:53', '2018-09-24 00:12:53', NULL),
+(83, 'periodos.create', 'http://localhost:8000/periodos/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:13:04', '2018-09-24 00:13:04', NULL),
+(84, 'periodos.store', 'http://localhost:8000/periodos', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'POST', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:13:07', '2018-09-24 00:13:07', NULL),
+(85, 'periodos.create', 'http://localhost:8000/periodos/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:13:08', '2018-09-24 00:13:08', NULL),
+(86, 'preguntas.index', 'http://localhost:8000/preguntas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:13:27', '2018-09-24 00:13:27', NULL),
+(87, 'preguntas.create', 'http://localhost:8000/preguntas/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:13:30', '2018-09-24 00:13:30', NULL),
+(88, 'preguntas.store', 'http://localhost:8000/preguntas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'POST', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:13:33', '2018-09-24 00:13:33', NULL),
+(89, 'preguntas.create', 'http://localhost:8000/preguntas/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:13:34', '2018-09-24 00:13:34', NULL),
+(90, 'encuestas.index', 'http://localhost:8000/encuestas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:13:55', '2018-09-24 00:13:55', NULL),
+(91, 'encuestas.select.user', 'http://localhost:8000/encuestas/select/user', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:13:59', '2018-09-24 00:13:59', NULL),
+(92, 'encuestas.select.periodo', 'http://localhost:8000/encuestas/select/periodo?user_id=6', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:14:07', '2018-09-24 00:14:07', NULL),
+(93, 'encuestas.create', 'http://localhost:8000/encuestas/crear?periodo_id=1&user_id=6', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:14:11', '2018-09-24 00:14:11', NULL),
+(94, 'encuestas.index', 'http://localhost:8000/encuestas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:14:17', '2018-09-24 00:14:17', NULL),
+(95, 'encuestas.select.user', 'http://localhost:8000/encuestas/select/user', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:14:20', '2018-09-24 00:14:20', NULL),
+(96, 'encuestas.select.periodo', 'http://localhost:8000/encuestas/select/periodo?user_id=2', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:14:27', '2018-09-24 00:14:27', NULL),
+(97, 'encuestas.create', 'http://localhost:8000/encuestas/crear?periodo_id=4&user_id=2', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:14:32', '2018-09-24 00:14:32', NULL),
+(98, 'analisis.index', 'http://localhost:8000/analisis', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:15:10', '2018-09-24 00:15:10', NULL),
+(99, 'analisis.select', 'http://localhost:8000/analisis/select', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:15:14', '2018-09-24 00:15:14', NULL),
+(100, 'procesos.index', 'http://localhost:8000/procesos', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:15:32', '2018-09-24 00:15:32', NULL),
+(101, 'procesos.create', 'http://localhost:8000/procesos/crear?programa_id=2', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:15:36', '2018-09-24 00:15:36', NULL),
+(102, 'procesos.store', 'http://localhost:8000/procesos', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'POST', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:15:39', '2018-09-24 00:15:39', NULL),
+(103, 'procesos.create', 'http://localhost:8000/procesos/crear?programa_id=2', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:15:39', '2018-09-24 00:15:39', NULL),
+(104, 'procesos.store', 'http://localhost:8000/procesos', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'POST', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:17:27', '2018-09-24 00:17:27', NULL),
+(105, 'procesos.create', 'http://localhost:8000/procesos/crear?programa_id=2', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:17:27', '2018-09-24 00:17:27', NULL),
+(106, 'procesos.index', 'http://localhost:8000/procesos', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:17:33', '2018-09-24 00:17:33', NULL),
+(107, 'subindicadores.create', 'http://localhost:8000/subindicadores/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:17:39', '2018-09-24 00:17:39', NULL),
+(108, 'subindicadores.store', 'http://localhost:8000/subindicadores', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'POST', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:17:43', '2018-09-24 00:17:43', NULL),
+(109, 'subindicadores.create', 'http://localhost:8000/subindicadores/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:17:43', '2018-09-24 00:17:43', NULL),
+(110, 'estadisticas.index', 'http://localhost:8000/estadisticas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:17:52', '2018-09-24 00:17:52', NULL),
+(111, 'estadisticas.graph', 'http://localhost:8000/estadisticas/grafica?periodo=4&subindicador=1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:18:06', '2018-09-24 00:18:06', NULL),
+(112, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:18:30', '2018-09-24 00:18:30', NULL),
+(113, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:18:55', '2018-09-24 00:18:55', NULL),
+(114, 'users.store', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'POST', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:18:59', '2018-09-24 00:18:59', NULL),
+(115, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:19:00', '2018-09-24 00:19:00', NULL),
+(116, 'users.store', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'POST', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:19:11', '2018-09-24 00:19:11', NULL),
+(117, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:19:12', '2018-09-24 00:19:12', NULL),
+(118, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:20:42', '2018-09-24 00:20:42', NULL),
+(119, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:21:15', '2018-09-24 00:21:15', NULL),
+(120, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:23:06', '2018-09-24 00:23:06', NULL),
+(121, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:29:12', '2018-09-24 00:29:12', NULL),
+(122, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:29:47', '2018-09-24 00:29:47', NULL),
+(123, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:30:02', '2018-09-24 00:30:02', NULL),
+(124, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:30:35', '2018-09-24 00:30:35', NULL),
+(125, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:30:45', '2018-09-24 00:30:45', NULL),
+(126, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:31:41', '2018-09-24 00:31:41', NULL),
+(127, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:31:55', '2018-09-24 00:31:55', NULL),
+(128, 'users.edit', 'http://localhost:8000/users/2/editar', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:32:02', '2018-09-24 00:32:02', NULL),
+(129, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:32:23', '2018-09-24 00:32:23', NULL),
+(130, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:32:45', '2018-09-24 00:32:45', NULL),
+(131, 'users.store', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'POST', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:32:48', '2018-09-24 00:32:48', NULL),
+(132, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:32:48', '2018-09-24 00:32:48', NULL),
+(133, 'users.create', 'http://localhost:8000/users/crear', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:33:06', '2018-09-24 00:33:06', NULL),
+(134, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:33:20', '2018-09-24 00:33:20', NULL),
+(135, 'estadisticas.index', 'http://localhost:8000/estadisticas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:33:23', '2018-09-24 00:33:23', NULL),
+(136, 'procesos.index', 'http://localhost:8000/procesos', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:33:27', '2018-09-24 00:33:27', NULL),
+(137, 'settings.user', 'http://localhost:8000/configuracion/user', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:33:40', '2018-09-24 00:33:40', NULL),
+(138, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:40:15', '2018-09-24 00:40:15', NULL),
+(139, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:40:42', '2018-09-24 00:40:42', NULL),
+(140, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:41:10', '2018-09-24 00:41:10', NULL),
+(141, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:42:46', '2018-09-24 00:42:46', NULL),
+(142, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:43:06', '2018-09-24 00:43:06', NULL),
+(143, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:43:16', '2018-09-24 00:43:16', NULL),
+(144, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:44:54', '2018-09-24 00:44:54', NULL),
+(145, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:45:37', '2018-09-24 00:45:37', NULL),
+(146, 'estadisticas.index', 'http://localhost:8000/estadisticas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:46:07', '2018-09-24 00:46:07', NULL),
+(147, 'estadisticas.index', 'http://localhost:8000/estadisticas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:46:09', '2018-09-24 00:46:09', NULL),
+(148, 'estadisticas.index', 'http://localhost:8000/estadisticas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:46:50', '2018-09-24 00:46:50', NULL),
+(149, 'procesos.index', 'http://localhost:8000/procesos', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:47:05', '2018-09-24 00:47:05', NULL),
+(150, 'analisis.index', 'http://localhost:8000/analisis', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:47:09', '2018-09-24 00:47:09', NULL),
+(151, 'analisis.index', 'http://localhost:8000/analisis', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:47:45', '2018-09-24 00:47:45', NULL),
+(152, 'encuestas.index', 'http://localhost:8000/encuestas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:47:53', '2018-09-24 00:47:53', NULL),
+(153, 'estadisticas.index', 'http://localhost:8000/estadisticas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:49:24', '2018-09-24 00:49:24', NULL),
+(154, 'estadisticas.index', 'http://localhost:8000/estadisticas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:49:36', '2018-09-24 00:49:36', NULL),
+(155, 'users.index', 'http://localhost:8000/users', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:49:49', '2018-09-24 00:49:49', NULL),
+(156, 'estadisticas.index', 'http://localhost:8000/estadisticas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:50:01', '2018-09-24 00:50:01', NULL),
+(157, 'encuestas.index', 'http://localhost:8000/encuestas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:50:06', '2018-09-24 00:50:06', NULL),
+(158, 'preguntas.index', 'http://localhost:8000/preguntas', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:50:08', '2018-09-24 00:50:08', NULL),
+(159, 'periodos.index', 'http://localhost:8000/periodos', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:55:40', '2018-09-24 00:55:40', NULL),
+(160, 'periodos.index', 'http://localhost:8000/periodos', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:57:13', '2018-09-24 00:57:13', NULL),
+(161, 'periodos.create', 'http://localhost:8000/periodos/crear', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:57:19', '2018-09-24 00:57:19', NULL),
+(162, 'periodos.index', 'http://localhost:8000/periodos', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:57:23', '2018-09-24 00:57:23', NULL),
+(163, 'preguntas.index', 'http://localhost:8000/preguntas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:57:26', '2018-09-24 00:57:26', NULL),
+(164, 'preguntas.posicion.update', 'http://localhost:8000/preguntas/posicion/update', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'POST', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:58:31', '2018-09-24 00:58:31', NULL),
+(165, 'preguntas.index', 'http://localhost:8000/preguntas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:58:33', '2018-09-24 00:58:33', NULL),
+(166, 'preguntas.show', 'http://localhost:8000/preguntas/2', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:58:37', '2018-09-24 00:58:37', NULL),
+(167, 'estadisticas.index', 'http://localhost:8000/estadisticas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:58:43', '2018-09-24 00:58:43', NULL),
+(168, 'estadisticas.details', 'http://localhost:8000/estadisticas/detalles?periodo=6&subindicador=2', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:58:58', '2018-09-24 00:58:58', NULL),
+(169, 'users.index', 'http://localhost:8000/users', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:59:05', '2018-09-24 00:59:05', NULL),
+(170, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 00:59:19', '2018-09-24 00:59:19', NULL),
+(171, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:03:36', '2018-09-24 01:03:36', NULL),
+(172, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:03:56', '2018-09-24 01:03:56', NULL),
+(173, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:05:32', '2018-09-24 01:05:32', NULL),
+(174, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:05:46', '2018-09-24 01:05:46', NULL),
+(175, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:05:58', '2018-09-24 01:05:58', NULL),
+(176, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:07:20', '2018-09-24 01:07:20', NULL),
+(177, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:07:42', '2018-09-24 01:07:42', NULL),
+(178, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:08:12', '2018-09-24 01:08:12', NULL),
+(179, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:09:04', '2018-09-24 01:09:04', NULL),
+(180, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:09:21', '2018-09-24 01:09:21', NULL),
+(181, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:09:43', '2018-09-24 01:09:43', NULL),
+(182, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:10:54', '2018-09-24 01:10:54', NULL),
+(183, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:11:04', '2018-09-24 01:11:04', NULL),
+(184, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:11:43', '2018-09-24 01:11:43', NULL),
+(185, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:11:56', '2018-09-24 01:11:56', NULL),
+(186, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:12:17', '2018-09-24 01:12:17', NULL),
+(187, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:13:35', '2018-09-24 01:13:35', NULL),
+(188, 'users.index', 'http://localhost:8000/users', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:13:49', '2018-09-24 01:13:49', NULL),
+(189, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:14:17', '2018-09-24 01:14:17', NULL),
+(190, 'users.index', 'http://localhost:8000/users', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 2, '2018-09-24 01:14:27', '2018-09-24 01:14:27', NULL),
+(191, 'settings.user', 'http://localhost:8000/configuracion/user', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 2, '2018-09-24 01:14:31', '2018-09-24 01:14:31', NULL),
+(192, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:14:40', '2018-09-24 01:14:40', NULL),
+(193, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:14:49', '2018-09-24 01:14:49', NULL),
+(194, 'users.index', 'http://localhost:8000/users', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:14:59', '2018-09-24 01:14:59', NULL),
+(195, 'users.actividades', 'http://localhost:8000/users/5/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:15:04', '2018-09-24 01:15:04', NULL),
+(196, 'users.actividades', 'http://localhost:8000/users/5/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:15:17', '2018-09-24 01:15:17', NULL),
+(197, 'users.actividades', 'http://localhost:8000/users/5/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:16:06', '2018-09-24 01:16:06', NULL),
+(198, 'users.actividades', 'http://localhost:8000/users/5/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:16:11', '2018-09-24 01:16:11', NULL),
+(199, 'users.index', 'http://localhost:8000/users', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:16:17', '2018-09-24 01:16:17', NULL),
+(200, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:16:31', '2018-09-24 01:16:31', NULL),
+(201, 'programas.index', 'http://localhost:8000/programas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 2, '2018-09-24 01:17:23', '2018-09-24 01:17:23', NULL),
+(202, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:17:30', '2018-09-24 01:17:30', NULL),
+(203, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:18:01', '2018-09-24 01:18:01', NULL),
+(204, 'users.index', 'http://localhost:8000/users', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:18:27', '2018-09-24 01:18:27', NULL),
+(205, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:18:34', '2018-09-24 01:18:34', NULL),
+(206, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:18:56', '2018-09-24 01:18:56', NULL),
+(207, 'users.actividades', 'http://localhost:8000/users/1/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:19:08', '2018-09-24 01:19:08', NULL),
+(208, 'users.actividades', 'http://localhost:8000/users/6/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:19:17', '2018-09-24 01:19:17', NULL),
+(209, 'users.index', 'http://localhost:8000/users', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:19:21', '2018-09-24 01:19:21', NULL),
+(210, 'users.index', 'http://localhost:8000/users', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:19:43', '2018-09-24 01:19:43', NULL),
+(211, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:19:48', '2018-09-24 01:19:48', NULL),
+(212, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:20:03', '2018-09-24 01:20:03', NULL),
+(213, 'users.actividades', 'http://localhost:8000/users/1/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:20:14', '2018-09-24 01:20:14', NULL),
+(214, 'users.actividades', 'http://localhost:8000/users/1/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:20:42', '2018-09-24 01:20:42', NULL),
+(215, 'users.index', 'http://localhost:8000/users', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:20:54', '2018-09-24 01:20:54', NULL),
+(216, 'settings.user', 'http://localhost:8000/configuracion/user', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:21:27', '2018-09-24 01:21:27', NULL),
+(217, 'periodos.index', 'http://localhost:8000/periodos', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:21:33', '2018-09-24 01:21:33', NULL),
+(218, 'preguntas.index', 'http://localhost:8000/preguntas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:21:35', '2018-09-24 01:21:35', NULL),
+(219, 'home', 'http://localhost:8000/home', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:21:42', '2018-09-24 01:21:42', NULL),
+(220, 'programas.index', 'http://localhost:8000/programas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:22:50', '2018-09-24 01:22:50', NULL),
+(221, 'periodos.index', 'http://localhost:8000/periodos', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:22:53', '2018-09-24 01:22:53', NULL),
+(222, 'preguntas.index', 'http://localhost:8000/preguntas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:23:01', '2018-09-24 01:23:01', NULL),
+(223, 'encuestas.index', 'http://localhost:8000/encuestas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:23:07', '2018-09-24 01:23:07', NULL),
+(224, 'periodos.index', 'http://localhost:8000/periodos', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:25:39', '2018-09-24 01:25:39', NULL),
+(225, 'encuestas.index', 'http://localhost:8000/encuestas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:25:53', '2018-09-24 01:25:53', NULL),
+(226, 'encuestas.index', 'http://localhost:8000/encuestas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:26:02', '2018-09-24 01:26:02', NULL),
+(227, 'encuestas.index', 'http://localhost:8000/encuestas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:26:05', '2018-09-24 01:26:05', NULL),
+(228, 'analisis.index', 'http://localhost:8000/analisis', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:26:38', '2018-09-24 01:26:38', NULL),
+(229, 'procesos.index', 'http://localhost:8000/procesos', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:26:44', '2018-09-24 01:26:44', NULL);
+INSERT INTO `actividades` (`id`, `ruta`, `url`, `ip`, `agente`, `metodo`, `lugar`, `user_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(230, 'subindicadores.show', 'http://localhost:8000/subindicadores/12', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:26:50', '2018-09-24 01:26:50', NULL),
+(231, 'encuestas.index', 'http://localhost:8000/encuestas', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:26:53', '2018-09-24 01:26:53', NULL),
+(232, 'users.index', 'http://localhost:8000/users', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:26:55', '2018-09-24 01:26:55', NULL),
+(233, 'users.actividades', 'http://localhost:8000/users/2/actividades', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:26:59', '2018-09-24 01:26:59', NULL),
+(234, 'settings.user', 'http://localhost:8000/configuracion/user', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:27:35', '2018-09-24 01:27:35', NULL),
+(235, 'home', 'http://localhost:8000/home', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:27:38', '2018-09-24 01:27:38', NULL),
+(236, 'analisis.index', 'http://localhost:8000/analisis', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:34:03', '2018-09-24 01:34:03', NULL),
+(237, 'analisis.select', 'http://localhost:8000/analisis/select', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:36:49', '2018-09-24 01:36:49', NULL),
+(238, 'procesos.index', 'http://localhost:8000/procesos', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:37:31', '2018-09-24 01:37:31', NULL),
+(239, 'settings.user', 'http://localhost:8000/configuracion/user', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:62.0) Gecko/20100101 Firefox/62.0', 'GET', 'es-MX,es;q=0.8,en-US;q=0.5,en;q=0.3', 1, '2018-09-24 01:37:37', '2018-09-24 01:37:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -225,7 +429,17 @@ CREATE TABLE `indicadores` (
 --
 
 INSERT INTO `indicadores` (`id`, `nombre`, `nota`, `posicion`, `proceso_id`, `created_at`, `updated_at`) VALUES
-(1, 'Selección de personal Docente', NULL, NULL, 1, '2018-09-23 05:02:32', '2018-09-23 05:02:32');
+(1, 'Selección de personal Docente', NULL, NULL, 1, '2018-09-23 05:02:32', '2018-09-23 05:02:32'),
+(2, 'Evaluación Docente', NULL, NULL, 1, '2018-09-23 17:14:13', '2018-09-23 17:14:13'),
+(3, 'Expedición de Dictamen oficial de equivalencia de estudios', NULL, NULL, 1, '2018-09-23 17:16:35', '2018-09-23 17:16:35'),
+(4, 'Autorización de Planes de Cursos Académicos', NULL, NULL, 1, '2018-09-23 17:17:14', '2018-09-23 17:17:14'),
+(5, 'Seguimiento y Evaluación de Cursos Académicos', NULL, NULL, 1, '2018-09-23 17:19:01', '2018-09-23 17:19:01'),
+(6, 'Realización y Evaluación de Estancia y/o Estadía', NULL, NULL, 1, '2018-09-23 17:20:15', '2018-09-23 17:20:15'),
+(7, 'Autorización de Cargas Horarias Docentes', NULL, NULL, 1, '2018-09-23 17:22:49', '2018-09-23 17:22:49'),
+(8, 'Autorización de Cambio de Carrera dentro de la UPVT', NULL, NULL, 1, '2018-09-23 17:24:52', '2018-09-23 17:24:52'),
+(9, 'Control del servicio o producto no conforme', NULL, NULL, 2, '2018-09-23 17:27:49', '2018-09-23 17:27:49'),
+(10, 'Asesoría Académica', NULL, NULL, 3, '2018-09-23 17:29:46', '2018-09-23 17:29:46'),
+(12, 'Tutoría Académica', NULL, NULL, 3, '2018-09-23 17:34:56', '2018-09-23 17:34:56');
 
 -- --------------------------------------------------------
 
@@ -252,7 +466,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2015_01_24_080433_create_permission_role_table', 1),
 (7, '2015_12_04_003040_add_special_role_column', 1),
 (8, '2017_10_17_170735_create_permission_user_table', 1),
-(9, '2018_08_26_221241_create_actividades_table', 1),
 (10, '2018_08_26_231053_create_programas_table', 1),
 (11, '2018_08_26_231507_create_procesos_table', 1),
 (12, '2018_08_26_233031_create_indicadores_table', 1),
@@ -260,11 +473,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2018_08_26_234134_create_periodos_table', 1),
 (15, '2018_08_26_234730_create_preguntas_table', 1),
 (16, '2018_08_27_000751_create_encuestas_table', 1),
-(17, '2018_08_27_001150_create_actividad_user_table', 1),
 (18, '2018_08_27_001322_create_programa_user_table', 1),
 (19, '2018_08_27_001352_create_encuesta_pregunta_table', 1),
 (20, '2018_08_29_194724_create_pregunta_programa_table', 1),
-(21, '2018_09_02_201423_create_programa_subindicador_table', 1);
+(21, '2018_09_02_201423_create_programa_subindicador_table', 1),
+(24, '2018_08_26_221241_create_actividades_table', 2);
 
 -- --------------------------------------------------------
 
@@ -303,7 +516,7 @@ CREATE TABLE `periodos` (
 INSERT INTO `periodos` (`id`, `clave`, `anio`, `actual`, `estado`, `posicion`, `programa_id`, `created_at`, `updated_at`) VALUES
 (1, 'septiembre-diciembre', 2017, 0, 1, 1, 2, '2018-09-23 02:49:59', '2018-09-23 05:50:03'),
 (4, 'septiembre-diciembre', 2018, 0, 1, 3, 2, '2018-09-23 05:49:41', '2018-09-23 05:58:22'),
-(5, 'mayo-agosto', 2018, 0, 0, 2, 2, '2018-09-23 05:58:11', '2018-09-23 05:58:22');
+(6, 'septiembre-diciembre', 2016, 0, 0, NULL, 2, '2018-09-23 18:10:55', '2018-09-23 18:10:55');
 
 -- --------------------------------------------------------
 
@@ -399,8 +612,8 @@ CREATE TABLE `preguntas` (
 --
 
 INSERT INTO `preguntas` (`id`, `nombre`, `nota`, `desactivar`, `posicion`, `programa_id`, `role_id`, `created_at`, `updated_at`) VALUES
-(1, 'Número de alumnos que fueron evaluados en el de Estancias/Estadía', 'Periodo establecido. (40 días como máximo)', 0, 1, 2, 2, NULL, '2018-09-23 03:40:30'),
-(2, 'Total de alumnos con carta de terminación de Estancia/Estadía', '', 0, 2, 2, 2, NULL, '2018-09-23 03:40:30'),
+(1, 'Número de alumnos que fueron evaluados en el de Estancias/Estadía', 'Periodo establecido. (40 días como máximo)', 0, 2, 2, 2, NULL, '2018-09-24 00:58:31'),
+(2, 'Total de alumnos con carta de terminación de Estancia/Estadía', '', 0, 1, 2, 2, NULL, '2018-09-24 00:58:31'),
 (3, 'Alumnos que entregan informe quincenal', '', 0, 3, 2, 2, NULL, '2018-09-23 03:40:17'),
 (4, 'Número de alumnos en proceso de Estancia/Estadía', '', 0, 4, 2, 2, NULL, '2018-09-23 03:40:18'),
 (5, 'Numero total de alumnos que cumplieron con el 100 % de asesorías y que acreditaron todas sus asignaturas', '', 0, 5, 2, 2, NULL, '2018-09-23 03:40:18'),
@@ -460,7 +673,9 @@ CREATE TABLE `procesos` (
 --
 
 INSERT INTO `procesos` (`id`, `nombre`, `nota`, `posicion`, `programa_id`, `created_at`, `updated_at`) VALUES
-(1, 'Enseñanza Aprendizaje', NULL, NULL, 2, '2018-09-23 05:02:13', '2018-09-23 05:02:13');
+(1, 'Enseñanza Aprendizaje', NULL, NULL, 2, '2018-09-23 05:02:13', '2018-09-23 05:02:13'),
+(2, 'Procedimientos de Control', NULL, NULL, 2, '2018-09-23 17:26:55', '2018-09-23 17:26:55'),
+(3, 'Procedimientos de Fortalecimiento Académico', NULL, NULL, 2, '2018-09-23 17:29:29', '2018-09-23 17:29:29');
 
 -- --------------------------------------------------------
 
@@ -527,8 +742,8 @@ INSERT INTO `programa_user` (`id`, `programa_id`, `user_id`, `predeterminado`, `
 (1, 2, 1, 1, NULL, NULL),
 (2, 8, 1, 0, NULL, NULL),
 (3, 2, 2, 1, NULL, NULL),
-(4, 2, 3, 0, NULL, NULL),
-(5, 2, 4, 0, NULL, NULL),
+(4, 2, 3, 1, NULL, NULL),
+(5, 2, 4, 1, NULL, NULL),
 (6, 2, 5, 0, NULL, NULL),
 (7, 2, 6, 0, NULL, NULL),
 (8, 2, 7, 0, NULL, NULL),
@@ -619,7 +834,20 @@ CREATE TABLE `subindicadores` (
 --
 
 INSERT INTO `subindicadores` (`id`, `nombre`, `procedimiento`, `valor_meta`, `nota`, `posicion`, `indicador_id`, `created_at`, `updated_at`) VALUES
-(1, 'Porcentaje de aspirantes contratados', '[{\"type\":\"pregunta\",\"value\":\"17\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"18\"}]', 50, '(No. De docentes contratados/No. De aspirantes evaluados)', NULL, 1, '2018-09-23 05:03:27', '2018-09-23 05:05:39');
+(1, 'Porcentaje de aspirantes contratados', '[{\"type\":\"pregunta\",\"value\":\"17\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"18\"}]', 50, '(No. De docentes contratados/No. De aspirantes evaluados)', NULL, 1, '2018-09-23 05:03:27', '2018-09-23 05:05:39'),
+(2, 'Porcentaje con evaluación satisfactoria de Docentes', '[{\"type\":\"pregunta\",\"value\":\"15\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"16\"}]', 85, 'Número de Docentes con más del 50% del total de \r\nsus cursos con Evaluación Docente satisfactoria / Total de Docentes evaluados', NULL, 2, '2018-09-23 17:15:26', '2018-09-23 17:15:26'),
+(3, 'Porcentaje de planeación de los cursos', '[{\"type\":\"pregunta\",\"value\":\"9\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"10\"}]', 90, '(Planes de Cursos Académicos autorizados \r\nen los primeros 15 días del cuatrimestre / \r\nTotal de asignaturas de la oferta educativa del cuatrimestre)* 100', NULL, 4, '2018-09-23 17:18:05', '2018-09-23 17:18:05'),
+(4, 'Eficacia de la docencia', '[{\"type\":\"pregunta\",\"value\":\"19\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"10\"}]', 100, '(Número de asignaturas que atendieron el 100% del programa de la asignatura / \r\nTotal de asignaturas ofertadas en el cuatrimestre)  * 100', NULL, 5, '2018-09-23 17:19:42', '2018-09-23 17:19:42'),
+(5, 'Eficiencia de la validación de Estancias', '[{\"type\":\"pregunta\",\"value\":\"1\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"2\"}]', 50, 'Número de alumnos que fueron evaluados en el periodo establecido. (40 días como máximo ) /\r\nTotal de alumnos con carta de terminación de Estancia/Estadía', NULL, 6, '2018-09-23 17:22:11', '2018-09-23 17:22:11'),
+(6, '% de Cargas  Horarias Docente Autorizadas', '[{\"type\":\"pregunta\",\"value\":\"11\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"12\"}]', 85, 'Número de Cargas Horarias Docentes autorizadas / Total de Docentes para el cuatrimestre actual', NULL, 7, '2018-09-23 17:24:00', '2018-09-23 17:24:00'),
+(7, 'Porcentaje de Autorizaciones de Cambio de Carrera', '[{\"type\":\"pregunta\",\"value\":\"13\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"14\"}]', 100, 'Número de alumnos con Dictamen de \r\nCambio de Carrera en los 10 días hábiles \r\n/ Total de alumnos que solicitaron cambio de Carrera.', NULL, 8, '2018-09-23 17:25:58', '2018-09-23 17:25:58'),
+(8, '%  de cursos no conformes', '[]', 20, 'No. De cursos no conformes / Total de cursos en el cuatrimestre', NULL, 9, '2018-09-23 17:28:52', '2018-09-23 17:28:52'),
+(9, '% de participación en la Asesoría con control de tutoría', '[{\"type\":\"pregunta\",\"value\":\"22\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"24\"}]', 10, 'No. total de alumnos asesorados con control de Tutoría /\r\nNo. total de alumnos asesorados', NULL, 10, '2018-09-23 17:30:52', '2018-09-23 17:32:43'),
+(10, '% de participación en la Asesoría sin control de tutoría', '[{\"type\":\"pregunta\",\"value\":\"23\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"24\"}]', 10, 'No. total de alumnos asesorados sin Control de Tutoría / No. total de alumnos asesorados', NULL, 10, '2018-09-23 17:32:05', '2018-09-23 17:32:05'),
+(11, '% de participación en la Asesoría General', '[{\"type\":\"pregunta\",\"value\":\"24\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"20\"}]', 10, 'Total de alumnos asesorados / Total de alumnos inscritos en el Programa Educativo', NULL, 10, '2018-09-23 17:33:46', '2018-09-23 17:33:46'),
+(12, '% de efectividad de la tutoría', '[{\"type\":\"pregunta\",\"value\":\"5\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"6\"}]', 80, 'Núm. total de alumnos que cumplieron con el 100 % de asesorías y que acreditaron todas sus asignaturas. / Núm. total de alumnos tutorados', NULL, 12, '2018-09-23 17:35:39', '2018-09-23 17:35:39'),
+(13, '% de eficiencia de la tutoría Núm', '[{\"type\":\"pregunta\",\"value\":\"5\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"7\"}]', 80, 'Núm. total de alumnos que cumplieron con el 100 % de asesorías y que acreditaron todas sus asignaturas. / Núm. total de alumnos que cumplieron con el 100% de asesorías', NULL, 12, '2018-09-23 17:36:43', '2018-09-23 17:36:43'),
+(14, '% de aprobación', '[{\"type\":\"pregunta\",\"value\":\"8\"},{\"type\":\"operacion\",\"value\":\"\\/\"},{\"type\":\"pregunta\",\"value\":\"6\"}]', 80, 'Núm. total de alumnos que acreditaron todas sus asignaturas / Número total de alumnos tutorados', NULL, 12, '2018-09-23 17:37:33', '2018-09-23 17:37:51');
 
 -- --------------------------------------------------------
 
@@ -647,18 +875,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `prefijo`, `name`, `apellidos`, `email`, `username`, `admin`, `password`, `disabled`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'M. en C.E.', 'Leticia Jael', 'Rojas Ortiz', 'jael@upvt.com', '1', 1, '$2y$10$kKCnjS1cTNv2IHenDW58ceIKHEOcQfRmHBgKL5IyOwRWLcyXRyU5i', 0, NULL, NULL, NULL),
-(2, 'M. en CC.', 'Adrían', 'González Gómez', 'adriangonzalezblue@gmail.com', '2', 0, '$2y$10$25I6lqMbYK5lLy33NfjNUuwLRP4vTx03Qr2fNwk7fvR2TcGrOHIay', 0, 'daIppvxZvJUWOQpikCVFeAtl88gP0eZlsZncpQpDEWKH43egNC71Au2PtEPj', '2018-09-23 04:26:00', '2018-09-23 04:31:40'),
-(3, 'M. en C.', 'Juana Guadalupe', 'Bringas González', NULL, '3', 0, '$2y$10$OBQU3uhAL3mAwF4578nUy.HG0u6MXYDN9wxauEQcTNb6qe4EMs5/a', 0, NULL, '2018-09-23 04:35:50', '2018-09-23 04:35:50'),
+(1, 'M. en C.E.', 'Leticia Jael', 'Rojas Ortiz', 'jael@upvt.com', '1', 1, '$2y$10$TaIkUCc66/6hDw6tVwfB5eSJEHziA/yxPwrKnQ7jX7UvGSpbsxdM.', 0, 'xjnHctX79e4GFRoeK3u2S2I9yQUkS9BC1G7uEhfB8LCLdEbD9rCupkpnjDHj', NULL, '2018-09-23 17:46:51'),
+(2, 'M. en CC.', 'Adrían', 'González Gómez', 'adriangonzalezblue@gmail.com', '2', 0, '$2y$10$25I6lqMbYK5lLy33NfjNUuwLRP4vTx03Qr2fNwk7fvR2TcGrOHIay', 0, '8nevXaMH4zRaiTH8wQ6tBXiLRMiCKlw3VtUKaJ6QXi0aDXfsMYZNHWyXKO3a', '2018-09-23 04:26:00', '2018-09-23 04:31:40'),
+(3, 'M. en C.', 'Juana Guadalupe', 'Bringas González', NULL, '3', 0, '$2y$10$OBQU3uhAL3mAwF4578nUy.HG0u6MXYDN9wxauEQcTNb6qe4EMs5/a', 0, 'QPtwKtvva4bXQ0BBAdgpfj3PjbUEtGDgtChlDc5jmltvFLofyFBKqkStwYtW', '2018-09-23 04:35:50', '2018-09-23 04:35:50'),
 (4, 'M. en TI.', 'Martha Maria', 'Montes de Oca Herrera', NULL, '4', 0, '$2y$10$tMQyL.asNEvSlo18o4mUNe7.7i6.im2hG1xLpdceWvPrI61shGi/6', 0, NULL, '2018-09-23 04:36:51', '2018-09-23 04:36:51'),
 (5, 'M. en A.', 'José Luis', 'Ledezma Sánchez', NULL, '5', 0, '$2y$10$z25CMgyQiTh5nb2YuhGGVOHJTF211nXc6SjLvlj6epGT6OzJZ5BFy', 0, NULL, '2018-09-23 04:37:32', '2018-09-23 04:37:32'),
 (6, 'MTRO.', 'Pedro', 'Valencia Pérez', NULL, '6', 0, '$2y$10$1f6by/8G1t.vIs8Fr7hcleORAExz2BY8oAf2sbkSOzX.8PeK7Hpyq', 0, NULL, '2018-09-23 04:38:29', '2018-09-23 04:38:29'),
 (7, NULL, 'Leticia Jael', 'Rojas Ortiz', NULL, '7', 0, '$2y$10$y7r9leqBmRKnmD3gFqYgQu/3s1TfBlYZsoXursdPdzKb/pI7dKt1K', 0, NULL, '2018-09-23 04:39:31', '2018-09-23 04:39:31'),
 (8, NULL, 'Alejandra', NULL, NULL, '8', 0, '$2y$10$kw8v1LiHsFJHZM7lFFmCUuOiMGMfueQaSllxV3oGjikAFMUBuzOXy', 0, NULL, '2018-09-23 04:40:48', '2018-09-23 04:40:48'),
 (9, 'M. en D.', 'Juan Gabriel', 'Velázquez Gómez', NULL, '9', 0, '$2y$10$RGdkfr0ajYxF5HXZsTgAJOVAzqZObt4fFRmtugE43Na9S8qIpwqaG', 0, NULL, '2018-09-23 04:43:49', '2018-09-23 04:43:49'),
-(10, 'MTRO.', 'David', NULL, NULL, '10', 0, '$2y$10$24j7mk/oApGOaE3qN0UzwOwUyzeUPlEVXHlrGGVsg8gnHinZqlzbS', 0, NULL, '2018-09-23 04:55:02', '2018-09-23 04:55:02'),
+(10, 'Mtro.', 'David Mauricio', 'Flores Castellanos', NULL, '10', 0, '$2y$10$24j7mk/oApGOaE3qN0UzwOwUyzeUPlEVXHlrGGVsg8gnHinZqlzbS', 0, NULL, '2018-09-23 04:55:02', '2018-09-23 17:42:27'),
 (11, NULL, 'Belem', NULL, NULL, '11', 0, '$2y$10$n6pv8AaMAPggga8u/xzsuOpNsxUcnr7cLJy0dPX93zOQ9uSs8pN8G', 0, NULL, '2018-09-23 04:55:49', '2018-09-23 04:55:49'),
-(12, NULL, 'Paola', NULL, NULL, '12', 0, '$2y$10$626K1O5SmqMCtGlaY/1cjOLQNjs1UuAIO.9/J3iZOoMqFpgO2un..', 0, NULL, '2018-09-23 04:56:08', '2018-09-23 04:56:08');
+(12, NULL, 'Paola', 'Salazar', NULL, '12', 0, '$2y$10$626K1O5SmqMCtGlaY/1cjOLQNjs1UuAIO.9/J3iZOoMqFpgO2un..', 0, NULL, '2018-09-23 04:56:08', '2018-09-23 17:43:30');
 
 --
 -- Índices para tablas volcadas
@@ -669,14 +897,6 @@ INSERT INTO `users` (`id`, `prefijo`, `name`, `apellidos`, `email`, `username`, 
 --
 ALTER TABLE `actividades`
   ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `actividad_user`
---
-ALTER TABLE `actividad_user`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `actividad_user_actividad_id_foreign` (`actividad_id`),
-  ADD KEY `actividad_user_user_id_foreign` (`user_id`);
 
 --
 -- Indices de la tabla `encuestas`
@@ -831,13 +1051,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `actividad_user`
---
-ALTER TABLE `actividad_user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=240;
 
 --
 -- AUTO_INCREMENT de la tabla `encuestas`
@@ -855,19 +1069,19 @@ ALTER TABLE `encuesta_pregunta`
 -- AUTO_INCREMENT de la tabla `indicadores`
 --
 ALTER TABLE `indicadores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `periodos`
 --
 ALTER TABLE `periodos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `permissions`
@@ -891,7 +1105,7 @@ ALTER TABLE `permission_user`
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `pregunta_programa`
@@ -903,7 +1117,7 @@ ALTER TABLE `pregunta_programa`
 -- AUTO_INCREMENT de la tabla `procesos`
 --
 ALTER TABLE `procesos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `programas`
@@ -939,7 +1153,7 @@ ALTER TABLE `role_user`
 -- AUTO_INCREMENT de la tabla `subindicadores`
 --
 ALTER TABLE `subindicadores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -950,13 +1164,6 @@ ALTER TABLE `users`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `actividad_user`
---
-ALTER TABLE `actividad_user`
-  ADD CONSTRAINT `actividad_user_actividad_id_foreign` FOREIGN KEY (`actividad_id`) REFERENCES `actividades` (`id`),
-  ADD CONSTRAINT `actividad_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Filtros para la tabla `encuestas`
