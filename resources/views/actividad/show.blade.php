@@ -47,7 +47,7 @@
 
 @section('content')
 	<div class="card card-default">
-		<table class="table table-striped table-hover table-responsive-sm">
+		<table class="table table-striped table-hover table-responsive">
 			<thead class="thead-light">
 				<tr>
 					<th scope="col">Acción</th>
