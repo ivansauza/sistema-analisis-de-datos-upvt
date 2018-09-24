@@ -90,3 +90,14 @@ body {
   border-radius: 10px;
   border: 0px;
 }
+
+.notifications
+{
+  min-width: 400px;
+}
+
+.notifications .card-body
+{
+  max-height: 400px;
+  overflow: overlay;
+}
