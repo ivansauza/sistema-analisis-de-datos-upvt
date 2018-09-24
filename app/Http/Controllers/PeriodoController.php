@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notifications\NewPeriod;
 
 use App\Http\Requests\PeriodoRequest;
 
@@ -67,6 +68,17 @@ class PeriodoController extends Controller
         $periodo = new Periodo($request->all());
         $periodo->programa_id = Programa::getPredeterminado()->id;
         $periodo->save();
+
+        //Enviar notificaciones a los usuarios
+        if ($request->input('notificacion')) {
+            $users = Programa::getPredeterminado()
+                ->users
+                ->where('disabled', '=', 0);
+
+            foreach ($users as $key => $user) {
+                $user->notify(new NewPeriod($periodo));
+            }
+        }
 
         return redirect()->route('periodos.edit', $periodo->id)
             ->with('info', ['type' => 'success', 'message' => 'Periodo guardado con éxito']);
