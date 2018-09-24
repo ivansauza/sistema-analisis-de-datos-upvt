@@ -11,6 +11,7 @@ use App\Programa;
 use App\User;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
+use App\Actividad;
 
 class UserController extends Controller
 {
@@ -26,7 +27,7 @@ class UserController extends Controller
             ->only(['create', 'store']);
 
         $this->middleware('permission:users.show')
-            ->only('show');
+            ->only(['show', 'actividades']);
 
         $this->middleware('permission:users.edit')
             ->only(['edit', 'update']);
@@ -151,5 +152,14 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
             ->with('info', ['type' => 'success', 'message' => 'Usuario eliminado con éxito']);
+	}
+
+	public function actividades(User $user)
+	{
+		$actividades = Actividad::where('user_id', '=', $user->id)
+            ->orderBy('created_at', 'desc')
+			->paginate(15);
+
+		return view('user.actividades', compact('actividades', 'user'));
 	}
 }
