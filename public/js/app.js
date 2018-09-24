@@ -1,5 +1,10 @@
 $( function () {
 	$( '[data-toggle="tooltip"]' ).tooltip()
+
+	$( "form" ).submit( function (event) {
+		$( "button[type='submit']" ).attr("disabled", true);
+		$( "input[type='submit']" ).attr("disabled", true);
+	} )
 } )
 
 function removeItem( item )
