@@ -55,27 +55,7 @@
 
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="far fa-bell"></i> <span class="badge badge-light">3</span>
-					</a>
-					<div class="dropdown-menu dropdown-menu-right notifications p-0" aria-labelledby="navbarDropdown">
-						<div class="card p-0 m-0 border-0">
-							<div class="card-body p-0">
-								<ul class="list-group list-group-flush">
-										<li class="list-group-item list-group-item-light">
-											<small>Periodo agregado Septiembre-Diciembre 2018</small>
-			
-											<a href="" class="btn btn-sm float-right" title="Marcar como leído">
-												<i class="far fa-dot-circle"></i>
-											</a>
-										</li>
-									</ul>
-							</div>
-							<div class="card-footer text-center">
-								<a href="">Marcar todos como leídos</a>
-							</div>
-						</div>
-					</div>
+					@include('fragments.notifications_menu')
 				</li>
 
 				<li class="nav-item dropdown">
