@@ -79,7 +79,7 @@ Route::middleware(['auth', 'programDefault', 'activity'])->group(function () {
 		->name('estadisticas.graph')
 		->middleware('permission:estadisticas.details');
 
-	Route::get('users/{id}/actividades', 'UserController@actividades')
+	Route::get('users/{user}/actividades', 'UserController@actividades')
 		->name('users.actividades');
 	
 	Route::resource('users', 'UserController');
