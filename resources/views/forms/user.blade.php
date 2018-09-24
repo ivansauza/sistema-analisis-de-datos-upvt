@@ -10,26 +10,49 @@
 	$( document ).ready( function () 
 	{
 		$( 'table' ).DataTable( {
-            "paging": false, 
-			"info": true, 
-			"order": false, 
-		} );
+			"paging": false,
+			"aaSorting": [], 
+			"language": {
+				"sProcessing":     "Procesando...",
+				"sLengthMenu":     "Mostrar _MENU_ registros",
+				"sZeroRecords":    "No se encontraron resultados",
+				"sEmptyTable":     "Ningún dato disponible en esta tabla",
+				"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+				"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+				"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+				"sInfoPostFix":    "",
+				"sSearch":         "Buscar:",
+				"sUrl":            "",
+				"sInfoThousands":  ",",
+				"sLoadingRecords": "Cargando...",
+				"oPaginate": {
+					"sFirst":    "Primero",
+					"sLast":     "Último",
+					"sNext":     "Siguiente",
+					"sPrevious": "Anterior"
+				},
+				"oAria": {
+					"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+					"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+				}
+			}
+		} )
 	} );
 @endsection
 
 <div class="card mb-4">
 	<div class="card-body">
 		<div class="row">
-			<div class="col">
+			<div class="col-md col-xs-12">
 				<div class="form-row">
-					<div class="form-group col-4">
+					<div class="form-group col-md-4 col-xs-12">
 						{{ Form::label('prefijo') }}
 						{{ Form::text('prefijo', null, ['class' => 'form-control', 'placeholder' => 'Prefijo']) }}
 						@if ($errors->has('prefijo'))
 							<span class="badge badge-danger">{{ $errors->first('prefijo') }}</span>
 						@endif
 					</div>
-					<div class="form-group col-8">
+					<div class="form-group col-md-8 col-xs-12">
 						{{ Form::label('name') }}
 						{{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el nombre']) }}
 						@if ($errors->has('name'))
@@ -67,7 +90,7 @@
 					@endif
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md col-xs-12">
 				<div class="form-group">
 					{{ Form::label('username', 'Nombre de Usuario') }}
 					{{ Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el nombre de usuario']) }}
@@ -109,27 +132,32 @@
 	<div class="card card-default">
 		<div class="card-header">
 			Permisos Especiales
+			<button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapsePermisos" aria-expanded="true" aria-controls="collapsePermisos">
+				<small>( + / - )</small>
+			</button>
 		</div>
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th></th>
-					<th>Descripción</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($permissions as $permission)
+		<div id="collapsePermisos" class="collapse hide" aria-labelledby="headingOne">
+			<table class="table table-striped table-hover">
+				<thead>
 					<tr>
-						<td>
-							<label>
-								{{ Form::checkbox('permissions[]', $permission->id, null) }}
-								{{ $permission->name }}
-							</label>
-						</td>
-						<td><em>{{ $permission->description }}</em></td>
+						<th>Permiso</th>
+						<th>Descripción</th>
 					</tr>
-				@endforeach
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					@foreach($permissions as $permission)
+						<tr>
+							<td>
+								<label>
+									{{ Form::checkbox('permissions[]', $permission->id, null) }}
+									{{ $permission->name }}
+								</label>
+							</td>
+							<td><em>{{ $permission->description }}</em></td>
+						</tr>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
 	</div>
 @endif
