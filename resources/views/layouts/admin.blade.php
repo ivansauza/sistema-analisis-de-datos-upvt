@@ -65,7 +65,7 @@
 										<li class="list-group-item list-group-item-light">
 											<small>Periodo agregado Septiembre-Diciembre 2018</small>
 			
-											<a href="" class="btn btn-sm" title="Marcar como leído">
+											<a href="" class="btn btn-sm float-right" title="Marcar como leído">
 												<i class="far fa-dot-circle"></i>
 											</a>
 										</li>
@@ -112,7 +112,7 @@
 							</h5>
 						</div>
 					</div>
-					<ul class="nav flex-column">
+					<ul class="nav flex-column mb-5">
 						@include('fragments.menu')
 					</ul>
 				</div>

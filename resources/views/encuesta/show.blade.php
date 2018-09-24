@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('header')
-	<h1 class="h3">Encuesta <small>Detalles</small></h1>
+	<h1 class="h3"><i class="fas fa-align-left"></i> Encuesta <small>Detalles</small></h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
 			<a href="{{ route('encuestas.index') }}" class="btn btn-outline-secondary btn-sm">Regresar</a>

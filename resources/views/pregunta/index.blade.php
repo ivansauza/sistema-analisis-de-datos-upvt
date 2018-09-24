@@ -64,7 +64,7 @@
 @endsection
 
 @section('header')
-	<h1 class="h3">Preguntas</h1>
+	<h1 class="h3"><i class="far fa-question-circle"></i> Preguntas</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
 			<a href="{{ route('preguntas.create') }}" class="btn btn-outline-primary btn-sm">Crear Pregunta</a>

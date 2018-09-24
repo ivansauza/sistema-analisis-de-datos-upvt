@@ -67,7 +67,7 @@
 @endsection
 
 @section('header')
-	<h1 class="h3">Periodos</h1>
+	<h1 class="h3"><i class="fas fa-calendar-alt"></i> Periodos</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
 			<a href="{{ route('periodos.create') }}" class="btn btn-outline-primary btn-sm">Crear Periodo</a>

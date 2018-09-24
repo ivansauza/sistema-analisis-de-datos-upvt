@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('header')
-	<h1 class="h3">Programas Educativos</h1>
+	<h1 class="h3"><i class="fas fa-user-graduate"></i> Programas Educativos</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 
 	</div>

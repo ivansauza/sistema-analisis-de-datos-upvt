@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('header')
-	<h1 class="h3">Procesos</h1>
+	<h1 class="h3"><i class="fas fa-arrows-alt-h"></i> Procesos</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		@if($procesos->isNotEmpty())
 			<div class="btn-group mr-2" role="group">

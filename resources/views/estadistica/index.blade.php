@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('header')
-	<h1 class="h3">Estadísticas</h1>
+	<h1 class="h3"><i class="fas fa-chart-area"></i>  Estadísticas</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
 			<a href="#" class="btn btn-outline-secondary btn-sm">Generar Reporte</a>
