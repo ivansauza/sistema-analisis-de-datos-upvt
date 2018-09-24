@@ -47,28 +47,30 @@
 
 @section('content')
 	<div class="card card-default">
-		<table class="table table-striped table-hover table-responsive">
-			<thead class="thead-light">
-				<tr>
-					<th scope="col">Acción</th>
-					<th scope="col">Url</th>
-					<th scope="col">Ip</th>
-					<th scope="col">Método</th>
-					<th scope="col">Fecha de registro</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach ($actividades as $actividad)
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<thead class="thead-light">
 					<tr>
-						<td>{{ $actividad->ruta }}</td>
-						<td>{{ $actividad->url }}</td>
-						<td>{{ $actividad->ip }}</td>
-						<td>{{ $actividad->metodo }}</td>
-						<td>{{ $actividad->created_at }}</td>
+						<th scope="col">Acción</th>
+						<th scope="col">Url</th>
+						<th scope="col">Ip</th>
+						<th scope="col">Método</th>
+						<th scope="col">Fecha de registro</th>
 					</tr>
-				@endforeach
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					@foreach ($actividades as $actividad)
+						<tr>
+							<td>{{ $actividad->ruta }}</td>
+							<td>{{ $actividad->url }}</td>
+							<td>{{ $actividad->ip }}</td>
+							<td>{{ $actividad->metodo }}</td>
+							<td>{{ $actividad->created_at }}</td>
+						</tr>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
 
 		<span class="m-auto">
 		{{ $actividades->render("pagination::bootstrap-4") }}
