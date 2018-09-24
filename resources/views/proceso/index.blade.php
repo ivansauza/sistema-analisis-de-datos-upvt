@@ -47,7 +47,7 @@
 					</a>
 
 					{{ Form::open(['route' => ['procesos.destroy', $proceso->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-						<button type="submit" class="btn text-secondary btn-transparent btn-sm mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+						<button type="submit" class="btn text-secondary btn-transparent btn-sm mt-1" onclick="destroyItem(event)" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
 					{{ Form::close() }}
 				</div>
 			</div>
@@ -74,7 +74,7 @@
 									<i class="fas fa-pencil-alt"></i>
 								</a>
 								{{ Form::open(['route' => ['indicadores.destroy', $indicador->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-									<button type="submit" class="btn btn-sm btn-transparent text-secondary mt-1" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+									<button type="submit" class="btn btn-sm btn-transparent text-secondary mt-1" onclick="destroyItem(event)" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
 								{{ Form::close() }}
 							</div>
 						</div>
@@ -101,7 +101,7 @@
 													<a class="dropdown-item" href="{{ route('subindicadores.show', $subindicador->id) }}">Mostrar</a>
 													<a class="dropdown-item" href="{{ route('subindicadores.edit', $subindicador->id) }}">Editar</a>
 													{{ Form::open(['route' => ['subindicadores.destroy', $subindicador->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-														<button type="submit" class="dropdown-item" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''">Eliminar</button>
+														<button type="submit" class="dropdown-item" onclick="destroyItem(event)">Eliminar</button>
 													{{ Form::close() }}
 												</div>
 											</div>
