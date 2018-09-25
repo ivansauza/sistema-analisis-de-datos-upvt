@@ -3,16 +3,25 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Periodo extends Model
 {
-	protected $table    = 'periodos';
+    use SoftDeletes;
+
+    protected $table    = 'periodos';
+    
 	protected $fillable = [
 		'clave', 'anio', 'estado', 'actual', 'programa_id'
     ];
+
     protected $casts = [ 
     	'estado' => 'boolean', 
     	'actual' => 'boolean' 
+    ];
+
+    protected $dates = [
+        'deleted_at'
     ];
 
     public function encuestas()
