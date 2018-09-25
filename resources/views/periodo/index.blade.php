@@ -71,6 +71,21 @@
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
 			<a href="{{ route('periodos.create') }}" class="btn btn-outline-primary btn-sm">Crear Periodo</a>
+			<button class="btn btn-outline-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fas fa-cog"></i>
+			</button>
+			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="min-width: 250px">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="mostrarPapelera" onclick="showPapelera( this )">
+							<label class="form-check-label" for="mostrarPapelera">
+								Mostrar/Ocultar Papelera
+							</label>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 @endsection
@@ -94,7 +109,7 @@
 				</thead>
 				<tbody id="sortable">
 					@foreach($periodos as $periodo)
-						<tr id="{{ $periodo->id }}">
+						<tr id="{{ $periodo->id }}" class="{{ $periodo->trashed() ? 'disabled d-none list-group-item-light sortable-disabled' : null }}">
 							<td class="text-center">{{ $periodo->id }}</td>
 							<td class="p-1">
 								<a href="#" class="btn btn-xs mt-2" alt="Mover" 
@@ -112,17 +127,25 @@
 							</td>
 							<td>
 								<div class="float-right">
-									<a href="{{ route('periodos.show', $periodo->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Detalles">
-										<i class="fas fa-eye"></i>
-									</a>
-
-									<a href="{{ route('periodos.edit', $periodo->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
-										<i class="fas fa-pencil-alt"></i>
-									</a>
-
-									{{ Form::open(['route' => ['periodos.destroy', $periodo->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-										<button type="submit" class="btn btn-sm text-danger btn-transparent mt-1"  data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="destroyItem(event)"><i class="fas fa-trash-alt"></i></button>
-									{{ Form::close() }}
+									@if ($periodo->trashed())
+										{{ Form::open(['route' => ['periodos.restore', $periodo->id], 'method' => 'POST', 'class' => 'd-inline']) }}
+											<button type="submit" class="btn btn-sm text-warning btn-transparent mt-1"  data-toggle="tooltip" data-placement="top" title="Restaurar">
+												<i class="fas fa-undo"></i>
+											</button>
+										{{ Form::close() }}
+									@else
+										<a href="{{ route('periodos.show', $periodo->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Detalles">
+											<i class="fas fa-eye"></i>
+										</a>
+	
+										<a href="{{ route('periodos.edit', $periodo->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
+											<i class="fas fa-pencil-alt"></i>
+										</a>
+	
+										{{ Form::open(['route' => ['periodos.destroy', $periodo->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+											<button type="submit" class="btn btn-sm text-danger btn-transparent mt-1"  data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="destroyItem(event)"><i class="fas fa-trash-alt"></i></button>
+										{{ Form::close() }}
+									@endif
 								</div>
 							</td>
 						</tr>
