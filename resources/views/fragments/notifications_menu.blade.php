@@ -1,6 +1,6 @@
 @php ($notifications = auth()->user()->notifications->where('data.programa', '=', App\Programa::getPredeterminado()->id))
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	<i class="far fa-bell"></i> 
+	<i class="far fa-bell {{ $notifications->count() >= 1 ? 'animated tada' : null }}"></i> 
 	<span class="badge badge-light">
 		{{ $notifications->count() }}
 	</span>
@@ -17,7 +17,7 @@
 							</small>
 
 							<a href="" class="btn btn-sm float-right" title="Marcar como leído">
-								<i class="far fa-circle"></i>
+								<small><i class="far fa-circle"></i></small>
 							</a>
 						</li>
 					@endforeach
