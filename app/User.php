@@ -96,9 +96,11 @@ class User extends Authenticatable
 
         $this->encuestas()->each(function($encuesta, $key) use($array_periodos_exists)
         {
-            if ($encuesta->periodo->programa_id == Programa::getPredeterminado()->id) 
-            {
-                $array_periodos_exists->push($encuesta->periodo->id);
+            if ($encuesta->periodo) {
+                if ($encuesta->periodo->programa_id == Programa::getPredeterminado()->id) 
+                {
+                    $array_periodos_exists->push($encuesta->periodo->id);
+                }
             }
         });
 
