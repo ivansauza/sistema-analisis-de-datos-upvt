@@ -42,6 +42,7 @@ class PeriodoUnique implements Rule
             ->where('anio', '=', $value)
             ->where('clave', '=', $this->clave)
             ->where('programa_id', '=', $this->programa_id)
+            ->where('deleted_at', '=', null)
             ->count();
 
          return $count === 0;

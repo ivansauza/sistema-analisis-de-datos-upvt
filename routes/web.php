@@ -28,6 +28,9 @@ Route::middleware(['auth', 'activity'])->group(function () {
 });
 
 Route::middleware(['auth', 'programDefault', 'activity'])->group(function () {
+	Route::post('periodos/{periodo}/restore', 'PeriodoController@restore')
+		->name('periodos.restore');
+		
 	Route::post('periodos/posicion/update', 'PeriodoController@posicionUpdate')
 		->name('periodos.posicion.update');
 	

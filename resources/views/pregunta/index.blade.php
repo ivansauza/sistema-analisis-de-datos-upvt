@@ -125,7 +125,7 @@
 											<a class="dropdown-item" href="{{ route('preguntas.show', $pregunta->id) }}">Detalles</a>
 											<a class="dropdown-item" href="{{ route('preguntas.edit', $pregunta->id) }}">Editar</a>
 											{{ Form::open(['route' => ['preguntas.destroy', $pregunta->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-												<button type="submit" class="dropdown-item" onclick="! confirm('Confirmar para eliminar el elemento definiticamente.') ? event.preventDefault() : ''">Eliminar</button>
+												<button type="submit" class="dropdown-item" onclick="destroyItem(event)">Eliminar</button>
 											{{ Form::close() }}
 										</div>
 									</div>
