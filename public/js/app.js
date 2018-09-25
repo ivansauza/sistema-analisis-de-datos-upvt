@@ -52,6 +52,7 @@ function posicionUpdate(url, items)
 function downSortable( event )
 {
 	$( '#sortable' ).sortable( {
+		items:  "tr:not(.sortable-disabled)", 
 		helper: fixWidthHelper
 	} ).disableSelection()
 }
@@ -63,4 +64,17 @@ function destroyItem( event )
 	if (!confirm( mensaje )) {
 		event.preventDefault()
 	}
+}
+
+function showPapelera( item )
+{
+	var isChecked = $( item ).is(':checked');
+
+	$( 'tbody tr.disabled' ).each( function () {
+		if(!isChecked) {
+			$( this ).addClass('d-none');
+		} else {
+			$( this ).removeClass('d-none');
+		}
+	} )
 }
