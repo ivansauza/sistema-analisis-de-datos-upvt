@@ -55,3 +55,12 @@ function downSortable( event )
 		helper: fixWidthHelper
 	} ).disableSelection()
 }
+
+function destroyItem( event )
+{
+	var mensaje = 'Confirmar para eliminar definitivamente.'
+
+	if (!confirm( mensaje )) {
+		event.preventDefault()
+	}
+}
