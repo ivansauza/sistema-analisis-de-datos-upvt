@@ -41,7 +41,9 @@ class PeriodoController extends Controller
     public function index()
     {
         $periodos = Programa::getPredeterminado()
-            ->periodos
+            ->periodos()
+            ->withTrashed()
+            ->get()
             ->sortBy('posicion');
 
         return view('periodo/index', compact('periodos'));
@@ -136,10 +138,27 @@ class PeriodoController extends Controller
     public function destroy(Periodo $periodo)
     {
         $this->authorize('access', $periodo);
-        $periodo->delete();
+
+		$periodo->delete();
 
         return redirect()->route('periodos.index')
             ->with('info', ['type' => 'success', 'message' => 'Periodo eliminado con éxito']);
+    }
+
+    /**
+     * Restaurar the specified resource from storage.
+     *
+     * @param  \App\Periodo  $periodo
+     * @return mixed
+     */
+    public function restore($id)
+    {
+        $periodo = Periodo::withTrashed()->findOrFail($id);
+        //$this->authorize('restore', $periodo);
+        $periodo->restore();
+
+        return redirect()->route('periodos.index')
+            ->with('info', ['type' => 'success', 'message' => 'Periodo restaurado con éxito']);
     }
 
     /**
