@@ -28,68 +28,65 @@ class Subindicador extends Model
 	
 	public function calculateProcedimiento($periodo_id)
 	{
-		$operation = [];
+		$operation = []; // Almacenar la operación que se debe realizar
 
-		if (!Periodo::find($periodo_id)->estado) {
+		/* Comprobar si el estado del periodo esta abierto */
+		if ( !Periodo::find( $periodo_id )->estado ) {
 			return 'Periodo abierto';
 		}
 
 		/* Comprobar si el periodo tiene encuestas */
-		if (Encuesta::where('periodo_id', '=', $periodo_id)->get()->isEmpty()) {
+		if ( Encuesta::where( 'periodo_id', '=', $periodo_id )->get()->isEmpty() ) {
 			return 'Vació';
 		}
 
-		if (!$this->procedimiento) {
+		/* Comprobar si el subindicador tiene el procedimiento vació */
+		if ( ! $this->procedimiento ) {
 			return 'Sin procedimiento';
-		}
-
-		foreach($this->procedimiento as $procedimiento)
-		{
-			switch ($procedimiento['type']) 
-			{
-				case 'pregunta':
-					$encuestas = Encuesta::where('periodo_id', '=', $periodo_id)
-						->get();
-
-					$tolerance = 0;
-					$total     = 0;
-
-					foreach ($encuestas as $key => $encuesta) {
-						$pregunta = $encuesta->preguntas
-							->find($procedimiento['value']);
-
-						if ($pregunta) {
-							$tolerance ++;
-							$total += $pregunta->pivot->valor;
+		} else {
+			foreach ( $this->procedimiento as $procedimiento ) { // Recorriendo el procedimiento
+				switch ( $procedimiento['type'] ) 
+				{
+					case 'pregunta':
+						$encuestas = Encuesta::where( 'periodo_id', '=', $periodo_id )->get();
+						$tolerance = 0; // Variable que indicada si no  hay valores
+						$total     = 0; // Se guarda el total de todas las encuestas
+	
+						foreach ( $encuestas as $key => $encuesta ) {
+							$pregunta = $encuesta->preguntas
+								->find( $procedimiento['value'] );
+	
+							if ( $pregunta ) {
+								$tolerance ++;
+								$total += $pregunta->pivot->valor;
+							}
 						}
-					}
-
-					$operation[] = $total;
-
-					if ($tolerance == 0) {
-						return 'Faltan datos';
-					}
-					break;
-				
-				case 'numero':
-					$operation[] = $procedimiento['value'];
-					break;
-				
-				case 'operacion':
-					$operation[] = $procedimiento['value'];
-					break;
-				
-				default:
-					return 'Error';
-					break;
+	
+						$operation[] = $total;
+	
+						if ( $tolerance == 0 ) return 'Faltan datos';
+						break;
+					
+					case 'numero':
+						$operation[] = $procedimiento['value'];
+						break;
+					
+					case 'operacion':
+						$operation[] = $procedimiento['value'];
+						break;
+					
+					default:
+						return 'Error';
+						break;
+				}
 			}
 		}
 		
 		$result = 0;
 
 		try {
-			$result = eval('return '.implode('', $operation).';');
-		} catch (\Exception $exception){
+			@$result = eval( 'return ' . implode( '', $operation ) . ';' );
+		} catch ( \Exception $exception ) {
 			return $exception->getCode();
 		}
 
