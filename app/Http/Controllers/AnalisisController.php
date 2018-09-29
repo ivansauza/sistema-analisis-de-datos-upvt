@@ -23,7 +23,9 @@ class AnalisisController extends Controller
      */
     public function index()
     {
-        $analisis = auth()->user()->encuestas;
+        $analisis = auth()->user()
+            ->encuestas
+            ->where('periodo.programa_id', '=', Programa::getPredeterminado()->id);
 
         return view('analisis.index', compact('analisis'));
     }
@@ -88,9 +90,11 @@ class AnalisisController extends Controller
      */
     public function show($id)
     {
-        $analisis = Encuesta::where('user_id', '=', auth()->id())
+        $analisis = Encuesta::whereHas('periodo', function ($query) {
+                $query->where('programa_id', '=', Programa::getPredeterminado()->id);
+            } )
+            ->where('user_id', '=', auth()->id())
             ->findOrFail($id);
-
         return view('analisis.show', compact('analisis'));
     }
 
@@ -103,6 +107,7 @@ class AnalisisController extends Controller
     public function edit($id)
     {
         $analisis = Encuesta::whereHas('periodo', function ($query) {
+            $query->where('programa_id', '=', Programa::getPredeterminado()->id);
             $query->where('estado', '=', 0);
         })
         ->where('user_id', '=', auth()->id())
@@ -151,6 +156,7 @@ class AnalisisController extends Controller
     public function destroy($id)
     {
         $analisis = Encuesta::whereHas('periodo', function ($query) {
+            $query->where('programa_id', '=', Programa::getPredeterminado()->id);
             $query->where('estado', '=', 0);
         })
         ->where('user_id', '=', auth()->id())
