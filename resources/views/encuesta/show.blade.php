@@ -33,11 +33,7 @@
 				<tr>
 					<td scope="row" class="text-muted">Finalizado</td>
 					<td>
-						@if($encuesta->finalizado)
-							Si <small><i>Si requiere hacer cambios notifique al director de carrera.</i></small>
-						@else
-							No
-						@endif
+						{{ $encuesta->finalizado ? 'SI' : 'NO' }}
 					</td>
 				</tr>
 				<tr>
