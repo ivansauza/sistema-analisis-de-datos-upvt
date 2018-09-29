@@ -67,26 +67,25 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($value)
     {
-        if ($value) 
-        {
+        if ($value) {
             $this->attributes['password'] = bcrypt($value);
         }
     }
     
     /**
-     * Retorna una coleccion de programas del usuario
+     * Retorna una colección de programas educativos del usuario
      * actualmente logeado.
      * 
      * @return App\Programa
      */
     public static function getProgramas()
     {
-        return auth()->user()->programas()->get();
+        return auth()->user()->programas;
     }
 
     /**
      * Retorna un arreglo el cual contiene una colección de id's de
-     * los periodos de los cuales ya se ha creado la encuesta correspondiente.
+     * los periodos los cuales ya se ha creado la encuesta (análisis de datos) correspondiente.
      * 
      * @return Array
      */
