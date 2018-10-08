@@ -25,6 +25,15 @@ Route::middleware(['auth', 'activity'])->group(function () {
 
 	Route::get('/home', 'HomeController@index')
 	->name('home');
+
+	Route::post('/notificaciones/{notification}/read', 'NotificacionRead')
+		->name('notificaciones.read');
+
+	Route::post('/notificaciones/{notification}/unread', 'NotificacionUnread')
+		->name('notificaciones.unread');
+
+	Route::delete('/notificaciones/{notification}', 'NotificacionDelete')
+		->name('notificaciones.destroy');
 });
 
 Route::middleware(['auth', 'programDefault', 'activity'])->group(function () {
@@ -35,6 +44,9 @@ Route::middleware(['auth', 'programDefault', 'activity'])->group(function () {
 		->name('periodos.posicion.update');
 	
 	Route::resource('periodos', 'PeriodoController');
+
+	Route::post('preguntas/{pregunta}/restore', 'PreguntaController@restore')
+		->name('preguntas.restore');
 
 	Route::post('preguntas/posicion/update', 'PreguntaController@posicionUpdate')
 		->name('preguntas.posicion.update')
