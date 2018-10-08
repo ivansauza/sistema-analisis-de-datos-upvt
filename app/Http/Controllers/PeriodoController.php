@@ -46,7 +46,9 @@ class PeriodoController extends Controller
             ->get()
             ->sortBy('posicion');
 
-        return view('periodo/index', compact('periodos'));
+        $periodosWithouthTrashed = Programa::getPredeterminado()->periodos;
+
+        return view('periodo/index', compact('periodos', 'periodosWithouthTrashed'));
     }
 
     /**
@@ -139,10 +141,19 @@ class PeriodoController extends Controller
     {
         $this->authorize('access', $periodo);
 
-		$periodo->delete();
+        $message = null;
+
+        if ($periodo->encuestas()->exists()) {
+            $periodo->delete();
+            $message = ['type' => 'warning', 'message' => 'Periodo eliminado con éxito'];
+
+        } else {
+            $periodo->forceDelete();
+            $message = ['type' => 'danger', 'message' => 'Periodo destruido con éxito'];
+        }
 
         return redirect()->route('periodos.index')
-            ->with('info', ['type' => 'success', 'message' => 'Periodo eliminado con éxito']);
+            ->with('info', $message);
     }
 
     /**

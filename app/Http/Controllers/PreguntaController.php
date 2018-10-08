@@ -41,10 +41,14 @@ class PreguntaController extends Controller
     public function index()
     {
         $preguntas = Programa::getPredeterminado()
-            ->preguntas
+            ->preguntas()
+            ->withTrashed()
+            ->get()
             ->sortBy('posicion');
 
-        return view('pregunta.index', compact('preguntas'));
+        $preguntasWithouthTrashed = Programa::getPredeterminado()->preguntas;
+
+        return view('pregunta/index', compact('preguntas', 'preguntasWithouthTrashed'));
     }
 
     /**
@@ -127,10 +131,35 @@ class PreguntaController extends Controller
     public function destroy(Pregunta $pregunta)
     {
         $this->authorize('access', $pregunta);
-        $pregunta->delete();
+
+        $message = null;
+
+        if ($pregunta->encuestas()->exists()) {
+            $pregunta->delete();
+            $message = ['type' => 'warning', 'message' => 'Pregunta eliminada con éxito'];
+
+        } else {
+            $pregunta->forceDelete();
+            $message = ['type' => 'danger', 'message' => 'Pregunta destruida con éxito'];
+        }
 
         return redirect()->route('preguntas.index')
-            ->with('info', ['type' => 'success', 'message' => 'Pregunta eliminada con éxito']);
+            ->with('info', $message);
+    }
+
+    /**
+     * Restaurar the specified resource from storage.
+     *
+     * @return mixed
+     */
+    public function restore($id)
+    {
+        $pregunta = Pregunta::withTrashed()->findOrFail($id);
+        //$this->authorize('restore', $pregunta);
+        $pregunta->restore();
+
+        return redirect()->route('preguntas.index')
+            ->with('info', ['type' => 'success', 'message' => 'Pregunta restaurada con éxito']);
     }
 
     /**
