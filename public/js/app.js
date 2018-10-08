@@ -1,5 +1,10 @@
 $( function () {
 	$( '[data-toggle="tooltip"]' ).tooltip()
+	$('[data-toggle="popover"]').popover()
+
+	$('.popover-dismiss').popover({
+		trigger: 'focus'
+	})
 
 	$( "form" ).submit( function (event) {
 		$( "button[type='submit']" ).attr("disabled", true);
