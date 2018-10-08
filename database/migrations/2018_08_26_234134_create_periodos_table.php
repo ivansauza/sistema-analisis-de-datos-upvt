@@ -23,6 +23,7 @@ class CreatePeriodosTable extends Migration
             $table->integer('programa_id')->unsigned();
             $table->foreign('programa_id')->references('id')->on('programas');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

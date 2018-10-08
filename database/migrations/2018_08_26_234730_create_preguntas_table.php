@@ -24,6 +24,7 @@ class CreatePreguntasTable extends Migration
             $table->integer('role_id')->unsigned();
             $table->foreign('role_id')->references('id')->on('roles');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
