@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\UserStoreRequest;
-use App\Http\Requests\UserupdateRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 use App\Programa;
 use App\User;
@@ -54,6 +54,20 @@ class UserController extends Controller
 			->where('id', '!=', auth()->id());
 
 		return view('user.index', compact('users'));
+
+        $users = Programa::getPredeterminado()
+            ->users()
+            ->withTrashed()
+            ->get()
+            ->sortBy('posicion')
+            ->sortBy('deleted_at');
+
+        $usersWithouthTrashed = Programa::getPredeterminado()
+            ->users
+            ->sortBy('posicion')
+            ->sortBy('deleted_at');
+
+        return view('periodo/index', compact('users', 'pusersWithouthTrashed'));
 	}
 
 	/**
