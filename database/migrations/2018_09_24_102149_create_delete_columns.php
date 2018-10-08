@@ -16,6 +16,14 @@ class CreateDeleteColumns extends Migration
         Schema::table('periodos', function ($table) {
             $table->softDeletes();
         });
+
+        Schema::table('preguntas', function ($table) {
+            $table->softDeletes();
+        });
+
+        Schema::table('users', function ($table) {
+            $table->softDeletes();
+        });
     }
 
     /**
