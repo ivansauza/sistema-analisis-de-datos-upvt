@@ -119,11 +119,13 @@
 
 	@empty
 
-		<div class="card">
-			<div class="card-body">
-				<h6 class="text-center text-muted">
-					No hay procesos agregados, <a href="{{ route('procesos.create') }}">crear proceso</a>.
-				</h6>
+		<div class="card card-default mb-4 animated flash">
+			<div class="jumbotron">
+				<h1 class="display-4">
+					<small><i class="fas fa-box-open"></i> Modulo vacio</small>
+					<p class="lead d-inline">No hay datos disponibles para mostrar.</p>
+				</h1>				<hr class="my-4">
+				<a class="btn btn-outline-primary btn-lg" href="{{ route('procesos.create') }}" role="button">Crear Proceso</a>
 			</div>
 		</div>
 

@@ -69,37 +69,39 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($periodos as $periodo)
-					@foreach($periodo->encuestas as $encuesta)
-						<tr>
-							<th scope="row">{{ $encuesta->id }}</th>
-							<td>{{ $encuesta->periodo->tiny_clave }}</td>
-							<td>{{ $encuesta->user->full_name }}</td>
-							<td>{{ $encuesta->user->roles->first()->name }}</td>
-							<td class="text-center"><small>{{ $encuesta->updated_at }}</small></td>
-							<td class="text-center">
-								<span class="badge badge-pill badge-{{ $encuesta->finalizado ? 'primary' : 'secondary' }}">
-									{{ $encuesta->finalizado ? 'SI' : 'NO' }}
-								</span>
-							</td>
-							<td>
-								<div class="float-right">
-									<div class="btn-group mr-2" role="group">
-										<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-sm text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										</button>
-										<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-											<a class="dropdown-item" href="{{ route('encuestas.show', $encuesta->id) }}">Detalles</a>
-											<a class="dropdown-item" href="{{ route('encuestas.edit', $encuesta->id) }}">Editar</a>
-											{{ Form::open(['route' => ['encuestas.destroy', $encuesta->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-												<button type="submit" class="dropdown-item" onclick="destroyItem(event)">Eliminar</button>
-											{{ Form::close() }}
+
+					@foreach($encuestas as $encuesta)
+
+							<tr>
+								<th scope="row">{{ $encuesta->id }}</th>
+								<td>{{ $encuesta->periodo->tiny_clave }}</td>
+								<td>{{ $encuesta->user->full_name }}</td>
+								<td>{{ $encuesta->user->roles->first()->name }}</td>
+								<td class="text-center"><small>{{ $encuesta->updated_at }}</small></td>
+								<td class="text-center">
+									<span class="badge badge-pill badge-{{ $encuesta->finalizado ? 'primary' : 'secondary' }}">
+										{{ $encuesta->finalizado ? 'SI' : 'NO' }}
+									</span>
+								</td>
+								<td>
+									<div class="float-right">
+										<div class="btn-group mr-2" role="group">
+											<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-sm text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											</button>
+											<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+												<a class="dropdown-item" href="{{ route('encuestas.show', $encuesta->id) }}">Detalles</a>
+												<a class="dropdown-item" href="{{ route('encuestas.edit', $encuesta->id) }}">Editar</a>
+												{{ Form::open(['route' => ['encuestas.destroy', $encuesta->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+													<button type="submit" class="dropdown-item" onclick="destroyItem(event)">Eliminar</button>
+												{{ Form::close() }}
+											</div>
 										</div>
 									</div>
-								</div>
-							</td>
-						</tr>
+								</td>
+							</tr>
+
 					@endforeach
-				@endforeach
+
 			</tbody>
 		</table>
 	</div>

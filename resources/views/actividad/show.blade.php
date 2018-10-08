@@ -42,7 +42,7 @@
 @endsection
 
 @section('header')
-	<h1 class="h3">Actividades <small>Registro</small></h1>
+	<h1 class="h3"><i class="fas fa-history"></i> Actividades<small> Registro</small></h1>
 @endsection
 
 @section('content')
@@ -54,18 +54,28 @@
 						<th scope="col">Acción</th>
 						<th scope="col">Url</th>
 						<th scope="col">Ip</th>
-						<th scope="col">Método</th>
-						<th scope="col">Fecha de registro</th>
+						<th  class="text-center" scope="col">Método</th>
+						<th scope="col">Creado el</th>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach ($actividades as $actividad)
 						<tr>
-							<td>{{ $actividad->ruta }}</td>
-							<td>{{ $actividad->url }}</td>
+							<td>
+								<em>{{ $actividad->ruta }}</em>
+							</td>
+							<td>
+								<small>{{ $actividad->url }}</small>
+							</td>
 							<td>{{ $actividad->ip }}</td>
-							<td>{{ $actividad->metodo }}</td>
-							<td>{{ $actividad->created_at }}</td>
+							<td class="text-center">
+								<span class="badge badge-pill badge-{{ $actividad->metodo == 'POST' ? 'primary' : 'info' }}">
+									{{ $actividad->metodo }}
+								</span>
+							</td>
+							<td>
+								<small>{{ $actividad->created_at }}</small>
+							</td>
 						</tr>
 					@endforeach
 				</tbody>

@@ -40,7 +40,9 @@
 						</td>
 						<td>
 							<div class="float-right">
-								<a href="{{ route('programas.predetermined', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Predeterminado">
+								<a href="{{ route('programas.predetermined', $programa->id) }}" 
+								class="btn text-secondary btn-sm mt-1" 
+									data-toggle="tooltip" data-placement="top" title="Predeterminado">
 									<i class="far fa-check-circle"></i>
 								</a>
 								<a href="{{ route('programas.show', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">

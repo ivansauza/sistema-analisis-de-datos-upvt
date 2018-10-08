@@ -65,8 +65,8 @@
 						{{ Auth::user()->email }}
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="{{ route('settings.user') }}">Usuario</a>
-						<a class="dropdown-item" href="{{ route('actividades.show') }}">Actividades</a>
+						<a class="dropdown-item {{ Route::is('settings.user') ? 'active' : null }}" href="{{ route('settings.user') }}">Usuario</a>
+						<a class="dropdown-item {{ Route::is('actividades.show') ? 'active' : null }}" href="{{ route('actividades.show') }}">Actividades</a>
 						<div class="dropdown-divider"></div>
 						{{ Form::open(['route' => 'logout', 'class' => 'd-inline']) }}
 							<button type="submit" class="dropdown-item">Cerrar Sesión</i></button>
@@ -83,6 +83,7 @@
 				<div class="sidebar-sticky">
 					<div class="card border-right-0 border-left-0 rounded-0">
 						<div class="card-body">
+							<img class="rounded-circle img-fluid" src="https://www.gravatar.com/avatar/de85d9bc74935247ebceed66c9620050?d=mm&amp;s=64" alt="User profile picture">
 							<h5>
 								{{ auth()->user()->prefijo }} {{ auth()->user()->name }}
 								<small>

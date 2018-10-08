@@ -87,6 +87,8 @@
 				$pregunta  = App\Pregunta::find($item['value']);
 				$encuestas = $periodo->encuestas()->whereHas('preguntas', function ($query) use ($pregunta) {
 					$query->where('pregunta_id', '=', $pregunta->id);
+				})->WhereHas('periodo', function ($query) {
+					$query->whereIn('user_id', App\User::get()->pluck('id'));
 				})->get();
 			@endphp
 			<div class="card card-default mb-4">

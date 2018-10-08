@@ -47,6 +47,8 @@
 			<a href="{{ route('users.create') }}" class="btn btn-outline-primary btn-sm">
 				Crear Usuario
 			</a>
+
+			@include('fragments.trash_button')
 		</div>
 	</div>
 @endsection
