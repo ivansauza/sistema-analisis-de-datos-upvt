@@ -36,7 +36,8 @@ class AnalisisStoreRequest extends FormRequest
             ], 
             'preguntas_id'      => 'required|array|distinct', 
             'preguntas_id.*'    => 'integer|exists:preguntas,id|distinct', 
-            'preguntas_value'   => 'required|array|size:'. count($this->preguntas_id), 
+            'preguntas_value'   => 'bail|required|array', 
+            'preguntas_value'   => 'size:'. count($this->preguntas_id ?? []), 
             'preguntas_value.*' => 'integer|nullable', 
             'finalizado'        => 'boolean|nullable'
         ];
