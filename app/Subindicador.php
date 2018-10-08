@@ -48,7 +48,9 @@ class Subindicador extends Model
 				switch ( $procedimiento['type'] ) 
 				{
 					case 'pregunta':
-						$encuestas = Encuesta::where( 'periodo_id', '=', $periodo_id )->get();
+						$encuestas = Encuesta::where( 'periodo_id', '=', $periodo_id )->WhereHas('periodo', function ($query) {
+							$query->whereIn('user_id', User::get()->pluck('id'));
+						})->get();
 						$tolerance = 0; // Variable que indicada si no  hay valores
 						$total     = 0; // Se guarda el total de todas las encuestas
 	

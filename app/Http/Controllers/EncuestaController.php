@@ -43,9 +43,12 @@ class EncuestaController extends Controller
      */
     public function index()
     {
-        $periodos = Programa::getPredeterminado()->periodos;
+        $encuestas = Encuesta::whereHas('periodo', function ($query) {
+            $query->where('programa_id', '=', Programa::getPredeterminado()->id);
+            $query->whereIn('user_id', User::get()->pluck('id'));
+        })->get();
 
-        return view('encuesta.index', compact('periodos'));
+        return view('encuesta.index', compact('encuestas'));
     }
 
     /**
