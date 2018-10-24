@@ -6,7 +6,7 @@
 			{{ auth()->user()->unreadNotifications->where('data.programa', '=', App\Programa::getPredeterminado()->id)->count() }}
 		</span>
 	</a>
-	<div class="dropdown-menu dropdown-menu-right notifications p-0" aria-labelledby="navbarDropdown">
+	<div class="dropdown-menu dropdown-menu-right notifications p-0  animated flipInX" aria-labelledby="navbarDropdown">
 		<div class="card p-0 m-0 border-0">
 			@if($notifications->count() >= 1)	
 				<div class="card-body p-0">

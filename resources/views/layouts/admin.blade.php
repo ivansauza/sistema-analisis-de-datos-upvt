@@ -37,9 +37,8 @@
 						@else
 							Seleccionar
 						@endif
-						
 					</a>
-					<div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+					<div class="dropdown-menu dropdown-menu-left  animated flipInX" aria-labelledby="navbarDropdown">
 						@foreach( auth()->user()->programas as $programa )
 							@if( ! $programa->pivot->predeterminado )
 								<a class="dropdown-item" href="{{ route('programas.predetermined', $programa->id) }}" data-toggle="tooltip" data-placement="right" title="Seleccionar como predeterminado">
@@ -64,7 +63,7 @@
 						<i class="far fa-user-circle"></i> 
 						{{ Auth::user()->email }}
 					</a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+					<div class="dropdown-menu dropdown-menu-right animated flipInX" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item {{ Route::is('settings.user') ? 'active' : null }}" href="{{ route('settings.user') }}">Usuario</a>
 						<a class="dropdown-item {{ Route::is('actividades.show') ? 'active' : null }}" href="{{ route('actividades.show') }}">Actividades</a>
 						<div class="dropdown-divider"></div>
