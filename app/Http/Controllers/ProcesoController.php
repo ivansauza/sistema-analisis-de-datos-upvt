@@ -39,7 +39,7 @@ class ProcesoController extends Controller
      */
     public function index()
     {
-        $procesos = Programa::getPredeterminado()->procesos;
+        $procesos = Proceso::get();
 
         return view('proceso.index', compact('procesos'));
     }
@@ -62,9 +62,7 @@ class ProcesoController extends Controller
      */
     public function store(ProcesoRequest $request)
     {
-        $proceso = new Proceso($request->all());
-        $proceso->programa_id = Programa::getPredeterminado()->id;
-        $proceso->save();
+        $proceso = Proceso::create($request->all());
 
         return redirect()->route('procesos.edit', $proceso->id)
             ->with('info', ['type' => 'success', 'message' => 'Proceso guardado con éxito']);

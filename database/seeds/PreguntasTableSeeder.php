@@ -16,7 +16,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => 'Periodo establecido. (40 días como máximo)', 
         	'desactivar'  => 0, 
         	'posicion'    => 1, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -25,7 +24,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 2, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -34,7 +32,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 3, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -43,7 +40,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 4, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -52,7 +48,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 5, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -61,7 +56,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 6, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -70,7 +64,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 7, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -79,7 +72,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 8, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -88,7 +80,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 9, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -97,7 +88,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 10, 
-        	'programa_id' => 2, 
         	'role_id'     => 1, 
         ]);
 
@@ -106,7 +96,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 11, 
-        	'programa_id' => 2, 
         	'role_id'     => 1, 
         ]);
 
@@ -115,7 +104,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 12, 
-        	'programa_id' => 2, 
         	'role_id'     => 1, 
         ]);
 
@@ -124,7 +112,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 13, 
-        	'programa_id' => 2, 
         	'role_id'     => 1, 
         ]);
 
@@ -133,7 +120,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 14, 
-        	'programa_id' => 2, 
         	'role_id'     => 1, 
         ]);
 
@@ -142,7 +128,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 15, 
-        	'programa_id' => 2, 
         	'role_id'     => 3, 
         ]);
 
@@ -151,7 +136,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 16, 
-        	'programa_id' => 2, 
         	'role_id'     => 3, 
         ]);
 
@@ -160,7 +144,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 17, 
-        	'programa_id' => 2, 
         	'role_id'     => 3, 
         ]);
 
@@ -169,7 +152,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 18, 
-        	'programa_id' => 2, 
         	'role_id'     => 3, 
 		]);
 		
@@ -178,7 +160,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 19, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -187,7 +168,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 20, 
-        	'programa_id' => 2, 
         	'role_id'     => 1, 
         ]);
 
@@ -196,7 +176,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => 'Días Transcurridos entre la solicitud y la entrega del dictamen', 
         	'desactivar'  => 0, 
         	'posicion'    => 21, 
-        	'programa_id' => 2, 
         	'role_id'     => 1, 
         ]);
 
@@ -205,7 +184,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 22, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -214,7 +192,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 23, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -223,7 +200,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 24, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
 
@@ -232,7 +208,6 @@ class PreguntasTableSeeder extends Seeder
         	'nota'        => '', 
         	'desactivar'  => 0, 
         	'posicion'    => 25, 
-        	'programa_id' => 2, 
         	'role_id'     => 2, 
         ]);
     }

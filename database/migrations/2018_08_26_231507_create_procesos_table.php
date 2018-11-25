@@ -18,8 +18,6 @@ class CreateProcesosTable extends Migration
             $table->string('nombre');
             $table->longText('nota')->nullable();
             $table->integer('posicion')->nullable();
-            $table->integer('programa_id')->unsigned();
-            $table->foreign('programa_id')->references('id')->on('programas');
             $table->timestamps();
         });
     }
