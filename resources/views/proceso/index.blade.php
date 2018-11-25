@@ -78,19 +78,25 @@
 							<ul class="list-group list-group-flush">
 								@foreach($indicador->subindicadores as $subindicador)
 									<li class="list-group-item">
-										{{ $subindicador->nombre }}
-
-										<div class="float-right p-0 m-0">
-											<span class="badge badge-pill badge-secondary">Valor meta {{ $subindicador->valor_meta }}%</span>
-											<div class="btn-group mr-2" role="group">
-												<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-xs text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												</button>
-												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-													<a class="dropdown-item" href="{{ route('subindicadores.show', $subindicador->id) }}">Mostrar detalles</a>
-													<a class="dropdown-item" href="{{ route('subindicadores.edit', $subindicador->id) }}">Editar</a>
-													{{ Form::open(['route' => ['subindicadores.destroy', $subindicador->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-														<button type="submit" class="dropdown-item" onclick="destroyItem(event)">Eliminar</button>
-													{{ Form::close() }}
+										<div class="row">
+											<div class="col-9">
+												{{ $subindicador->nombre }} : 
+												<span class="text-muted">
+													{{ $subindicador->getProcedimiento() }}
+												</span>
+											</div>
+											<div class="col-3">
+												<span class="badge badge-pill badge-secondary">Valor meta {{ $subindicador->valor_meta }}%</span>
+												<div class="btn-group mr-2" role="group">
+													<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-xs text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													</button>
+													<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+														<a class="dropdown-item" href="{{ route('subindicadores.show', $subindicador->id) }}">Mostrar detalles</a>
+														<a class="dropdown-item" href="{{ route('subindicadores.edit', $subindicador->id) }}">Editar</a>
+														{{ Form::open(['route' => ['subindicadores.destroy', $subindicador->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+															<button type="submit" class="dropdown-item" onclick="destroyItem(event)">Eliminar</button>
+														{{ Form::close() }}
+													</div>
 												</div>
 											</div>
 										</div>

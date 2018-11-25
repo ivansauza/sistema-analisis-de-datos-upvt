@@ -9,6 +9,7 @@ use App\Http\Requests\PeriodoRequest;
 
 use App\Programa;
 use App\Periodo;
+use App\Proceso;
 
 class PeriodoController extends Controller
 {
@@ -198,8 +199,9 @@ class PeriodoController extends Controller
 
     public function report($id)
     {
-        $periodo = Periodo::findOrFail($id);
+        $periodo  = Periodo::findOrFail($id);
+        $procesos = Proceso::get();
         
-        return view('periodo.report');
+        return view('periodo.report', compact( 'periodo', 'procesos' ));
     }
 }

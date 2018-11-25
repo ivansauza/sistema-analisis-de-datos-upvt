@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Pregunta;
+
 class Subindicador extends Model
 {
 	protected $table    = 'subindicadores';
@@ -24,6 +26,31 @@ class Subindicador extends Model
     public function programa()
     {
     	return $this->hasMany('App\Programa');
+	}
+
+	public function getProcedimiento()
+	{
+		$result = [];
+
+		foreach ($this->procedimiento as $item) 
+		{
+			switch ($item['type']) 
+			{
+				case 'pregunta':
+					$result[] =  Pregunta::find($item['value'])->nombre;
+					break;
+
+				case 'numero':
+					$result[] =  $item['value'];
+					break;
+				
+				default:
+					$result[] =  $item['value'];
+					break;
+			}
+		}
+
+		return implode(' ', $result);
 	}
 	
 	public function calculateProcedimiento($periodo_id)
