@@ -17,16 +17,6 @@ class Programa extends Model
             ->withPivot('predeterminado');
     }
 
-    public function preguntas()
-    {
-    	return $this->hasMany('App\Pregunta');
-    }
-
-    public function procesos()
-    {
-    	return $this->hasMany('App\Proceso');
-    }
-
     public function periodos()
     {
     	return $this->hasMany('App\Periodo');

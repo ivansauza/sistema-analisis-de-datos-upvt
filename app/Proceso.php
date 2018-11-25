@@ -11,11 +11,6 @@ class Proceso extends Model
 		'nombre', 'nota', 'programa_id'
     ];
 
-    public function programa()
-    {
-    	return $this->belongsTo('App\Programa');
-    }
-
     public function indicadores()
     {
     	return $this->hasMany('App\Indicador');

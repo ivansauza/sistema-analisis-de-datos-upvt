@@ -40,13 +40,11 @@ class PreguntaController extends Controller
      */
     public function index()
     {
-        $preguntas = Programa::getPredeterminado()
-            ->preguntas()
-            ->withTrashed()
+        $preguntas = Pregunta::withTrashed()
             ->get()
             ->sortBy('posicion');
 
-        $preguntasWithouthTrashed = Programa::getPredeterminado()->preguntas;
+        $preguntasWithouthTrashed = Pregunta::get();
 
         return view('pregunta/index', compact('preguntas', 'preguntasWithouthTrashed'));
     }
@@ -71,9 +69,7 @@ class PreguntaController extends Controller
      */
     public function store(PreguntaRequest $request)
     {
-        $pregunta = new Pregunta($request->all());
-        $pregunta->programa_id = Programa::getPredeterminado()->id;
-        $pregunta->save();
+        $pregunta = Pregunta::create($request->all());
 
         return redirect()->route('preguntas.edit', $pregunta->id)
             ->with('info', ['type' => 'success', 'message' => 'Pregunta agregada con éxito']);
