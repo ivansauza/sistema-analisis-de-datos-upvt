@@ -13,7 +13,8 @@ class EstadisticaController extends Controller
 {
     public function index()
     {
-        $periodos = Programa::getPredeterminado()->periodos
+        $periodos = Programa::getPredeterminado()
+            ->periodos
             ->sortBy('posicion');
         $procesos = Programa::getPredeterminado()->procesos;
 
@@ -31,7 +32,8 @@ class EstadisticaController extends Controller
 
     public function graph()
     {
-        $periodos = Programa::getPredeterminado()->periodos
+        $periodos = Programa::getPredeterminado()
+            ->periodos
             ->sortBy('posicion');
         $subindicador = Subindicador::findOrFail(request()->input('subindicador'));
         

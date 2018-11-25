@@ -5,7 +5,6 @@
 	<div class="btn-toolbar mb-2 mb-md-0">
 		<div class="btn-group mr-2">
 			<a href="{{ route('estadisticas.index') }}" class="btn btn-outline-secondary btn-sm">Regresar</a>
-			<a href="#" class="btn btn-outline-secondary btn-sm">Generar Reporte</a>
 		</div>
 	</div>
 @endsection

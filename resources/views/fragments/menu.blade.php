@@ -8,7 +8,7 @@
     <li class="nav-item">
         <a class="nav-link {{ ! Route::is('programas.*') ?: 'active' }}" href="{{ route('programas.index') }}">
             <i class="fas fa-user-graduate"></i> 
-            Programas Educativos
+            Programas Educatios
             <span class="badge badge-primary float-right">{{ auth()->user()->programas()->count() }}</span>
         </a>
     </li>

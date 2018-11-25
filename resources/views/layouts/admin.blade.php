@@ -82,7 +82,7 @@
 				<div class="sidebar-sticky">
 					<div class="card border-right-0 border-left-0 rounded-0">
 						<div class="card-body">
-							<img class="rounded-circle img-fluid" src="https://www.gravatar.com/avatar/de85d9bc74935247ebceed66c9620050?d=mm&amp;s=64" alt="User profile picture">
+							<img class="rounded-circle img-fluid" src="https://www.gravatar.com/avatar/de85d9bc74935247ebceed66c9620050?d=mm&amp;s=64" alt="">
 							<h5>
 								{{ auth()->user()->prefijo }} {{ auth()->user()->name }}
 								<small>
