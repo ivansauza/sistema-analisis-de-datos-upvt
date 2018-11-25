@@ -19,8 +19,6 @@ class CreatePreguntasTable extends Migration
             $table->longText('nota')->nullable();
             $table->boolean('desactivar')->default(0);
             $table->integer('posicion')->nullable();
-            $table->integer('programa_id')->unsigned();
-            $table->foreign('programa_id')->references('id')->on('programas');
             $table->integer('role_id')->unsigned();
             $table->foreign('role_id')->references('id')->on('roles');
             $table->timestamps();
