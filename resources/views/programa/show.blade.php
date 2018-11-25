@@ -27,11 +27,11 @@
 					<td>{{ $programa->nombre }}</td>
 				</tr>
 				<tr>
-					<td scope="row" class="text-muted">Fecha de registro</td>
+					<td scope="row" class="text-muted">Creado el</td>
 					<td><small>{{ $programa->created_at }}</small></td>
 				</tr>
 				<tr>
-					<td scope="row" class="text-muted">Fecha de edición</td>
+					<td scope="row" class="text-muted">Actualizado el</td>
 					<td><small>{{ $programa->updated_at }}</small></td>
 				</tr>
 			</tbody>

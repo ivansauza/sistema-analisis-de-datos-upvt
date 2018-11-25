@@ -13,12 +13,12 @@
 
 	<div class="card">
 		<div class="card-body">
-			<p>A continuación se muestran los periodos de los cuales no ha realizo el análisis de datos.</p>
+			<p>A continuación, se muestran los periodos de los cuales no ha realizo el análisis de datos.</p>
 		</div>
 
 		<div class="card-body p-0">
 			<table class="table">
-				<thead>
+				<thead class="thead-light">
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Clave</th>

@@ -45,7 +45,7 @@
 									data-toggle="tooltip" data-placement="top" title="Predeterminado">
 									<i class="far fa-check-circle"></i>
 								</a>
-								<a href="{{ route('programas.show', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
+								<a href="{{ route('programas.show', $programa->id) }}" class="btn text-secondary btn-sm mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar detalles">
 									<i class="fas fa-eye"></i>
 								</a>
 							</div>

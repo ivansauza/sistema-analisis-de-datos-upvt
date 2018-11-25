@@ -30,9 +30,6 @@
 										<div class="input-group mb-3">
 											{{ Form::select("procedimiento_values[]", $preguntas, $item['value'], ["class" => "form-control"]) }}
 											<div class="input-group-append">
-												<a href="#" class="btn btn-outline-secondary">
-														<i class="fas fa-arrows-alt-h"></i>
-												</a>
 												<a href="#" class="btn btn-outline-danger" onclick="removeItem(this)">
 													<i class="fas fa-trash"></i>
 												</a>
@@ -47,9 +44,6 @@
 										<div class="input-group mb-3">
 											{{ Form::select("procedimiento_values[]", ["/" => "División", "*" => "Multiplicación", "+" => "Suma", "-" => "Resta"], $item['value'], ["class" => "form-control"]) }}
 											<div class="input-group-append">
-												<a href="#" class="btn btn-outline-secondary">
-														<i class="fas fa-arrows-alt-h"></i>
-												</a>
 												<a href="#" class="btn btn-outline-danger" onclick="removeItem(this)">
 													<i class="fas fa-trash"></i>
 												</a>
@@ -64,9 +58,6 @@
 										<div class="input-group mb-3">
 											{{ Form::text("procedimiento_values[]", $item['value'], ["class" => "form-control"]) }}
 											<div class="input-group-append">
-												<a href="#" class="btn btn-outline-secondary">
-														<i class="fas fa-arrows-alt-h"></i>
-												</a>
 												<a href="#" class="btn btn-outline-danger" onclick="removeItem(this)">
 													<i class="fas fa-trash"></i>
 												</a>

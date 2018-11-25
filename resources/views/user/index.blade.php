@@ -85,11 +85,11 @@
 								</td>
 								<td>
 									<div class="float-right">
-										<a href="{{ route('users.actividades', $user->id) }}" class="btn btn-sm text-secondary mt-1"  data-toggle="tooltip" data-placement="top" title="Actividades">
+										<a href="{{ route('users.actividades', $user->id) }}" class="btn btn-sm text-secondary mt-1"  data-toggle="tooltip" data-placement="top" title="Mostrar actividades">
 											<i class="fas fa-history"></i>
 										</a>
 
-										<a href="{{ route('users.show', $user->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Detalles">
+										<a href="{{ route('users.show', $user->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar detalles">
 											<i class="fas fa-eye"></i>
 										</a>
 

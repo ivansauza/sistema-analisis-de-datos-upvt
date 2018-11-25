@@ -33,7 +33,7 @@ class ProgramaController extends Controller
     }
 
     /**
-     * Seleccionar un programa por defecto.
+     * Seleccionar un programa educativo por defecto.
      *
      * @param  \App\Programa $programa
      * @return \Illuminate\Http\Response
@@ -52,6 +52,6 @@ class ProgramaController extends Controller
         }
 
         return redirect()->route('programas.index')
-           ->with('info', ['type' => 'success', 'message' => 'Programa Educativo seleccionado con éxito']);;
+           ->with('info', ['type' => 'success', 'message' => 'Programa Educativo seleccionado con éxito']);
     }
 }

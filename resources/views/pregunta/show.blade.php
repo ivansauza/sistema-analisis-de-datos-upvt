@@ -70,11 +70,11 @@
 					</td>
 				</tr>
 				<tr>
-					<td scope="row" class="text-muted">Fecha de registro</td>
+					<td scope="row" class="text-muted">Creado el </td>
 					<td><small>{{ $pregunta->created_at }}</small></td>
 				</tr>
 				<tr>
-					<td scope="row" class="text-muted">Fecha de edición</td>
+					<td scope="row" class="text-muted">Actualizado el </td>
 					<td><small>{{ $pregunta->updated_at }}</small></td>
 				</tr>
 			</tbody>

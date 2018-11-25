@@ -123,7 +123,7 @@
 									<a href="#" class="btn btn-xs mt-2" alt="Mover" 
 										onmousedown="downSortable(event)"
 										onmouseup="upSortable(event)">
-										<i class="fas fa-expand-arrows-alt text-secondary"></i>
+										<i class="fas fa-exp and-arrows-alt text-secondary"></i>
 									</a>
 								</td>
 								<td>{{ $periodo->clave }}</td>
@@ -149,7 +149,11 @@
 												</button>
 											{{ Form::close() }}
 										@else
-											<a href="{{ route('periodos.show', $periodo->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Detalles">
+											<a href="{{ route('periodos.report', $periodo->id) }}" class="btn btn-sm text-warning mt-1" data-toggle="tooltip" data-placement="top" title="Generar reporte">
+												<i class="far fa-file"></i>
+											</a>
+
+											<a href="{{ route('periodos.show', $periodo->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar detalles">
 												<i class="fas fa-eye"></i>
 											</a>
 		

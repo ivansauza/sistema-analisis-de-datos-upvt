@@ -37,6 +37,9 @@ Route::middleware(['auth', 'activity'])->group(function () {
 });
 
 Route::middleware(['auth', 'programDefault', 'activity'])->group(function () {
+	Route::get('periodos/{periodo}/report', 'PeriodoController@report')
+		->name('periodos.report');
+
 	Route::post('periodos/{periodo}/restore', 'PeriodoController@restore')
 		->name('periodos.restore');
 		

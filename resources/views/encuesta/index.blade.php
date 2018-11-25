@@ -63,7 +63,7 @@
 					<th scope="col">Periodo</th>
 					<th scope="col">Usuario</th>
 					<th scope="col">Rol</th>
-					<th scope="col">Actualizado en</th>
+					<th scope="col" class="text-center">Actualizado el</th>
 					<th scope="col" class="text-center">Finalizado</th>
 					<th scope="col"></th>
 				</tr>
@@ -89,7 +89,7 @@
 											<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-sm text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											</button>
 											<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-												<a class="dropdown-item" href="{{ route('encuestas.show', $encuesta->id) }}">Detalles</a>
+												<a class="dropdown-item" href="{{ route('encuestas.show', $encuesta->id) }}">Mostrar detalles</a>
 												<a class="dropdown-item" href="{{ route('encuestas.edit', $encuesta->id) }}">Editar</a>
 												{{ Form::open(['route' => ['encuestas.destroy', $encuesta->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
 													<button type="submit" class="dropdown-item" onclick="destroyItem(event)">Eliminar</button>

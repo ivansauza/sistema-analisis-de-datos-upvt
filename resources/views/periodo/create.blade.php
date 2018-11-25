@@ -23,7 +23,7 @@
 					<div class="custom-control custom-checkbox">
 					 	{{ Form::hidden('notificacion', 0) }}
 					 	{{ Form::checkbox('notificacion', 1, null, ['class' => 'custom-control-input', 'id' => 'notificacion']) }}
-					 	{{ Form::label('notificacion', 'Enviar notificación a todos los usuarios. (Sistema, Correo Electrónico, SMS)', ['class' => 'custom-control-label']) }}
+					 	{{ Form::label('notificacion', 'Enviar notificación a todos los usuarios (Se enviará una notificación dentro del sistema).', ['class' => 'custom-control-label']) }}
 						@if ($errors->has('notificacion'))
 							<span class="badge badge-danger">{{ $errors->first('notificacion') }}</span>
 						@endif

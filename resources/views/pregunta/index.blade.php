@@ -125,9 +125,11 @@
 								</td>
 								<td>
 									{{ $pregunta->nombre }}
-									<span class="badge badge-pill badge-{{ $pregunta->desactivar ? 'danger' : 'success' }}">
-										{{ $pregunta->desactivar ? 'Desactivado' : 'Activo' }}
-									</span>
+									@if ($pregunta->desactivar)
+										<span class="badge badge-pill badge-danger">
+											Desactivado
+										</span>
+									@endif
 								</td>
 								<td class="text-center">{{ $pregunta->role->name }}</td>
 								<td>
@@ -154,9 +156,7 @@
 												<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-sm text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												</button>
 												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-													<a class="dropdown-item" href="">Duplicar</a>
-													<div class="dropdown-divider"></div>
-													<a class="dropdown-item" href="{{ route('preguntas.show', $pregunta->id) }}">Detalles</a>
+													<a class="dropdown-item" href="{{ route('preguntas.show', $pregunta->id) }}">Mostrar detalles</a>
 													<a class="dropdown-item" href="{{ route('preguntas.edit', $pregunta->id) }}">Editar</a>
 													{{ Form::open(['route' => ['preguntas.destroy', $pregunta->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
 														<button type="submit" class="dropdown-item" onclick="destroyItem(event)">Eliminar</button>

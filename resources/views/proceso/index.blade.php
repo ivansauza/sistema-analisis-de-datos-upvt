@@ -30,15 +30,11 @@
 				{{ $proceso->nombre }}
 
 				<div class="float-right p-0 m-0">
-					<a class="btn btn-sm btn-transparent">
-						<i class="fas fa-expand-arrows-alt"></i>
-					</a>
-
 					<a href="{{ route('indicadores.create', ['proceso_id' => $proceso->id]) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Agregar Indicador">
 						<i class="fas fa-plus"></i>
 					</a>
 
-					<a href="{{ route('procesos.show', $proceso->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
+					<a href="{{ route('procesos.show', $proceso->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar detalles">
 						<i class="fas fa-eye"></i>
 					</a>
 
@@ -61,13 +57,10 @@
 							<small>{{ $indicador->nombre }}</small>
 
 							<div class="float-right p-0 m-0">
-								<a class="btn btn-sm btn-transparent">
-									<i class="fas fa-expand-arrows-alt"></i>
-								</a>
 								<a href="{{ route('subindicadores.create', ['indicador_id' => $indicador->id]) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Agregar SubIndicador">
 									<i class="fas fa-plus"></i>
 								</a>
-								<a href="{{ route('indicadores.show', $indicador->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar">
+								<a href="{{ route('indicadores.show', $indicador->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar detalles">
 									<i class="fas fa-eye"></i>
 								</a>
 								<a href="{{ route('indicadores.edit', $indicador->id) }}" class="btn btn-sm text-secondary btn-transparent mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
@@ -85,9 +78,6 @@
 							<ul class="list-group list-group-flush">
 								@foreach($indicador->subindicadores as $subindicador)
 									<li class="list-group-item">
-										<a class="btn btn-xs btn-transparent">
-											<i class="fas fa-expand-arrows-alt"></i>
-										</a>
 										{{ $subindicador->nombre }}
 
 										<div class="float-right p-0 m-0">
@@ -96,9 +86,7 @@
 												<button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-xs text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												</button>
 												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-													<a class="dropdown-item" href="">Duplicar</a>
-													<div class="dropdown-divider"></div>
-													<a class="dropdown-item" href="{{ route('subindicadores.show', $subindicador->id) }}">Mostrar</a>
+													<a class="dropdown-item" href="{{ route('subindicadores.show', $subindicador->id) }}">Mostrar detalles</a>
 													<a class="dropdown-item" href="{{ route('subindicadores.edit', $subindicador->id) }}">Editar</a>
 													{{ Form::open(['route' => ['subindicadores.destroy', $subindicador->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
 														<button type="submit" class="dropdown-item" onclick="destroyItem(event)">Eliminar</button>

@@ -33,7 +33,7 @@
 		<table class="table">
 			<tbody>
 				<tr>
-					<td scope="row" class="text-muted">ID</td>
+					<td scope="row" class="text-muted">ID </td>
 					<td>{{ $analisis->id }}</td>
 				</tr>
 				<tr>
@@ -80,10 +80,6 @@
 				<tr>
 					<td scope="row" class="text-muted">Estado</td>
 					<td>{{ $analisis->periodo->estado ? 'Cerrado' : 'Abierto' }}</td>
-				</tr>
-				<tr>
-					<td scope="row" class="text-muted">Actual</td>
-					<td>{{ $analisis->periodo->actual ? 'Si' : 'No' }}</td>
 				</tr>
 			</tbody>
 		</table>

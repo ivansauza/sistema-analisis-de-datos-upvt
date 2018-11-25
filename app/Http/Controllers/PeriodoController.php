@@ -195,4 +195,11 @@ class PeriodoController extends Controller
 
         return ['status' => true];
     }
+
+    public function report($id)
+    {
+        $periodo = Periodo::findOrFail($id);
+        
+        return view('periodo.report');
+    }
 }

@@ -5,9 +5,12 @@
 @endsection
 
 @section('content')
-    <form method="POST" action="{{ route('login') }}" class="form-signin mt-5">
+    <form method="POST" action="{{ route('login') }}" class="form-signin mt-1">
         {{ csrf_field() }}
-        <h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
+        <h1 class="h3 mb-2 font-weight-normal text-center">Análisis de Datos</h1>
+
+        <img src="{{ asset('img/upvt-logo-hd.png') }}" class="img-fluid mb-3">
+
         @if ($errors->any())
             <div class="alert alert-danger">
                 {{ $errors->first() }}
@@ -22,7 +25,7 @@
                 <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Mantener sesión
             </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2018-2018</p>
+        <button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
+        <p class="mt-5 mb-3 text-muted">&copy; Universidad Politécnica del Valle de Toluca 2018-2018</p>
     </form>
-    @endsection
+@endsection
