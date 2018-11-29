@@ -48,12 +48,12 @@ class UserController extends Controller
 		 * predeterminado excepto los administradores y el
 		 * mismo usuario actualmente logeado
 		*/
-		$users = Programa::getPredeterminado()
+		/*$users = Programa::getPredeterminado()
 			->users
 			->where('admin', '==', 0)
-			->where('id', '!=', auth()->id());
+			->where('id', '!=', auth()->id());*/
 
-		return view('user.index', compact('users'));
+		//return view('user.index', compact('users'));
 
         $users = Programa::getPredeterminado()
             ->users()
@@ -67,7 +67,7 @@ class UserController extends Controller
             ->sortBy('posicion')
             ->sortBy('deleted_at');
 
-        return view('periodo/index', compact('users', 'pusersWithouthTrashed'));
+        return view('user/index', compact('users', 'usersWithouthTrashed'));
 	}
 
 	/**
@@ -160,13 +160,27 @@ class UserController extends Controller
 	public function destroy(User $user)
 	{
 		$this->authorize('access', $user);
-		$user->programas()->sync( [] );
-		$user->roles()->sync( [] );
         $user->delete();
 
         return redirect()->route('users.index')
             ->with('info', ['type' => 'success', 'message' => 'Usuario eliminado con éxito']);
 	}
+
+    /**
+     * Restaurar the specified resource from storage.
+     *
+     * @param  \App\Periodo  $periodo
+     * @return mixed
+     */
+    public function restore($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+        //$this->authorize('restore', $periodo);
+        $user->restore();
+
+        return redirect()->route('users.index')
+            ->with('info', ['type' => 'success', 'message' => 'Usuario restaurado con éxito']);
+    }
 
 	public function actividades(User $user)
 	{

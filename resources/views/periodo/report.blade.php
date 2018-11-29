@@ -6,14 +6,14 @@
             <div class="col">
                 <h5 class="text-center"><b>ANÁLISIS DE DATOS</b></h5>
 
-                <h5 class="text-center">AL MES DE SEPTIEMBRE DE 2017</h5>
+                <h5 class="text-center text-uppercase">AL MES DE {{ $periodo->clave }} DE {{ $periodo->anio }}</h5>
 
                 <p class="text-right">
                     <small>CÒDIGO:205BL10000/00(I05)(F01)</small>
                 </p>
 
                 <p class="text-right">
-                    Fecha: <u>24 de enero de 2017</u>
+                    Fecha: <u>{{ date('d/m/Y') }}</u>
                 </p>
 
                 @foreach ($procesos as $proceso)
@@ -49,60 +49,26 @@
                                             (<span class="text-muted">{{ $subindicador->getProcedimiento() }}</span>) 
                                         </td>
                                         <td class="text-center border-right">{{ $subindicador->valor_meta }}%</td>
-                                        <td class="border-right text-center">
-                                            @foreach($subindicador->procedimiento as $item)
-                                                @switch ($item['type'])
-                                                    @case('pregunta')
-                                                        @php
-                                                            $pregunta  = App\Pregunta::find($item['value']);
+                                        @switch ($periodo->clave)
+                                            @case('enero-abril')
+                                                @include('periodo.fragments.result')
+                                                <td class="border-right"></td>
+                                                <td class="border-right"></td>
+                                                @break
 
-                                                            $encuestas = $periodo->encuestas()->whereHas('preguntas', function ($query) use ($pregunta) 
-                                                            {
-                                                                $query->where('pregunta_id', '=', $pregunta->id);
+                                            @case('mayo-agosto')
+                                                <td class="border-right"></td>
+                                                @include('periodo.fragments.result')
+                                                <td class="border-right"></td>
+                                                @break
 
-                                                            })->WhereHas('periodo', function ($query) 
-                                                            {
-                                                                $query->whereIn('user_id', App\User::get()->pluck('id'));
-                                                            })->get();
-                                                        @endphp
+                                            @case('septiembre-diciembre')
+                                                <td class="border-right"></td>
+                                                <td class="border-right"></td>
+                                                @include('periodo.fragments.result')
+                                                @break
+                                        @endswitch
 
-                                                        @php
-                                                            $total = 0;
-                                                        @endphp
-
-                                                        @foreach($encuestas as $encuesta)
-                                                            @php
-                                                                $total += $encuesta->getValuePregunta( $pregunta->id )
-                                                            @endphp
-                                                        @endforeach
-                                                        {{ $total }}
-                                                    @break
-
-                                                    @case('operacion')
-                                                        {!! "&frasl;" !!}
-                                                    @break
-                                                @endswitch
-                                            @endforeach
-
-                                             {{ auth()->user()->programas()->where('predeterminado', '=', 1)->first()->clave }} =
-
-                                            @php
-                                                $result = $subindicador->calculateProcedimiento($periodo->id)
-                                            @endphp
-
-                                            @if(is_numeric($result))
-                                                <a href="{{ route('estadisticas.details', ['subindicador' => $subindicador->id, 'periodo' => $periodo->id]) }}" class="text-default">
-
-                                                    {{ number_format((float)($result * 100), 1, '.', '') }}%
-                                                </a>
-                                            @else
-                                                <small>
-                                                    {{ $result }}
-                                                </small>
-                                            @endif
-                                        </td>
-                                        <td class="border-right"></td>
-                                        <td class="border-right"></td>
                                         <td style="width: 250px !important;">
                                         </td>
                                     </tr>

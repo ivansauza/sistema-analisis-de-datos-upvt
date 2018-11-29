@@ -56,15 +56,15 @@
 				<span class="badge badge-danger">{{ $errors->first('apellidos') }}</span>
 			@endif
 		</div>
-		<div class="form-group">
+		<!--<div class="form-group">
 				{{ Form::label('telefono', 'Número telefonico') }}
 				{{ Form::text('telefono', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el número telefonico']) }}
 				<small class="form-text text-muted">Se te enviarán mensajes de texto cuando el administrador lo requiera.</small>
 				@if ($errors->has('telefono'))
 					<span class="badge badge-danger">{{ $errors->first('telefono') }}</span>
 				@endif
-			</div>
-		<div class="form-group mt-5">
+			</div>-->
+		<!--<div class="form-group mt-5">
 			<div class="custom-control custom-checkbox">
 				{{ Form::hidden('pausar_actividad', 0) }}
 				 {{ Form::checkbox('pausar_actividad', 1, null, ['class' => 'custom-control-input', 'id' => 'pausar_actividad']) }}
@@ -73,7 +73,7 @@
 					<span class="badge badge-danger">{{ $errors->first('pausar_actividad') }}</span>
 				@endif
 			</div>
-		</div>
+		</div>-->
 	</div>
 	<div class="col-xs-12 col-md">
 		<div class="form-group">

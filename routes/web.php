@@ -97,6 +97,9 @@ Route::middleware(['auth', 'programDefault', 'activity'])->group(function () {
 		->name('estadisticas.graph')
 		->middleware('permission:estadisticas.details');
 
+	Route::post('users/{user}/restore', 'UserController@restore')
+		->name('users.restore');
+
 	Route::get('users/{user}/actividades', 'UserController@actividades')
 		->name('users.actividades');
 	

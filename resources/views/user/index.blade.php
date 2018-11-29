@@ -73,7 +73,8 @@
 					</thead>
 					<tbody>
 						@foreach($users as $user)
-							<tr>
+							<tr id="{{ $user->id }}" 
+								class="{{ $user->trashed() ? 'disabled d-none list-group-item-light' : null }}">
 								<th scope="row">{{ $user->id }}</th>
 								<td>{{ $user->name }} {{ $user->apellidos }}</td>
 								<td>{{ $user->username }}</td>
@@ -85,21 +86,36 @@
 								</td>
 								<td>
 									<div class="float-right">
-										<a href="{{ route('users.actividades', $user->id) }}" class="btn btn-sm text-secondary mt-1"  data-toggle="tooltip" data-placement="top" title="Mostrar actividades">
-											<i class="fas fa-history"></i>
-										</a>
+										@if ($user->trashed())
+											<button class="btn btn-sm btn-transparent mt-1 text-info" 
+												tabindex="0" data-trigger="focus" data-toggle="popover" 
+												title="Eliminado el" 
+												data-content="{{ $user->deleted_at }}">
+												<i class="fas fa-question"></i>
+											</button>
 
-										<a href="{{ route('users.show', $user->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar detalles">
-											<i class="fas fa-eye"></i>
-										</a>
+											{{ Form::open(['route' => ['users.restore', $user->id], 'method' => 'POST', 'class' => 'd-inline']) }}
+												<button type="submit" class="btn btn-sm text-warning btn-transparent mt-1"  data-toggle="tooltip" data-placement="top" title="Restaurar">
+													<i class="fas fa-undo"></i>
+												</button>
+											{{ Form::close() }}
+										@else
+											<a href="{{ route('users.actividades', $user->id) }}" class="btn btn-sm text-secondary mt-1"  data-toggle="tooltip" data-placement="top" title="Mostrar actividades">
+												<i class="fas fa-history"></i>
+											</a>
 
-										<a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
-											<i class="fas fa-pencil-alt"></i>
-										</a>
+											<a href="{{ route('users.show', $user->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Mostrar detalles">
+												<i class="fas fa-eye"></i>
+											</a>
 
-										{{ Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
-											<button type="submit" class="btn btn-sm text-danger btn-transparent mt-1" onclick="destroyItem(event)" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
-										{{ Form::close() }}
+											<a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm text-secondary mt-1" data-toggle="tooltip" data-placement="top" title="Editar">
+												<i class="fas fa-pencil-alt"></i>
+											</a>
+
+											{{ Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE', 'class' => 'd-inline']) }}
+												<button type="submit" class="btn btn-sm text-danger btn-transparent mt-1" onclick="destroyItem(event)" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+											{{ Form::close() }}
+										@endif
 									</div>
 								</td>
 							</tr>
